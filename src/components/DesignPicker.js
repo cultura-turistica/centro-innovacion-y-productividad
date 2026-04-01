@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './DesignPicker.css';
 
 // Importar los componentes de cada propuesta de diseño
-// import TierraYRaices from './TierraYRaices';
+import TierraYRaices from './TierraYRaices';
 // import NeonAncestral from './NeonAncestral';
 // import BentoLibre from './BentoLibre';
 
@@ -12,7 +12,7 @@ const DesignPicker = () => {
   const renderContent = () => {
     switch (activeTab) {
       case 'tierra':
-        return <div>Contenido de Tierra y Raíces</div>; // <TierraYRaices />;
+        return <TierraYRaices />;
       case 'neon':
         return <div>Contenido de Neón Ancestral</div>; // <NeonAncestral />;
       case 'bento':

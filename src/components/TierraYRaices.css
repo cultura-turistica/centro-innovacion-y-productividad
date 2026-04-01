@@ -1,0 +1,53 @@
+.tierra-container {
+  background-color: #FFF9E6; /* Crema, como papel viejo */
+  border: 1px solid #D9D2B4;
+  border-radius: 4px;
+  padding: 40px;
+  font-family: 'Georgia', serif; /* Una fuente con más carácter */
+}
+
+.tierra-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #5D4037; /* Marrón oscuro */
+}
+
+.tierra-header h2 {
+  font-size: 2.2rem;
+}
+
+.tierra-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.tierra-card {
+  background-color: #FFFFFF;
+  border: 1px solid #EFEBE9;
+  border-radius: 8px; /* Bordes ligeramente redondeados */
+  padding: 25px;
+  box-shadow: 0 2px 15px rgba(93, 64, 55, 0.08); /* Sombra suave y cálida */
+  transition: transform 0.2s ease-in-out;
+}
+
+.tierra-card:hover {
+  transform: translateY(-5px);
+}
+
+.tierra-card h3 {
+  border-bottom: 2px solid #A1887F; /* Línea de acento */
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.muñeco-placeholder {
+  margin-top: 15px;
+  padding: 20px;
+  background-color: #F5F5F5;
+  border: 2px dashed #BDBDBD;
+  border-radius: 4px;
+  text-align: center;
+  color: #757575;
+  font-style: italic;
+}
