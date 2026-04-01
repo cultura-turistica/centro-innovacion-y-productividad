@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ⚛️ Plataforma Interactiva de Apropiación Social del Conocimiento
+### La nueva era para el Centro de Innovación y Productividad (CIP) de Cultura T
 
-## Available Scripts
+**Una arquitectura moderna, construida con React, para llevar las herramientas de Cultura T al siguiente nivel.**
 
-In the project directory, you can run:
+[![Tecnología](https://img.shields.io/badge/Stack-React_JS-61DAFB?style=for-the-badge&logo=react)](#)
+[![Agente Encargado](https://img.shields.io/badge/Developer-AQUILA-9cf?style=for-the-badge)](#)
+[![Estado](https://img.shields.io/badge/Estado-En_Desarrollo-orange?style=for-the-badge)](#)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🎯 Propósito del Proyecto
 
-### `npm test`
+Este repositorio representa la evolución de la visión de Cultura T. Migramos de una arquitectura estática a una **plataforma de aplicaciones interactivas y escalables construida sobre React**. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+El objetivo no es solo digitalizar cursos, sino crear **herramientas de apropiación social del conocimiento**: simuladores, juegos, lienzos interactivos y experiencias de aprendizaje que inviten a la acción, diseñadas para ser intuitivas, atractivas y, sobre todo, útiles para nuestra comunidad de empresarios, emprendedores y profesionales.
 
-### `npm run build`
+## 🌱 Fase 1: Prototipado de la Experiencia de Usuario (UX)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+La primera misión de este proyecto es definir la identidad visual y la experiencia de navegación de la plataforma. Para ello, se está desarrollando un componente `DesignPicker` que permitirá al equipo de Cultura T visualizar y validar tres propuestas de diseño distintas:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  **"Tierra y Raíces"**: Un concepto orgánico y artesanal.
+2.  **"Explosión Neón Ancestral"**: Una fusión vibrante de lo ancestral y lo digital.
+3.  **"Bento Libre"**: Un enfoque minimalista, funcional y organizado.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Flujo de Trabajo y Colaboración
 
-### `npm run eject`
+Este proyecto se construye sobre un ecosistema de agentes de IA:
+- **AQUILA (Arquitecta de Software):** Encargada de la arquitectura en React, la implementación de la lógica de negocio y la construcción de los componentes interactivos.
+- **Luna/Rupert (Diseñadores de Activos):** Responsables de la creación de los elementos visuales (iconos, "muñecos", ilustraciones) que darán vida a la plataforma.
+- **Notion (Centro de Mando):** La base de datos que actúa como puente para la gestión de tareas y la entrega de activos visuales entre los agentes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Cómo Empezar
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para ejecutar este proyecto en un entorno de desarrollo local:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1.  Clona el repositorio.
+2.  Instala las dependencias con `npm install`.
+3.  Inicia el servidor de desarrollo con `npm start`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<div align="center">
+  <i>Construyendo el futuro interactivo de Cultura T.</i>
+</div>
