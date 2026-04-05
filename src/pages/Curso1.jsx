@@ -3,13 +3,13 @@ import { Lightbulb, Clock, Target, UserCheck, ArrowLeft, ArrowRight, BookOpen, U
 import teamworkImg from '../assets/curso_ilustracion_trabajo_equipo.png';
 
 const roles = [
-  { id: 1, title: 'El Vocero', icon: Users, desc: 'Comunica y articula las actividades con proveedores, clientes institucionales y aliados.', person: '¿Quién tiene el don de la palabra?' },
-  { id: 2, title: 'El Financiero', icon: BookOpen, desc: 'Registra rigurosamente las finanzas de la ruta turística y los compromisos económicos.', person: '¿Quién es ordenado con los números?' },
-  { id: 3, title: 'El Guía Local', icon: MapPin, desc: 'Lidera los espacios de socialización de la ruta biocultural con los visitantes en campo.', person: '¿Quién conoce mejor el territorio?' },
-  { id: 4, title: 'El Creador', icon: Camera, desc: 'Encargado de la fotografía, el video y las redes sociales de la iniciativa.', person: '¿Quién tiene ojo para el arte visual?' }
+  { id: 1, title: 'El Vocero', icon: Users, avatar: '🗣️', desc: 'Comunica y articula las actividades con proveedores, clientes institucionales y aliados.', person: '¿Quién tiene el don de la palabra?' },
+  { id: 2, title: 'El Financiero', icon: BookOpen, avatar: '📊', desc: 'Registra rigurosamente las finanzas de la ruta turística y los compromisos económicos.', person: '¿Quién es ordenado con los números?' },
+  { id: 3, title: 'El Guía Local', icon: MapPin, avatar: '🏃🏽', desc: 'Lidera los espacios de socialización de la ruta biocultural con los visitantes en campo.', person: '¿Quién conoce mejor el territorio?' },
+  { id: 4, title: 'El Creador', icon: Camera, avatar: '📸', desc: 'Encargado de la fotografía, el video y las redes sociales de la iniciativa.', person: '¿Quién tiene ojo para el arte visual?' }
 ];
 
-export default function Curso1() {
+export default function Curso1({ setCurrentRoute }) {
   const [flipped, setFlipped] = useState({});
 
   const toggleFlip = (id) => {
@@ -40,13 +40,13 @@ export default function Curso1() {
         <div style={{position: 'relative', height: '350px', background: '#055C38'}}>
            <img src={teamworkImg} alt="Trabajo en Equipo" style={{width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8}} />
            <div style={{position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(transparent, #055C38)', height: '150px'}}></div>
-           <div style={{position: 'absolute', bottom: '2rem', left: '2rem', right: '2rem', textAlign: 'center'}}>
-             <h3 style={{color: 'white', marginBottom: '0.5rem', fontSize: '2rem', textShadow: '0 4px 10px rgba(0,0,0,0.5)'}}>Unidos alcanzamos más lejos</h3>
-             <p style={{color: '#bbf7d0', fontSize: '1.2rem', textShadow: '0 2px 5px rgba(0,0,0,0.5)'}}>La asociatividad es la pieza clave en las rutas turísticas.</p>
+           <div style={{position: 'absolute', bottom: '2rem', left: '10%', right: '10%', textAlign: 'center'}}>
+             <h3 style={{color: 'white', marginBottom: '0.5rem', fontSize: 'clamp(1.5rem, 5vw, 2rem)', textShadow: '0 4px 10px rgba(0,0,0,0.5)'}}>Unidos alcanzamos más lejos</h3>
+             <p style={{color: '#bbf7d0', fontSize: 'clamp(1rem, 3vw, 1.2rem)', textShadow: '0 2px 5px rgba(0,0,0,0.5)'}}>La asociatividad es la pieza clave en las rutas turísticas.</p>
            </div>
         </div>
 
-        <div style={{padding: '3rem'}}>
+        <div style={{padding: 'clamp(1.5rem, 5vw, 3rem)'}}>
           {/* Tiempo y Objetivos */}
           <div className="grid-2" style={{marginBottom: '3rem'}}>
             <div style={{background: '#eff6ff', border: '2px solid #bfdbfe', borderRadius: '20px', padding: '1.5rem', display: 'flex', gap: '15px'}}>
@@ -107,8 +107,8 @@ export default function Curso1() {
                    <div key={role.id} className={`flip-card ${flipped[role.id] ? 'flipped' : ''}`} onClick={() => toggleFlip(role.id)}>
                      <div className="flip-card-inner">
                        <div className="flip-card-front">
-                         <div style={{background: '#f1f5f9', width: '80px', height: '80px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', color: '#032968'}}>
-                           <IconRender size={40}/>
+                         <div style={{fontSize: '3rem', marginBottom: '0.5rem'}}>
+                           {role.avatar}
                          </div>
                          <h4 style={{fontSize: '1.4rem', color: '#032968', margin: 0}}>{role.title}</h4>
                        </div>
@@ -129,10 +129,10 @@ export default function Curso1() {
       </div>
 
       <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem', padding: '0 1rem'}}>
-        <button className="btn-primary" style={{background: 'white', color: '#64748b', boxShadow: 'none', border: '2px solid #e2e8f0'}}>
+        <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{background: 'white', color: '#64748b', boxShadow: 'none', border: '2px solid #e2e8f0', cursor: 'pointer'}}>
           <ArrowLeft size={18}/> Catálogo
         </button>
-        <button className="btn-primary" style={{background: '#032968', boxShadow: '0 10px 20px rgba(3,41,104,0.3)'}}>
+        <button onClick={() => alert("¡Módulo finalizado! El módulo 2 estará disponible pronto.")} className="btn-primary" style={{background: '#032968', boxShadow: '0 10px 20px rgba(3,41,104,0.3)', cursor: 'pointer'}}>
           Siguiente Módulo <ArrowRight size={18}/>
         </button>
       </div>

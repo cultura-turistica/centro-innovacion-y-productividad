@@ -36,7 +36,7 @@ export default function ThinkTank() {
 
       <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
         {publicaciones.map((pub, idx) => (
-          <div key={idx} className="glass-card" style={{padding: '2rem', display: 'flex', gap: '2rem', alignItems: 'center'}}>
+          <div key={idx} className="glass-card flex-responsive" style={{padding: '2rem', display: 'flex', gap: '2rem', alignItems: 'center'}}>
             
             <div style={{
               minWidth: '80px', height: '100px', background: '#e0e7ff', borderRadius: '15px', 

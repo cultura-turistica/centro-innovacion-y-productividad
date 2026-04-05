@@ -139,4 +139,7 @@ h3 { font-size: 2rem; color: #055C38; margin-bottom: 1.5rem; font-family: 'Poppi
   .nav-links { overflow-x: auto; white-space: nowrap; padding-bottom: 10px; margin-top: 10px; }
   .nav-links a { font-size: 0.9rem; padding: 8px 15px; }
   h2 { font-size: 2.5rem !important; }
+  .flex-responsive { flex-direction: column !important; align-items: stretch !important; gap: 1rem !important; }
+  .scrolly-text { display: none; } /* On mobile data lab can be simplified */
+  .flip-card { height: 300px; } /* Mas alto en mobile */
 }

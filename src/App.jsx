@@ -14,7 +14,7 @@ export default function App() {
     switch(currentRoute) {
       case '/': return <Home setCurrentRoute={setCurrentRoute} />;
       case '/cursos': return <CursosApp setCurrentRoute={setCurrentRoute} />;
-      case '/curso-1': return <Curso1 />;
+      case '/curso-1': return <Curso1 setCurrentRoute={setCurrentRoute} />;
       case '/laboratorio': return <DataLab />;
       case '/pensamiento': return <ThinkTank />;
       default: return <Home />;
