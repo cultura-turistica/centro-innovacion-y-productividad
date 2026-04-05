@@ -78,3 +78,65 @@ h3 { font-size: 2rem; color: #055C38; margin-bottom: 1.5rem; font-family: 'Poppi
 .scrolly-chart-sticky { flex: 1; position: sticky; top: 120px; height: 60vh; background: white; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); padding: 2rem;}
 .scrolly-text { flex: 1; padding-bottom: 50vh; }
 .scrolly-step { padding: 40px; background: rgba(255,255,255,0.9); margin-bottom: 60vh; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 5px solid #F06000; }
+
+/* Flip Card CSS para Cursos */
+.flip-card {
+  background-color: transparent;
+  height: 250px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner, .flip-card:active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+@media (hover: hover) {
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.flip-card-front {
+  background: white;
+  border: 2px solid #e2e8f0;
+}
+.flip-card-back {
+  background: #032968;
+  color: white;
+  transform: rotateY(180deg);
+  border: 2px solid #032968;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; gap: 20px; }
+  .scrolly-container { flex-direction: column; gap: 2rem; }
+  .scrolly-chart-sticky { position: relative; top: 0; width: 100%; height: 300px; }
+  .scrolly-text { padding-bottom: 0; }
+  .scrolly-step { margin-bottom: 2rem; padding: 20px; }
+  .header-content { flex-direction: column; padding: 10px; }
+  .nav-links { overflow-x: auto; white-space: nowrap; padding-bottom: 10px; margin-top: 10px; }
+  .nav-links a { font-size: 0.9rem; padding: 8px 15px; }
+  h2 { font-size: 2.5rem !important; }
+}

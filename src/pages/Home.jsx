@@ -35,7 +35,7 @@ export default function Home({ setCurrentRoute }) {
         {/* Pilar 1 */}
         <div className="glass-card" style={{padding: '2.5rem', textAlign: 'left'}}>
           <div className="icon-wrapper" style={{background: '#F06000'}}><PenTool size={28}/></div>
-          <h4 style={{fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', color: '#032968'}}>Cursos y Aplicaciones</h4>
+          <h4 style={{fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', color: '#032968'}}>Cursos y Herramientas</h4>
           <p style={{color: '#475569', marginBottom: '2rem'}}>Capacitación transformadora. Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial.</p>
           <a href="#cursos" onClick={(e) => navigateTo(e, '/cursos')} className="btn-primary">Ver Academia <ArrowRight size={18}/></a>
         </div>

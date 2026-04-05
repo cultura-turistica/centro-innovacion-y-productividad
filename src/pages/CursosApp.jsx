@@ -13,7 +13,7 @@ export default function CursosApp({ setCurrentRoute }) {
   return (
     <div className="main-container">
       <div className="title-pill mb-4"><PenTool size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Academia ASC</div>
-      <h2 style={{fontFamily: 'Poppins'}}>Cursos y Aplicaciones</h2>
+      <h2 style={{fontFamily: 'Poppins'}}>Cursos y Herramientas</h2>
       <p style={{fontSize: '1.2rem', color: '#475569', maxWidth: '800px', marginBottom: '3rem', fontFamily: 'Poppins'}}>
         Programa 100% Autoguiado. Cursos diseñados metodológicamente para que el empresario turístico aprenda y aplique directo en su territorio.
       </p>
@@ -45,9 +45,9 @@ export default function CursosApp({ setCurrentRoute }) {
                  <div style={{fontSize: '0.9rem', color: '#64748b', fontWeight: 700}}>
                    <BookOpen size={16} style={{display:'inline-block', marginRight:'5px'}}/> {course.modules} Módulos
                  </div>
-                 <a href={`#${routePath}`} onClick={(e) => navigateTo(e, routePath)} className="btn-primary" style={{padding: '8px 20px', background: course.color}}>
+                 <button onClick={(e) => navigateTo(e, routePath)} className="btn-primary" style={{padding: '8px 20px', background: course.color, border: 'none', cursor: 'pointer'}}>
                    Iniciar <ArrowRight size={16} />
-                 </a>
+                 </button>
               </div>
             </div>
           )
