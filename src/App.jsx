@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
-import Toolbox from './pages/Toolbox';
+import CursosApp from './pages/CursosApp';
+import Curso1 from './pages/Curso1';
 import DataLab from './pages/DataLab';
 import ThinkTank from './pages/ThinkTank';
 import './index.css';
@@ -12,7 +13,8 @@ export default function App() {
   const renderPage = () => {
     switch(currentRoute) {
       case '/': return <Home setCurrentRoute={setCurrentRoute} />;
-      case '/herramientas': return <Toolbox />;
+      case '/cursos': return <CursosApp setCurrentRoute={setCurrentRoute} />;
+      case '/curso-1': return <Curso1 />;
       case '/laboratorio': return <DataLab />;
       case '/pensamiento': return <ThinkTank />;
       default: return <Home />;

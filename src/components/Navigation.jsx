@@ -13,7 +13,7 @@ export default function Navigation({ currentRoute, setCurrentRoute }) {
         </div>
         <nav className="nav-links">
           <a href="#inicio" onClick={(e) => { e.preventDefault(); setCurrentRoute('/'); }} className={isActive('/')}>Inicio</a>
-          <a href="#herramientas" onClick={(e) => { e.preventDefault(); setCurrentRoute('/herramientas'); }} className={isActive('/herramientas')}>Caja de Herramientas</a>
+          <a href="#cursos" onClick={(e) => { e.preventDefault(); setCurrentRoute('/cursos'); }} className={isActive('/cursos')}>Cursos y Aplicaciones</a>
           <a href="#laboratorio" onClick={(e) => { e.preventDefault(); setCurrentRoute('/laboratorio'); }} className={isActive('/laboratorio')}>Laboratorio de Datos</a>
           <a href="#pensamiento" onClick={(e) => { e.preventDefault(); setCurrentRoute('/pensamiento'); }} className={isActive('/pensamiento')}>Centro Pensamiento</a>
         </nav>
