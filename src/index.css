@@ -9,7 +9,7 @@ body {
   overflow-x: hidden;
   /* Fondo texturizado del cliente */
   background-image: 
-    linear-gradient(rgba(240, 253, 244, 0.95), rgba(240, 253, 244, 0.95)),
+    linear-gradient(rgba(240, 253, 244, 0.3), rgba(240, 253, 244, 0.3)),
     url('./assets/textura1.png');
   background-size: cover;
   background-attachment: fixed;
