@@ -7,12 +7,13 @@ body {
   background-color: #f0fdf4;
   color: #1e293b;
   overflow-x: hidden;
-  /* Fondo dibujado a mano */
+  /* Fondo texturizado del cliente */
   background-image: 
     linear-gradient(rgba(240, 253, 244, 0.95), rgba(240, 253, 244, 0.95)),
-    url('./assets/doodle_bg.png');
+    url('./assets/textura1.png');
   background-size: cover;
   background-attachment: fixed;
+  background-blend-mode: multiply;
 }
 
 /* =========================================
