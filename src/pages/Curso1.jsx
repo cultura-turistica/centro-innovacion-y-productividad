@@ -264,7 +264,7 @@ export default function Curso1({ setCurrentRoute }) {
       </div>
 
       {/* Controles de Navegación del Engine */}
-      <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem', padding: '0 1rem'}}>
+      <div className="next-prev-container" style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem'}}>
         {step === 1 ? (
           <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{background: 'white', color: '#64748b', boxShadow: 'none', border: '2px solid #e2e8f0', cursor: 'pointer'}}>
             <ArrowLeft size={18}/> Salir al Catálogo
