@@ -6,6 +6,9 @@ import Modulo5 from './CursoIntegrado/Modulo5';
 import Modulo6 from './CursoIntegrado/Modulo6';
 import Modulo7 from './CursoIntegrado/Modulo7';
 import Modulo8 from './CursoIntegrado/Modulo8';
+import Modulo9 from './CursoIntegrado/Modulo9';
+import Modulo10 from './CursoIntegrado/Modulo10';
+import Modulo11 from './CursoIntegrado/Modulo11';
 import LegacyRenderer from './CursoIntegrado/LegacyRenderer';
 import { legacyModules } from './CursoIntegrado/legacyData';
 
@@ -48,10 +51,9 @@ export default function Curso1({ setCurrentRoute }) {
   else if (step === 9) { headerColor = '#032968'; modTitle = 'Módulo 6: Segmentación de Mercado'; }
   else if (step === 10) { headerColor = '#F06000'; modTitle = 'Módulo 7: Guionaje y Guianza'; }
   else if (step === 11) { headerColor = '#055C38'; modTitle = 'Módulo 8: Finanzas Bioculturales'; }
-  else if (step >= 12 && step <= 14) { 
-    headerColor = '#032968'; 
-    modTitle = legacyModules.find(m => m.id === (step - 3))?.title || `Módulo ${step - 3}`; 
-  }
+  else if (step === 12) { headerColor = '#032968'; modTitle = 'Módulo 9: Marca Comercial'; }
+  else if (step === 13) { headerColor = '#055C38'; modTitle = 'Módulo 10: Generación de Contenidos'; }
+  else if (step === 14) { headerColor = '#032968'; modTitle = 'Módulo 11: Costos y Precios'; }
   else if (step === 15) { headerColor = '#166534'; modTitle = 'Finalización Cursos SGR'; }
 
   return (
@@ -231,19 +233,17 @@ export default function Curso1({ setCurrentRoute }) {
           </div>
         )}
 
-        {/* --- MODULOS NATIVOS 4 AL 8 --- */}
+        {/* --- MODULOS NATIVOS 4 AL 9 --- */}
         {step === 7 && <Modulo4 />}
         {step === 8 && <Modulo5 />}
         {step === 9 && <Modulo6 />}
         {step === 10 && <Modulo7 />}
         {step === 11 && <Modulo8 />}
+        {step === 12 && <Modulo9 />}
+        {step === 13 && <Modulo10 />}
+        {step === 14 && <Modulo11 />}
 
-        {/* --- MODULOS 9 al 11 HTML LEGACY RENDERER --- */}
-        {step >= 12 && step <= 14 && (
-          <LegacyRenderer moduleData={legacyModules.find(m => m.id === (step - 3))} />
-        )}
-
-        {/* --- MODULO 12 FINAL / COMPLETO --- */}
+        {/* --- FINALIZACIÓN --- */}
         {step === 15 && (
           <div className="fade-in" style={{padding: 'clamp(1.5rem, 5vw, 3rem)', textAlign: 'center'}}>
              <div style={{width: '100px', height: '100px', background: '#dcfce7', color: '#16a34a', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem auto'}}>

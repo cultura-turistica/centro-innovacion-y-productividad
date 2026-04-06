@@ -25,7 +25,7 @@ export default function DataLab() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const visibleData = fullData.slice(0, dataLimit);
+
 
   return (
     <div className="main-container">
