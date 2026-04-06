@@ -5,6 +5,7 @@ import Modulo4 from './CursoIntegrado/Modulo4';
 import Modulo5 from './CursoIntegrado/Modulo5';
 import Modulo6 from './CursoIntegrado/Modulo6';
 import Modulo7 from './CursoIntegrado/Modulo7';
+import Modulo8 from './CursoIntegrado/Modulo8';
 import LegacyRenderer from './CursoIntegrado/LegacyRenderer';
 import { legacyModules } from './CursoIntegrado/legacyData';
 
@@ -46,7 +47,8 @@ export default function Curso1({ setCurrentRoute }) {
   else if (step === 8) { headerColor = '#055C38'; modTitle = 'Módulo 5: Modelo de Negocio'; }
   else if (step === 9) { headerColor = '#032968'; modTitle = 'Módulo 6: Segmentación de Mercado'; }
   else if (step === 10) { headerColor = '#F06000'; modTitle = 'Módulo 7: Guionaje y Guianza'; }
-  else if (step >= 11 && step <= 14) { 
+  else if (step === 11) { headerColor = '#055C38'; modTitle = 'Módulo 8: Finanzas Bioculturales'; }
+  else if (step >= 12 && step <= 14) { 
     headerColor = '#032968'; 
     modTitle = legacyModules.find(m => m.id === (step - 3))?.title || `Módulo ${step - 3}`; 
   }
@@ -229,14 +231,15 @@ export default function Curso1({ setCurrentRoute }) {
           </div>
         )}
 
-        {/* --- MODULOS NATIVOS 4 AL 7 --- */}
+        {/* --- MODULOS NATIVOS 4 AL 8 --- */}
         {step === 7 && <Modulo4 />}
         {step === 8 && <Modulo5 />}
         {step === 9 && <Modulo6 />}
         {step === 10 && <Modulo7 />}
+        {step === 11 && <Modulo8 />}
 
-        {/* --- MODULOS 8 al 11 HTML LEGACY RENDERER --- */}
-        {step >= 11 && step <= 14 && (
+        {/* --- MODULOS 9 al 11 HTML LEGACY RENDERER --- */}
+        {step >= 12 && step <= 14 && (
           <LegacyRenderer moduleData={legacyModules.find(m => m.id === (step - 3))} />
         )}
 
