@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import { Lightbulb, Clock, Target, UserCheck, ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, ChevronUp, Leaf, Coins, Users, Landmark, Music } from 'lucide-react';
+
+import Modulo4 from './CursoIntegrado/Modulo4';
+import Modulo5 from './CursoIntegrado/Modulo5';
+import LegacyRenderer from './CursoIntegrado/LegacyRenderer';
+import { legacyModules } from './CursoIntegrado/legacyData';
+
 import teamworkImg from '../assets/curso_ilustracion_trabajo_equipo.png';
 import voceroImg from '../assets/curso1_vocero.png';
 import financieroImg from '../assets/curso1_financiero.png';
@@ -20,31 +26,44 @@ export default function Curso1({ setCurrentRoute }) {
   const [flipped, setFlipped] = useState({});
   const [step, setStep] = useState(1);
   const [activeAcc, setActiveAcc] = useState(null);
-  const totalSteps = 7;
+  
+  // Mod1: 1,2,3. Mod2: 4,5. Mod3: 6. Mod4: 7. Mod5: 8. Mod6-11: 9-14. End: 15
+  const totalSteps = 15;
 
   const toggleFlip = (id) => setFlipped(prev => ({ ...prev, [id]: !prev[id] }));
   const nextStep = () => { if (step < totalSteps) setStep(step + 1); window.scrollTo({top: 0, behavior: 'smooth'}); };
   const prevStep = () => { if (step > 1) setStep(step - 1); window.scrollTo({top: 0, behavior: 'smooth'}); };
 
+  // Detect current Modulo based on step
+  let headerColor = '#032968';
+  let modTitle = 'Módulo 1: Pensar y Trabajar en Colectivo';
+  
+  if (step >= 4 && step <= 5) { headerColor = '#055C38'; modTitle = 'Módulo 2: Turismo Sostenible'; }
+  else if (step === 6) { headerColor = '#F06000'; modTitle = 'Módulo 3: Patrimonio Cultural'; }
+  else if (step === 7) { headerColor = '#F06000'; modTitle = 'Módulo 4: Resolución de Conflictos'; }
+  else if (step === 8) { headerColor = '#055C38'; modTitle = 'Módulo 5: Modelo de Negocio'; }
+  else if (step >= 9 && step <= 14) { 
+    headerColor = '#032968'; 
+    modTitle = legacyModules.find(m => m.id === (step - 3))?.title || `Módulo ${step - 3}`; 
+  }
+  else if (step === 15) { headerColor = '#166534'; modTitle = 'Finalización Cursos SGR'; }
+
   return (
     <div className="main-container">
       <div className="title-pill mb-4" style={{background: '#dbeafe', color: '#0066FF', boxShadow: '0 4px 10px rgba(0,0,0,0.05)'}}>
         <Lightbulb size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> 
-        Curso Integrado: Fundación de Ruta SGR
+        Curso Integrado SGR: (Fundación de Ruta Comunitaria)
       </div>
       
-      {/* Dynamic Title based on module */}
-      {step <= 3 && <h2 style={{color: '#032968'}}>Módulo 1: Pensar y Trabajar en Colectivo</h2>}
-      {step >= 4 && step <= 5 && <h2 style={{color: '#055C38'}}>Módulo 2: Turismo Sostenible</h2>}
-      {step >= 6 && <h2 style={{color: '#F06000'}}>Módulo 3: Patrimonio Cultural</h2>}
+      <h2 style={{color: headerColor, transition: 'color 0.3s ease'}}>{modTitle}</h2>
       
-      {/* Progress Bar */}
+      {/* Progress Bar 15 steps */}
       <div style={{background: 'rgba(255,255,255,0.7)', borderRadius: '20px', padding: '1rem', display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '2rem'}}>
         <span style={{fontWeight: 700, color: '#475569', fontSize: '0.9rem'}}>Progreso Global:</span>
         <div style={{flexGrow: 1, background: '#e2e8f0', height: '10px', borderRadius: '10px', overflow: 'hidden'}}>
-          <div style={{width: `${(step/totalSteps)*100}%`, background: step <= 3 ? '#0066FF' : step <= 5 ? '#055C38' : '#F06000', height: '100%', borderRadius: '10px', transition: 'all 0.5s ease'}}></div>
+          <div style={{width: `${(step/totalSteps)*100}%`, background: headerColor, height: '100%', borderRadius: '10px', transition: 'all 0.5s ease'}}></div>
         </div>
-        <span style={{fontWeight: 800, color: '#032968'}}>{Math.round((step/totalSteps)*100)}%</span>
+        <span style={{fontWeight: 800, color: headerColor}}>{Math.round((step/totalSteps)*100)}%</span>
       </div>
 
       <div className="glass-card" style={{padding: '0', position: 'relative', overflow: 'hidden', minHeight: '500px'}}>
@@ -64,8 +83,8 @@ export default function Curso1({ setCurrentRoute }) {
                 <div style={{background: '#eff6ff', border: '2px solid #bfdbfe', borderRadius: '20px', padding: '1.5rem', display: 'flex', gap: '15px'}}>
                   <div style={{background: '#3b82f6', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0}}><Clock size={24}/></div>
                   <div>
-                    <h4 style={{fontWeight: 800, color: '#1e40af'}}>Tiempo Estimado</h4>
-                    <p style={{fontSize: '0.9rem', color: '#475569'}}><strong>30-45 mins</strong> en plataforma.</p>
+                    <h4 style={{fontWeight: 800, color: '#1e40af'}}>Ahorro del Tiempo</h4>
+                    <p style={{fontSize: '0.9rem', color: '#475569'}}><strong>11 Módulos</strong> consolidados en uno.</p>
                   </div>
                 </div>
                 <div style={{background: '#fff7ed', border: '2px solid #fed7aa', borderRadius: '20px', padding: '1.5rem', display: 'flex', gap: '15px'}}>
@@ -206,30 +225,40 @@ export default function Curso1({ setCurrentRoute }) {
           </div>
         )}
 
-        {step === 7 && (
+        {/* --- MODULO 4 Y 5 --- */}
+        {step === 7 && <Modulo4 />}
+        {step === 8 && <Modulo5 />}
+
+        {/* --- MODULOS 6 al 11 HTML LEGACY RENDERER --- */}
+        {step >= 9 && step <= 14 && (
+          <LegacyRenderer moduleData={legacyModules.find(m => m.id === (step - 3))} />
+        )}
+
+        {/* --- MODULO 12 FINAL / COMPLETO --- */}
+        {step === 15 && (
           <div className="fade-in" style={{padding: 'clamp(1.5rem, 5vw, 3rem)', textAlign: 'center'}}>
              <div style={{width: '100px', height: '100px', background: '#dcfce7', color: '#16a34a', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem auto'}}>
                <CheckCircle2 size={50}/>
              </div>
-             <h2 style={{color: '#166534', fontSize: '3rem'}}>¡Curso Aprobado, Capitán!</h2>
+             <h2 style={{color: '#166534', fontSize: '3rem'}}>¡Curso 100% Aprobado!</h2>
              <p style={{fontSize: '1.2rem', color: '#475569', maxWidth: '600px', margin: '0 auto'}}>
-               Has dominado la Asociatividad, dominado las finanzas e impactado sosteniblemente el territorio mientras salvaguardamos el patrimonio biocolombiano.
+               Has completado integralmente los 11 Módulos. Desde las finanzas locales, pasando por la mercadotecnia turística hasta consolidar el patrimonio biocultural y tu modelo Canvas.
              </p>
              
              <div style={{background: '#eff6ff', padding: '2rem', borderRadius: '20px', marginTop: '3rem', border: '2px dashed #93c5fd', maxWidth: '600px', margin: '3rem auto 0 auto'}}>
-               <h4 style={{color: '#1e40af', fontWeight: 800}}>👉 Descarga tu Herramienta Física</h4>
-               <p style={{color: '#64748b'}}>Ve ahora mismo al DataLab (Menú Horizontal) y diligencia la matriz financiera para aprobar la Fase Práctica.</p>
+               <h4 style={{color: '#1e40af', fontWeight: 800}}>👉 Descarga tus Herramientas Físicas</h4>
+               <p style={{color: '#64748b'}}>Ve ahora mismo al DataLab (Menú Horizontal) y diligencia tus plantillas financieras y de costos para aprobar la Fase Práctica.</p>
              </div>
           </div>
         )}
 
       </div>
 
-      {/* Controles de Navegación */}
+      {/* Controles de Navegación del Engine */}
       <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem', padding: '0 1rem'}}>
         {step === 1 ? (
           <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{background: 'white', color: '#64748b', boxShadow: 'none', border: '2px solid #e2e8f0', cursor: 'pointer'}}>
-            <ArrowLeft size={18}/> Catálogo Principal
+            <ArrowLeft size={18}/> Salir al Catálogo
           </button>
         ) : (
           <button onClick={prevStep} className="btn-primary" style={{background: 'white', color: '#475569', boxShadow: 'none', border: '2px solid #cbd5e1', cursor: 'pointer'}}>
@@ -238,12 +267,12 @@ export default function Curso1({ setCurrentRoute }) {
         )}
 
         {step < totalSteps ? (
-          <button onClick={nextStep} className="btn-primary" style={{background: '#032968', boxShadow: '0 10px 20px rgba(3,41,104,0.3)', cursor: 'pointer'}}>
-            Siguiente <ArrowRight size={18}/>
+          <button onClick={nextStep} className="btn-primary" style={{background: headerColor, boxShadow: `0 10px 20px ${headerColor}40`, cursor: 'pointer'}}>
+            Continuar Módulo <ArrowRight size={18}/>
           </button>
         ) : (
-          <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{background: '#F06000', boxShadow: '0 10px 20px rgba(240,96,0,0.3)', cursor: 'pointer'}}>
-            Cerrar y Volver
+          <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{background: '#166534', boxShadow: '0 10px 20px rgba(22,101,52,0.3)', cursor: 'pointer'}}>
+            Cerrar y Reclamar Certificado
           </button>
         )}
       </div>
