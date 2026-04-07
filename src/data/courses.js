@@ -1,20 +1,20 @@
 export const coursesInfo = [
   {
     id: "curso1",
-    title: "Innovación y Emprendimiento",
-    category: "Empresarios Básicos",
-    description: "Conoce los fundamentos para innovar en tu negocio, conectando la tecnología con las necesidades de tu comunidad.",
-    iconName: "Lightbulb",
-    modules: 4,
+    title: "Ruta de Formación Turismo Comunitario",
+    category: "Curso Integrado",
+    description: "Desarrollo de capacidades para la gestión comunitaria de rutas turísticas sostenibles.",
+    iconName: "Compass",
+    modules: 11,
     color: "#0066FF"
   },
   {
     id: "curso2",
-    title: "Sistemas de Herramientas Digitales",
-    category: "Comunidades y Agro",
-    description: "Explora herramientas tecnológicas básicas para gestionar, organizar e impulsar la productividad del sector.",
-    iconName: "MonitorSmartphone",
-    modules: 3,
+    title: "Diseño de Producto Turístico Territorial",
+    category: "Especialización",
+    description: "Metodología de 11 pasos para transformar recursos locales en experiencias de alto valor.",
+    iconName: "Palette",
+    modules: 11,
     color: "#16A34A"
   },
   {

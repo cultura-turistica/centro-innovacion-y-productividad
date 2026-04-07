@@ -22,7 +22,7 @@ export default function CursosApp({ setCurrentRoute }) {
         {coursesInfo.map(course => {
           const IconComponent = iconMap[course.iconName] || BookOpen;
           // Temporal router linkage
-          const routePath = course.id === 'curso1' ? '/curso-1' : '/cursos';
+          const routePath = course.id === 'curso1' ? '/curso-1' : course.id === 'curso2' ? '/curso-2' : '/cursos';
 
           return (
             <div key={course.id} className="glass-card" style={{padding: '2rem', display: 'flex', flexDirection: 'column'}}>

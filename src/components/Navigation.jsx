@@ -10,23 +10,27 @@ export default function Navigation({ currentRoute, setCurrentRoute }) {
   const closeMenu = () => setIsMenuOpen(false);
 
   const navItems = [
-    { label: 'Inicio', path: '/' },
-    { label: 'Cursos y Herramientas', path: '/cursos' },
-    { label: 'Laboratorio de Datos', path: '/laboratorio' },
-    { label: 'Centro Pensamiento', path: '/pensamiento' }
+    { label: 'Inicio', path: 'https://cultura-t.com/', isExternal: true },
+    { label: 'Mi Academia', path: '/cursos', isExternal: false },
+    { label: 'Laboratorio de Datos', path: '/laboratorio', isExternal: false },
+    { label: 'Centro Pensamiento', path: '/pensamiento', isExternal: false }
   ];
 
   return (
     <header className="header">
       <div className="header-content">
-        <a href="https://cultura-t.com/" target="_blank" rel="noopener noreferrer" className="logo-group" style={{cursor: 'pointer', border: 'none', background: 'transparent'}}>
+        <a href="https://cultura-t.com/" className="logo-group" style={{cursor: 'pointer', border: 'none', background: 'transparent'}}>
           <img src={logoUrl} alt="Cultura T Logo" style={{height: '50px', objectFit: 'contain'}} />
         </a>
 
         {/* Desktop Nav */}
         <nav className="nav-links hide-mobile">
           {navItems.map(item => (
-            <a key={item.path} href={`#${item.label}`} onClick={(e) => { e.preventDefault(); setCurrentRoute(item.path); }} className={isActive(item.path)}>{item.label}</a>
+            item.isExternal ? (
+              <a key={item.label} href={item.path}>{item.label}</a>
+            ) : (
+              <a key={item.path} href={`#${item.label}`} onClick={(e) => { e.preventDefault(); setCurrentRoute(item.path); }} className={isActive(item.path)}>{item.label}</a>
+            )
           ))}
         </nav>
 
@@ -43,14 +47,18 @@ export default function Navigation({ currentRoute, setCurrentRoute }) {
            </div>
            <nav className="drawer-links">
               {navItems.map(item => (
-                <a 
-                  key={item.path} 
-                  href={`#${item.label}`} 
-                  onClick={(e) => { e.preventDefault(); setCurrentRoute(item.path); closeMenu(); }} 
-                  className={isActive(item.path)}
-                >
-                  {item.label}
-                </a>
+                item.isExternal ? (
+                  <a key={item.label} href={item.path} onClick={closeMenu}>{item.label}</a>
+                ) : (
+                  <a 
+                    key={item.path} 
+                    href={`#${item.label}`} 
+                    onClick={(e) => { e.preventDefault(); setCurrentRoute(item.path); closeMenu(); }} 
+                    className={isActive(item.path)}
+                  >
+                    {item.label}
+                  </a>
+                )
               ))}
            </nav>
         </div>
