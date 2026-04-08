@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logoUrl from '../assets/Logo_CulturaT_color.png';
 
-export default function Navigation({ currentRoute, setCurrentRoute }) {
+export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isActive = (path) => currentRoute === path ? 'active' : '';
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path ? 'active' : '';
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -12,9 +16,16 @@ export default function Navigation({ currentRoute, setCurrentRoute }) {
   const navItems = [
     { label: 'Inicio', path: 'https://cultura-t.com/', isExternal: true },
     { label: 'Mi Academia', path: '/cursos', isExternal: false },
-    { label: 'Laboratorio de Datos', path: '/laboratorio', isExternal: false },
-    { label: 'Centro Pensamiento', path: '/pensamiento', isExternal: false }
+    { label: 'Laboratorio de Datos', path: '/laboratorio-datos', isExternal: false },
+    { label: 'Centro de Pensamiento', path: '/centro-pensamiento', isExternal: false }
   ];
+
+  const handleNavClick = (e, path, isExternal) => {
+    if (isExternal) return;
+    e.preventDefault();
+    navigate(path);
+    closeMenu();
+  };
 
   return (
     <header className="header">
@@ -29,7 +40,14 @@ export default function Navigation({ currentRoute, setCurrentRoute }) {
             item.isExternal ? (
               <a key={item.label} href={item.path}>{item.label}</a>
             ) : (
-              <a key={item.path} href={`#${item.label}`} onClick={(e) => { e.preventDefault(); setCurrentRoute(item.path); }} className={isActive(item.path)}>{item.label}</a>
+              <a 
+                key={item.path} 
+                href={`#${item.path}`} 
+                onClick={(e) => handleNavClick(e, item.path, false)} 
+                className={isActive(item.path)}
+              >
+                {item.label}
+              </a>
             )
           ))}
         </nav>
@@ -52,8 +70,8 @@ export default function Navigation({ currentRoute, setCurrentRoute }) {
                 ) : (
                   <a 
                     key={item.path} 
-                    href={`#${item.label}`} 
-                    onClick={(e) => { e.preventDefault(); setCurrentRoute(item.path); closeMenu(); }} 
+                    href={`#${item.path}`} 
+                    onClick={(e) => handleNavClick(e, item.path, false)} 
                     className={isActive(item.path)}
                   >
                     {item.label}
@@ -67,3 +85,4 @@ export default function Navigation({ currentRoute, setCurrentRoute }) {
     </header>
   );
 }
+

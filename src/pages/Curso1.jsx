@@ -25,8 +25,10 @@ const roles = [
   { id: 3, title: 'El Guía Local', img: guiaImg, desc: 'Lidera los espacios de socialización con visitantes en campo.', person: '¿Quién conoce mejor el territorio?' },
   { id: 4, title: 'El Creador', img: creadorImg, desc: 'Encargado de la fotografía, el video y las redes sociales de la iniciativa.', person: '¿Quién tiene ojo para el arte visual?' }
 ];
+import { useNavigate } from 'react-router-dom';
 
-export default function Curso1({ setCurrentRoute }) {
+export default function Curso1() {
+  const navigate = useNavigate();
   const [flipped, setFlipped] = useState({});
   const [step, setStep] = useState(1);
   const [activeAcc, setActiveAcc] = useState(null);
@@ -264,7 +266,7 @@ export default function Curso1({ setCurrentRoute }) {
       {/* Controles de Navegación del Engine */}
       <div className="next-prev-container" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2rem' }}>
         {step === 1 ? (
-          <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{ background: 'white', color: '#64748b', boxShadow: 'none', border: '2px solid #e2e8f0', cursor: 'pointer' }}>
+          <button onClick={() => navigate('/cursos')} className="btn-primary" style={{ background: 'white', color: '#64748b', boxShadow: 'none', border: '2px solid #e2e8f0', cursor: 'pointer' }}>
             <ArrowLeft size={18} /> Salir al Catálogo
           </button>
         ) : (
@@ -278,7 +280,7 @@ export default function Curso1({ setCurrentRoute }) {
             Continuar Módulo <ArrowRight size={18} />
           </button>
         ) : (
-          <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{ background: '#166534', boxShadow: '0 10px 20px rgba(22,101,52,0.3)', cursor: 'pointer' }}>
+          <button onClick={() => navigate('/cursos')} className="btn-primary" style={{ background: '#166534', boxShadow: '0 10px 20px rgba(22,101,52,0.3)', cursor: 'pointer' }}>
             Cerrar y Reclamar Certificado
           </button>
         )}

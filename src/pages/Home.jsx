@@ -1,11 +1,14 @@
 import React from 'react';
 import { PenTool, LineChart, Library, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import tallerImg from '../assets/taller.jpg';
 
-export default function Home({ setCurrentRoute }) {
+export default function Home() {
+  const navigate = useNavigate();
+
   const navigateTo = (e, path) => {
     e.preventDefault();
-    setCurrentRoute(path);
+    navigate(path);
   };
 
   return (
@@ -13,6 +16,7 @@ export default function Home({ setCurrentRoute }) {
       <div className="title-pill mb-6">Apropiación Social del Conocimiento</div>
       <h2 style={{fontSize: '4rem', lineHeight: '1.1'}}>Transformamos Territorios <br/><span style={{color: '#F06000'}}>con Conocimiento</span></h2>
       <p style={{fontSize: '1.25rem', color: '#475569', maxWidth: '700px', margin: '0 auto 3rem', fontFamily: 'Poppins'}}>
+
         Centro de Innovación y Productividad enfocado en comunidades, Pymes turísticas y emprendedores.
       </p>
 
@@ -45,7 +49,7 @@ export default function Home({ setCurrentRoute }) {
           <div className="icon-wrapper" style={{background: '#055C38'}}><LineChart size={28}/></div>
           <h4 style={{fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', color: '#032968'}}>Laboratorio de Datos y Tecnología</h4>
           <p style={{color: '#475569', marginBottom: '2rem'}}>El territorio en cifras. Visualización analítica interactiva y estadística de nuestros proyectos en campo.</p>
-          <a href="#laboratorio" onClick={(e) => navigateTo(e, '/laboratorio')} className="btn-primary" style={{background: '#055C38'}}>Entrar al Lab <ArrowRight size={18}/></a>
+          <a href="#laboratorio" onClick={(e) => navigateTo(e, '/laboratorio-datos')} className="btn-primary" style={{background: '#055C38'}}>Entrar al Lab <ArrowRight size={18}/></a>
         </div>
 
         {/* Pilar 3 */}
@@ -53,7 +57,7 @@ export default function Home({ setCurrentRoute }) {
           <div className="icon-wrapper" style={{background: '#032968'}}><Library size={28}/></div>
           <h4 style={{fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', color: '#032968'}}>Centro de Pensamiento</h4>
           <p style={{color: '#475569', marginBottom: '2rem'}}>Nuestra producción bibliográfica. Documentos de investigación formal, artículos y modelos de gestión publicable.</p>
-          <a href="#pensamiento" onClick={(e) => navigateTo(e, '/pensamiento')} className="btn-primary" style={{background: '#032968'}}>Visitar Biblioteca <ArrowRight size={18}/></a>
+          <a href="#pensamiento" onClick={(e) => navigateTo(e, '/centro-pensamiento')} className="btn-primary" style={{background: '#032968'}}>Visitar Biblioteca <ArrowRight size={18}/></a>
         </div>
       </div>
     </div>

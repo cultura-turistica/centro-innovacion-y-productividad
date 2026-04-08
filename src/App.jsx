@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import CursosApp from './pages/CursosApp';
@@ -9,24 +10,19 @@ import ThinkTank from './pages/ThinkTank';
 import './index.css';
 
 export default function App() {
-  const [currentRoute, setCurrentRoute] = useState('/');
-
-  const renderPage = () => {
-    switch(currentRoute) {
-      case '/': return <Home setCurrentRoute={setCurrentRoute} />;
-      case '/cursos': return <CursosApp setCurrentRoute={setCurrentRoute} />;
-      case '/curso-1': return <Curso1 setCurrentRoute={setCurrentRoute} />;
-      case '/curso-2': return <Curso2 setCurrentRoute={setCurrentRoute} />;
-      case '/laboratorio': return <DataLab />;
-      case '/pensamiento': return <ThinkTank />;
-      default: return <Home />;
-    }
-  };
-
   return (
     <div className="layout">
-      <Navigation currentRoute={currentRoute} setCurrentRoute={setCurrentRoute} />
-      {renderPage()}
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cursos" element={<CursosApp />} />
+        <Route path="/turismo-comunitario" element={<Curso1 />} />
+        <Route path="/diseno-producto" element={<Curso2 />} />
+        <Route path="/laboratorio-datos" element={<DataLab />} />
+        <Route path="/centro-pensamiento" element={<ThinkTank />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
     </div>
   );
 }
+

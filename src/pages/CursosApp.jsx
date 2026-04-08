@@ -2,12 +2,15 @@ import React from 'react';
 import { PenTool, Lightbulb, MonitorSmartphone, Calculator, BookOpen, ArrowRight } from 'lucide-react';
 import { coursesInfo } from '../data/courses';
 
+import { useNavigate } from 'react-router-dom';
+
 const iconMap = { Lightbulb, MonitorSmartphone, Calculator, BookOpen };
 
-export default function CursosApp({ setCurrentRoute }) {
+export default function CursosApp() {
+  const navigate = useNavigate();
   const navigateTo = (e, path) => {
     e.preventDefault();
-    setCurrentRoute(path);
+    navigate(path);
   };
 
   return (
@@ -21,8 +24,8 @@ export default function CursosApp({ setCurrentRoute }) {
       <div className="grid-3">
         {coursesInfo.map(course => {
           const IconComponent = iconMap[course.iconName] || BookOpen;
-          // Temporal router linkage
-          const routePath = course.id === 'curso1' ? '/curso-1' : course.id === 'curso2' ? '/curso-2' : '/cursos';
+          // Map course IDs to descriptive slugs
+          const routePath = course.id === 'curso1' ? '/turismo-comunitario' : course.id === 'curso2' ? '/diseno-producto' : '/cursos';
 
           return (
             <div key={course.id} className="glass-card" style={{padding: '2rem', display: 'flex', flexDirection: 'column'}}>

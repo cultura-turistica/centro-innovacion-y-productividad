@@ -12,10 +12,11 @@ import Modulo7 from './CursoIntegrado/Curso2/Modulo7';
 import Modulo8 from './CursoIntegrado/Curso2/Modulo8';
 import Modulo9 from './CursoIntegrado/Curso2/Modulo9';
 import Modulo10 from './CursoIntegrado/Curso2/Modulo10';
-import Modulo11 from './CursoIntegrado/Curso2/Modulo11';
-// ... etc
+import { useNavigate } from 'react-router-dom';
 
-export default function Curso2({ setCurrentRoute }) {
+export default function Curso2() {
+  const navigate = useNavigate();
+
   const [step, setStep] = useState(1);
   const totalSteps = 11;
 
@@ -99,7 +100,7 @@ export default function Curso2({ setCurrentRoute }) {
       {/* Navigation Controls */}
       <div className="next-prev-container" style={{display: 'flex', justifyContent: 'space-between', marginTop: '2rem'}}>
         {step === 1 ? (
-          <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{background: 'white', color: '#64748b', boxShadow: 'none', border: '2px solid #e2e8f0', cursor: 'pointer'}}>
+          <button onClick={() => navigate('/cursos')} className="btn-primary" style={{background: 'white', color: '#64748b', boxShadow: 'none', border: '2px solid #e2e8f0', cursor: 'pointer'}}>
             <ArrowLeft size={18}/> Volver al Catálogo
           </button>
         ) : (
@@ -113,7 +114,7 @@ export default function Curso2({ setCurrentRoute }) {
             Continuar <ArrowRight size={18}/>
           </button>
         ) : (
-          <button onClick={() => setCurrentRoute('/cursos')} className="btn-primary" style={{background: '#166534', boxShadow: '0 10px 20px rgba(22,101,52,0.3)', cursor: 'pointer'}}>
+          <button onClick={() => navigate('/cursos')} className="btn-primary" style={{background: '#166534', boxShadow: '0 10px 20px rgba(22,101,52,0.3)', cursor: 'pointer'}}>
             Finalizar Curso <CheckCircle2 size={18}/>
           </button>
         )}
