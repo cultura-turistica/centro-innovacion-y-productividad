@@ -25,7 +25,11 @@ export default function CursosApp() {
         {coursesInfo.map(course => {
           const IconComponent = iconMap[course.iconName] || BookOpen;
           // Map course IDs to descriptive slugs
-          const routePath = course.id === 'curso1' ? '/turismo-comunitario' : course.id === 'curso2' ? '/diseno-producto' : '/cursos';
+          const routePath = 
+            course.id === 'curso1' ? '/turismo-comunitario' : 
+            course.id === 'curso2' ? '/diseno-producto' : 
+            course.id === 'costeo' ? '/finanzas-y-costeo' :
+            '/cursos';
 
           return (
             <div key={course.id} className="glass-card" style={{padding: '2rem', display: 'flex', flexDirection: 'column'}}>
