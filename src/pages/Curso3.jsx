@@ -8,8 +8,8 @@ export default function Curso3() {
 
   // --- STATE ---
   const [fixedCosts, setFixedCosts] = useState([
-    { id: 1, label: 'Guía principal (hasta 15 pax)', qty: 1, value: 300000 },
-    { id: 2, label: 'Tallerista (hasta 15 pax)', qty: 1, value: 300000 },
+    { id: 1, label: 'Alquiler de salón comunal', qty: 1, value: 150000 },
+    { id: 2, label: 'Permiso de ingreso a reserva', qty: 1, value: 50000 },
   ]);
 
   const [variableCosts, setVariableCosts] = useState([
@@ -178,7 +178,7 @@ export default function Curso3() {
                           <div className="card-body">
                               <div className="info-box">
                                   <strong style={{display: 'flex', alignItems: 'center', gap: '8px'}}><Lightbulb size={20} /> ¿Qué son costos fijos?</strong>
-                                  <p>El guía cobra lo mismo si llevas 5 o 15 pasajeros. Ingresa su valor total. A más viajeros, este costo se reparte y tu paquete sale más económico.</p>
+                                  <p>El alquiler del salón comunal cuesta lo mismo si llevas 5 o 15 pasajeros. Ingresa su valor total. A más viajeros, este costo se reparte y tu paquete sale más económico.</p>
                               </div>
                               <div className="cost-items-container">
                                   {fixedCosts.map(item => (
@@ -189,7 +189,7 @@ export default function Curso3() {
                                           <div className="cost-item-inputs">
                                               <div className="input-group large">
                                                   <label className="input-label">Descripción</label>
-                                                  <input type="text" className="input-field" disabled={showUSD} placeholder="Ej. Guía Local" value={item.label} onChange={e => updateItem(fixedCosts, setFixedCosts, item.id, 'label', e.target.value)} />
+                                                  <input type="text" className="input-field" disabled={showUSD} placeholder="Ej. Alquiler de espacio" value={item.label} onChange={e => updateItem(fixedCosts, setFixedCosts, item.id, 'label', e.target.value)} />
                                               </div>
                                               <div className="input-group">
                                                   <label className="input-label">Cantidad</label>
@@ -478,7 +478,7 @@ export default function Curso3() {
                       <h3 style={{marginTop: '25px', color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '10px'}}>1. Ingresa los Costos en COP</h3>
                       <ul style={{fontSize: '1.1rem', lineHeight: 1.6, marginLeft: '25px', marginBottom: '20px'}}>
                           <li>Todos los costos se ingresan en Pesos Colombianos (COP)</li>
-                          <li><strong>Costos Fijos:</strong> Gastos que no cambian con el número de participantes (guías, transporte, permisos)</li>
+                          <li><strong>Costos Fijos:</strong> Gastos que no cambian con el número de participantes (alquiler de espacios, permisos, seguros de evento)</li>
                           <li><strong>Costos Variables:</strong> Gastos por persona (alimentación, materiales, seguros)</li>
                           <li><strong>Costos Flexibles:</strong> Servicios con capacidad limitada (lanchas, vehículos). La calculadora determina automáticamente cuántas unidades necesitas.</li>
                       </ul>
@@ -518,7 +518,7 @@ export default function Curso3() {
                       <h2 style={{fontSize: '2rem', color: 'var(--primary)', marginBottom: '20px'}}>💡 Tipos de Costos</h2>
                       <h3 style={{marginTop: '25px', color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '10px'}}>🏛️ Costos Fijos</h3>
                       <p style={{fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '10px'}}>No cambian con el número de participantes dentro de un rango establecido. El costo total es constante, pero el costo por persona disminuye a medida que aumenta el grupo.</p>
-                      <p style={{background: '#f0f5f2', padding: '15px', borderRadius: '10px', fontSize: '1.1rem', marginBottom: '20px'}}><strong>Ejemplo:</strong> 1 guía por $300,000 COP para hasta 15 participantes</p>
+                      <p style={{background: '#f0f5f2', padding: '15px', borderRadius: '10px', fontSize: '1.1rem', marginBottom: '20px'}}><strong>Ejemplo:</strong> Alquiler de salón comunal por $150,000 COP para el evento</p>
 
                       <h3 style={{marginTop: '25px', color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '10px'}}>🔄 Costos Variables</h3>
                       <p style={{fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '10px'}}>Cambian proporcionalmente con cada participante adicional. El costo por persona se mantiene constante, pero el costo total del grupo aumenta linealmente.</p>

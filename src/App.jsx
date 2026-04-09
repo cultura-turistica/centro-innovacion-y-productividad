@@ -10,6 +10,8 @@ import DataLab from './pages/DataLab';
 import ThinkTank from './pages/ThinkTank';
 import './index.css';
 
+import ProyectoSaeColombia from './pages/DataLab/ProyectoSaeColombia';
+
 export default function App() {
   return (
     <div className="layout">
@@ -21,6 +23,7 @@ export default function App() {
         <Route path="/diseno-producto" element={<Curso2 />} />
         <Route path="/finanzas-y-costeo" element={<Curso3 />} />
         <Route path="/laboratorio-datos" element={<DataLab />} />
+        <Route path="/laboratorio-datos/proyecto-sae" element={<ProyectoSaeColombia />} />
         <Route path="/centro-pensamiento" element={<ThinkTank />} />
         <Route path="*" element={<Home />} />
       </Routes>
