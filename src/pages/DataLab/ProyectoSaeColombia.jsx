@@ -22,7 +22,7 @@ export default function ProyectoSaeColombia() {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.6
+      threshold: 0.3
     };
 
     const observerCallback = (entries) => {
@@ -99,39 +99,6 @@ export default function ProyectoSaeColombia() {
 
       <div className="datalab-scrolly">
         
-        {/* PANEL NARRATIVO */}
-        <div className="datalab-text">
-          <div id="step-1" ref={step1Ref} className="datalab-step">
-            <h3>1. "Dime con quién andas..." (Fuerza Prestada)</h3>
-            <p>
-              Las encuestas no logran llegar a cada rincón del país. Para llenar estos vacíos, los estadísticos se basan en la correlación espacial: el fenómeno de la pobreza se aglomera en los territorios.
-            </p>
-            <p>
-              En el <strong>Mapa Coroplético</strong> a tu derecha, el modelo "toma fuerza prestada" de las zonas evaluadas. Utilizando un <i>efecto aleatorio</i> municipal, asume que si un área tiene características de pobreza, los municipios vecinos inobservados muy probablemente compartan esa realidad.
-            </p>
-          </div>
-          
-          <div id="step-2" ref={step2Ref} className="datalab-step">
-            <h3>2. Satélites como Ojos (Variable Auxiliar)</h3>
-            <p>
-              Ante la falta de encuestadores en terreno, la contaminación lumínica se usa como un poderoso <i>proxy</i> de actividad económica e infraestructura. Sin embargo, la luz espacial no reemplaza la encuesta: la complementa.
-            </p>
-            <p>
-              El gráfico a tu derecha demuestra cómo el modelo mezcla fuentes: toma encuestas reales (<strong style={{color:'#3fb950'}}>Puntos Verdes</strong>), suma variables continuas del Censo, y añade la intensidad de luz (Eje X) para calibrar la regresión de áreas inobservadas (<strong style={{color:'#ff5233'}}>Puntos Rojos</strong>).
-            </p>
-          </div>
-
-          <div id="step-3" ref={step3Ref} className="datalab-step">
-            <h3>3. Imputación Teórica (Top 10 Inobservados)</h3>
-            <p>
-              Al cruzar todo lo anterior, la matemática aprende una fórmula silenciosa (Ej: menos luz satelital + menor educación censal = mayor probabilidad de pobreza). Con esto, logra una asombrosa <strong>imputación teórica</strong> para los recovecos oscuros del país.
-            </p>
-            <p>
-              A tu derecha revelamos un ranking estadístico impecable: el Top 10 de municipios inobservados, descubiertos únicamente a través de inferencia bayesiana, que fungen como el objetivo primordial de política pública de choque para el Estado.
-            </p>
-          </div>
-        </div>
-
         {/* PANEL GRÁFICO (LIENZOS INDIVIDUALES) */}
         <div className="datalab-graphic">
           <div className="datalab-graphic-inner">
@@ -223,6 +190,39 @@ export default function ProyectoSaeColombia() {
               </ResponsiveContainer>
             </div>
 
+          </div>
+        </div>
+
+        {/* PANEL NARRATIVO */}
+        <div className="datalab-text">
+          <div id="step-1" ref={step1Ref} className="datalab-step">
+            <h3>1. "Dime con quién andas..." (Fuerza Prestada)</h3>
+            <p>
+              Las encuestas no logran llegar a cada rincón del país. Para llenar estos vacíos, los estadísticos se basan en la correlación espacial: el fenómeno de la pobreza se aglomera en los territorios.
+            </p>
+            <p>
+              En el <strong>Mapa Coroplético</strong> a tu derecha, el modelo "toma fuerza prestada" de las zonas evaluadas. Utilizando un <i>efecto aleatorio</i> municipal, asume que si un área tiene características de pobreza, los municipios vecinos inobservados muy probablemente compartan esa realidad.
+            </p>
+          </div>
+          
+          <div id="step-2" ref={step2Ref} className="datalab-step">
+            <h3>2. Satélites como Ojos (Variable Auxiliar)</h3>
+            <p>
+              Ante la falta de encuestadores en terreno, la contaminación lumínica se usa como un poderoso <i>proxy</i> de actividad económica e infraestructura. Sin embargo, la luz espacial no reemplaza la encuesta: la complementa.
+            </p>
+            <p>
+              El gráfico a tu derecha demuestra cómo el modelo mezcla fuentes: toma encuestas reales (<strong style={{color:'#3fb950'}}>Puntos Verdes</strong>), suma variables continuas del Censo, y añade la intensidad de luz (Eje X) para calibrar la regresión de áreas inobservadas (<strong style={{color:'#ff5233'}}>Puntos Rojos</strong>).
+            </p>
+          </div>
+
+          <div id="step-3" ref={step3Ref} className="datalab-step">
+            <h3>3. Imputación Teórica (Top 10 Inobservados)</h3>
+            <p>
+              Al cruzar todo lo anterior, la matemática aprende una fórmula silenciosa (Ej: menos luz satelital + menor educación censal = mayor probabilidad de pobreza). Con esto, logra una asombrosa <strong>imputación teórica</strong> para los recovecos oscuros del país.
+            </p>
+            <p>
+              A tu derecha revelamos un ranking estadístico impecable: el Top 10 de municipios inobservados, descubiertos únicamente a través de inferencia bayesiana, que fungen como el objetivo primordial de política pública de choque para el Estado.
+            </p>
           </div>
         </div>
 
