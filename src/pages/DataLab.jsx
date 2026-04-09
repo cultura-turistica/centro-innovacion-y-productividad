@@ -8,9 +8,9 @@ export default function DataLab() {
   const subprojects = [
     {
       id: "sae-colombia",
-      title: "Pobreza y Luz Satelital",
-      subtitle: "Predicción Bayesiana (SAE)",
-      desc: "Cruzamos microdatos del DANE (Censo) con pixeles satelitales de Google Earth Engine para medir niveles de pobreza turismo intermunicipal.",
+      title: "Radiografía de lo Inobservado",
+      subtitle: "IA para Estimación de Pobreza",
+      desc: "Cruzamos microdatos del DANE con pixeles satelitales empíricos para inferir bayesianamente las vulnerabilidades del territorio a nivel municipal.",
       icon: <MapIcon size={32} />
     },
     {

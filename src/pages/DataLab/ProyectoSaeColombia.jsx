@@ -101,7 +101,7 @@ export default function ProyectoSaeColombia() {
         
         {/* PANEL NARRATIVO */}
         <div className="datalab-text">
-          <div id="step-1" ref={step1Ref} className="datalab-step" style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div id="step-1" ref={step1Ref} className="datalab-step">
             <h3>1. "Dime con quién andas..." (Fuerza Prestada)</h3>
             <p>
               Las encuestas no logran llegar a cada rincón del país. Para llenar estos vacíos, los estadísticos se basan en la correlación espacial: el fenómeno de la pobreza se aglomera en los territorios.
@@ -111,7 +111,7 @@ export default function ProyectoSaeColombia() {
             </p>
           </div>
           
-          <div id="step-2" ref={step2Ref} className="datalab-step" style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div id="step-2" ref={step2Ref} className="datalab-step">
             <h3>2. Satélites como Ojos (Variable Auxiliar)</h3>
             <p>
               Ante la falta de encuestadores en terreno, la contaminación lumínica se usa como un poderoso <i>proxy</i> de actividad económica e infraestructura. Sin embargo, la luz espacial no reemplaza la encuesta: la complementa.
@@ -121,7 +121,7 @@ export default function ProyectoSaeColombia() {
             </p>
           </div>
 
-          <div id="step-3" ref={step3Ref} className="datalab-step" style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div id="step-3" ref={step3Ref} className="datalab-step">
             <h3>3. Imputación Teórica (Top 10 Inobservados)</h3>
             <p>
               Al cruzar todo lo anterior, la matemática aprende una fórmula silenciosa (Ej: menos luz satelital + menor educación censal = mayor probabilidad de pobreza). Con esto, logra una asombrosa <strong>imputación teórica</strong> para los recovecos oscuros del país.
@@ -133,37 +133,32 @@ export default function ProyectoSaeColombia() {
         </div>
 
         {/* PANEL GRÁFICO (LIENZOS INDIVIDUALES) */}
-        <div className="datalab-graphic" style={{ position: 'sticky', top: '10vh', height: '80vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ position: 'relative', width: '100%', height: '100%', maxWidth: '850px', background: '#0d1117', borderRadius: '20px', border: '1px solid #30363d', overflow: 'hidden', boxShadow: '0 25px 50px rgba(0,0,0,0.5)' }}>
+        <div className="datalab-graphic">
+          <div className="datalab-graphic-inner">
             
-            <div className="datalab-metadata-panel" style={{ zIndex: 100 }}>
+            <div className="datalab-metadata-panel">
               📡 <strong>Fuente:</strong> DANE + NOAA Satellites <br/>
               💾 <strong>Datos:</strong> 1,086 Puntos<br/>
               ⚙️ <strong>Modelo:</strong> Regresión MCMC
             </div>
 
             {/* GRÁFICA 1: MAPA PINTADO DE COLOMBIA (Coroplético por Regiones) */}
-            <div style={{ position: 'absolute', width: '100%', height: '100%', transition: 'all 0.8s ease-in-out', opacity: step === 1 ? 1 : 0, zIndex: step === 1 ? 10 : 0, pointerEvents: step === 1 ? 'auto' : 'none' }}>
+            <div className={`datalab-graphic-layer ${step === 1 ? 'active' : ''}`} style={{ zIndex: step === 1 ? 10 : 0 }}>
               
               {/* Custom Tooltip Flotante de Departamentos */}
               {hoveredDept && (
-                <div style={{ position: 'absolute', top: '30px', left: '50%', transform: 'translateX(-50%)', background: 'rgba(252, 163, 17, 0.95)', color: '#0d1117', padding: '12px 24px', borderRadius: '50px', border: '2px solid #fff', zIndex: 1000, pointerEvents: 'none', fontWeight: 900, fontSize: '16px', boxShadow: '0 10px 30px rgba(252, 163, 17, 0.4)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                <div className="datalab-dept-tooltip">
                   {hoveredDept}
                 </div>
               )}
 
-              {/* Ajustamos Scale y Zoom radicalmente para que llene la pantalla en Mercator */}
               <ComposableMap projection="geoMercator" projectionConfig={{ scale: 3000 }} width={800} height={650} style={{ width: "100%", height: "100%", outline: 'none' }}>
                 <ZoomableGroup center={mapPosition.coordinates} zoom={mapPosition.zoom} filterZoomEvent={(evt) => evt.type !== 'wheel'} >
                   <Geographies geography={colombiaTopo}>
                     {({ geographies }) =>
                       geographies.map((geo) => {
-                        // Nomenclatura oficial de topología Highcharts/D3
                         const name = geo.properties.name || geo.properties.NAME_1 || geo.properties["hc-key"] || "Departamento Inobservado";
-                        
-                        // Lógica de simulación coroplética
                         const isPoor = name.length % 2 !== 0;
-
                         const fillColor = isPoor ? "#ff5233" : "#fca311";
                         const displayColor = step === 1 ? fillColor : "#161b22";
 
@@ -173,7 +168,7 @@ export default function ProyectoSaeColombia() {
                             geography={geo}
                             fill={displayColor}
                             stroke="#0d1117"
-                            strokeWidth={0.3} // Más fino debido al zoom masivo
+                            strokeWidth={0.3}
                             onMouseEnter={() => setHoveredDept(name)}
                             onMouseLeave={() => setHoveredDept(null)}
                             style={{ 
@@ -191,8 +186,8 @@ export default function ProyectoSaeColombia() {
             </div>
 
             {/* GRÁFICA 2: SCATTERPLOT REGRESIÓN */}
-            <div style={{ position: 'absolute', width: '100%', height: '100%', padding: '3rem 2rem', boxSizing: 'border-box', transition: 'all 0.8s ease-in-out', opacity: step === 2 ? 1 : 0, zIndex: step === 2 ? 10 : 0, pointerEvents: step === 2 ? 'auto' : 'none', background: '#0d1117' }}>
-              <h3 style={{marginTop:0, marginBottom:'1rem', textAlign:'center', color:'#c9d1d9', fontSize:'1.2rem', fontWeight: 900}}>Regresión IA: Luz Satelital vs. Pobreza</h3>
+            <div className={`datalab-graphic-layer datalab-scatter-layer ${step === 2 ? 'active' : ''}`} style={{ zIndex: step === 2 ? 10 : 0 }}>
+              <h3 className="datalab-chart-title">Regresión IA: Luz Satelital vs. Pobreza</h3>
               <ResponsiveContainer width="100%" height="85%">
                 <ScatterChart margin={{ top: 20, right: 30, bottom: 20, left: 10 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#30363d" />
@@ -204,15 +199,15 @@ export default function ProyectoSaeColombia() {
                   <Scatter name="Bayesiano" data={datosPyMC} fill="#ff5233" opacity={0.9} />
                 </ScatterChart>
               </ResponsiveContainer>
-              <div style={{textAlign:'center', marginTop:'15px'}}>
-                <span style={{color:'#3fb950', fontSize:'0.9rem', marginRight:'15px', fontWeight: 'bold'}}>● Censado DANE Oficial</span>
-                <span style={{color:'#ff5233', fontSize:'0.9rem', fontWeight: 'bold'}}>● Inobservado (Inferido IA)</span>
+              <div className="datalab-chart-legend">
+                <span className="legend-dane">● Censado DANE Oficial</span>
+                <span className="legend-ia">● Inobservado (Inferido IA)</span>
               </div>
             </div>
 
             {/* GRÁFICA 3: TOP 10 RANKING (Barchart) */}
-            <div style={{ position: 'absolute', width: '100%', height: '100%', padding: '3rem 2rem', boxSizing: 'border-box', transition: 'all 0.8s ease-in-out', opacity: step === 3 ? 1 : 0, zIndex: step === 3 ? 10 : 0, pointerEvents: step === 3 ? 'auto' : 'none', background: '#0d1117' }}>
-              <h3 style={{marginTop:0, marginBottom:'2rem', textAlign:'center', color:'#c9d1d9', fontSize:'1.2rem', fontWeight: 900}}>Top 10 Municipios de Oscuridad Extrema</h3>
+            <div className={`datalab-graphic-layer datalab-scatter-layer ${step === 3 ? 'active' : ''}`} style={{ zIndex: step === 3 ? 10 : 0 }}>
+              <h3 className="datalab-chart-title">Top 10 Municipios de Oscuridad Extrema</h3>
               <ResponsiveContainer width="100%" height="85%">
                 <BarChart data={top10Darkest} margin={{ top: 20, right: 30, left: 10, bottom: 60 }} layout="horizontal">
                   <CartesianGrid strokeDasharray="3 3" stroke="#30363d" vertical={false} />
