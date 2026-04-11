@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BarChart3, Map as MapIcon, Database, BrainCircuit } from 'lucide-react';
+import { BarChart3, Map as MapIcon, Database, BrainCircuit, LineChart, Leaf } from 'lucide-react';
 
 export default function DataLab() {
   const navigate = useNavigate();
@@ -12,6 +12,20 @@ export default function DataLab() {
       subtitle: "IA para Estimación de Pobreza",
       desc: "Cruzamos microdatos del DANE con pixeles satelitales empíricos para inferir bayesianamente las vulnerabilidades del territorio a nivel municipal.",
       icon: <MapIcon size={32} />
+    },
+    {
+      id: "fontur-analysis",
+      title: "Gasto Público Turístico",
+      subtitle: "Finanzas y Riesgos FONTUR",
+      desc: "Análisis transversal de la dinámica de contratación (2021-2024), detectando las modalidades financieras predominantes y los mayores riesgos por incumplimiento.",
+      icon: <LineChart size={32} />
+    },
+    {
+      id: "prosperidad",
+      title: "Conservación de Ecosistema",
+      subtitle: "La Prosperidad (Tolima)",
+      desc: "Monitoreo satelital mensual y preservación del Bosque Seco Tropical evaluando la resiliencia ante la ganadería adaptativa.",
+      icon: <Leaf size={32} />
     },
     {
       id: "redatam-geo",
@@ -46,7 +60,12 @@ export default function DataLab() {
           <div 
             key={proj.id} 
             className="flip-card"
-            onClick={() => proj.id === "sae-colombia" ? navigate("/laboratorio-datos/proyecto-sae") : alert("Este proyecto estará disponible pronto.")}
+            onClick={() => {
+              if (proj.id === "sae-colombia") navigate("/laboratorio-datos/proyecto-sae");
+              else if (proj.id === "fontur-analysis") navigate("/laboratorio-datos/proyecto-fontur");
+              else if (proj.id === "prosperidad") navigate("/laboratorio-datos/proyecto-prosperidad");
+              else alert("Este proyecto estará disponible pronto.");
+            }}
           >
             <div className="flip-card-inner">
               <div className="flip-card-front" style={{ borderColor: '#032968' }}>
@@ -60,7 +79,7 @@ export default function DataLab() {
                 <h4 style={{ fontSize: '1.2rem', marginBottom: '1rem', fontFamily: 'Poppins' }}>Objetivo</h4>
                 <p style={{ fontSize: '0.95rem', lineHeight: '1.5' }}>{proj.desc}</p>
                 <div style={{ marginTop: '1.5rem', padding: '5px 15px', border: '1px solid white', borderRadius: '50px', fontSize:'0.8rem' }}>
-                   {proj.id === "sae-colombia" ? "► EXPLORAR MAPA" : "En Desarrollo..."}
+                   {proj.id === "sae-colombia" || proj.id === "fontur-analysis" || proj.id === "prosperidad" ? "► EXPLORAR GRÁFICOS" : "En Desarrollo..."}
                 </div>
               </div>
             </div>
