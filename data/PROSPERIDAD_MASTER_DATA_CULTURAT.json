@@ -1,0 +1,436 @@
+{
+  "metadata_proyecto": {
+    "nombre": "La Prosperidad",
+    "narrativa": "Ganader\u00eda Sostenible y Resiliencia en Bosque Seco Tropical",
+    "periodo_analisis": "2021 - 2026"
+  },
+  "estimacion_co2_teorica": {
+    "ecosistema": "Bosque Seco Tropical (Transici\u00f3n Semi\u00e1rida)",
+    "hectareas_bosque_protegido": 32.82,
+    "factor_conservador_ton_C_ha": 50,
+    "total_co2_equivalente_almacenado_ton": 6022.47,
+    "nota_metodologica": "Estimaci\u00f3n te\u00f3rica de Nivel 1 (Stock). No representa cr\u00e9ditos de carbono adicionales, sino la reserva de carbono existente protegida por el modelo silvopastoril."
+  },
+  "transicion_uso_suelo": [
+    {
+      "A\u00f1o": 2022,
+      "Agua": 17.42,
+      "Bosque": 36.43,
+      "Cultivos": 0.0,
+      "Matorral": 1.98,
+      "Pastizal": 1.11,
+      "Calculo_Stock_CO2e": 3342.45,
+      "Calculo_Captura_Anual": 54.64,
+      "Contexto": "Periodo de baja intervenci\u00f3n / Finca sola."
+    },
+    {
+      "A\u00f1o": 2023,
+      "Agua": 17.42,
+      "Bosque": 35.87,
+      "Cultivos": 0.0,
+      "Matorral": 3.02,
+      "Pastizal": 0.63,
+      "Calculo_Stock_CO2e": 3291.07,
+      "Calculo_Captura_Anual": 53.8,
+      "Contexto": "Gesti\u00f3n Cultura T / Introducci\u00f3n ganader\u00eda controlada."
+    },
+    {
+      "A\u00f1o": 2024,
+      "Agua": 17.42,
+      "Bosque": 32.87,
+      "Cultivos": 0.0,
+      "Matorral": 4.92,
+      "Pastizal": 1.73,
+      "Calculo_Stock_CO2e": 3015.82,
+      "Calculo_Captura_Anual": 49.3,
+      "Contexto": "Gesti\u00f3n Cultura T / Introducci\u00f3n ganader\u00eda controlada."
+    },
+    {
+      "A\u00f1o": 2025,
+      "Agua": 17.42,
+      "Bosque": 33.83,
+      "Cultivos": 0.0,
+      "Matorral": 4.89,
+      "Pastizal": 0.8,
+      "Calculo_Stock_CO2e": 3103.9,
+      "Calculo_Captura_Anual": 50.74,
+      "Contexto": "Gesti\u00f3n Cultura T / Introducci\u00f3n ganader\u00eda controlada."
+    },
+    {
+      "A\u00f1o": 2026,
+      "Agua": 17.42,
+      "Bosque": 32.82,
+      "Cultivos": 0.06,
+      "Matorral": 4.67,
+      "Pastizal": 1.97,
+      "Calculo_Stock_CO2e": 3011.24,
+      "Calculo_Captura_Anual": 49.23,
+      "Contexto": "Gesti\u00f3n Cultura T / Introducci\u00f3n ganader\u00eda controlada."
+    }
+  ],
+  "monitoreo_salud_mensual": [
+    {
+      "fecha": "2021-01",
+      "salud_vegetacion_ndvi": 0.0649,
+      "humedad_dosel_ndmi": 0.1742,
+      "indice_agua_ndwi": -0.0172
+    },
+    {
+      "fecha": "2021-02",
+      "salud_vegetacion_ndvi": 0.1429,
+      "humedad_dosel_ndmi": 0.0825,
+      "indice_agua_ndwi": -0.1646
+    },
+    {
+      "fecha": "2021-03",
+      "salud_vegetacion_ndvi": 0.23,
+      "humedad_dosel_ndmi": 0.0525,
+      "indice_agua_ndwi": -0.206
+    },
+    {
+      "fecha": "2021-04",
+      "salud_vegetacion_ndvi": 0.7523,
+      "humedad_dosel_ndmi": 0.2098,
+      "indice_agua_ndwi": -0.6436
+    },
+    {
+      "fecha": "2021-05",
+      "salud_vegetacion_ndvi": 0.3508,
+      "humedad_dosel_ndmi": 0.1596,
+      "indice_agua_ndwi": -0.2852
+    },
+    {
+      "fecha": "2021-06",
+      "salud_vegetacion_ndvi": -0.0026,
+      "humedad_dosel_ndmi": 0.6118,
+      "indice_agua_ndwi": 0.0026
+    },
+    {
+      "fecha": "2021-07",
+      "salud_vegetacion_ndvi": 0.1419,
+      "humedad_dosel_ndmi": 0.1656,
+      "indice_agua_ndwi": -0.1042
+    },
+    {
+      "fecha": "2021-08",
+      "salud_vegetacion_ndvi": 0.6742,
+      "humedad_dosel_ndmi": 0.1652,
+      "indice_agua_ndwi": -0.588
+    },
+    {
+      "fecha": "2021-09",
+      "salud_vegetacion_ndvi": 0.0402,
+      "humedad_dosel_ndmi": 0.6355,
+      "indice_agua_ndwi": -0.0328
+    },
+    {
+      "fecha": "2021-10",
+      "salud_vegetacion_ndvi": 0.8011,
+      "humedad_dosel_ndmi": 0.2654,
+      "indice_agua_ndwi": -0.6783
+    },
+    {
+      "fecha": "2021-11",
+      "salud_vegetacion_ndvi": 0.5653,
+      "humedad_dosel_ndmi": 0.2319,
+      "indice_agua_ndwi": -0.4782
+    },
+    {
+      "fecha": "2021-12",
+      "salud_vegetacion_ndvi": 0.0113,
+      "humedad_dosel_ndmi": 0.285,
+      "indice_agua_ndwi": -0.0037
+    },
+    {
+      "fecha": "2022-01",
+      "salud_vegetacion_ndvi": 0.785,
+      "humedad_dosel_ndmi": 0.267,
+      "indice_agua_ndwi": -0.6778
+    },
+    {
+      "fecha": "2022-02",
+      "salud_vegetacion_ndvi": -0.0377,
+      "humedad_dosel_ndmi": 0.1378,
+      "indice_agua_ndwi": 0.0694
+    },
+    {
+      "fecha": "2022-03",
+      "salud_vegetacion_ndvi": 0.0576,
+      "humedad_dosel_ndmi": 0.3246,
+      "indice_agua_ndwi": -0.0357
+    },
+    {
+      "fecha": "2022-04",
+      "salud_vegetacion_ndvi": 0.0128,
+      "humedad_dosel_ndmi": 0.7544,
+      "indice_agua_ndwi": -0.0133
+    },
+    {
+      "fecha": "2022-05",
+      "salud_vegetacion_ndvi": 0.2054,
+      "humedad_dosel_ndmi": 0.1172,
+      "indice_agua_ndwi": -0.1749
+    },
+    {
+      "fecha": "2022-06",
+      "salud_vegetacion_ndvi": 0.8499,
+      "humedad_dosel_ndmi": 0.2544,
+      "indice_agua_ndwi": -0.7336
+    },
+    {
+      "fecha": "2022-07",
+      "salud_vegetacion_ndvi": 0.0402,
+      "humedad_dosel_ndmi": 0.4979,
+      "indice_agua_ndwi": -0.0486
+    },
+    {
+      "fecha": "2022-08",
+      "salud_vegetacion_ndvi": 0.2058,
+      "humedad_dosel_ndmi": 0.0558,
+      "indice_agua_ndwi": -0.187
+    },
+    {
+      "fecha": "2022-09",
+      "salud_vegetacion_ndvi": 0.0451,
+      "humedad_dosel_ndmi": 0.1141,
+      "indice_agua_ndwi": -0.0251
+    },
+    {
+      "fecha": "2022-10",
+      "salud_vegetacion_ndvi": 0.1143,
+      "humedad_dosel_ndmi": 0.0901,
+      "indice_agua_ndwi": -0.0778
+    },
+    {
+      "fecha": "2022-11",
+      "salud_vegetacion_ndvi": -0.0346,
+      "humedad_dosel_ndmi": 0.391,
+      "indice_agua_ndwi": 0.0791
+    },
+    {
+      "fecha": "2022-12",
+      "salud_vegetacion_ndvi": 0.6536,
+      "humedad_dosel_ndmi": 0.2832,
+      "indice_agua_ndwi": -0.5412
+    },
+    {
+      "fecha": "2023-01",
+      "salud_vegetacion_ndvi": 0.0846,
+      "humedad_dosel_ndmi": 0.1056,
+      "indice_agua_ndwi": -0.0525
+    },
+    {
+      "fecha": "2023-02",
+      "salud_vegetacion_ndvi": 0.7505,
+      "humedad_dosel_ndmi": 0.2546,
+      "indice_agua_ndwi": -0.6357
+    },
+    {
+      "fecha": "2023-03",
+      "salud_vegetacion_ndvi": 0.0037,
+      "humedad_dosel_ndmi": 0.3915,
+      "indice_agua_ndwi": 0.0
+    },
+    {
+      "fecha": "2023-04",
+      "salud_vegetacion_ndvi": 0.1309,
+      "humedad_dosel_ndmi": 0.0736,
+      "indice_agua_ndwi": -0.1054
+    },
+    {
+      "fecha": "2023-05",
+      "salud_vegetacion_ndvi": 0.1604,
+      "humedad_dosel_ndmi": 0.1053,
+      "indice_agua_ndwi": -0.1258
+    },
+    {
+      "fecha": "2023-06",
+      "salud_vegetacion_ndvi": 0.6858,
+      "humedad_dosel_ndmi": 0.2149,
+      "indice_agua_ndwi": -0.5926
+    },
+    {
+      "fecha": "2023-07",
+      "salud_vegetacion_ndvi": 0.1118,
+      "humedad_dosel_ndmi": 0.0584,
+      "indice_agua_ndwi": -0.0938
+    },
+    {
+      "fecha": "2023-08",
+      "salud_vegetacion_ndvi": 0.5396,
+      "humedad_dosel_ndmi": 0.1107,
+      "indice_agua_ndwi": -0.5267
+    },
+    {
+      "fecha": "2023-09",
+      "salud_vegetacion_ndvi": 0.5917,
+      "humedad_dosel_ndmi": 0.0433,
+      "indice_agua_ndwi": -0.5857
+    },
+    {
+      "fecha": "2023-10",
+      "salud_vegetacion_ndvi": 0.1297,
+      "humedad_dosel_ndmi": 0.2406,
+      "indice_agua_ndwi": -0.0966
+    },
+    {
+      "fecha": "2023-11",
+      "salud_vegetacion_ndvi": 0.0463,
+      "humedad_dosel_ndmi": 0.1453,
+      "indice_agua_ndwi": -0.0484
+    },
+    {
+      "fecha": "2023-12",
+      "salud_vegetacion_ndvi": 0.4912,
+      "humedad_dosel_ndmi": 0.1739,
+      "indice_agua_ndwi": -0.4101
+    },
+    {
+      "fecha": "2024-01",
+      "salud_vegetacion_ndvi": 0.2824,
+      "humedad_dosel_ndmi": 0.1484,
+      "indice_agua_ndwi": -0.2171
+    },
+    {
+      "fecha": "2024-02",
+      "salud_vegetacion_ndvi": 0.5593,
+      "humedad_dosel_ndmi": 0.1929,
+      "indice_agua_ndwi": -0.5057
+    },
+    {
+      "fecha": "2024-03",
+      "salud_vegetacion_ndvi": 0.1279,
+      "humedad_dosel_ndmi": 0.0242,
+      "indice_agua_ndwi": -0.0964
+    },
+    {
+      "fecha": "2024-04",
+      "salud_vegetacion_ndvi": 0.1173,
+      "humedad_dosel_ndmi": 0.2329,
+      "indice_agua_ndwi": -0.086
+    },
+    {
+      "fecha": "2024-05",
+      "salud_vegetacion_ndvi": 0.3423,
+      "humedad_dosel_ndmi": 0.2297,
+      "indice_agua_ndwi": -0.2979
+    },
+    {
+      "fecha": "2024-06",
+      "salud_vegetacion_ndvi": 0.7441,
+      "humedad_dosel_ndmi": 0.2726,
+      "indice_agua_ndwi": -0.6232
+    },
+    {
+      "fecha": "2024-07",
+      "salud_vegetacion_ndvi": 0.1409,
+      "humedad_dosel_ndmi": 0.0825,
+      "indice_agua_ndwi": -0.1348
+    },
+    {
+      "fecha": "2024-08",
+      "salud_vegetacion_ndvi": 0.6454,
+      "humedad_dosel_ndmi": 0.0591,
+      "indice_agua_ndwi": -0.616
+    },
+    {
+      "fecha": "2024-09",
+      "salud_vegetacion_ndvi": 0.0543,
+      "humedad_dosel_ndmi": 0.2697,
+      "indice_agua_ndwi": -0.0603
+    },
+    {
+      "fecha": "2024-10",
+      "salud_vegetacion_ndvi": 0.6814,
+      "humedad_dosel_ndmi": 0.1568,
+      "indice_agua_ndwi": -0.6054
+    },
+    {
+      "fecha": "2024-11",
+      "salud_vegetacion_ndvi": 0.3733,
+      "humedad_dosel_ndmi": 0.2855,
+      "indice_agua_ndwi": -0.2819
+    },
+    {
+      "fecha": "2024-12",
+      "salud_vegetacion_ndvi": 0.0211,
+      "humedad_dosel_ndmi": 0.5781,
+      "indice_agua_ndwi": -0.0193
+    },
+    {
+      "fecha": "2025-01",
+      "salud_vegetacion_ndvi": 0.2818,
+      "humedad_dosel_ndmi": 0.0957,
+      "indice_agua_ndwi": -0.2507
+    },
+    {
+      "fecha": "2025-02",
+      "salud_vegetacion_ndvi": 0.5724,
+      "humedad_dosel_ndmi": 0.1974,
+      "indice_agua_ndwi": -0.4813
+    },
+    {
+      "fecha": "2025-03",
+      "salud_vegetacion_ndvi": 0.6406,
+      "humedad_dosel_ndmi": 0.2337,
+      "indice_agua_ndwi": -0.5353
+    },
+    {
+      "fecha": "2025-04",
+      "salud_vegetacion_ndvi": 0.1837,
+      "humedad_dosel_ndmi": 0.1068,
+      "indice_agua_ndwi": -0.1359
+    },
+    {
+      "fecha": "2025-05",
+      "salud_vegetacion_ndvi": 0.2835,
+      "humedad_dosel_ndmi": 0.1754,
+      "indice_agua_ndwi": -0.2486
+    },
+    {
+      "fecha": "2025-06",
+      "salud_vegetacion_ndvi": 0.8179,
+      "humedad_dosel_ndmi": 0.2136,
+      "indice_agua_ndwi": -0.7013
+    },
+    {
+      "fecha": "2025-07",
+      "salud_vegetacion_ndvi": 0.7323,
+      "humedad_dosel_ndmi": 0.1643,
+      "indice_agua_ndwi": -0.6551
+    },
+    {
+      "fecha": "2025-08",
+      "salud_vegetacion_ndvi": 0.6545,
+      "humedad_dosel_ndmi": 0.0589,
+      "indice_agua_ndwi": -0.6222
+    },
+    {
+      "fecha": "2025-09",
+      "salud_vegetacion_ndvi": 0.528,
+      "humedad_dosel_ndmi": 0.0178,
+      "indice_agua_ndwi": -0.529
+    },
+    {
+      "fecha": "2025-10",
+      "salud_vegetacion_ndvi": 0.7597,
+      "humedad_dosel_ndmi": 0.2837,
+      "indice_agua_ndwi": -0.6387
+    },
+    {
+      "fecha": "2025-11",
+      "salud_vegetacion_ndvi": 0.0125,
+      "humedad_dosel_ndmi": 0.2179,
+      "indice_agua_ndwi": -0.002
+    }
+  ],
+  "analisis_interno_cultura_t": {
+    "tesis_central": "Gesti\u00f3n de un activo biol\u00f3gico modificado mediante adaptaci\u00f3n productiva.",
+    "metodologia_insitu": "Uso de factores de nivel 1 ajustados por proximidad a zona semi\u00e1rida.",
+    "variables_monitoreo": [
+      "NDVI (Vigor)",
+      "NDMI (Hestr\u00e9s H\u00eddrico)",
+      "LULC (Uso de Suelo)"
+    ]
+  }
+}
