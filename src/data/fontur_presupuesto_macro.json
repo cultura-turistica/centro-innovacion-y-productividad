@@ -1,0 +1,57 @@
+[
+    {
+        "Vigencia": 2021,
+        "Presupuesto aprobado Vigencia": 285619576028.3412,
+        "Recursos comprometidos al cierre de la vigencia": 247435360430.12,
+        "Contratado": 168427760168.14,
+        "Pagado": 74079579873.66,
+        "Comprometido en ejecuci\u00f3n (2)": 231422671374.74,
+        "Contratado (2)": 209113877923.1,
+        "Pagado.1": 186651106899.88,
+        "Eficiencia_Pago_Vs_Aprobado": 25.93645047155637
+    },
+    {
+        "Vigencia": 2022,
+        "Presupuesto aprobado Vigencia": 279295532559.7961,
+        "Recursos comprometidos al cierre de la vigencia": 146224686769.44705,
+        "Contratado": 112057144593.15,
+        "Pagado": 57165726927.350006,
+        "Comprometido en ejecuci\u00f3n (2)": 143172229310.33707,
+        "Contratado (2)": 135632211570.73999,
+        "Pagado.1": 114337601797.95003,
+        "Eficiencia_Pago_Vs_Aprobado": 20.46782718055508
+    },
+    {
+        "Vigencia": 2023,
+        "Presupuesto aprobado Vigencia": 576215436042.2,
+        "Recursos comprometidos al cierre de la vigencia": 468385638506.95,
+        "Contratado": 368921247529.73,
+        "Pagado": 144647488662.85,
+        "Comprometido en ejecuci\u00f3n (2)": 464954480729.988,
+        "Contratado (2)": 428200289699.04803,
+        "Pagado.1": 273898812908.96997,
+        "Eficiencia_Pago_Vs_Aprobado": 25.103022171078482
+    },
+    {
+        "Vigencia": "2024-10",
+        "Presupuesto aprobado Vigencia": 535087851842.62,
+        "Recursos comprometidos al cierre de la vigencia": 0.0,
+        "Contratado": 0.0,
+        "Pagado": 0.0,
+        "Comprometido en ejecuci\u00f3n (2)": 406916283727.69,
+        "Contratado (2)": 246630585248.78003,
+        "Pagado.1": 113132072179.43001,
+        "Eficiencia_Pago_Vs_Aprobado": 0.0
+    },
+    {
+        "Vigencia": "Total al cierre",
+        "Presupuesto aprobado Vigencia": 1676218396472.957,
+        "Recursos comprometidos al cierre de la vigencia": 862045685706.5171,
+        "Contratado": 649406152291.02,
+        "Pagado": 275892795463.86,
+        "Comprometido en ejecuci\u00f3n (2)": 1246465665142.755,
+        "Contratado (2)": 1019576964441.668,
+        "Pagado.1": 688019593786.2301,
+        "Eficiencia_Pago_Vs_Aprobado": 16.459239204413006
+    }
+]

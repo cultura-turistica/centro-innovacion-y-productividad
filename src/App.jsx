@@ -13,6 +13,7 @@ import './index.css';
 import ProyectoSaeColombia from './pages/DataLab/ProyectoSaeColombia';
 // import ProyectoFontur from './pages/DataLab/ProyectoFontur';
 import ProyectoProsperidad from './pages/DataLab/ProyectoProsperidad';
+import ProyectoCO2 from './pages/DataLab/ProyectoCO2';
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/laboratorio-datos/proyecto-sae" element={<ProyectoSaeColombia />} />
         {/* <Route path="/laboratorio-datos/proyecto-fontur" element={<ProyectoFontur />} /> */}
         <Route path="/laboratorio-datos/proyecto-prosperidad" element={<ProyectoProsperidad />} />
+        <Route path="/laboratorio-datos/proyecto-co2" element={<ProyectoCO2 />} />
         <Route path="/centro-pensamiento" element={<ThinkTank />} />
         <Route path="*" element={<Home />} />
       </Routes>

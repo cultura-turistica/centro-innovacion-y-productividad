@@ -1,0 +1,365 @@
+.proyecto-co2-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fcfcfc;
+    color: #1a1a1a;
+    font-family: 'Inter', system-ui, sans-serif;
+    position: relative;
+    padding-bottom: 5rem;
+}
+
+/* Header Editorial */
+.co2-header {
+    padding: 6rem 2rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.co2-header h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #111827;
+    letter-spacing: -0.03em;
+}
+
+.co2-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: #4b5563;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.scroll-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #059669;
+    font-weight: 600;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* ScrollyTelling Grid Structure */
+.scrolly-section {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: row-reverse; /* Chart on Right, Text on Left */
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+/* RESET Y ESTRUCTURA GENERAL */
+.proyecto-co2-container {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    /* DATA-CANVAS BACKGROUND: Trama analítica (40% Opacidad) y degradado atmosférico */
+    background-color: #f8fafc;
+    background-image: 
+        radial-gradient(circle at top right, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='2' fill='%236b7280' fill-opacity='0.4'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+}
+
+/* Sticky Chart Container */
+.chart-sticky-container {
+    position: sticky;
+    top: 5rem;
+    width: 60%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    padding: 2rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Steps (Narrative Text) */
+.steps-container {
+    width: 40%;
+    padding: 4rem 1rem 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.step-card {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0.3;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.step-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #059669; /* Verde CIP */
+}
+
+/* Card Icons & Typography */
+.step-icon {
+    color: #059669;
+    margin-bottom: 1.5rem;
+}
+
+.step-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.step-card p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #4b5563;
+}
+
+/* Estilo periodístico para los párrafos "Insights" */
+.insight-text {
+    font-family: 'Merriweather', serif; /* Si no existe, caerá a sans-serif normal pero le da peso editorial */
+    font-style: italic;
+    color: #1f2937 !important;
+    border-left: 3px solid #e5e7eb;
+    padding-left: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Custom Chart Tooltips */
+.custom-tooltip {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+}
+
+.custom-tooltip .label {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+/* Responsive Mobile ( max-width: 768px ) */
+@media (max-width: 768px) {
+    .scrolly-section {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .chart-sticky-container {
+        width: 100%;
+        height: 50vh;
+        position: sticky;
+        top: 4rem; /* Debajo de navbar */
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        z-index: 10;
+        padding: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .steps-container {
+        width: 100%;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 20; /* Texto flota sobre/debajo el sticky chart si es necesario */
+        margin-top: -10vh; /* Para que parezca un overlay natural */
+    }
+
+    .step-card {
+        min-height: auto;
+        margin-bottom: 70vh; /* Da espacio para leer sobre la gráfica sticky de fondo */
+    }
+
+    .step-content {
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .step-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .step-card p {
+        font-size: 1rem;
+    }
+}
+
+/* ANECDOTARIO: FÍSICA Y TRANSPARENCIA */
+.physics-section {
+    background: #111827;
+    color: #f3f4f6;
+    padding: 6rem 2rem;
+}
+.physics-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.physics-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+.physics-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff; /* Fuerza contraste contra fondo oscuro */
+}
+.physics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.physics-card {
+    background: #1f2937;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #374151;
+}
+.physics-card h3 {
+    color: #10b981;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+.physics-card p {
+    line-height: 1.7;
+    color: #9ca3af;
+}
+
+/* SANDBOX LÚDICO */
+.sandbox-section {
+    padding: 6rem 2rem;
+    background: transparent;
+}
+.sandbox-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.sandbox-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+.sandbox-header h2 {
+    font-size: 2.5rem;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+.sandbox-controls {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    margin-top: 1rem;
+}
+.country-select {
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+    outline: none;
+    min-width: 200px;
+}
+.sandbox-metrics {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    min-height: 80px;
+}
+.metric-box {
+    background: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    text-align: center;
+    min-width: 150px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.metric-title {
+    display: block;
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+}
+.sandbox-chart {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+.metric-placeholder {
+    color: #9ca3af;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

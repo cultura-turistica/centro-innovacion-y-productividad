@@ -1,0 +1,26 @@
+[
+  {
+    "ID": 1,
+    "Contrato Titular": "FNTC-018-2021",
+    "Contratista": "PRAGMA MARKETING Y EVENTOS S.A.S",
+    "Objeto": "Prestación del servicio de administracion de las redes sociales y el diseño de piezas publicitarias...",
+    "Area": "Dirección Interinstitucional",
+    "Porcentaje Riesgo": 64.4
+  },
+  {
+    "ID": 2,
+    "Contrato Titular": "FNTC-023-2021",
+    "Contratista": "CONSORCIO TURISMO NARANJA II",
+    "Objeto": "REALIZAR LA IDENTIFICACIÓN Y FORTALECIMIENTO DE 40 EXPERIENCIAS DE TURISMO CREATIVO, ASOCIADO A LA ECONOMÍA NARANJA.",
+    "Area": "GRUPO IS COLOMBIA SAS BI",
+    "Porcentaje Riesgo": 30.0
+  },
+  {
+    "ID": 3,
+    "Contrato Titular": "FNTC-309-2021",
+    "Contratista": "INVENTY LOT S.A.S.",
+    "Objeto": "DISEÑAR E IMPLEMENTAR LA PLATAFORMA WEB Y APP MÓVIL, TERRITORIO LA VORÁGINE LLANO Y SELVA",
+    "Area": "GRUPO IS COLOMBIA S.A.S",
+    "Porcentaje Riesgo": 51.72
+  }
+]

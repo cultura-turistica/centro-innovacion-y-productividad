@@ -14,10 +14,11 @@ export default function Navigation() {
   const closeMenu = () => setIsMenuOpen(false);
 
   const navItems = [
-    { label: 'Inicio', path: 'https://cultura-t.com/', isExternal: true },
+    { label: 'Inicio CIP', path: '/', isExternal: false },
     { label: 'Mi Academia', path: '/cursos', isExternal: false },
     { label: 'Laboratorio de Datos', path: '/laboratorio-datos', isExternal: false },
-    { label: 'Centro de Pensamiento', path: '/centro-pensamiento', isExternal: false }
+    { label: 'Centro de Pensamiento', path: '/centro-pensamiento', isExternal: false },
+    { label: 'Sitio Corporativo', path: 'https://cultura-t.com/', isExternal: true }
   ];
 
   const handleNavClick = (e, path, isExternal) => {

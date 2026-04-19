@@ -1,0 +1,58 @@
+{
+    "resumen_modalidad": [
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "COMPARACI\u00d3N DE COTIZACIONES",
+            "Total_Contratos": 66,
+            "Valor_Suma": 110297362707.4,
+            "Porcentaje": 10.547658466941714
+        },
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "CONTRATACION PARTICIPACION FERIAL",
+            "Total_Contratos": 1,
+            "Valor_Suma": 12943340.0,
+            "Porcentaje": 0.0012377624123586224
+        },
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "CONTRATACI\u00d3N DIRECTA",
+            "Total_Contratos": 939,
+            "Valor_Suma": 515198518326.9,
+            "Porcentaje": 49.26806843425976
+        },
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "CONTRATO DE ADHESI\u00d3N",
+            "Total_Contratos": 4,
+            "Valor_Suma": 1460883067.12,
+            "Porcentaje": 0.1397032102480746
+        },
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "CONVENIOS",
+            "Total_Contratos": 65,
+            "Valor_Suma": 96298890962.48,
+            "Porcentaje": 9.208994555128674
+        },
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "INSTRUMENTO DE AGREGACION DE DEMANDA",
+            "Total_Contratos": 9,
+            "Valor_Suma": 880596211.79,
+            "Porcentaje": 0.08421079036933703
+        },
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "INVITACI\u00d3N ABIERTA",
+            "Total_Contratos": 147,
+            "Valor_Suma": 277694395003.03,
+            "Porcentaje": 26.555717786708733
+        },
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "INVITACI\u00d3N PRIVADA",
+            "Total_Contratos": 15,
+            "Valor_Suma": 4039485869.95,
+            "Porcentaje": 0.38629316506233163
+        },
+        {
+            "MODALIDAD DE CONTRATACI\u00d3N": "ORDEN DE SERVICIO POR COMPRA LOGISTICA",
+            "Total_Contratos": 566,
+            "Valor_Suma": 39821647062.71,
+            "Porcentaje": 3.8081158288690227
+        }
+    ]
+}

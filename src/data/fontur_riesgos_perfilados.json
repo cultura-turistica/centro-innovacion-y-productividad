@@ -1,0 +1,29 @@
+{
+    "supervisor_risk": [
+        {
+            "Supervisor": "HENRY MAURICIO FORERO",
+            "Cantidad_Incumplimientos": 2
+        },
+        {
+            "Supervisor": "Direcci\u00f3n Interinstitucional ",
+            "Cantidad_Incumplimientos": 1
+        },
+        {
+            "Supervisor": "GRUPO IS COLOMBIA SAS BI",
+            "Cantidad_Incumplimientos": 1
+        },
+        {
+            "Supervisor": "GRUPO IS COLOMBIA S.A.S",
+            "Cantidad_Incumplimientos": 1
+        },
+        {
+            "Supervisor": "Universidad Distrital Francisco Jos\u00e9 de Caldas",
+            "Cantidad_Incumplimientos": 1
+        },
+        {
+            "Supervisor": "Marcela Rocio Marquez Arenas",
+            "Cantidad_Incumplimientos": 1
+        }
+    ],
+    "media_colapso_fisico": 0.0
+}
