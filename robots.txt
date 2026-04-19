@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cip.cultura-t.com/sitemap.xml
