@@ -60,7 +60,7 @@ export default function AtlasCarbono() {
       setLoading(true);
       try {
         const stepConfig = STEPS[activeStep];
-        const res = await fetch(`http://localhost:8000/api/v1/co2-data?query_type=${stepConfig.query}&year=${stepConfig.year}`);
+        const res = await fetch(`${import.meta.env.BASE_URL}data/co2/${stepConfig.query}.json`);
         const data = await res.json();
         setChartData(data);
       } catch (err) {
@@ -75,7 +75,7 @@ export default function AtlasCarbono() {
   useEffect(() => {
     const fetchList = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/api/v1/co2-data?query_type=countries_list`);
+        const res = await fetch(`${import.meta.env.BASE_URL}data/co2/countries_list.json`);
         const data = await res.json();
         const formattedList = data.map(c => ({ value: c, label: c }));
         setCountriesList(formattedList);
@@ -90,10 +90,11 @@ export default function AtlasCarbono() {
       try {
         if (!selectedCountry) return;
         
-        // Petición Dual Paralela para traer la Data Cruda del País + Benchmark Global
+        const safeVal = selectedCountry.value.replace(/ /g, "_").replace(/\//g, "_");
+        // Petición Dual Paralela para traer la Data Cruda del País + Benchmark Global (Desde Json Estáticos)
         const [resCountry, resWorld] = await Promise.all([
-          fetch(`http://localhost:8000/api/v1/co2-data?query_type=country&country_name=${selectedCountry.value}`),
-          fetch(`http://localhost:8000/api/v1/co2-data?query_type=country&country_name=World`)
+          fetch(`${import.meta.env.BASE_URL}data/co2/country_${safeVal}.json`),
+          fetch(`${import.meta.env.BASE_URL}data/co2/country_World.json`)
         ]);
         
         const dataCountry = await resCountry.json();
