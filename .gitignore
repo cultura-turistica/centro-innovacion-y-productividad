@@ -27,8 +27,6 @@ dist-ssr
 *.sw?
 tools/
 mcmc-api/.venv/
-mcmc-api/venv/
-
 # Internal Python & Memory files (Do not push to github)
 PROJECT_MEMORY.md
 mcmc-api/
@@ -38,3 +36,13 @@ inspect_data.py
 inspect_fontur_data.py
 *.py
 *.ipynb
+
+# Private Raw Data & Root Data Folders
+/data/
+*.csv
+*.xlsx
+*.xls
+*.pdf
+*.parquet
+*.sqlite
+*.db
