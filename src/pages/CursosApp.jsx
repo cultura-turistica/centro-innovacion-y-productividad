@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PenTool, Lightbulb, MonitorSmartphone, Calculator, BookOpen, ArrowRight } from 'lucide-react';
 import { coursesInfo } from '../data/courses';
 
@@ -15,8 +16,14 @@ export default function CursosApp() {
 
   return (
     <div className="main-container">
-      <div className="title-pill mb-4"><PenTool size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Academia ASC</div>
-      <h2 style={{fontFamily: 'Poppins'}}>Cursos y Herramientas</h2>
+      <Helmet>
+        <title>Academia SGR | Centro de Innovación y Productividad Cultura T</title>
+        <meta name="description" content="Capacitación transformadora. Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial, el turismo sostenible y finanzas de proyectos." />
+        <link rel="canonical" href="https://cip.cultura-t.com/#/cursos" />
+      </Helmet>
+
+      <div className="title-pill mb-4"><PenTool size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Academia SGR</div>
+      <h2 style={{color: '#032968'}}>Cursos y Herramientas</h2>
       <p style={{fontSize: '1.2rem', color: '#475569', maxWidth: '800px', marginBottom: '3rem', fontFamily: 'Poppins'}}>
         Programa 100% Autoguiado. Cursos diseñados metodológicamente para que el empresario turístico aprenda y aplique directo en su territorio.
       </p>

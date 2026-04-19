@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { BarChart3, Map as MapIcon, Database, BrainCircuit, LineChart, Leaf, ArrowRight, Globe2 } from 'lucide-react';
 import './DataLab.css';
 
@@ -65,6 +66,11 @@ export default function DataLab() {
 
   return (
     <div className="dl-catalog-container">
+      <Helmet>
+        <title>Laboratorio de Datos | Centro de Innovación y Productividad Cultura T</title>
+        <meta name="description" content="Auditorías en tiempo real y ciencia de datos aplicada al territorio. Explora mapas interactivos de pobreza (SAE), huella de carbono y bases de datos dinámicas." />
+        <link rel="canonical" href="https://cip.cultura-t.com/#/laboratorio-datos" />
+      </Helmet>
       <div className="dl-hero">
         <div className="dl-badge">
           <BarChart3 size={16} /> 

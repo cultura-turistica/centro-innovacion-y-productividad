@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PenTool, LineChart, Library, ArrowRight, Info, Target, Network } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import tallerImg from '../assets/taller.jpg';
@@ -36,10 +37,41 @@ export default function Home() {
 
   return (
     <div className="main-container text-center">
+      <Helmet>
+        <title>Centro de Innovación y Productividad Cultura T</title>
+        <meta name="description" content="Centro de Innovación y Productividad enfocado en comunidades, Pymes turísticas y emprendedores. Transformamos territorios mediante ciencia de datos e innovación continua." />
+        <link rel="canonical" href="https://cip.cultura-t.com/" />
+        {/* JSON-LD STRUCTURED DATA */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ResearchOrganization",
+              "name": "Centro de Innovación y Productividad Cultura T",
+              "alternateName": "CIP",
+              "url": "https://cip.cultura-t.com",
+              "parentOrganization": {
+                "@type": "Organization",
+                "name": "Cultura T S.A.S.",
+                "url": "https://cultura-t.com"
+              },
+              "description": "Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo, mediante ciencia de datos, innovación e investigación académica.",
+              "knowsAbout": ["Turismo Sostenible", "Data Science", "Apropiación Social del Conocimiento", "Planificación Territorial"]
+            }
+          `}
+        </script>
+      </Helmet>
+
+      {/* SEO H1 ESTRUCTURAL */}
+      <h1 className="sr-only" style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: '0' }}>
+        Centro de Innovación y Productividad Cultura T
+      </h1>
+
       <div className="title-pill mb-6">Apropiación Social del Conocimiento</div>
+      
       <h2 style={{fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: '1.1'}}>Transformamos Territorios <br/><span style={{color: '#F06000'}}>con Conocimiento</span></h2>
       <p style={{fontSize: '1.25rem', color: '#475569', maxWidth: '700px', margin: '0 auto 3rem', fontFamily: 'Poppins'}}>
-        Centro de Innovación y Productividad enfocado en comunidades, Pymes turísticas y emprendedores.
+        Centro de innovación y productividad enfocado en investigación territorial, IA y ecosistemas.
       </p>
 
       {/* Imagen Real Orgánica */}

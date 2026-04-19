@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Library, Download, FileText, CheckCircle2 } from 'lucide-react';
 
 export default function ThinkTank() {
@@ -28,6 +29,12 @@ export default function ThinkTank() {
 
   return (
     <div className="main-container">
+      <Helmet>
+        <title>Centro de Pensamiento | Centro de Innovación y Productividad Cultura T</title>
+        <meta name="description" content="Nuestra producción bibliográfica y documentos de investigación formal. Explora artículos, modelos de gestión y publicaciones del CIP." />
+        <link rel="canonical" href="https://cip.cultura-t.com/#/centro-pensamiento" />
+      </Helmet>
+
       <div className="title-pill mb-4"><Library size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Publicaciones SGR</div>
       <h2 style={{color: '#032968'}}>Centro de Pensamiento</h2>
       <p style={{fontSize: '1.2rem', color: '#475569', maxWidth: '800px', marginBottom: '3rem'}}>
