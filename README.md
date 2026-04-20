@@ -1,16 +1,52 @@
-# React + Vite
+<div align="center">
+  <img src="https://raw.githubusercontent.com/cultura-turistica/centro-innovacion-y-productividad/main/public/favicon.png" alt="Cultura T Logo" width="120" />
+  
+  # Centro de Innovación y Productividad (CIP)
+  **Cultura T S.A.S.**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  [![Web Oficial](https://img.shields.io/badge/Plataforma-cip.cultura--t.com-032968?style=for-the-badge)](https://cip.cultura-t.com/)
+  [![DataLab](https://img.shields.io/badge/Data_Science-Activo-F06000?style=for-the-badge)](https://cip.cultura-t.com/#/laboratorio-datos)
+</div>
 
-Currently, two official plugins are available:
+<br />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Sobre el Proyecto
+El **Centro de Innovación y Productividad** es la principal plataforma de inteligencia territorial y académica desarrollada por Cultura T. Su misión es democratizar el análisis científico de datos, ofrecer capacitación asincrónica especializada (Academia SGR) y realizar auditorías exhaustivas sobre las inversiones y el desarrollo en los territorios.
 
-## React Compiler
+No es solo una web; es un ecosistema operativo de auditoría cívica y formación estratégica en turismo, sostenibilidad y economía regional.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🔗 Portales Activos (Enlaces Directos)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+A continuación, se detalla el acceso directo a los motores de la plataforma empresarial:
+
+📍 **[Portal Principal del CIP](https://cip.cultura-t.com/)**  
+*(Dashboard general y visión estratégica institucional).*
+
+🎓 **[Academia SGR (E-Learning)](https://cip.cultura-t.com/#/cursos)**  
+*(Central de capacitaciones modulares, enfocada en regalías, formulación de proyectos y cultura emprendedora).*
+
+📊 **[DataLab (Laboratorio de Datos)](https://cip.cultura-t.com/#/laboratorio-datos)**  
+*(Auditorías interactivas en tiempo real. Incluye el simulador estocástico Bayesiano "SAE", los recortes de inversión FONTUR y el Storytelling crítico de emisiones globales de Carbono).*
+
+📚 **[Centro de Pensamiento](https://cip.cultura-t.com/#/centro-pensamiento)**  
+*(Repositorio académico para la publicación de manuales, hallazgos investigativos y modelos de gestión de Cultura T).*
+
+---
+
+## 🛠️ Arquitectura Tecnológica
+Este proyecto está desplegado nativamente utilizando infraestructura de alto rendimiento y arquitectura Serverless Data:
+- **Core Engine:** React 19 + Vite (Rendimiento CDN Ultrarrápido).
+- **Data Visualization:** Recharts + D3-Geo para interfaces "Scrollytelling".
+- **Backend & Modelado (Desacoplado):** Modelos Bayesianos de Markov Chain Monte Carlo (MCMC) procesados en Python y exportados como nodos estáticos JSON altamente seguros.
+- **Seguridad SEO:** Optimizado a nivel de metadatos profundos con React Helmet Async y Schema JSON-LD (ResearchOrganization).
+
+*(Nota: Los repositorios de datos locales crudos, cuadernos Py y documentos fiscales operan bajo un esquema de privación estricta y están erradicados del registro público para salvaguardar la intimidad corporativa de la firma y sus clientes).*
+
+<br/>
+
+<div align="center">
+  <b>Un proyecto técnico de <a href="https://cultura-t.com">Cultura T</a></b> <br/>
+  Transformamos Territorios con Conocimiento.
+</div>
