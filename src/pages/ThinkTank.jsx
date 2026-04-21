@@ -5,25 +5,12 @@ import { Library, Download, FileText, CheckCircle2 } from 'lucide-react';
 export default function ThinkTank() {
   const publicaciones = [
     {
-      tipo: "Modelo de Gestión",
-      titulo: "Modelo de Apropiación Social del Conocimiento Turístico",
+      tipo: "Metodología I+D+i",
+      titulo: "Modelo de Apropiación y Fortalecimiento en Turismo Comunitario Regenerativo",
       autores: "Cultura T SAS",
-      anio: "2024",
-      desc: "Documento rector sobre metodologías participativas y apropiación tecnológica en Pymes rurales y urbanas."
-    },
-    {
-      tipo: "Guía Técnica",
-      titulo: "Estructuración de Rutas Bioculturales",
-      autores: "Cultura T SAS",
-      anio: "2025",
-      desc: "Cartilla técnica paso a paso para identificar y diseñar atractivos turísticos salvaguardando el patrimonio inmaterial."
-    },
-    {
-      tipo: "Artículo Académico",
-      titulo: "Impacto del Scrollytelling en la Educación Comunitaria",
-      autores: "Equipo I+D Cultura T",
-      anio: "2026",
-      desc: "Un análisis comparativo sobre cómo las tecnologías visuales modernas triplican la retención de emprendedores nativos."
+      anio: "Noviembre 2024",
+      desc: "Metodología estructurada de 11 fases operativas para intervenir ecosistemas locales y estructurar comercialmente rutas turísticas.",
+      archivo: "/docs/M1_Modelo_Turismo_Comunitario.pdf"
     }
   ];
 
@@ -65,10 +52,12 @@ export default function ThinkTank() {
             </div>
 
             <div>
-              <button className="btn-primary" style={{background: '#032968', display: 'flex', flexDirection: 'column', gap: '5px', padding: '15px 20px', borderRadius: '20px'}}>
-                <Download size={24}/>
-                <span style={{fontSize: '0.8rem', fontWeight: 600}}>PDF</span>
-              </button>
+              <a href={pub.archivo} download={pub.archivo.split('/').pop()} style={{textDecoration: 'none'}}>
+                <button className="btn-primary" style={{background: '#032968', display: 'flex', flexDirection: 'column', gap: '5px', padding: '15px 20px', borderRadius: '20px', cursor: 'pointer', border: 'none', color: 'white'}}>
+                  <Download size={24}/>
+                  <span style={{fontSize: '0.8rem', fontWeight: 600}}>PDF</span>
+                </button>
+              </a>
             </div>
 
           </div>

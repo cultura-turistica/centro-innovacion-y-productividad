@@ -46,3 +46,6 @@ inspect_fontur_data.py
 *.parquet
 *.sqlite
 *.db
+
+# Documentación
+documentación del CIP/
