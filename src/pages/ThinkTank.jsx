@@ -52,10 +52,10 @@ export default function ThinkTank() {
             </div>
 
             <div>
-              <a href={pub.archivo} download={pub.archivo.split('/').pop()} style={{textDecoration: 'none'}}>
+              <a href={pub.archivo} target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
                 <button className="btn-primary" style={{background: '#032968', display: 'flex', flexDirection: 'column', gap: '5px', padding: '15px 20px', borderRadius: '20px', cursor: 'pointer', border: 'none', color: 'white'}}>
                   <Download size={24}/>
-                  <span style={{fontSize: '0.8rem', fontWeight: 600}}>PDF</span>
+                  <span style={{fontSize: '0.8rem', fontWeight: 600}}>Ver PDF</span>
                 </button>
               </a>
             </div>
