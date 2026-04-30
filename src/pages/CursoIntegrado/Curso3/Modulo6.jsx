@@ -46,14 +46,15 @@ export default function Modulo6() {
   // Calculate visual effects
   const brightness = Math.max(0.1, Math.min(4, Math.pow(2, stopsDiff)));
   
-  // Depth of field (Foreground & Background blur)
+  // Depth of field (Foreground & Background blur - BOKEH EFFECT)
   // f/16 and f/22 are completely sharp (0 blur). Wider apertures are blurrier.
-  const bgBlur = aperture >= 16 ? 0 : Math.max(0, (16 - aperture) * 0.8); 
-  const fgBlur = aperture >= 16 ? 0 : Math.max(0, (16 - aperture) * 1.5); 
+  // Using 0.01 instead of 0 to prevent WebKit/Blink rendering bugs with blur(0px) + drop-shadow.
+  const bgBlur = aperture >= 16 ? 0.01 : Math.max(0.01, (16 - aperture) * 1.5); 
+  const fgBlur = aperture >= 16 ? 0.01 : Math.max(0.01, (16 - aperture) * 2.0); 
 
   // Motion blur (applied to the hummingbird in flight horizontally)
   // At 1/1000s it's frozen (0). At 1/30s it's a huge blur.
-  const motionBlur = isPhotoTaken ? Math.max(0, (1000 / shutter) * 0.5 - 0.5) : 0;
+  const motionBlur = isPhotoTaken ? Math.max(0, (1000 / shutter) * 0.8 - 0.8) : 0;
   
   // Noise
   const noiseOpacity = Math.max(0, (Math.log2(iso / 100) / Math.log2(64)) * 0.8);
@@ -65,7 +66,7 @@ export default function Modulo6() {
       case 'Shade': return 'sepia(0.5) hue-rotate(-10deg) saturate(1.4)'; // Warm/Orange
       case 'Cloudy': return 'sepia(0.3) hue-rotate(-5deg) saturate(1.2)'; // Slightly warm
       case 'Fluorescent': return 'hue-rotate(90deg) saturate(1.1) brightness(1.1)'; // Purple/Greenish
-      default: return 'none';
+      default: return '';
     }
   };
 
@@ -73,8 +74,10 @@ export default function Modulo6() {
 
   const takePhoto = () => {
     setFlash(true);
-    setTimeout(() => setFlash(false), 100);
-    setIsPhotoTaken(true);
+    setTimeout(() => {
+      setFlash(false);
+      setIsPhotoTaken(true);
+    }, 150);
   };
 
   const resetScene = () => {
@@ -86,8 +89,8 @@ export default function Modulo6() {
       <div style={{maxWidth: '1200px', margin: '0 auto'}}>
         
         {/* Header */}
-        <div style={{marginBottom: '2rem', color: '#e5e5e5'}}>
-          <h2 style={{fontSize: '2.5rem', fontWeight: 300, display: 'flex', alignItems: 'center', gap: '15px', margin: 0}}>
+        <div style={{marginBottom: '2rem'}}>
+          <h2 style={{fontSize: '2.5rem', fontWeight: 300, display: 'flex', alignItems: 'center', gap: '15px', margin: 0, color: '#ffffff'}}>
             <Camera size={40} color="#ff3333" /> Simulador Manual (M)
           </h2>
           <p style={{fontSize: '1rem', color: '#a3a3a3', marginTop: '0.5rem', maxWidth: '800px'}}>
@@ -134,21 +137,27 @@ export default function Modulo6() {
                 style={{
                   position: 'absolute', top: '-5%', left: '-5%', width: '110%', height: '110%', 
                   objectFit: 'cover',
-                  filter: `blur(${isPhotoTaken ? bgBlur : 0}px) brightness(${brightness}) ${wbFilter}`,
+                  filter: `blur(${isPhotoTaken ? bgBlur : 0.01}px) brightness(${brightness}) ${wbFilter}`,
                   transition: 'filter 0.3s ease'
                 }} 
               />
               
               {/* Layer 2: Subject (Hummingbird) - Blurs directionally if shutter is slow */}
-              <img 
-                src="/images/sim_bird_transparent.png" 
-                alt="Colibrí" 
-                style={{
-                  position: 'absolute', top: '15%', left: '20%', width: '60%', height: 'auto',
-                  filter: `url(#directionalBlur) brightness(${brightness}) ${wbFilter} drop-shadow(0 20px 15px rgba(0,0,0,0.4))`,
-                  transition: 'filter 0.3s ease'
-                }} 
-              />
+              <div style={{
+                position: 'absolute', top: '15%', left: '20%', width: '60%', height: 'auto',
+                filter: `brightness(${brightness}) ${wbFilter} drop-shadow(0 20px 15px rgba(0,0,0,0.4))`,
+                transition: 'filter 0.3s ease'
+              }}>
+                <img 
+                  src="/images/sim_bird_transparent.png" 
+                  alt="Colibrí" 
+                  style={{
+                    width: '100%', height: '100%', display: 'block',
+                    filter: motionBlur > 0 ? 'url(#directionalBlur)' : 'none',
+                    transition: 'filter 0.3s ease'
+                  }} 
+                />
+              </div>
 
               {/* Layer 3: Foreground (Leaves/Flower) */}
               <img 
@@ -156,7 +165,7 @@ export default function Modulo6() {
                 alt="Hojas Primer Plano" 
                 style={{
                   position: 'absolute', bottom: '-20%', right: '-10%', width: '70%', height: 'auto',
-                  filter: `blur(${isPhotoTaken ? fgBlur : Math.min(2, fgBlur)}px) brightness(${brightness}) ${wbFilter} drop-shadow(0 30px 10px rgba(0,0,0,0.6))`,
+                  filter: `blur(${isPhotoTaken ? fgBlur : Math.max(0.01, Math.min(2, fgBlur))}px) brightness(${brightness}) ${wbFilter} drop-shadow(0 30px 10px rgba(0,0,0,0.6))`,
                   transition: 'filter 0.3s ease',
                   transform: 'scale(1.2)'
                 }} 
