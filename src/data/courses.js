@@ -25,5 +25,14 @@ export const coursesInfo = [
     iconName: "Calculator",
     modules: 5,
     color: "#D97706"
+  },
+  {
+    id: "fotografia",
+    title: "Fundamentos y Composición Fotográfica",
+    category: "Contenido",
+    description: "Domina el triángulo de luz, los modos de tu cámara (o celular) y el arte del encuadre profesional para contar grandes historias visuales.",
+    iconName: "Camera",
+    modules: 6,
+    color: "#4F46E5"
   }
 ];

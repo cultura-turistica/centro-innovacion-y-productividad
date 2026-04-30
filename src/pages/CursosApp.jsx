@@ -36,6 +36,7 @@ export default function CursosApp() {
             course.id === 'curso1' ? '/turismo-comunitario' : 
             course.id === 'curso2' ? '/diseno-producto' : 
             course.id === 'costeo' ? '/finanzas-y-costeo' :
+            course.id === 'fotografia' ? '/fundamentos-fotografia' :
             '/cursos';
 
           return (

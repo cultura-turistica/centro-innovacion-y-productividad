@@ -6,6 +6,7 @@ import CursosApp from './pages/CursosApp';
 import Curso1 from './pages/Curso1';
 import Curso2 from './pages/Curso2';
 import Curso3 from './pages/Curso3';
+import Curso4 from './pages/Curso4';
 import DataLab from './pages/DataLab';
 import ThinkTank from './pages/ThinkTank';
 import './index.css';
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/turismo-comunitario" element={<Curso1 />} />
         <Route path="/diseno-producto" element={<Curso2 />} />
         <Route path="/finanzas-y-costeo" element={<Curso3 />} />
+        <Route path="/fundamentos-fotografia" element={<Curso4 />} />
         <Route path="/laboratorio-datos" element={<DataLab />} />
         <Route path="/laboratorio-datos/proyecto-sae" element={<ProyectoSaeColombia />} />
         {/* <Route path="/laboratorio-datos/proyecto-fontur" element={<ProyectoFontur />} /> */}
