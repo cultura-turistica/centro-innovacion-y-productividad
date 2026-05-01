@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { PenTool, Lightbulb, MonitorSmartphone, Calculator, BookOpen, ArrowRight } from 'lucide-react';
+import { PenTool, Lightbulb, MonitorSmartphone, Calculator, BookOpen, ArrowRight, X } from 'lucide-react';
 import { coursesInfo } from '../data/courses';
 
 import { useNavigate } from 'react-router-dom';
@@ -9,9 +9,36 @@ const iconMap = { Lightbulb, MonitorSmartphone, Calculator, BookOpen };
 
 export default function CursosApp() {
   const navigate = useNavigate();
-  const navigateTo = (e, path) => {
+  
+  const [showModal, setShowModal] = useState(false);
+  const [targetRoute, setTargetRoute] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', organization: '' });
+
+  useEffect(() => {
+    const registered = localStorage.getItem('sgr_academy_registered');
+    if (registered) setIsRegistered(true);
+  }, []);
+
+  const handleStartCourse = (e, path) => {
     e.preventDefault();
-    navigate(path);
+    if (isRegistered) {
+      navigate(path);
+    } else {
+      setTargetRoute(path);
+      setShowModal(true);
+    }
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    if (formData.name && formData.email) {
+      localStorage.setItem('sgr_academy_registered', 'true');
+      localStorage.setItem('sgr_academy_user', JSON.stringify(formData));
+      setIsRegistered(true);
+      setShowModal(false);
+      navigate(targetRoute);
+    }
   };
 
   return (
@@ -60,14 +87,56 @@ export default function CursosApp() {
                  <div style={{fontSize: '0.9rem', color: '#64748b', fontWeight: 700}}>
                    <BookOpen size={16} style={{display:'inline-block', marginRight:'5px'}}/> {course.modules} Módulos
                  </div>
-                 <button onClick={(e) => navigateTo(e, routePath)} className="btn-primary" style={{padding: '8px 20px', background: course.color, border: 'none', cursor: 'pointer'}}>
-                   Iniciar <ArrowRight size={16} />
-                 </button>
+                 {course.status === 'dev' ? (
+                   <button disabled className="btn-primary" style={{padding: '8px 20px', background: '#cbd5e1', color: '#64748b', border: 'none', cursor: 'not-allowed'}}>
+                     Próximamente
+                   </button>
+                 ) : (
+                   <button onClick={(e) => handleStartCourse(e, routePath)} className="btn-primary" style={{padding: '8px 20px', background: course.color, border: 'none', cursor: 'pointer'}}>
+                     Iniciar <ArrowRight size={16} />
+                   </button>
+                 )}
               </div>
             </div>
           )
         })}
       </div>
+
+      {/* Pre-registration Modal */}
+      {showModal && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', 
+          background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999
+        }}>
+          <div style={{background: 'white', padding: '2.5rem', borderRadius: '15px', width: '90%', maxWidth: '450px', position: 'relative', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)'}}>
+            <button onClick={() => setShowModal(false)} style={{position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', cursor: 'pointer', color: '#64748b'}}>
+              <X size={24} />
+            </button>
+            <h3 style={{color: '#032968', fontSize: '1.5rem', margin: '0 0 10px 0'}}>Registro de Academia</h3>
+            <p style={{color: '#475569', fontSize: '0.95rem', marginBottom: '20px', lineHeight: '1.4'}}>
+              Para ofrecerte una mejor experiencia y recoger datos sobre el alcance de nuestros módulos, por favor ingresa tus datos antes de continuar.
+            </p>
+            <form onSubmit={handleRegister} style={{display: 'flex', flexDirection: 'column', gap: '15px'}}>
+              <div>
+                <label style={{display: 'block', marginBottom: '5px', color: '#334155', fontSize: '0.9rem', fontWeight: 600}}>Nombre Completo *</label>
+                <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} style={{width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '1rem', boxSizing: 'border-box'}} />
+              </div>
+              <div>
+                <label style={{display: 'block', marginBottom: '5px', color: '#334155', fontSize: '0.9rem', fontWeight: 600}}>Correo Electrónico *</label>
+                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} style={{width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '1rem', boxSizing: 'border-box'}} />
+              </div>
+              <div>
+                <label style={{display: 'block', marginBottom: '5px', color: '#334155', fontSize: '0.9rem', fontWeight: 600}}>Organización / Entidad</label>
+                <input type="text" value={formData.organization} onChange={e => setFormData({...formData, organization: e.target.value})} style={{width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '1rem', boxSizing: 'border-box'}} />
+              </div>
+              <button type="submit" style={{background: '#032968', color: 'white', border: 'none', padding: '12px', borderRadius: '8px', fontSize: '1rem', fontWeight: 600, cursor: 'pointer', marginTop: '10px'}}>
+                Ingresar al Curso
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

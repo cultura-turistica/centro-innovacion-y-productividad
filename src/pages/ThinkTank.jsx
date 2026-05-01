@@ -10,7 +10,17 @@ export default function ThinkTank() {
       autores: "Cultura T SAS",
       anio: "Noviembre 2024",
       desc: "Metodología estructurada de 11 fases operativas para intervenir ecosistemas locales y estructurar comercialmente rutas turísticas.",
-      archivo: "/docs/M1_Modelo_Turismo_Comunitario.pdf"
+      archivo: "/docs/M1_Modelo_Turismo_Comunitario.pdf",
+      externo: false
+    },
+    {
+      tipo: "Investigación Externa",
+      titulo: "Resiliencia de Ecosistemas ante la Dinámica de Turismo Masivo",
+      autores: "Universidad Nacional de Colombia, Grupo de Investigación Ambiental",
+      anio: "Febrero 2025",
+      desc: "Estudio longitudinal sobre la capacidad de carga turística en ecosistemas vulnerables y propuestas de mitigación climática.",
+      archivo: "#",
+      externo: true
     }
   ];
 
@@ -25,7 +35,7 @@ export default function ThinkTank() {
       <div className="title-pill mb-4"><Library size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Publicaciones SGR</div>
       <h2 style={{color: '#032968'}}>Centro de Pensamiento</h2>
       <p style={{fontSize: '1.2rem', color: '#475569', maxWidth: '800px', marginBottom: '3rem'}}>
-        Aquí reside el componente bibliográfico y de investigación formal de nuestra apropiación CTI. Literatura limpia, profesional y descargable.
+        Un ecosistema colaborativo y abierto. Aquí reside la producción bibliográfica y de investigación generada tanto por el CIP como por nuestros aliados académicos.
       </p>
 
       <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
@@ -46,8 +56,8 @@ export default function ThinkTank() {
               </div>
               <h3 style={{margin:0, fontSize: '1.4rem'}}>{pub.titulo}</h3>
               <p style={{color: '#475569', fontSize: '1rem', marginTop: '5px'}}>{pub.desc}</p>
-              <div style={{marginTop: '10px', fontSize: '0.9rem', color: '#64748b', display: 'flex', gap: '5px', alignItems: 'center'}}>
-                 <CheckCircle2 size={16} color="#055C38" /> Autores: {pub.autores}
+              <div style={{marginTop: '10px', fontSize: '0.9rem', color: pub.externo ? '#ea580c' : '#64748b', display: 'flex', gap: '5px', alignItems: 'center'}}>
+                 <CheckCircle2 size={16} color={pub.externo ? "#ea580c" : "#055C38"} /> Autores: {pub.autores}
               </div>
             </div>
 
@@ -62,6 +72,16 @@ export default function ThinkTank() {
 
           </div>
         ))}
+      </div>
+
+      <div style={{marginTop: '4rem', padding: '3rem', background: 'linear-gradient(135deg, #032968 0%, #1e3a8a 100%)', borderRadius: '20px', color: 'white', textAlign: 'center'}}>
+        <h3 style={{fontSize: '1.8rem', marginBottom: '15px', color: 'white'}}>¿Tienes una investigación que compartir?</h3>
+        <p style={{fontSize: '1.1rem', color: '#cbd5e1', maxWidth: '700px', margin: '0 auto 2rem auto'}}>
+          El Centro de Pensamiento es un espacio abierto. Invitamos a la academia, investigadores y líderes del sector turismo a publicar sus modelos y artículos en nuestro repositorio institucional.
+        </p>
+        <button onClick={() => alert('Formulario de postulación en desarrollo...')} style={{background: '#10b981', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '50px', fontSize: '1.1rem', fontWeight: 600, cursor: 'pointer', boxShadow: '0 10px 15px -3px rgba(16, 185, 129, 0.3)'}}>
+          Postular Publicación
+        </button>
       </div>
     </div>
   );
