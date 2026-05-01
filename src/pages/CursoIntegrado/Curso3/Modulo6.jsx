@@ -328,6 +328,13 @@ export default function Modulo6() {
                   </button>
                 ))}
               </div>
+              <p style={{
+                fontSize: '0.75rem', color: '#a3a3a3', marginTop: '15px', lineHeight: '1.4', 
+                background: 'rgba(255,255,255,0.05)', padding: '10px', borderRadius: '6px', 
+                borderLeft: '3px solid #ffcc00'
+              }}>
+                <strong>Tip:</strong> El Balance de Blancos no afecta la cantidad de luz (exposición), solo corrige la "temperatura del color". Úsalo para que los colores se vean naturales si la escena se ve muy azul o naranja.
+              </p>
             </div>
 
             {/* Actions */}
