@@ -19,13 +19,6 @@ export default function CursosApp() {
     const matchSearch = c.title.toLowerCase().includes(searchTerm.toLowerCase()) || c.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchCategory && matchSearch;
   });
-
-  const groupedCourses = categories.filter(c => c !== "Todos").map(category => {
-    return {
-      categoryName: category,
-      courses: filteredCourses.filter(course => course.category === category)
-    };
-  }).filter(group => group.courses.length > 0);
   
   const [showModal, setShowModal] = useState(false);
   const [targetRoute, setTargetRoute] = useState('');
@@ -113,65 +106,55 @@ export default function CursosApp() {
         </div>
       </div>
 
-      <div style={{display: 'flex', flexDirection: 'column', gap: '4rem'}}>
-        {groupedCourses.length === 0 ? (
-          <div style={{textAlign: 'center', padding: '3rem', color: '#64748b', fontSize: '1.1rem'}}>
+      <div className="grid-3">
+        {filteredCourses.length === 0 ? (
+          <div style={{gridColumn: '1 / -1', textAlign: 'center', padding: '3rem', color: '#64748b', fontSize: '1.1rem'}}>
             No se encontraron cursos que coincidan con tu búsqueda.
           </div>
         ) : (
-          groupedCourses.map(group => (
-            <div key={group.categoryName}>
-              <h3 style={{color: '#032968', fontSize: '1.6rem', marginBottom: '1.5rem', borderBottom: '2px solid #e2e8f0', paddingBottom: '0.8rem'}}>
-                Ruta: {group.categoryName}
-              </h3>
-              <div className="grid-3">
-                {group.courses.map(course => {
-                  const IconComponent = iconMap[course.iconName] || BookOpen;
-                  // Map course IDs to descriptive slugs
-                  const routePath = 
-                    course.id === 'curso1' ? '/turismo-comunitario' : 
-                    course.id === 'curso2' ? '/diseno-producto' : 
-                    course.id === 'costeo' ? '/finanzas-y-costeo' :
-                    course.id === 'fotografia' ? '/fundamentos-fotografia' :
-                    '/cursos';
+          filteredCourses.map(course => {
+            const IconComponent = iconMap[course.iconName] || BookOpen;
+            const routePath = 
+              course.id === 'curso1' ? '/turismo-comunitario' : 
+              course.id === 'curso2' ? '/diseno-producto' : 
+              course.id === 'costeo' ? '/finanzas-y-costeo' :
+              course.id === 'fotografia' ? '/fundamentos-fotografia' :
+              '/cursos';
 
-                  return (
-                    <div key={course.id} className="glass-card" style={{padding: '2rem', display: 'flex', flexDirection: 'column'}}>
-                      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem'}}>
-                        <div style={{
-                          width: '60px', height: '60px', borderRadius: '50%', background: course.color,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white',
-                          border: '2px dashed #1e293b'
-                        }}>
-                          <IconComponent size={30} />
-                        </div>
-                        <span style={{fontSize: '0.8rem', fontWeight: 800, background: '#f1f5f9', padding: '5px 15px', borderRadius: '100px', color: '#475569'}}>
-                          {course.category}
-                        </span>
-                      </div>
-                      <h3 style={{fontSize: '1.3rem', color: '#032968', marginBottom: '10px'}}>{course.title}</h3>
-                      <p style={{color: '#475569', fontSize: '1rem', marginBottom: '2rem', flexGrow: 1}}>{course.description}</p>
-                      
-                      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem'}}>
-                        <div style={{fontSize: '0.9rem', color: '#64748b', fontWeight: 700}}>
-                          <BookOpen size={16} style={{display:'inline-block', marginRight:'5px'}}/> {course.modules} Módulos
-                        </div>
-                        {course.status === 'dev' ? (
-                          <button disabled className="btn-primary" style={{padding: '8px 20px', background: '#cbd5e1', color: '#64748b', border: 'none', cursor: 'not-allowed'}}>
-                            Próximamente
-                          </button>
-                        ) : (
-                          <button onClick={(e) => handleStartCourse(e, routePath)} className="btn-primary" style={{padding: '8px 20px', background: course.color, border: 'none', cursor: 'pointer'}}>
-                            Iniciar <ArrowRight size={16} />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  )
-                })}
+            return (
+              <div key={course.id} className="glass-card" style={{padding: '2rem', display: 'flex', flexDirection: 'column'}}>
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem'}}>
+                  <div style={{
+                    width: '60px', height: '60px', borderRadius: '50%', background: course.color,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white',
+                    border: '2px dashed #1e293b'
+                  }}>
+                    <IconComponent size={30} />
+                  </div>
+                  <span style={{fontSize: '0.8rem', fontWeight: 800, background: '#f1f5f9', padding: '5px 15px', borderRadius: '100px', color: '#475569'}}>
+                    {course.category}
+                  </span>
+                </div>
+                <h3 style={{fontSize: '1.3rem', color: '#032968', marginBottom: '10px'}}>{course.title}</h3>
+                <p style={{color: '#475569', fontSize: '1rem', marginBottom: '2rem', flexGrow: 1}}>{course.description}</p>
+                
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem'}}>
+                  <div style={{fontSize: '0.9rem', color: '#64748b', fontWeight: 700}}>
+                    <BookOpen size={16} style={{display:'inline-block', marginRight:'5px'}}/> {course.modules} Módulos
+                  </div>
+                  {course.status === 'dev' ? (
+                    <button disabled className="btn-primary" style={{padding: '8px 20px', background: '#cbd5e1', color: '#64748b', border: 'none', cursor: 'not-allowed'}}>
+                      Próximamente
+                    </button>
+                  ) : (
+                    <button onClick={(e) => handleStartCourse(e, routePath)} className="btn-primary" style={{padding: '8px 20px', background: course.color, border: 'none', cursor: 'pointer'}}>
+                      Iniciar <ArrowRight size={16} />
+                    </button>
+                  )}
+                </div>
               </div>
-            </div>
-          ))
+            )
+          })
         )}
       </div>
 
