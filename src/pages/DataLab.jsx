@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { BarChart3, Map as MapIcon, Database, BrainCircuit, LineChart, Leaf, ArrowRight, Globe2 } from 'lucide-react';
+import { BarChart3, Map as MapIcon, Database, BrainCircuit, LineChart, Leaf, ArrowRight, Globe2, Search, Filter } from 'lucide-react';
 import './DataLab.css';
 
 export default function DataLab() {
@@ -82,12 +82,21 @@ export default function DataLab() {
     }
   ];
 
-  const [activeTab, setActiveTab] = useState("Todos");
-  const tabs = ["Todos", "Sostenibilidad y Medio Ambiente", "Desarrollo Social y Territorio", "Economía y Tecnología"];
+  const [activeCategory, setActiveCategory] = useState("Todos");
+  const [searchTerm, setSearchTerm] = useState("");
+  const categories = ["Todos", "Sostenibilidad y Medio Ambiente", "Desarrollo Social y Territorio", "Economía y Tecnología"];
 
-  const filteredGroups = activeTab === "Todos" 
-    ? groupedProjects 
-    : groupedProjects.filter(g => g.theme === activeTab);
+  const filteredGroups = groupedProjects.map(group => {
+    if (activeCategory !== "Todos" && group.theme !== activeCategory) {
+      return { ...group, projects: [] };
+    }
+    const matchedProjects = group.projects.filter(p => 
+      p.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      p.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.desc.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    return { ...group, projects: matchedProjects };
+  }).filter(group => group.projects.length > 0);
 
   return (
     <div className="dl-catalog-container">
@@ -109,28 +118,45 @@ export default function DataLab() {
 
       <div style={{maxWidth: '1200px', margin: '0 auto', padding: '0 2rem 4rem 2rem'}}>
         
-        {/* Category Tabs */}
-        <div style={{display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '3rem', justifyContent: 'center'}}>
-          {tabs.map(tab => (
-            <button 
-              key={tab}
-              onClick={() => setActiveTab(tab)}
+        {/* Search and Filter Toolbar */}
+        <div style={{
+          display: 'flex', gap: '15px', flexWrap: 'wrap', marginBottom: '3rem', 
+          background: 'white', padding: '15px', borderRadius: '12px', 
+          boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03)',
+          border: '1px solid #e2e8f0', alignItems: 'center'
+        }}>
+          {/* Search Input */}
+          <div style={{flex: '1 1 300px', position: 'relative'}}>
+            <Search size={18} style={{position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8'}} />
+            <input 
+              type="text" 
+              placeholder="Buscar investigación, mapa o palabra clave..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               style={{
-                padding: '8px 20px', 
-                borderRadius: '50px', 
-                border: activeTab === tab ? 'none' : '1px solid #cbd5e1',
-                background: activeTab === tab ? '#032968' : 'white',
-                color: activeTab === tab ? 'white' : '#475569',
-                cursor: 'pointer',
-                fontWeight: 600,
-                fontSize: '0.9rem',
-                transition: 'all 0.2s',
-                boxShadow: activeTab === tab ? '0 4px 6px -1px rgba(3, 41, 104, 0.3)' : 'none'
+                width: '100%', padding: '12px 15px 12px 40px', borderRadius: '8px', 
+                border: '1px solid #cbd5e1', fontSize: '0.95rem', boxSizing: 'border-box',
+                outline: 'none', transition: 'border-color 0.2s'
+              }}
+            />
+          </div>
+          
+          {/* Category Dropdown */}
+          <div style={{flex: '1 1 200px', display: 'flex', alignItems: 'center', gap: '10px', background: '#f8fafc', padding: '0 15px', borderRadius: '8px', border: '1px solid #cbd5e1'}}>
+            <Filter size={18} color="#64748b" />
+            <select 
+              value={activeCategory}
+              onChange={(e) => setActiveCategory(e.target.value)}
+              style={{
+                width: '100%', padding: '12px 0', background: 'transparent', border: 'none',
+                fontSize: '0.95rem', color: '#475569', outline: 'none', cursor: 'pointer'
               }}
             >
-              {tab}
-            </button>
-          ))}
+              {categories.map(cat => (
+                <option key={cat} value={cat}>{cat}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {filteredGroups.map((group, idx) => (
