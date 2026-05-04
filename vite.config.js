@@ -10,16 +10,15 @@ export default defineConfig({
     Sitemap({
       hostname: 'https://cip.cultura-t.com',
       dynamicRoutes: [
-        '/',
-        '/#/cursos',
-        '/#/turismo-comunitario',
-        '/#/diseno-producto',
-        '/#/finanzas-y-costeo',
-        '/#/laboratorio-datos',
-        '/#/laboratorio-datos/proyecto-sae',
-        '/#/laboratorio-datos/proyecto-prosperidad',
-        '/#/laboratorio-datos/proyecto-co2',
-        '/#/centro-pensamiento'
+        '/cursos',
+        '/turismo-comunitario',
+        '/diseno-producto',
+        '/finanzas-y-costeo',
+        '/laboratorio-datos',
+        '/laboratorio-datos/proyecto-sae',
+        '/laboratorio-datos/proyecto-prosperidad',
+        '/laboratorio-datos/proyecto-co2',
+        '/centro-pensamiento'
       ]
     })
   ],
