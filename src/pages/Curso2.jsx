@@ -12,6 +12,7 @@ import Modulo7 from './CursoIntegrado/Curso2/Modulo7';
 import Modulo8 from './CursoIntegrado/Curso2/Modulo8';
 import Modulo9 from './CursoIntegrado/Curso2/Modulo9';
 import Modulo10 from './CursoIntegrado/Curso2/Modulo10';
+import Modulo11 from './CursoIntegrado/Curso2/Modulo11';
 import { useNavigate } from 'react-router-dom';
 
 export default function Curso2() {

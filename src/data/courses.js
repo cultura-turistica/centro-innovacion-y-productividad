@@ -17,7 +17,7 @@ export const coursesInfo = [
     iconName: "Palette",
     modules: 11,
     color: "#16A34A",
-    status: "dev"
+    status: "published"
   },
   {
     id: "costeo",
@@ -27,7 +27,7 @@ export const coursesInfo = [
     iconName: "Calculator",
     modules: 5,
     color: "#D97706",
-    status: "dev"
+    status: "published"
   },
   {
     id: "fotografia",
