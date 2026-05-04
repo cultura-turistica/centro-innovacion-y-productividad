@@ -38,25 +38,41 @@ export default function Home() {
   return (
     <div className="main-container text-center">
       <Helmet>
-        <title>Centro de Innovación y Productividad Cultura T</title>
-        <meta name="description" content="Centro de Innovación y Productividad enfocado en comunidades, Pymes turísticas y emprendedores. Transformamos territorios mediante ciencia de datos e innovación continua." />
+        <title>Centro de Innovación y Productividad Cultura T | Investigación y Desarrollo</title>
+        <meta name="description" content="Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo empresarial mediante ciencia de datos e innovación continua." />
         <link rel="canonical" href="https://cip.cultura-t.com/" />
-        {/* JSON-LD STRUCTURED DATA */}
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Centro de Innovación y Productividad Cultura T | Investigación y Desarrollo" />
+        <meta property="og:description" content="Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo empresarial mediante ciencia de datos e innovación continua." />
+        <meta property="og:url" content="https://cip.cultura-t.com/" />
+        <meta property="og:image" content="https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.png" />
+        
+        {/* Twitter */}
+        <meta name="twitter:title" content="Centro de Innovación y Productividad Cultura T | Investigación y Desarrollo" />
+        <meta name="twitter:description" content="Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo empresarial mediante ciencia de datos e innovación continua." />
+
+        {/* JSON-LD STRUCTURED DATA (Rank Math Inspired) */}
         <script type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
-              "@type": "ResearchOrganization",
+              "@type": "ResearchProject",
               "name": "Centro de Innovación y Productividad Cultura T",
-              "alternateName": "CIP",
+              "alternateName": "CIP Cultura T",
               "url": "https://cip.cultura-t.com",
+              "logo": "https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.png",
+              "description": "Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo, mediante ciencia de datos, innovación e investigación académica.",
               "parentOrganization": {
                 "@type": "Organization",
                 "name": "Cultura T S.A.S.",
                 "url": "https://cultura-t.com"
               },
-              "description": "Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo, mediante ciencia de datos, innovación e investigación académica.",
-              "knowsAbout": ["Turismo Sostenible", "Data Science", "Apropiación Social del Conocimiento", "Planificación Territorial"]
+              "knowsAbout": ["Turismo Sostenible", "Data Science", "Apropiación Social del Conocimiento", "Planificación Territorial"],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer support"
+              }
             }
           `}
         </script>

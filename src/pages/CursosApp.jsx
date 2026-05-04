@@ -32,7 +32,17 @@ export default function CursosApp() {
       <Helmet>
         <title>Academia SGR | Centro de Innovación y Productividad Cultura T</title>
         <meta name="description" content="Capacitación transformadora. Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial, el turismo sostenible y finanzas de proyectos." />
-        <link rel="canonical" href="https://cip.cultura-t.com/#/cursos" />
+        <link rel="canonical" href="https://cip.cultura-t.com/cursos" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Academia SGR | Centro de Innovación y Productividad Cultura T" />
+        <meta property="og:description" content="Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial y el turismo sostenible." />
+        <meta property="og:url" content="https://cip.cultura-t.com/cursos" />
+        <meta property="og:image" content="https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.png" />
+        
+        {/* Twitter */}
+        <meta name="twitter:title" content="Academia SGR | Centro de Innovación y Productividad Cultura T" />
+        <meta name="twitter:description" content="Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial." />
       </Helmet>
 
       <div className="title-pill mb-4"><PenTool size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Academia SGR</div>
