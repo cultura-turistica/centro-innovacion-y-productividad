@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, ZAxis, BarChart, Bar, Cell as RechartsCell } from 'recharts';
+import { Helmet } from 'react-helmet-async';
 import '../DataLab.css';
 
 // Importación Directa del JSON
@@ -88,6 +89,35 @@ export default function ProyectoSaeColombia() {
 
   return (
     <div className="datalab-root">
+      <Helmet>
+        <title>Proyecto SAE: Inferencia de Pobreza | DataLab Cultura T</title>
+        <meta name="description" content="Análisis bayesiano cruzando luminosidad satelital y microdatos del DANE para estimar la pobreza en municipios inobservados de Colombia." />
+        <link rel="canonical" href="https://cip.cultura-t.com/laboratorio-datos/proyecto-sae" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://cip.cultura-t.com"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Laboratorio de Datos",
+                "item": "https://cip.cultura-t.com/laboratorio-datos"
+              },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Proyecto SAE",
+                "item": "https://cip.cultura-t.com/laboratorio-datos/proyecto-sae"
+              }]
+            }
+          `}
+        </script>
+      </Helmet>
       
       <header className="datalab-header">
         <span className="datalab-pill">Inferencia Estadística Espacial (SAE)</span>

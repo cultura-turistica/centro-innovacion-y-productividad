@@ -103,7 +103,28 @@ export default function DataLab() {
       <Helmet>
         <title>Laboratorio de Datos | Centro de Innovación y Productividad Cultura T</title>
         <meta name="description" content="Auditorías en tiempo real y ciencia de datos aplicada al territorio. Explora mapas interactivos de pobreza (SAE), huella de carbono y bases de datos dinámicas." />
-        <link rel="canonical" href="https://cip.cultura-t.com/#/laboratorio-datos" />
+        <link rel="canonical" href="https://cip.cultura-t.com/laboratorio-datos" />
+        
+        {/* BREADCRUMBS SCHEMA (Metodología Hostinger/SEO Pro) */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://cip.cultura-t.com"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Laboratorio de Datos",
+                "item": "https://cip.cultura-t.com/laboratorio-datos"
+              }]
+            }
+          `}
+        </script>
       </Helmet>
       <div className="dl-hero">
         <div className="dl-badge">

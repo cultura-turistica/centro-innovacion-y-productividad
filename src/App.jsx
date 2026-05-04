@@ -17,11 +17,15 @@ import ProyectoSaeColombia from './pages/DataLab/ProyectoSaeColombia';
 import ProyectoProsperidad from './pages/DataLab/ProyectoProsperidad';
 import ProyectoCO2 from './pages/DataLab/ProyectoCO2';
 
+import Breadcrumbs from './components/Breadcrumbs';
+
 export default function App() {
   return (
     <div className="layout">
       <Navigation />
-      <Routes>
+      <div className="main-content-wrapper" style={{ paddingTop: '2rem' }}>
+        <Breadcrumbs />
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cursos" element={<CursosApp />} />
         <Route path="/turismo-comunitario" element={<Curso1 />} />
@@ -37,6 +41,7 @@ export default function App() {
         <Route path="/centro-pensamiento" element={<ThinkTank />} />
         <Route path="*" element={<Home />} />
       </Routes>
+      </div>
     </div>
   );
 }

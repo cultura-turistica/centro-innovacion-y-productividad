@@ -43,6 +43,27 @@ export default function CursosApp() {
         {/* Twitter */}
         <meta name="twitter:title" content="Academia SGR | Centro de Innovación y Productividad Cultura T" />
         <meta name="twitter:description" content="Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial." />
+
+        {/* BREADCRUMBS SCHEMA (Metodología Hostinger/SEO Pro) */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://cip.cultura-t.com"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Academia",
+                "item": "https://cip.cultura-t.com/cursos"
+              }]
+            }
+          `}
+        </script>
       </Helmet>
 
       <div className="title-pill mb-4"><PenTool size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Academia SGR</div>
