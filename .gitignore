@@ -29,6 +29,11 @@ tools/
 mcmc-api/.venv/
 venv/
 tmp_pdf_env/
+# Local Dev Scripts & Scratch Files
+checkBrowser*.cjs
+testRender.js
+scratch_summary.txt
+*.cjs
 # Internal Python & Memory files (Do not push to github)
 PROJECT_MEMORY.md
 mcmc-api/
