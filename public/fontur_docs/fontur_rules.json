@@ -1,0 +1,69 @@
+{
+  "version_manual": "M-DMI-001 (Versión 03 - Vigencia Dic 2025)",
+  "reglas_generales": {
+    "tiempo_radicacion": "Mínimo 3 meses antes del inicio de las actividades del proyecto.",
+    "exclusiones_estrictas": [
+      "No se permite inventar proyectos si el diagnóstico o PDT indica que la necesidad ya está cubierta (Ej. Inventarios existentes).",
+      "No se permite proponer proyectos sin contar con los estudios previos técnicos exigidos por FONTUR."
+    ]
+  },
+  "actores_habilitados": {
+    "entidades_territoriales": ["Municipios", "Distritos", "Departamentos", "Esquemas Asociativos Territoriales"],
+    "actores_privados_y_mixtos": [
+      "Gremios Turísticos (mínimo 10 aportantes)",
+      "Aportantes Parafiscales (grupos de mínimo 5 prestadores con RNT activo)",
+      "Cámaras de Comercio (con aval de entidad territorial)",
+      "Burós de Convenciones (con aval territorial, solo para eventos nacionales)",
+      "Corporaciones de Turismo / Fondos Mixtos (con aval territorial)",
+      "Cabildos y Resguardos Indígenas"
+    ],
+    "actores_excluidos_del_proceso_estandar": ["MinCIT", "ProColombia"]
+  },
+  "topes_cofinanciacion": {
+    "municipios_pdet": {
+      "porcentaje_maximo_fontur": 100,
+      "porcentaje_minimo_contrapartida": 0,
+      "condicion": "El territorio debe estar formalmente categorizado como PDET (Ej. Uribe, Meta)."
+    },
+    "municipios_categoria_4_5_6": {
+      "porcentaje_maximo_fontur": 95,
+      "porcentaje_minimo_contrapartida": 5,
+      "condicion": "Municipios de sexta, quinta o cuarta categoría."
+    },
+    "departamentos_categoria_3_y_4": {
+      "porcentaje_maximo_fontur": 90,
+      "porcentaje_minimo_contrapartida": 10
+    },
+    "municipios_categoria_2_y_3": {
+      "porcentaje_maximo_fontur": 80,
+      "porcentaje_minimo_contrapartida": 20
+    },
+    "otros_actores": {
+      "porcentaje_maximo_fontur": 80,
+      "porcentaje_minimo_contrapartida": 20,
+      "descripcion": "Aplica para Gremios, Cámaras de Comercio, Aportantes parafiscales."
+    }
+  },
+  "definiciones_estrictas_linea_1_competitividad": {
+    "descripcion": "Proyectos para innovación, calidad, sistemas de información, estudios de mercado y planificación.",
+    "categorias_validas": [
+      {"id": "1.1", "nombre": "Planificación y Gestión", "tipos": ["1.1.A Levantamiento inventarios", "1.1.B Análisis dinámicas turísticas", "1.1.C Implementación metodologías", "1.1.D Gobernanza"]},
+      {"id": "1.2", "nombre": "Productos y Actividades", "tipos": ["1.2.A Análisis demanda", "1.2.B Diseño productos", "1.2.C Diseño actividades"]},
+      {"id": "1.3", "nombre": "Capacidades Humanas", "tipos": ["1.3.A Formación y capacitación (máx 20% empleados del gremio)", "1.3.B Estudios cualificación", "1.3.C Gestión del conocimiento (I+D)", "1.3.D Eventos académicos", "1.3.E Intercambio experiencias"]},
+      {"id": "1.4", "nombre": "Capacidades Productivas", "tipos": ["1.4.A Acompañamiento empresarial", "1.4.B Economía popular comunitaria", "1.4.C Encadenamiento productivo", "1.4.D Financiamiento tasas reducidas"]},
+      {"id": "1.5", "nombre": "Calidad y Sostenibilidad", "tipos": ["1.5.A Soluciones sostenibles (economía circular)", "1.5.B Accesibilidad", "1.5.C/D/E Normas Técnicas Sectoriales y Excelencia", "1.5.F Seguridad turística"]},
+      {"id": "1.6", "nombre": "Innovación", "tipos": ["1.6.A Estudios de transformación digital", "1.6.B Software especializado / Análisis de datos"]},
+      {"id": "1.7", "nombre": "Evaluación", "tipos": ["1.7.A Evaluación de resultados de impacto"]}
+    ]
+  },
+  "definiciones_estrictas_linea_3_promocion": {
+    "descripcion": "Diseño de campañas, participación en ferias, viajes de familiarización y material promocional.",
+    "categorias_validas": [
+      {"id": "3.1", "nombre": "Investigación Mercados", "tipos": ["3.1.A Estudios de tendencias", "3.1.B Análisis financieros del sector", "3.1.C Evaluación de campañas"]},
+      {"id": "3.2", "nombre": "Diseño de Marca", "tipos": ["3.2.A Conceptualización de estrategias promocionales (Las campañas nacionales son exclusivas de MinCIT)"]},
+      {"id": "3.3", "nombre": "Eventos Turísticos", "tipos": ["3.3.A Organización de ferias regionales (No cofinanciables en primera edición, tope 500 SMMLV)", "3.3.B Ruedas de negocios", "3.3.C Participación en eventos (Expositor)"]},
+      {"id": "3.4", "nombre": "Promoción Nacional/Regional", "tipos": ["3.4.A Estrategias ATL (Radio, TV, Prensa, Vallas)", "3.4.B Estrategias BTL (E-mail, SMS, Redes, Murales)", "3.4.C Misiones Comerciales", "3.4.D Viajes de Familiarización (Fam Trips: periodistas, mayoristas, influenciadores)", "3.4.E Material POP"]},
+      {"id": "3.5", "nombre": "Promoción Internacional", "tipos": ["Similar a 3.4 pero con impacto internacional"]}
+    ]
+  }
+}

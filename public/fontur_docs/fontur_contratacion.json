@@ -1,0 +1,23 @@
+{
+  "manual_base": "Manual de Contratación del Patrimonio Autónomo FONTUR",
+  "estrategia_principal": "Perfilamiento del Formulador como Aliado Ejecutor",
+  "figuras_contractuales_recomendadas": [
+    {
+      "figura": "Convenio de Asociación / Contrato de Aporte",
+      "descripcion": "Mecanismo jurídico preferente para que FONTUR asigne directamente la ejecución del proyecto al formulador original, evitando licitaciones abiertas que pongan en riesgo la continuidad del esfuerzo territorial.",
+      "requisitos_para_justificar": [
+        "Demostrar idoneidad técnica y experiencia específica del proponente en la región.",
+        "Aportar contrapartida (en especie o efectivo) que evidencie el compromiso del formulador.",
+        "Alineación estricta con el Plan Nacional de Desarrollo y el Plan de Desarrollo Territorial (PDT)."
+      ]
+    }
+  ],
+  "instruccion_para_ia_fase_radicacion": {
+    "accion": "Generar un anexo o justificación técnica-legal",
+    "estructura_anexo": [
+      "1. Análisis de Idoneidad: Por qué el actor territorial que presenta el proyecto es el único con la capacidad instalada para ejecutarlo eficientemente.",
+      "2. Eficiencia del Gasto: Justificar cómo la adjudicación directa mediante Convenio de Asociación minimiza riesgos operativos y acelera el impacto frente a una licitación de meses.",
+      "3. Vinculación PDT: Asegurar que la entidad tiene el aval político (Plan de Desarrollo local) que exige el Manual de Contratación para esta figura."
+    ]
+  }
+}

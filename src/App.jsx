@@ -10,6 +10,7 @@ import Curso4 from './pages/Curso4';
 import Curso5 from './pages/Curso5';
 import DataLab from './pages/DataLab';
 import ThinkTank from './pages/ThinkTank';
+import RutaFormulacionFontur from './pages/RutaFormulacionFontur';
 import './index.css';
 
 import ProyectoSaeColombia from './pages/DataLab/ProyectoSaeColombia';
@@ -38,6 +39,7 @@ export default function App() {
         {/* <Route path="/laboratorio-datos/proyecto-fontur" element={<ProyectoFontur />} /> */}
         <Route path="/laboratorio-datos/proyecto-prosperidad" element={<ProyectoProsperidad />} />
         <Route path="/laboratorio-datos/proyecto-co2" element={<ProyectoCO2 />} />
+        <Route path="/ruta-formulacion-fontur" element={<RutaFormulacionFontur />} />
         <Route path="/centro-pensamiento" element={<ThinkTank />} />
         <Route path="*" element={<Home />} />
       </Routes>
