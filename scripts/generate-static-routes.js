@@ -10,6 +10,7 @@ const routes = [
   'laboratorio-datos/proyecto-sae',
   'laboratorio-datos/proyecto-prosperidad',
   'laboratorio-datos/proyecto-co2',
+  'ruta-formulacion-fontur',
   'centro-pensamiento'
 ];
 
