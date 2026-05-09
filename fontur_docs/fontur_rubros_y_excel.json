@@ -1,0 +1,70 @@
+{
+  "estructura_excel_fontur": {
+    "instruccion_general": "La IA debe rellenar el contenido lógico de las siguientes pestañas tal cual como aparecen en el Excel oficial 'FichadeProgramasyProyectosP.AFONTUR_V1.xlsx'.",
+    "pestanas_a_rellenar_por_ia": [
+      {
+        "nombre": "1. Información",
+        "campos": ["Tipo de proponente", "Razón social", "NIT", "Departamento", "Ciudad / Municipio", "Nombre Representante Legal"]
+      },
+      {
+        "nombre": "2. Contexto",
+        "campos": ["Nombre del programa o proyecto", "Línea estratégica", "Categoría", "Tipo de proyecto"]
+      },
+      {
+        "nombre": "3. Identificación problema",
+        "campos": ["Problema central", "Descripción de la situación existente respecto al problema"]
+      },
+      {
+        "nombre": "4. Cadena de valor",
+        "campos": ["Objetivo General (Acción a Realizar + Objeto + Descripción)", "Beneficiarios"]
+      },
+      {
+        "nombre": "5. Resultados e impactos",
+        "campos": ["Indicadores de producto (Producto esperado, Descripción, Fórmula)", "Indicadores de resultado"]
+      },
+      {
+        "nombre": "7. Ubicación",
+        "campos": ["Desagregación", "Departamento", "Plan de Desarrollo Departamental/Municipal que impacta", "Municipio"]
+      },
+      {
+        "nombre": "8. Checklist Requisitos",
+        "campos": ["Identificar si faltan requisitos documentales de la celda A16 (Requisitos no infraestructura)"]
+      }
+    ],
+    "pestana_presupuesto_sin_valores": {
+      "nombre": "6. Presupuesto - Proyecto",
+      "instruccion_estricta": "NO INVENTAR PRECIOS. Diseñar las actividades usando solo rubros del catálogo. Dejar 'Precio Unidad' y 'Valor total' como [PENDIENTE COTIZACION HUMANA].",
+      "columnas": ["Tipo de proyecto", "Actividad", "Clase de rubro", "Rubro", "Item", "Detalle del item", "Unidad", "Cantidad", "Precio Unidad"]
+    }
+  },
+  "catalogo_rubros_lineas_1_y_3": {
+    "linea_1_competitividad": [
+      {
+        "clase_rubro": "Personal",
+        "rubros": ["Consultoría", "Profesionales", "Gestor de proyecto"]
+      },
+      {
+        "clase_rubro": "Eventos",
+        "rubros": ["Alimentación (Almuerzo, Cena, Desayuno, Estación de café)", "Alojamiento", "Alquiler de espacios", "Ayudas audiovisuales"]
+      },
+      {
+        "clase_rubro": "Transporte",
+        "rubros": ["Transporte aéreo nacional", "Transporte terrestre"]
+      }
+    ],
+    "linea_3_promocion": [
+      {
+        "clase_rubro": "Publicidad y Mercadeo",
+        "rubros": ["Pauta digital", "Pauta en medios tradicionales", "Desarrollo de material POP", "Producción audiovisual"]
+      },
+      {
+        "clase_rubro": "Participación en Ferias",
+        "rubros": ["Alquiler de stand", "Diseño y montaje de stand", "Material promocional"]
+      },
+      {
+        "clase_rubro": "Viajes de Familiarización (Fam Trips)",
+        "rubros": ["Tiquetes aéreos", "Alojamiento", "Transporte terrestre local", "Alimentación", "Guianza turística"]
+      }
+    ]
+  }
+}
