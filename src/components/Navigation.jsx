@@ -18,6 +18,7 @@ export default function Navigation() {
     { label: 'Mi Academia', path: '/cursos', isExternal: false },
     { label: 'Laboratorio de Datos', path: '/laboratorio-datos', isExternal: false },
     { label: 'Centro de Pensamiento', path: '/centro-pensamiento', isExternal: false },
+    { label: 'Video Notion', path: '/video-notion', isExternal: false },
     { label: 'Sitio Corporativo', path: 'https://cultura-t.com/', isExternal: true }
   ];
 

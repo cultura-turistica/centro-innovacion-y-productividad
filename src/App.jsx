@@ -11,6 +11,9 @@ import Curso5 from './pages/Curso5';
 import DataLab from './pages/DataLab';
 import ThinkTank from './pages/ThinkTank';
 import RutaFormulacionFontur from './pages/RutaFormulacionFontur';
+import CreadorDeVideos from './pages/CreadorDeVideos';
+import VideoSocios from './pages/VideoSocios';
+import VideoNotion from './pages/VideoNotion';
 import './index.css';
 
 import ProyectoSaeColombia from './pages/DataLab/ProyectoSaeColombia';
@@ -41,6 +44,9 @@ export default function App() {
         <Route path="/laboratorio-datos/proyecto-co2" element={<ProyectoCO2 />} />
         <Route path="/ruta-formulacion-fontur" element={<RutaFormulacionFontur />} />
         <Route path="/centro-pensamiento" element={<ThinkTank />} />
+        <Route path="/creador-videos" element={<CreadorDeVideos />} />
+        <Route path="/video-socios" element={<VideoSocios />} />
+        <Route path="/video-notion" element={<VideoNotion />} />
         <Route path="*" element={<Home />} />
       </Routes>
       </div>
