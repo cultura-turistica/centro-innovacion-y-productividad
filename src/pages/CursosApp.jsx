@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { PenTool, Lightbulb, MonitorSmartphone, Calculator, BookOpen, ArrowRight, X, Search, Filter } from 'lucide-react';
+import { PenTool, Lightbulb, MonitorSmartphone, Calculator, BookOpen, ArrowRight, X, Search, Filter, Wrench } from 'lucide-react';
 import { coursesInfo } from '../data/courses';
 
 import { useNavigate } from 'react-router-dom';
@@ -127,6 +127,7 @@ export default function CursosApp() {
               course.id === 'costeo' ? '/finanzas-y-costeo' :
               course.id === 'fotografia' ? '/fundamentos-fotografia' :
               course.id === 'diseno-marca' ? '/diseno-marca' :
+              course.id === 'empresas' ? '/micro-experiencias' :
               '/cursos';
 
             return (
@@ -148,7 +149,11 @@ export default function CursosApp() {
                 
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #e2e8f0', paddingTop: '1.5rem'}}>
                   <div style={{fontSize: '0.9rem', color: '#64748b', fontWeight: 700}}>
-                    <BookOpen size={16} style={{display:'inline-block', marginRight:'5px'}}/> {course.modules} Módulos
+                    {course.isTool ? (
+                      <><Wrench size={16} style={{display:'inline-block', marginRight:'5px'}}/> Herramienta Interactiva</>
+                    ) : (
+                      <><BookOpen size={16} style={{display:'inline-block', marginRight:'5px'}}/> {course.modules} Módulos</>
+                    )}
                   </div>
                   {course.status === 'dev' ? (
                     <button disabled className="btn-primary" style={{padding: '8px 20px', background: '#cbd5e1', color: '#64748b', border: 'none', cursor: 'not-allowed'}}>
@@ -156,7 +161,7 @@ export default function CursosApp() {
                     </button>
                   ) : (
                     <button onClick={(e) => handleStartCourse(e, routePath)} className="btn-primary" style={{padding: '8px 20px', background: course.color, border: 'none', cursor: 'pointer'}}>
-                      Iniciar <ArrowRight size={16} />
+                      {course.isTool ? 'Abrir Herramienta' : 'Iniciar'} <ArrowRight size={16} />
                     </button>
                   )}
                 </div>

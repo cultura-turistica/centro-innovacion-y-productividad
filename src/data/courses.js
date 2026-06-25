@@ -21,11 +21,11 @@ export const coursesInfo = [
   },
   {
     id: "costeo",
-    title: "Estructura de Finanzas y Costeo",
+    title: "Calculadora de Costeo Turístico",
     category: "Finanzas y Negocios",
-    description: "Aprende a estructurar y proyectar los costos de tu negocio para asegurar rentabilidad a corto y largo plazo.",
+    description: "Herramienta interactiva para calcular costos, gastos, utilidad, comisiones y precios finales de paquetes turísticos (Metodología PNUD).",
     iconName: "Calculator",
-    modules: 5,
+    isTool: true,
     color: "#D97706",
     status: "published"
   },
@@ -47,6 +47,15 @@ export const coursesInfo = [
     iconName: "Palette",
     modules: 5,
     color: "#ea580c",
+  },
+  {
+    id: "empresas",
+    title: "Diseño de Producto Turístico para Empresas",
+    category: "Innovación Turística",
+    description: "Laboratorio de acción con 5 módulos prácticos para diseñar productos turísticos rentables usando Design Thinking, Jobs-to-be-Done y matrices de priorización.",
+    iconName: "Lightbulb",
+    modules: 5,
+    color: "#055C38",
     status: "published"
   }
 ];

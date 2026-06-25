@@ -56,3 +56,9 @@ inspect_fontur_data.py
 
 # Documentación
 documentación del CIP/
+
+# Videos Generator Pages (Do not push)
+src/pages/VideoNotion.jsx
+src/pages/VideoSocios.jsx
+src/pages/CreadorDeVideos.jsx
+src/pages/CreadorDeVideos.css

@@ -8,9 +8,13 @@
     "build": "vite build && node scripts/generate-static-routes.js",
     "deploy": "gh-pages -d dist",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "@dicebear/core": "^9.4.2",
+    "@dicebear/micah": "^9.4.2",
+    "@dicebear/open-peeps": "^9.4.2",
     "d3-geo": "^3.1.1",
     "d3-scale": "^4.0.2",
     "framer-motion": "^12.40.0",
@@ -20,6 +24,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-helmet-async": "^3.0.0",
+    "react-kawaii": "^1.6.0",
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^6.22.3",
     "react-select": "^5.10.2",
