@@ -12,9 +12,6 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "@dicebear/core": "^9.4.2",
-    "@dicebear/micah": "^9.4.2",
-    "@dicebear/open-peeps": "^9.4.2",
     "d3-geo": "^3.1.1",
     "d3-scale": "^4.0.2",
     "framer-motion": "^12.40.0",
