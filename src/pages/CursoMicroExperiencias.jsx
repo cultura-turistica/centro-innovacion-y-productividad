@@ -7,164 +7,32 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-import { createAvatar } from '@dicebear/core';
-import * as openPeeps from '@dicebear/open-peeps';
-import * as micah from '@dicebear/micah';
+import { avatars } from '../data/avatars';
+
+const {
+  avatarBusiness,
+  avatarHost1,
+  avatarHost2,
+  avatarJobFuncional,
+  avatarJobEmocional,
+  avatarJobSocial,
+  avatarDolor,
+  avatarDeleite,
+  avatarPrototipo1,
+  avatarPrototipo2,
+  avatarPiloto1,
+  avatarPiloto2,
+  avatarMVP1,
+  avatarMVP2,
+  avatarSense,
+  avatarRespond
+} = avatars;
 
 import imgDisney from '../assets/caso_disney.png';
 import imgVirgin from '../assets/caso_virgin.png';
 import imgAwasi from '../assets/caso_awasi.png';
 import imgXcaret from '../assets/caso_xcaret.png';
 import imgLowcost from '../assets/caso_lowcost.png';
-
-// Generador de ilustraciones tipo Blush / Open Peeps (Caras seguras y humanas)
-const avatarBusiness = createAvatar(openPeeps, {
-  seed: 'FelixCorporate',
-  head: ['short1', 'short2', 'medium1'],
-  face: ['smile', 'calm'],
-  accessoriesProbability: 0,
-  facialHairProbability: 0,
-  maskProbability: 0,
-  skinColor: ['ffdbb4', 'edb98a'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-const avatarHost1 = createAvatar(openPeeps, {
-  seed: 'AnaHost',
-  head: ['long', 'medium2', 'bun'],
-  face: ['smileBig', 'cute'],
-  accessoriesProbability: 0,
-  facialHairProbability: 0,
-  maskProbability: 0,
-  skinColor: ['d08b5b', 'ffdbb4'],
-  backgroundColor: ['transparent'],
-  scale: 100,
-}).toDataUri();
-
-const avatarHost2 = createAvatar(openPeeps, {
-  seed: 'LuisHost',
-  head: ['short3', 'short4'],
-  face: ['smile'],
-  accessoriesProbability: 0,
-  facialHairProbability: 100,
-  facialHair: ['beard'],
-  maskProbability: 0,
-  skinColor: ['ae5d29', 'edb98a'],
-  backgroundColor: ['transparent'],
-  scale: 100,
-}).toDataUri();
-
-// Nuevos avatares estilo "Micah" para las tarjetas giratorias de Jobs-to-be-Done
-const avatarJobFuncional = createAvatar(micah, {
-  seed: 'FuncionalTurista',
-  baseColor: ['f9c9b6'],
-  mouth: ['smile'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-const avatarJobEmocional = createAvatar(micah, {
-  seed: 'EmocionalViajera',
-  baseColor: ['ffdbb4'],
-  mouth: ['smile'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-const avatarJobSocial = createAvatar(micah, {
-  seed: 'SocialInfluencer',
-  baseColor: ['d08b5b'],
-  mouth: ['smile'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-// Avatares para el Mapeo de Valor
-const avatarDolor = createAvatar(openPeeps, {
-  seed: 'ClienteEnojado',
-  face: ['tired', 'frown'],
-  backgroundColor: ['transparent'],
-  scale: 100,
-}).toDataUri();
-
-const avatarDeleite = createAvatar(micah, {
-  seed: 'ClienteFeliz',
-  mouth: ['laughing', 'smile'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-// Avatares para Prototipado (Módulo 3)
-const avatarPrototipo1 = createAvatar(micah, {
-  seed: 'ArquitectoPrototipos',
-  baseColor: ['f9c9b6'],
-  mouth: ['smile'],
-  glasses: ['round'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-const avatarPrototipo2 = createAvatar(micah, {
-  seed: 'InvestigadorAislado',
-  baseColor: ['ffdbb4'],
-  mouth: ['laughing'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-// Avatares para Pilotos (Módulo 3 - Step 8)
-const avatarPiloto1 = createAvatar(micah, {
-  seed: 'EncuestaAburrida',
-  baseColor: ['f9c9b6'],
-  mouth: ['pucker', 'sad'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-const avatarPiloto2 = createAvatar(micah, {
-  seed: 'ObservadorCientifico',
-  baseColor: ['ffdbb4'],
-  mouth: ['smile', 'laughing'],
-  glasses: ['square'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-// Avatares para MVP (Módulo 4 - Step 9)
-const avatarMVP1 = createAvatar(micah, {
-  seed: 'ProveedorFalla',
-  baseColor: ['f9c9b6'],
-  mouth: ['sad', 'pucker'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-const avatarMVP2 = createAvatar(micah, {
-  seed: 'VendedorPitch',
-  baseColor: ['ffdbb4'],
-  mouth: ['laughing'],
-  backgroundColor: ['transparent'],
-  scale: 110,
-}).toDataUri();
-
-// Avatares para Sense & Respond (Módulo 5 - Step 11)
-const avatarSense = createAvatar(micah, {
-  seed: 'SentirDatos',
-  baseColor: ['f9c9b6'],
-  mouth: ['smile', 'laughing'],
-  glasses: ['round'],
-  backgroundColor: ['transparent'], 
-  scale: 110,
-}).toDataUri();
-
-const avatarRespond = createAvatar(micah, {
-  seed: 'ResponderAccion',
-  baseColor: ['ffdbb4'],
-  mouth: ['laughing'],
-  backgroundColor: ['transparent'], 
-  scale: 110,
-}).toDataUri();
 
 export default function CursoMicroExperiencias() {
   const navigate = useNavigate();

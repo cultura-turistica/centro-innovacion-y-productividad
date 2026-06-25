@@ -1,7 +1,7 @@
 export const coursesInfo = [
   {
     id: "curso1",
-    title: "Ruta de Formación Turismo Comunitario",
+    title: "Curso 1: Ruta de Formación Turismo Comunitario",
     category: "Gestión Territorial",
     description: "Desarrollo de capacidades para la gestión comunitaria de rutas turísticas sostenibles.",
     iconName: "Compass",
@@ -11,7 +11,7 @@ export const coursesInfo = [
   },
   {
     id: "curso2",
-    title: "Diseño de Producto Turístico Territorial",
+    title: "Curso 2: Diseño de Producto Turístico Territorial",
     category: "Innovación Turística",
     description: "Metodología de 11 pasos para transformar recursos locales en experiencias de alto valor.",
     iconName: "Palette",
@@ -31,7 +31,7 @@ export const coursesInfo = [
   },
   {
     id: "fotografia",
-    title: "Fundamentos y Composición Fotográfica",
+    title: "Curso 3: Fundamentos y Composición Fotográfica",
     category: "Creación de Contenido",
     description: "Domina el triángulo de luz, los modos de tu cámara (o celular) y el arte del encuadre profesional para contar grandes historias visuales.",
     iconName: "Camera",
@@ -41,7 +41,7 @@ export const coursesInfo = [
   },
   {
     id: "diseno-marca",
-    title: "Diseño de Marca e Identidad Visual",
+    title: "Curso 4: Diseño de Marca e Identidad Visual",
     category: "Creación de Contenido",
     description: "Herramienta empresarial para crear la arquitectura visual, psicología de color y ecosistema digital (Instagram) de tu emprendimiento.",
     iconName: "Palette",
@@ -50,7 +50,7 @@ export const coursesInfo = [
   },
   {
     id: "empresas",
-    title: "Diseño de Producto Turístico para Empresas",
+    title: "Curso 5: Diseño de Producto Turístico para Empresas",
     category: "Innovación Turística",
     description: "Laboratorio de acción con 5 módulos prácticos para diseñar productos turísticos rentables usando Design Thinking, Jobs-to-be-Done y matrices de priorización.",
     iconName: "Lightbulb",
