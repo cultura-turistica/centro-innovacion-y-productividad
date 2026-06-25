@@ -30,7 +30,7 @@ import imgAwasi from '../assets/caso_awasi.png';
 import imgXcaret from '../assets/caso_xcaret.png';
 import imgLowcost from '../assets/caso_lowcost.png';
 
-export default function CursoMicroExperiencias() {
+export default function Curso6() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const totalSteps = 12;

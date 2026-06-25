@@ -8,7 +8,7 @@ import Curso2 from './pages/Curso2';
 import Curso3 from './pages/Curso3';
 import Curso4 from './pages/Curso4';
 import Curso5 from './pages/Curso5';
-import CursoMicroExperiencias from './pages/CursoMicroExperiencias';
+import Curso6 from './pages/Curso6';
 import DataLab from './pages/DataLab';
 import ThinkTank from './pages/ThinkTank';
 import RutaFormulacionFontur from './pages/RutaFormulacionFontur';
@@ -38,7 +38,7 @@ export default function App() {
         <Route path="/finanzas-y-costeo" element={<Curso3 />} />
         <Route path="/fundamentos-fotografia" element={<Curso4 />} />
         <Route path="/diseno-marca" element={<Curso5 />} />
-        <Route path="/micro-experiencias" element={<CursoMicroExperiencias />} />
+        <Route path="/micro-experiencias" element={<Curso6 />} />
         <Route path="/laboratorio-datos" element={<DataLab />} />
         <Route path="/laboratorio-datos/proyecto-sae" element={<ProyectoSaeColombia />} />
         {/* <Route path="/laboratorio-datos/proyecto-fontur" element={<ProyectoFontur />} /> */}
