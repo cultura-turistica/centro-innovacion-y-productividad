@@ -7,26 +7,22 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-import { avatars } from '../data/avatars';
-
-const {
-  avatarBusiness,
-  avatarHost1,
-  avatarHost2,
-  avatarJobFuncional,
-  avatarJobEmocional,
-  avatarJobSocial,
-  avatarDolor,
-  avatarDeleite,
-  avatarPrototipo1,
-  avatarPrototipo2,
-  avatarPiloto1,
-  avatarPiloto2,
-  avatarMVP1,
-  avatarMVP2,
-  avatarSense,
-  avatarRespond
-} = avatars;
+import avatarBusiness from '../assets/avatars/avatarBusiness.svg';
+import avatarHost1 from '../assets/avatars/avatarHost1.svg';
+import avatarHost2 from '../assets/avatars/avatarHost2.svg';
+import avatarJobFuncional from '../assets/avatars/avatarJobFuncional.svg';
+import avatarJobEmocional from '../assets/avatars/avatarJobEmocional.svg';
+import avatarJobSocial from '../assets/avatars/avatarJobSocial.svg';
+import avatarDolor from '../assets/avatars/avatarDolor.svg';
+import avatarDeleite from '../assets/avatars/avatarDeleite.svg';
+import avatarPrototipo1 from '../assets/avatars/avatarPrototipo1.svg';
+import avatarPrototipo2 from '../assets/avatars/avatarPrototipo2.svg';
+import avatarPiloto1 from '../assets/avatars/avatarPiloto1.svg';
+import avatarPiloto2 from '../assets/avatars/avatarPiloto2.svg';
+import avatarMVP1 from '../assets/avatars/avatarMVP1.svg';
+import avatarMVP2 from '../assets/avatars/avatarMVP2.svg';
+import avatarSense from '../assets/avatars/avatarSense.svg';
+import avatarRespond from '../assets/avatars/avatarRespond.svg';
 
 import imgDisney from '../assets/caso_disney.png';
 import imgVirgin from '../assets/caso_virgin.png';

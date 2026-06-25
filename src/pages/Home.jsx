@@ -103,8 +103,8 @@ export default function Home() {
         <img src={tallerImg} alt="Taller Comunitario" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
       </div>
 
-      {/* 3 PILARES SGR - MOVIDOS ARRIBA */}
-      <h3 className="mb-8" style={{fontSize: '2.5rem'}}>Nuestros 3 Pilares SGR</h3>
+      {/* 3 PILARES - MOVIDOS ARRIBA */}
+      <h3 className="mb-8" style={{fontSize: '2.5rem'}}>Nuestros 3 Pilares</h3>
 
       <div className="grid-3" style={{marginBottom: '6rem'}}>
         {/* Pilar 1 */}
