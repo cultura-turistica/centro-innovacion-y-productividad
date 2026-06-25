@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logoUrl from '../assets/Logo_CulturaT_color.png';
+import logoUrl from '../assets/Logo_CulturaT_color.webp';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

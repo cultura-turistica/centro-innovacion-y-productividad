@@ -89,7 +89,7 @@ export default function Modulo1() {
 
           {/* Velocidad */}
           <div className="glass-card" style={{ padding: 0, position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-            <img src="/images/long_exposure_traffic_1777058879040.png" alt="Velocidad de Obturación (Larga exposición)" style={{width: '100%', height: '200px', objectFit: 'cover'}} />
+            <img src="/images/long_exposure_traffic_1777058879040.webp" alt="Velocidad de Obturación (Larga exposición)" style={{width: '100%', height: '200px', objectFit: 'cover'}} />
             <div style={{ width: '100%', height: '5px', background: '#EC4899' }}></div>
             <div style={{ padding: '2rem', flexGrow: 1 }}>
               <h4 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#831843', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>

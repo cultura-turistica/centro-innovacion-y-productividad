@@ -11,7 +11,7 @@ import {
   Sparkles,
   ArrowRight
 } from 'lucide-react';
-import LogoCulturaT from '../assets/Logo_CulturaT_color.png';
+import LogoCulturaT from '../assets/Logo_CulturaT_color.webp';
 
 export default function BentoDashboard() {
   const navigate = useNavigate();

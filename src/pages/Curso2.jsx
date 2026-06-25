@@ -44,7 +44,7 @@ export default function Curso2() {
     <div className="main-container">
       <div className="title-pill mb-4" style={{background: '#dcfce7', color: '#16A34A', boxShadow: '0 4px 10px rgba(0,0,0,0.05)'}}>
         <BookOpen size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> 
-        Curso 2: Diseño de Producto Turístico Territorial
+        Diseño de Producto Turístico Territorial
       </div>
       
       <h2 style={{color: headerColor, transition: 'color 0.3s ease'}}>{modTitles[step-1]}</h2>

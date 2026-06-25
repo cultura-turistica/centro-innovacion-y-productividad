@@ -24,11 +24,11 @@ import avatarMVP2 from '../assets/avatars/avatarMVP2.svg';
 import avatarSense from '../assets/avatars/avatarSense.svg';
 import avatarRespond from '../assets/avatars/avatarRespond.svg';
 
-import imgDisney from '../assets/caso_disney.png';
-import imgVirgin from '../assets/caso_virgin.png';
-import imgAwasi from '../assets/caso_awasi.png';
-import imgXcaret from '../assets/caso_xcaret.png';
-import imgLowcost from '../assets/caso_lowcost.png';
+import imgDisney from '../assets/caso_disney.webp';
+import imgVirgin from '../assets/caso_virgin.webp';
+import imgAwasi from '../assets/caso_awasi.webp';
+import imgXcaret from '../assets/caso_xcaret.webp';
+import imgLowcost from '../assets/caso_lowcost.webp';
 
 export default function Curso6() {
   const navigate = useNavigate();

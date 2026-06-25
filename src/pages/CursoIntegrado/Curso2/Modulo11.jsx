@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShoppingCart, Share2, Tag, LineChart, CheckCircle2, ListChecks, Info, Rocket, Megaphone, Globe, ExternalLink } from 'lucide-react';
-import marketingDigital from '../../../assets/marketing_digital.png';
-import estrategiaPrecios from '../../../assets/estrategia_precios.png';
+import marketingDigital from '../../../assets/marketing_digital.webp';
+import estrategiaPrecios from '../../../assets/estrategia_precios.webp';
 
 export default function Modulo11() {
   return (

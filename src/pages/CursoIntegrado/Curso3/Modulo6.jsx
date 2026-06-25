@@ -132,7 +132,7 @@ export default function Modulo6() {
 
               {/* Layer 1: Background (Nature/Forest) */}
               <img 
-                src="/images/sim_nature_bg.png" 
+                src="/images/sim_nature_bg.webp" 
                 alt="Fondo Selva" 
                 style={{
                   position: 'absolute', top: '-5%', left: '-5%', width: '110%', height: '110%', 
@@ -149,7 +149,7 @@ export default function Modulo6() {
                 transition: 'filter 0.3s ease'
               }}>
                 <img 
-                  src="/images/sim_bird_transparent.png" 
+                  src="/images/sim_bird_transparent.webp" 
                   alt="Colibrí" 
                   style={{
                     width: '100%', height: '100%', display: 'block',
@@ -161,7 +161,7 @@ export default function Modulo6() {
 
               {/* Layer 3: Foreground (Leaves/Flower) */}
               <img 
-                src="/images/sim_leaves_transparent.png" 
+                src="/images/sim_leaves_transparent.webp" 
                 alt="Hojas Primer Plano" 
                 style={{
                   position: 'absolute', bottom: '-20%', right: '-10%', width: '70%', height: 'auto',

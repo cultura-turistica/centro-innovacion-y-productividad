@@ -182,7 +182,7 @@ export default function Modulo10() {
        <div style={{background: 'linear-gradient(135deg, #022c22 0%, #055C38 100%)', borderRadius: '40px', padding: '3rem', color: 'white', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '3rem'}}>
           <div style={{flex: '1 1 300px'}}>
              <h4 style={{fontSize: '2rem', marginBottom: '1rem', color: '#bbf7d0'}}>Tu Kit Digital de Bolsillo</h4>
-             <p style={{color: '#dcfce7', fontSize: '1.1rem', marginBottom: '2rem'}}>No necesitas ser un experto en diseño para verte como uno. Estas son las herramientas recomendadas por el DataLab SGR.</p>
+             <p style={{color: '#dcfce7', fontSize: '1.1rem', marginBottom: '2rem'}}>No necesitas ser un experto en diseño para verte como uno. Estas son las herramientas recomendadas por el DataLab.</p>
              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                <div style={{background: 'rgba(255,255,255,0.1)', padding: '12px 20px', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '10px'}}><Pencil size={18} color="#fde047"/> Canva (Diseño)</div>
                <div style={{background: 'rgba(255,255,255,0.1)', padding: '12px 20px', borderRadius: '100px', display: 'flex', alignItems: 'center', gap: '10px'}}><Film size={18} color="#fca5a5"/> CapCut (Video)</div>

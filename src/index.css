@@ -14,7 +14,7 @@ body {
   /* Fondo texturizado del cliente */
   background-image:
     linear-gradient(rgba(240, 253, 244, 0.3), rgba(240, 253, 244, 0.3)),
-    url('./assets/textura1.png');
+    url('./assets/textura1.webp');
   background-size: cover;
   background-attachment: fixed;
   background-blend-mode: multiply;

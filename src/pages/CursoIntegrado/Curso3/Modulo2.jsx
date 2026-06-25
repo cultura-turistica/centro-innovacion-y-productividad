@@ -164,7 +164,7 @@ export default function Modulo2() {
           <h4 style={{ fontSize: '2rem', color: 'white', marginBottom: '2rem', fontWeight: 800 }}>Accesorios Esenciales para tu Celular 🎒</h4>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
             <div style={{ background: 'rgba(255,255,255,0.05)', padding: 0, borderRadius: '20px', overflow: 'hidden' }}>
-              <img src="/images/smartphone_tripod_1777058924777.png" alt="Trípode Pequeño Celular" style={{width: "100%", height: "150px", objectFit: "cover"}} />
+              <img src="/images/smartphone_tripod_1777058924777.webp" alt="Trípode Pequeño Celular" style={{width: "100%", height: "150px", objectFit: "cover"}} />
               <div style={{padding: '2rem'}}>
                 <div style={{ color: '#60A5FA', marginBottom: '1rem' }}><Camera size={32}/></div>
                 <h5 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Trípode Pequeño</h5>
@@ -172,7 +172,7 @@ export default function Modulo2() {
               </div>
             </div>
             <div style={{ background: 'rgba(255,255,255,0.05)', padding: 0, borderRadius: '20px', overflow: 'hidden' }}>
-              <img src="/images/macro_phone_lens_1777061014302.png" alt="Lente Macro para Celular" style={{width: "100%", height: "150px", objectFit: "cover"}} />
+              <img src="/images/macro_phone_lens_1777061014302.webp" alt="Lente Macro para Celular" style={{width: "100%", height: "150px", objectFit: "cover"}} />
               <div style={{padding: '2rem'}}>
                 <div style={{ color: '#34D399', marginBottom: '1rem' }}><Maximize size={32}/></div>
                 <h5 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Lentes Clip-on</h5>

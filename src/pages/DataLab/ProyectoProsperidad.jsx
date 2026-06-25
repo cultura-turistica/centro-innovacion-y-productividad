@@ -159,7 +159,7 @@ export default function ProyectoProsperidad() {
           )}
           {step >= 4 && (
             <ImageOverlay
-              url="/data/cobertura_2026.png"
+              url="/data/cobertura_2026.webp"
               bounds={boundsFinca}
               opacity={0.8}
             />

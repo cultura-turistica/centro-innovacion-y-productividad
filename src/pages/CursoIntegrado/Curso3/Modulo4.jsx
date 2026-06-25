@@ -46,7 +46,7 @@ export default function Modulo4() {
           </div>
 
           <div className="glass-card perspective-card" style={{padding: '0', position: 'relative', overflow: 'hidden', height: '350px', display: 'flex', alignItems: 'flex-end'}}>
-            <img src="/images/picado_angulo_1777070305361.png" alt="Picado" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
+            <img src="/images/picado_angulo_1777070305361.webp" alt="Picado" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
             <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)', zIndex: 1}}></div>
             <div style={{position: 'relative', zIndex: 2, padding: '2rem', width: '100%'}}>
               <div style={{display: 'inline-block', background: '#3B82F6', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '10px'}}>Desde Arriba</div>
@@ -66,7 +66,7 @@ export default function Modulo4() {
           </div>
 
           <div className="glass-card perspective-card" style={{padding: '0', position: 'relative', overflow: 'hidden', height: '350px', display: 'flex', alignItems: 'flex-end'}}>
-            <img src="/images/cenital_drone_view_1777069889768.png" alt="Cenital Drone" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
+            <img src="/images/cenital_drone_view_1777069889768.webp" alt="Cenital Drone" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
             <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)', zIndex: 1}}></div>
             <div style={{position: 'relative', zIndex: 2, padding: '2rem', width: '100%'}}>
               <div style={{display: 'inline-block', background: '#10B981', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '10px'}}>Aéreo Total</div>
@@ -76,7 +76,7 @@ export default function Modulo4() {
           </div>
 
           <div className="glass-card perspective-card" style={{padding: '0', position: 'relative', overflow: 'hidden', height: '350px', display: 'flex', alignItems: 'flex-end'}}>
-            <img src="/images/primer_plano_retrato_1777069904150.png" alt="Primer Plano" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
+            <img src="/images/primer_plano_retrato_1777069904150.webp" alt="Primer Plano" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
             <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)', zIndex: 1}}></div>
             <div style={{position: 'relative', zIndex: 2, padding: '2rem', width: '100%'}}>
               <div style={{display: 'inline-block', background: '#8B5CF6', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '10px'}}>Cercano</div>
@@ -86,7 +86,7 @@ export default function Modulo4() {
           </div>
 
           <div className="glass-card perspective-card" style={{padding: '0', position: 'relative', overflow: 'hidden', height: '350px', display: 'flex', alignItems: 'flex-end'}}>
-            <img src="/images/primerisimo_primer_plano_ojo_1777069915629.png" alt="Primerísimo Primer Plano Ojo" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
+            <img src="/images/primerisimo_primer_plano_ojo_1777069915629.webp" alt="Primerísimo Primer Plano Ojo" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
             <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)', zIndex: 1}}></div>
             <div style={{position: 'relative', zIndex: 2, padding: '2rem', width: '100%'}}>
               <div style={{display: 'inline-block', background: '#EC4899', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '10px'}}>Extremo</div>
@@ -96,7 +96,7 @@ export default function Modulo4() {
           </div>
 
           <div className="glass-card perspective-card" style={{padding: '0', position: 'relative', overflow: 'hidden', height: '350px', display: 'flex', alignItems: 'flex-end'}}>
-            <img src="/images/plano_detalle_insecto_1777069928884.png" alt="Foto Macro Detalle" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
+            <img src="/images/plano_detalle_insecto_1777069928884.webp" alt="Foto Macro Detalle" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
             <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)', zIndex: 1}}></div>
             <div style={{position: 'relative', zIndex: 2, padding: '2rem', width: '100%'}}>
               <div style={{display: 'inline-block', background: '#F97316', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 'bold', marginBottom: '10px'}}>Específico</div>

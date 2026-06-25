@@ -10,14 +10,14 @@ import Modulo9 from './CursoIntegrado/Modulo9';
 import Modulo10 from './CursoIntegrado/Modulo10';
 import Modulo11 from './CursoIntegrado/Modulo11';
 
-import teamworkImg from '../assets/curso_ilustracion_trabajo_equipo.png';
-import voceroImg from '../assets/curso1_vocero.png';
-import financieroImg from '../assets/curso1_financiero.png';
-import guiaImg from '../assets/curso1_guia.png';
-import creadorImg from '../assets/curso1_creador.png';
-import sostEarthImg from '../assets/mod2_sostenibilidad.png';
-import matHeritageImg from '../assets/mod3_patrimonio_material.png';
-import inmatHeritageImg from '../assets/mod3_patrimonio_inmaterial.png';
+import teamworkImg from '../assets/curso_ilustracion_trabajo_equipo.webp';
+import voceroImg from '../assets/curso1_vocero.webp';
+import financieroImg from '../assets/curso1_financiero.webp';
+import guiaImg from '../assets/curso1_guia.webp';
+import creadorImg from '../assets/curso1_creador.webp';
+import sostEarthImg from '../assets/mod2_sostenibilidad.webp';
+import matHeritageImg from '../assets/mod3_patrimonio_material.webp';
+import inmatHeritageImg from '../assets/mod3_patrimonio_inmaterial.webp';
 
 const roles = [
   { id: 1, title: 'El Vocero', img: voceroImg, desc: 'Comunica y articula las actividades con proveedores, clientes institucionales y aliados.', person: '¿Quién tiene el don de la palabra?' },
@@ -54,7 +54,7 @@ export default function Curso1() {
   else if (step === 12) { headerColor = '#032968'; modTitle = 'Módulo 9: Marca Comercial'; }
   else if (step === 13) { headerColor = '#055C38'; modTitle = 'Módulo 10: Generación de Contenidos'; }
   else if (step === 14) { headerColor = '#032968'; modTitle = 'Módulo 11: Costos y Precios'; }
-  else if (step === 15) { headerColor = '#166534'; modTitle = 'Finalización Cursos SGR'; }
+  else if (step === 15) { headerColor = '#166534'; modTitle = 'Finalización de la Ruta'; }
 
   return (
     <div className="main-container">
@@ -153,7 +153,7 @@ export default function Curso1() {
             </div>
             <div style={{ padding: 'clamp(1.5rem, 5vw, 3rem)', textAlign: 'center', marginTop: '-3rem', position: 'relative', zIndex: 10 }}>
               <h3 style={{ color: '#055C38', fontSize: '2.5rem', fontWeight: 900 }}>"Satisfacer el presente sin comprometer el futuro"</h3>
-              <p style={{ fontSize: '1.2rem', color: '#475569', maxWidth: '800px', margin: '0 auto' }}>Ese es el mantra de Naciones Unidas. La Sostenibilidad SGR no es un certificado de cartón, es un triángulo de tres puntas que evita que tu paraíso expire.</p>
+              <p style={{ fontSize: '1.2rem', color: '#475569', maxWidth: '800px', margin: '0 auto' }}>Ese es el mantra de Naciones Unidas. La Sostenibilidad no es un certificado de cartón, es un triángulo de tres puntas que evita que tu paraíso expire.</p>
             </div>
           </div>
         )}
@@ -172,7 +172,7 @@ export default function Curso1() {
                 {activeAcc === 'amb' && (
                   <div style={{ padding: '1.5rem', background: 'white', color: '#475569' }}>
                     Proteger nuestra casa. No basta con no tirar basura; implica calcular la carga máxima del sendero ecológico y proteger la vida silvestre.
-                    <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: '10px', marginTop: '1rem', borderLeft: '4px solid #166534' }}>💡 <i>Ejemplo SGR:</i> Implementar un biodigestor o usar energías limpias en cabañas turísticas.</div>
+                    <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: '10px', marginTop: '1rem', borderLeft: '4px solid #166534' }}>💡 <i>Ejemplo:</i> Implementar un biodigestor o usar energías limpias en cabañas turísticas.</div>
                   </div>
                 )}
               </div>
@@ -186,7 +186,7 @@ export default function Curso1() {
                 {activeAcc === 'soc' && (
                   <div style={{ padding: '1.5rem', background: 'white', color: '#475569' }}>
                     Inclusión y comunidad. Si el turismo trae dinero solo a tu bolsillo y ruido a tus vecinos, el modelo estallará.
-                    <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: '10px', marginTop: '1rem', borderLeft: '4px solid #9a3412' }}>💡 <i>Ejemplo SGR:</i> Contratar a cocineras de tradición oral que preserven recetas extintas de la región.</div>
+                    <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: '10px', marginTop: '1rem', borderLeft: '4px solid #9a3412' }}>💡 <i>Ejemplo:</i> Contratar a cocineras de tradición oral que preserven recetas extintas de la región.</div>
                   </div>
                 )}
               </div>
@@ -200,7 +200,7 @@ export default function Curso1() {
                 {activeAcc === 'eco' && (
                   <div style={{ padding: '1.5rem', background: 'white', color: '#475569' }}>
                     Debe ser negocio. Sin rentabilidad, el proyeto es filantropía temporal. El dinero debe fluir formal y legalmente para mantener la cadena intacta.
-                    <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: '10px', marginTop: '1rem', borderLeft: '4px solid #1e40af' }}>💡 <i>Ejemplo SGR:</i> Pagar salarios justos por encima del mínimo local a los arrieros y guías.</div>
+                    <div style={{ background: '#f8fafc', padding: '1rem', borderRadius: '10px', marginTop: '1rem', borderLeft: '4px solid #1e40af' }}>💡 <i>Ejemplo:</i> Pagar salarios justos por encima del mínimo local a los arrieros y guías.</div>
                   </div>
                 )}
               </div>

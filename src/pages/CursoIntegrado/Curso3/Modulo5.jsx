@@ -67,7 +67,7 @@ export default function Modulo5() {
           
           {/* Regla de Tercios */}
           <div className="glass-card" style={{ padding: 0, position: 'relative', overflow: 'hidden', height: '350px', display: 'flex', alignItems: 'flex-end', borderRadius: '25px' }}>
-            <img src="/images/rule_of_thirds_landscape_1777058892934.png" alt="Regla de los Tercios" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
+            <img src="/images/rule_of_thirds_landscape_1777058892934.webp" alt="Regla de los Tercios" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
             <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(17,24,39,0.9) 0%, rgba(17,24,39,0.3) 100%)', zIndex: 1}}></div>
             
             {/* Grid Overlay */}
@@ -100,7 +100,7 @@ export default function Modulo5() {
 
           {/* Simetría */}
           <div className="glass-card" style={{ padding: 0, position: 'relative', overflow: 'hidden', height: '350px', display: 'flex', alignItems: 'flex-end', borderRadius: '25px' }}>
-            <img src="/images/architectural_symmetry_1777058910502.png" alt="Simetría Arquitectónica" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
+            <img src="/images/architectural_symmetry_1777058910502.webp" alt="Simetría Arquitectónica" style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0}} />
             <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(17,24,39,0.9) 0%, rgba(17,24,39,0.3) 100%)', zIndex: 1}}></div>
             <div style={{position: 'relative', zIndex: 2, padding: '2rem'}}>
               <h4 style={{color: 'white', marginBottom: '0.5rem', fontSize: '1.5rem', fontWeight: 800}}>Simetría</h4>

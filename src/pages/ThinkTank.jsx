@@ -32,7 +32,7 @@ export default function ThinkTank() {
         <link rel="canonical" href="https://cip.cultura-t.com/#/centro-pensamiento" />
       </Helmet>
 
-      <div className="title-pill mb-4"><Library size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Publicaciones SGR</div>
+      <div className="title-pill mb-4"><Library size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Publicaciones</div>
       <h2 style={{color: '#032968'}}>Centro de Pensamiento</h2>
       <p style={{fontSize: '1.2rem', color: '#475569', maxWidth: '800px', marginBottom: '3rem'}}>
         Un ecosistema colaborativo y abierto. Aquí reside la producción bibliográfica y de investigación generada tanto por el CIP como por nuestros aliados académicos.

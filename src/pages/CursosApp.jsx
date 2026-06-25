@@ -30,18 +30,18 @@ export default function CursosApp() {
   return (
     <div className="main-container">
       <Helmet>
-        <title>Academia SGR | Centro de Innovación y Productividad Cultura T</title>
+        <title>Academia | Centro de Innovación y Productividad Cultura T</title>
         <meta name="description" content="Capacitación transformadora. Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial, el turismo sostenible y finanzas de proyectos." />
         <link rel="canonical" href="https://cip.cultura-t.com/cursos" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Academia SGR | Centro de Innovación y Productividad Cultura T" />
+        <meta property="og:title" content="Academia | Centro de Innovación y Productividad Cultura T" />
         <meta property="og:description" content="Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial y el turismo sostenible." />
         <meta property="og:url" content="https://cip.cultura-t.com/cursos" />
-        <meta property="og:image" content="https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.png" />
+        <meta property="og:image" content="https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.webp" />
         
         {/* Twitter */}
-        <meta name="twitter:title" content="Academia SGR | Centro de Innovación y Productividad Cultura T" />
+        <meta name="twitter:title" content="Academia | Centro de Innovación y Productividad Cultura T" />
         <meta name="twitter:description" content="Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial." />
 
         {/* BREADCRUMBS SCHEMA (Metodología Hostinger/SEO Pro) */}
@@ -66,7 +66,7 @@ export default function CursosApp() {
         </script>
       </Helmet>
 
-      <div className="title-pill mb-4"><PenTool size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Academia SGR</div>
+      <div className="title-pill mb-4"><PenTool size={16} style={{display:'inline-block', verticalAlign:'middle', marginRight:'5px'}}/> Academia</div>
       <h2 style={{color: '#032968'}}>Cursos y Herramientas</h2>
       <p style={{fontSize: '1.2rem', color: '#475569', maxWidth: '800px', marginBottom: '3rem', fontFamily: 'Poppins'}}>
         Programa 100% Autoguiado. Cursos diseñados metodológicamente para que el empresario turístico aprenda y aplique directo en su territorio.

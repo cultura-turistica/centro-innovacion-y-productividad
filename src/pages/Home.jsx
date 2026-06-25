@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PenTool, LineChart, Library, ArrowRight, Info, Target, Network } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import tallerImg from '../assets/taller.jpg';
+import tallerImg from '../assets/taller.webp';
 
 const OrgNode = ({ title, bg, color, items, children, subtitle }) => (
   <div style={{ background: bg || 'white', border: `1px solid ${color || '#e2e8f0'}`, borderRadius: '15px', padding: '1.5rem', flex: 1, boxShadow: '0 10px 20px rgba(0,0,0,0.02)' }}>
@@ -46,7 +46,7 @@ export default function Home() {
         <meta property="og:title" content="Centro de Innovación y Productividad Cultura T | Investigación y Desarrollo" />
         <meta property="og:description" content="Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo empresarial mediante ciencia de datos e innovación continua." />
         <meta property="og:url" content="https://cip.cultura-t.com/" />
-        <meta property="og:image" content="https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.png" />
+        <meta property="og:image" content="https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.webp" />
         
         {/* Twitter */}
         <meta name="twitter:title" content="Centro de Innovación y Productividad Cultura T | Investigación y Desarrollo" />
@@ -61,7 +61,7 @@ export default function Home() {
               "name": "Centro de Innovación y Productividad Cultura T",
               "alternateName": "CIP Cultura T",
               "url": "https://cip.cultura-t.com",
-              "logo": "https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.png",
+              "logo": "https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.webp",
               "description": "Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo, mediante ciencia de datos, innovación e investigación académica.",
               "parentOrganization": {
                 "@type": "Organization",

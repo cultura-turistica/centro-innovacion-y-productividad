@@ -10,7 +10,7 @@ const Breadcrumbs = () => {
 
   // Mapa de nombres legibles para las rutas
   const routeNames = {
-    'cursos': 'Academia SGR',
+    'cursos': 'Academia',
     'laboratorio-datos': 'Laboratorio de Datos',
     'centro-pensamiento': 'Centro de Pensamiento',
     'turismo-comunitario': 'Turismo Comunitario',
