@@ -29,7 +29,7 @@ export default function Modulo5() {
             <UserCircle size={24} /> El Buyer Persona Turístico
           </h4>
           <p style={{fontSize: '1.1rem', color: '#1e293b'}}>
-            Es una representación ficticia pero realista de tu visitante ideal. Nos ayuda a entender no solo cuántos años tiene, sino qué siente y qué busca en su viaje.
+            Es una representación ficticia pero realista de tu visitante ideal. Nos ayuda a entender profundamente sus sentimientos y motivos de viaje, mucho más allá de su edad o lugar de origen.
           </p>
         </div>
 

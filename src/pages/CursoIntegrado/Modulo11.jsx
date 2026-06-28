@@ -63,7 +63,7 @@ export default function Modulo11() {
          </div>
          <h3 style={{color: '#032968', fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 900}}>Módulo 11: Costos y Precios</h3>
          <p style={{color: '#475569', fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6'}}>
-           "El precio correcto no es el más barato, sino el que refleja tu valor." Dominaremos el arte de cobrar lo justo para que tu ruta no solo crezca, sino que sea <strong style={{color: '#1e40af'}}>invencible</strong>.
+           "El precio correcto no es el más barato, sino el que refleja tu valor." Dominaremos el arte de cobrar lo justo para que tu ruta crezca y se vuelva <strong style={{color: '#1e40af'}}>invencible</strong>.
          </p>
        </div>
        

@@ -13,7 +13,7 @@ export default function Modulo10() {
          </div>
          <h3 style={{color: '#055C38', fontSize: '2.5rem', marginBottom: '1rem'}}>Módulo 10: Generación de Contenidos</h3>
          <p style={{color: '#475569', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6'}}>
-           "Una imagen vale más que mil palabras". Aprenderemos a usar nuestro celular no solo para registrar, sino para <strong style={{color: '#055C38'}}>conmover y atraer</strong> nuevos visitantes a través de la fotografía y video de alta calidad.
+           "Una imagen vale más que mil palabras". Aprenderemos a usar el celular como herramienta para <strong style={{color: '#055C38'}}>conmover y atraer</strong> visitantes mediante fotografía y video de alta calidad.
          </p>
        </div>
        
@@ -25,7 +25,7 @@ export default function Modulo10() {
              </div>
              <img src="https://api.dicebear.com/9.x/micah/svg?seed=Javier&backgroundColor=b6e3f4" alt="Javier" style={{width: '140px', height: '140px', borderRadius: '50%', border: '6px solid white', marginBottom: '1.5rem', boxShadow: '0 15px 25px rgba(0,0,0,0.1)', position: 'relative', zIndex: 1}} />
              <h4 style={{fontSize: '1.5rem', color: '#166534', marginBottom: '0.5rem', position: 'relative', zIndex: 1}}>Javier, el Turista</h4>
-             <p style={{color: '#475569', fontSize: '1.05rem', lineHeight: '1.5', position: 'relative', zIndex: 1}}><i>"He visto que en redes sociales la gente no solo busca destinos, busca sentimientos. ¿Cómo logramos que una foto de nuestro café se sienta como el abrazo de la abuela?"</i></p>
+             <p style={{color: '#475569', fontSize: '1.05rem', lineHeight: '1.5', position: 'relative', zIndex: 1}}><i>"He visto que en redes sociales la gente busca sentir, más que ver destinos. ¿Cómo logramos que una foto de nuestro café se sienta como el abrazo de la abuela?"</i></p>
           </div>
           <div style={{flex: '1 1 300px', background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', borderRadius: '40px', padding: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.04)'}}>
              <div style={{position: 'absolute', top: '-20px', right: '-20px', color: 'rgba(59, 130, 246, 0.05)'}}>
@@ -130,7 +130,7 @@ export default function Modulo10() {
        {/* PLANIFICACIÓN DE CONTENIDO (TABS/INTERACTIVO) */}
        <div style={{marginBottom: '5rem'}}>
          <h4 style={{color: '#055C38', fontSize: '2rem', textAlign: 'center', marginBottom: '1rem'}}>Diseña tu Plan de Rodaje</h4>
-         <p style={{color: '#64748b', fontSize: '1.1rem', textAlign: 'center', marginBottom: '3rem'}}>Crea contenido con propósito, no solo fotos al azar. Sigue estos 4 pasos críticos:</p>
+         <p style={{color: '#64748b', fontSize: '1.1rem', textAlign: 'center', marginBottom: '3rem'}}>Crea contenido con propósito, en lugar de tomar fotos al azar. Sigue estos 4 pasos críticos:</p>
          
          <div style={{maxWidth: '800px', margin: '0 auto', background: 'white', border: '1px solid #e2e8f0', borderRadius: '30px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.03)'}}>
             <div style={{display: 'flex', background: '#f8fafc', borderBottom: '1px solid #e2e8f0'}}>

@@ -328,7 +328,7 @@ export default function Curso6() {
           {[
             "Invitar a 3 conocidos que encajen EXACTO en el 'Buyer Persona' (Prohibido invitar a mamá o amigos complacientes).",
             "Ofrecerles la experiencia totalmente gratis a cambio de criticar absolutamente cada detalle.",
-            "Durante la prueba: Observar sus caras y reacciones físicas, no solo escuchar lo que dicen por cortesía."
+            "Durante la prueba: Observa sus rostros y reacciones físicas, más allá de escuchar lo que dicen por cortesía."
           ].map((text, idx) => (
             <div key={idx} onClick={() => toggleCheck(idx)} className="hover-scale" style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '15px 20px', background: checks[idx] ? '#f0fdf4' : '#f8fafc', borderRadius: '15px', cursor: 'pointer', transition: '0.3s', border: checks[idx] ? '2px solid #22c55e' : '2px solid #e2e8f0' }}>
               <div style={{ color: checks[idx] ? '#22c55e' : '#cbd5e1', transition: 'color 0.3s' }}>
@@ -1060,7 +1060,7 @@ export default function Curso6() {
                 empresa="Comunidad y Viajes Corporativos" 
                 titulo="El verdadero objetivo del viajero" 
                 img="https://illustrations.popsy.co/blue/remote-work.svg"
-                contenido="<strong>El Descubrimiento:</strong> A través de la observación empática, se notó que los viajeros de negocios no solo buscaban 'un lugar para dormir', sino también 'un espacio para trabajar cómodamente sin sentirse aislados'.<br/><strong>La Observación Pasiva:</strong> Al observar cómo las personas bajaban de sus habitaciones para sentarse en las mesas comunes del lobby buscando compañía humana, se reveló una necesidad social profunda.<br/><strong>La Transformación:</strong> Esto inspiró el diseño de lobbys abiertos y vibrantes, transformándolos en espacios de coworking que invitan a la conexión."
+                contenido="<strong>El Descubrimiento:</strong> A través de la observación empática, notamos que los viajeros de negocios buscaban un espacio para trabajar cómodamente sin sentirse aislados, más que un simple 'lugar para dormir'.<br/><strong>La Observación Pasiva:</strong> Al observar cómo las personas bajaban de sus habitaciones para sentarse en las mesas comunes del lobby buscando compañía humana, se reveló una necesidad social profunda.<br/><strong>La Transformación:</strong> Esto inspiró el diseño de lobbys abiertos y vibrantes, transformándolos en espacios de coworking que invitan a la conexión."
               />
 
               <EjercicioPractico 

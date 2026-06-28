@@ -102,7 +102,7 @@ export default function Modulo3() {
           <div style={{flex: 1, minWidth: '300px'}}>
             <h4 style={{fontSize: '1.8rem', color: '#B45309', marginBottom: '1rem'}}>El Disparo Continuo (Ráfaga)</h4>
             <p style={{fontSize: '1.1rem', color: '#78350F', lineHeight: '1.6'}}>
-              Las cámaras pueden capturar desde 3 hasta más de 12 fotogramas por segundo. ¿Cuándo usarlo? No solo en deportes, sino también en <strong>retratos</strong> (para atrapar esa micro-expresión perfecta) o cuando estás fotografiando con <strong>velocidades de obturación lentas sin trípode</strong>: la primera foto saldrá movida por presionar el botón, pero la tercera de la ráfaga estará nítida.
+              Las cámaras capturan desde 3 hasta más de 12 fotogramas por segundo. Úsalo tanto en deportes como en <strong>retratos</strong> (para atrapar esa micro-expresión perfecta) o cuando fotografías con <strong>velocidades de obturación lentas sin trípode</strong>: la primera foto puede salir movida, pero la tercera estará nítida.
             </p>
           </div>
         </div>

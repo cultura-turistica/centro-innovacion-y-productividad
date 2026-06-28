@@ -63,7 +63,7 @@ export default function MetodologiaExperiencias() {
           <span style={{ color: '#F06000' }}>Micro-Experiencias</span>
         </h2>
         <p style={{ fontSize: '1.25rem', color: '#475569', maxWidth: '800px', margin: '2rem auto', fontFamily: 'Poppins' }}>
-          Las organizaciones privadas no solo venden camas, traslados o platos; diseñan los estímulos que el cliente recordará para siempre.
+          Las organizaciones privadas van más allá de vender camas o platos; diseñan estímulos memorables.
         </p>
       </div>
 

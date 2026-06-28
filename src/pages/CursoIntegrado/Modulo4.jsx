@@ -42,7 +42,7 @@ export default function Modulo4() {
            <div style={{background: 'white', borderRadius: '15px', padding: '1.5rem', width: '250px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)'}}>
              <Ear color="#3b82f6" size={30} style={{marginBottom: '1rem'}}/>
              <h5 style={{fontWeight: 800, color: '#032968', marginBottom: '0.5rem'}}>4. Escucha Activa</h5>
-             <p style={{fontSize: '0.9rem', color: '#64748b', margin: 0}}>Escucha para entender lo que dicen, no solo para contestar.</p>
+             <p style={{fontSize: '0.9rem', color: '#64748b', margin: 0}}>Escucha para entender a fondo, en lugar de estar pensando qué vas a responder.</p>
            </div>
 
            {/* Clave 5 */}

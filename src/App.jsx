@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import CursosApp from './pages/CursosApp';
@@ -15,6 +15,8 @@ import RutaFormulacionFontur from './pages/RutaFormulacionFontur';
 import CreadorDeVideos from './pages/CreadorDeVideos';
 import VideoSocios from './pages/VideoSocios';
 import VideoNotion from './pages/VideoNotion';
+import Verificar from './pages/Verificar';
+import TestCert from './pages/TestCert';
 import './index.css';
 
 import ProyectoSaeColombia from './pages/DataLab/ProyectoSaeColombia';
@@ -25,11 +27,14 @@ import ProyectoCO2 from './pages/DataLab/ProyectoCO2';
 import Breadcrumbs from './components/Breadcrumbs';
 
 export default function App() {
+  const location = useLocation();
+  const isTestCert = location.pathname === '/test-cert';
+
   return (
-    <div className="layout">
-      <Navigation />
-      <div className="main-content-wrapper" style={{ paddingTop: '2rem' }}>
-        <Breadcrumbs />
+    <div className={isTestCert ? "" : "layout"}>
+      {!isTestCert && <Navigation />}
+      <div className={isTestCert ? "" : "main-content-wrapper"} style={isTestCert ? {} : { paddingTop: '2rem' }}>
+        {!isTestCert && <Breadcrumbs />}
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cursos" element={<CursosApp />} />
@@ -49,10 +54,11 @@ export default function App() {
         <Route path="/creador-videos" element={<CreadorDeVideos />} />
         <Route path="/video-socios" element={<VideoSocios />} />
         <Route path="/video-notion" element={<VideoNotion />} />
+        <Route path="/verificar" element={<Verificar />} />
+        <Route path="/test-cert" element={<TestCert />} />
         <Route path="*" element={<Home />} />
       </Routes>
       </div>
     </div>
   );
 }
-
