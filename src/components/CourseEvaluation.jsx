@@ -50,8 +50,6 @@ export default function CourseEvaluation({ onComplete, quizData }) {
     try {
       const surveyForm = new FormData();
       surveyForm.append("entry.1570207125", quizData.courseName); 
-      surveyForm.append("entry.749712173", surveyData.nombre || 'No especificado');
-      surveyForm.append("entry.579435649", surveyData.ubicacion || 'No especificado');
       surveyForm.append("entry.388691744", surveyData.q1);
       surveyForm.append("entry.360983945", surveyData.q2);
       surveyForm.append("entry.658788181", surveyData.q3);
@@ -177,18 +175,6 @@ export default function CourseEvaluation({ onComplete, quizData }) {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {/* Preguntas de Identidad para la Encuesta */}
-            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
-              <p style={{ fontWeight: 600, marginBottom: '1rem' }}>Nombre Completo (Obligatorio para registro de calidad)</p>
-              <input type="text" required value={surveyData.nombre} onChange={e => setSurveyData({...surveyData, nombre: e.target.value})} placeholder="Ej. Juan Pérez" style={{ width: '100%', padding: '1rem', borderRadius: '12px', border: '1px solid #cbd5e1' }} />
-            </div>
-
-            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
-              <p style={{ fontWeight: 600, marginBottom: '1rem' }}>Municipio / Departamento</p>
-              <input type="text" required value={surveyData.ubicacion} onChange={e => setSurveyData({...surveyData, ubicacion: e.target.value})} placeholder="Ej. Leticia, Amazonas" style={{ width: '100%', padding: '1rem', borderRadius: '12px', border: '1px solid #cbd5e1' }} />
-            </div>
-
-            {/* Preguntas de Calidad */}
             <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
               <p style={{ fontWeight: 600, marginBottom: '1rem' }}>1. ¿Consideras que este curso te ha permitido adquirir nuevos conocimientos que antes no tenías?</p>
               <select required value={surveyData.q1} onChange={e => setSurveyData({...surveyData, q1: e.target.value})} style={{ width: '100%', padding: '1rem', borderRadius: '12px', border: '1px solid #cbd5e1' }}>
