@@ -5,7 +5,7 @@ export const coursesInfo = [
     category: "Gestión Territorial",
     description: "Desarrollo de capacidades para la gestión comunitaria de rutas turísticas sostenibles.",
     iconName: "Compass",
-    modules: 7,
+    modules: 6,
     color: "#0066FF",
     status: "published"
   },

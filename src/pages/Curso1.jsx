@@ -79,7 +79,7 @@ export default function Curso1() {
   const curso1QuizData = {
     courseName: "Ruta de Formación Turismo Comunitario",
     courseId: "C1-Gobernanza",
-    horas: "5",
+    horas: "2",
     questions: [
       {
         id: "q1",
