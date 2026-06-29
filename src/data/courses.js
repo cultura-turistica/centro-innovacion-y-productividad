@@ -13,9 +13,9 @@ export const coursesInfo = [
     id: "curso2",
     title: "Diseño de Producto Turístico Territorial",
     category: "Innovación Turística",
-    description: "Metodología de 11 pasos para transformar recursos locales en experiencias de alto valor.",
+    description: "Metodología de 7 pasos para transformar recursos locales en experiencias de alto valor.",
     iconName: "Palette",
-    modules: 11,
+    modules: 7,
     color: "#16A34A",
     status: "published"
   },
