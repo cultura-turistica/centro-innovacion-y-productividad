@@ -70,3 +70,10 @@ parse_svg.js
 pnpm-workspace.yaml
 public/diploma.html
 public/test_certificate.html
+ARCHITECTURE.md
+
+specs/
+parse_test.js
+parse_svg.js
+parse.cjs
+

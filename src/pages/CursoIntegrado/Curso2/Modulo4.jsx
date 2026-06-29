@@ -1,128 +1,211 @@
 import React from 'react';
-import { Sparkles, Heart, Brain, Eye, Ear, Hand, Wind, Coffee, ListChecks, Info } from 'lucide-react';
+import { Home, Coffee, AlertTriangle, Route, Settings, CheckCircle2 } from 'lucide-react';
 
-export default function Modulo4() {
+export default function Modulo4({ headerColor, headerGradient }) {
+  const [selectedOptionId, setSelectedOptionId] = React.useState(null);
+
+  const options = [
+    { id: 'A', text: 'Transporte en vehículo SUV privado con aire acondicionado y conductor bilingüe.', correct: false, reason: 'Esto es un requerimiento estándar para el turismo de lujo. No arruinará la experiencia.' },
+    { id: 'B', text: 'Alojamiento en una suite boutique ecológica con sábanas de 400 hilos.', correct: false, reason: 'Excelente elección. Es un requerimiento alineado perfectamente a su perfil.' },
+    { id: 'C', text: 'Alimentación tradicional en un mercado público sin facilidades de baños limpios.', correct: true, reason: '¡Exacto! El turista de lujo valora la gastronomía auténtica, pero NUNCA transará con la falta de higiene o incomodidad sanitaria. Es su "intransable".' }
+  ];
+
   return (
-    <div className="fade-in">
-      {/* Hero Header */}
+    <div className="fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      
+      {/* Header */}
       <div style={{
-        background: 'linear-gradient(135deg, #032968 0%, #1e3a8a 100%)',
+        background: headerGradient || 'linear-gradient(135deg, #0f766e 0%, #042f2e 100%)',
         padding: '4rem 2rem',
         borderRadius: '0 0 40px 40px',
         color: 'white',
         textAlign: 'center',
         marginBottom: '3rem'
       }}>
-        <h3 style={{fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white'}}>
-          "Diseña la historia que se llevarán a casa"
+        <h3 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white' }}>
+          Establecer Condiciones de Consumo
         </h3>
-        <p style={{fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto'}}>
-          Una experiencia no es lo que haces, es lo que sientes mientras lo haces. Aprende a crear conexiones emocionales profundas.
+        <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto' }}>
+          La "Escenografía y Utilería". Convierte tu diseño en un producto viable y seguro.
         </p>
       </div>
 
-      <div style={{padding: '0 2rem 4rem 2rem'}}>
+      <div style={{ padding: '0 2rem 4rem 2rem' }}>
+
+        {/* Ilustración Vectorial (Escenografía) */}
+        <div style={{ marginTop: '-1.5rem', marginBottom: '3rem', display: 'flex', justifyContent: 'center' }}>
+          <svg viewBox="0 0 800 300" style={{ width: '100%', maxWidth: '900px', height: 'auto', borderRadius: '30px', boxShadow: '0 15px 30px rgba(15,118,110,0.15)', background: 'linear-gradient(to bottom, #f0fdfa, #ccfbf1)' }}>
+            <rect width="800" height="300" fill="transparent" />
+            {/* Sol */}
+            <circle cx="650" cy="80" r="40" fill="#fef08a" />
+            <circle cx="650" cy="80" r="55" fill="#fef08a" opacity="0.4" />
+            {/* Nubes */}
+            <path d="M 150 90 Q 170 70 190 90 Q 220 80 230 100 Q 250 100 240 120 L 140 120 Q 130 100 150 90" fill="#ffffff" opacity="0.8" />
+            <path d="M 500 120 Q 520 100 540 120 Q 570 110 580 130 Q 600 130 590 150 L 490 150 Q 480 130 500 120" fill="#ffffff" opacity="0.6" />
+            {/* Montañas Fondo */}
+            <polygon points="100,250 300,100 500,250" fill="#99f6e4" />
+            <polygon points="400,250 550,140 700,250" fill="#5eead4" />
+            {/* Montañas Frente */}
+            <polygon points="-50,300 150,150 400,300" fill="#2dd4bf" />
+            <polygon points="250,300 450,120 750,300" fill="#14b8a6" />
+            {/* Tienda (Glamping) */}
+            <polygon points="400,280 450,220 500,280" fill="#fef3c7" />
+            <polygon points="450,220 480,240 500,280 470,280" fill="#fde68a" />
+            <polygon points="440,280 450,250 460,280" fill="#92400e" />
+            {/* Árboles Pinos */}
+            <g transform="translate(150, 240)">
+              <polygon points="20,40 10,20 30,20" fill="#0f766e" />
+              <polygon points="20,25 15,10 25,10" fill="#0f766e" />
+              <polygon points="20,15 15,0 25,0" fill="#0f766e" />
+              <rect x="18" y="40" width="4" height="10" fill="#78350f" />
+            </g>
+            <g transform="translate(200, 230) scale(1.2)">
+              <polygon points="20,40 10,20 30,20" fill="#115e59" />
+              <polygon points="20,25 15,10 25,10" fill="#115e59" />
+              <polygon points="20,15 15,0 25,0" fill="#115e59" />
+              <rect x="18" y="40" width="4" height="10" fill="#78350f" />
+            </g>
+            <g transform="translate(600, 250) scale(0.9)">
+              <polygon points="20,40 10,20 30,20" fill="#0f766e" />
+              <polygon points="20,25 15,10 25,10" fill="#0f766e" />
+              <polygon points="20,15 15,0 25,0" fill="#0f766e" />
+              <rect x="18" y="40" width="4" height="10" fill="#78350f" />
+            </g>
+            {/* Suelo */}
+            <rect x="0" y="280" width="800" height="20" fill="#042f2e" />
+          </svg>
+        </div>
         
-        {/* Qué es una experiencia */}
-        <div className="glass-card mb-10" style={{padding: '3rem', borderLeft: '8px solid #fde047', background: '#fffbeb'}}>
-          <blockquote style={{fontSize: '1.3rem', lineStyle: 'italic', color: '#92400e', margin: 0, fontWeight: 500}}>
-            "Una experiencia se forma por la combinación de una actividad, un escenario, la interacción social y la conexión personal. Compromete los sentidos: es física, emocional o espiritual."
-          </blockquote>
-          <cite style={{display: 'block', marginTop: '1rem', fontWeight: 700, color: '#b45309'}}>— Paradigma del Turismo de Experiencias</cite>
+        {/* Analogía */}
+        <div className="theory-block" style={{ borderLeftColor: headerColor || '#0f766e', marginBottom: '4rem' }}>
+          <h4><Settings size={28} /> La Analogía de la Escenografía</h4>
+          <p>
+            Imagina una obra de teatro. Tienes a los mejores actores (los guías) y un guion digno de un Óscar (la experiencia). Pero si el día de la obra, los asientos del público están rotos, la comida de la cafetería está rancia y no hay baños limpios... <strong>la obra será un fracaso.</strong>
+          </p>
+          <p>
+            En turismo, las Condiciones de Consumo (Matriz 4) son esa escenografía. Son los requerimientos <strong>intransables</strong> de alojamiento, comida, transporte y logística que exige tu turista para no quejarse.
+          </p>
         </div>
 
-        {/* La Experiencia Central Table */}
-        <h3 className="mb-6 text-center" style={{color: '#032968'}}>Los 4 Pilares de la Experiencia Central</h3>
-        <div className="glass-card mb-10" style={{padding: 0, overflow: 'hidden'}}>
-          <table style={{width: '100%', borderCollapse: 'collapse'}}>
-            <thead style={{background: '#f8fafc'}}>
-              <tr>
-                <th style={{padding: '1.2rem', textAlign: 'left', color: '#032968'}}>Elemento</th>
-                <th style={{padding: '1.2rem', textAlign: 'left', color: '#032968'}}>Pregunta Guía</th>
-                <th style={{padding: '1.2rem', textAlign: 'left', color: '#032968'}}>Ejemplo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style={{borderBottom: '1px solid #e2e8f0'}}>
-                <td style={{padding: '1.2rem', fontWeight: 800}}><Sparkles size={18} style={{marginRight: '8px', verticalAlign: 'middle'}}/> Memoria</td>
-                <td style={{padding: '1.2rem'}}>¿Qué recuerdo quieres que se lleven?</td>
-                <td style={{padding: '1.2rem', color: '#16A34A'}}>"La noche más estrellada de mi vida"</td>
-              </tr>
-              <tr style={{borderBottom: '1px solid #e2e8f0'}}>
-                <td style={{padding: '1.2rem', fontWeight: 800}}><Heart size={18} style={{marginRight: '8px', verticalAlign: 'middle'}}/> Emoción</td>
-                <td style={{padding: '1.2rem'}}>¿Qué emoción debe prevalecer?</td>
-                <td style={{padding: '1.2rem', color: '#16A34A'}}>Asombro, paz, conexión</td>
-              </tr>
-              <tr style={{borderBottom: '1px solid #e2e8f0'}}>
-                <td style={{padding: '1.2rem', fontWeight: 800}}><Brain size={18} style={{marginRight: '8px', verticalAlign: 'middle'}}/> Aprendizaje</td>
-                <td style={{padding: '1.2rem'}}>¿Qué nuevo conocimiento tendrán?</td>
-                <td style={{padding: '1.2rem', color: '#16A34A'}}>Proceso del cacao, técnicas bioculturales</td>
-              </tr>
-              <tr>
-                <td style={{padding: '1.2rem', fontWeight: 800}}><Eye size={18} style={{marginRight: '8px', verticalAlign: 'middle'}}/> Sentidos</td>
-                <td style={{padding: '1.2rem'}}>¿Qué sentidos explorarán?</td>
-                <td style={{padding: '1.2rem', color: '#16A34A'}}>Vista, oído, tacto, olfato, gusto</td>
-              </tr>
-            </tbody>
-          </table>
+        {/* Las 4 Dimensiones */}
+        <h3 className="mb-6 text-center" style={{ color: headerColor || '#0f766e' }}>Las 4 Dimensiones Clave</h3>
+        
+        <div className="grid-2 mb-10" style={{ gap: '2rem' }}>
+          
+          <div style={{ background: '#f0fdf4', padding: '2rem', borderRadius: '25px', border: '2px solid #bbf7d0' }}>
+            <div style={{ background: '#22c55e', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+              <Home size={24} />
+            </div>
+            <h4 style={{ color: '#166534', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>1. Alojamiento</h4>
+            <p style={{ color: '#15803d', fontSize: '1rem', lineHeight: 1.6 }}>
+              ¿El turista acepta dormir en hamaca o exige habitación privada con agua caliente? Define los "intransables" (Ej. limpieza impecable, mosquiteros).
+            </p>
+          </div>
+
+          <div style={{ background: '#fffbeb', padding: '2rem', borderRadius: '25px', border: '2px solid #fde68a' }}>
+            <div style={{ background: '#f59e0b', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+              <Coffee size={24} />
+            </div>
+            <h4 style={{ color: '#92400e', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>2. Alimentación</h4>
+            <p style={{ color: '#b45309', fontSize: '1rem', lineHeight: 1.6 }}>
+              ¿Son exploradores gastronómicos o prefieren menús internacionales seguros? Considera restricciones dietéticas (vegetarianos, alergias).
+            </p>
+          </div>
+
+          <div style={{ background: '#eff6ff', padding: '2rem', borderRadius: '25px', border: '2px solid #bfdbfe' }}>
+            <div style={{ background: '#3b82f6', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+              <Route size={24} />
+            </div>
+            <h4 style={{ color: '#1e40af', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>3. Actividades</h4>
+            <p style={{ color: '#1d4ed8', fontSize: '1rem', lineHeight: 1.6 }}>
+              ¿Qué nivel de intensidad física soportan? ¿Es una caminata de 1 hora plana o un ascenso de 4 horas? No puedes obligar a la tercera edad a trepar rocas.
+            </p>
+          </div>
+
+          <div style={{ background: '#f5f3ff', padding: '2rem', borderRadius: '25px', border: '2px solid #ddd6fe' }}>
+            <div style={{ background: '#8b5cf6', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+              <Settings size={24} />
+            </div>
+            <h4 style={{ color: '#4c1d95', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>4. Infraestructura</h4>
+            <p style={{ color: '#6d28d9', fontSize: '1rem', lineHeight: 1.6 }}>
+              Vías de acceso, señalización, cobertura móvil, baños públicos y protocolos médicos. ¿Hay señal de celular en caso de emergencia?
+            </p>
+          </div>
+
         </div>
 
-        {/* Case Study: Ruta del Café */}
-        <div style={{background: '#fef2f2', padding: '3rem', borderRadius: '30px', border: '2px solid #ef4444', marginBottom: '3rem'}}>
-           <h4 style={{color: '#991b1b', fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px'}}>
-             <Coffee size={28} /> Caso: Ruta del Café Ancestral - Huila
-           </h4>
-           <p style={{fontSize: '1.1rem', color: '#7f1d1d', fontWeight: 700, marginBottom: '2rem'}}>
-             "Vive el ritual cafetero como lo hacen las familias desde hace 5 generaciones"
-           </p>
-           
-           <div className="grid-2" style={{gap: '2rem'}}>
-              <div className="glass-card" style={{padding: '1.5rem', background: 'white'}}>
-                 <h5 style={{color: '#991b1b', marginBottom: '1rem'}}>Estimulación Sensorial</h5>
-                 <ul style={{listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                    <li>👁️ <strong>Vista:</strong> Paisajes de montañas, sol de la mañana.</li>
-                    <li>👂 <strong>Oído:</strong> Historias del abuelo, canto de pájaros.</li>
-                    <li>✋ <strong>Tacto:</strong> Textura del grano en diferentes etapas.</li>
-                    <li>👃 <strong>Olfato:</strong> Aroma del café tostándose en leña.</li>
-                    <li>👅 <strong>Gusto:</strong> Café recién filtrado con panela.</li>
-                 </ul>
-              </div>
-              <div style={{display: 'flex', alignItems: 'center'}}>
-                 <p style={{color: '#7f1d1d', fontStyle: 'italic'}}>
-                   "Lo que hace especial a esta ruta no es el café, es el sentimiento de pertenencia a una tradición que el turista experimenta al tostar su propio grano."
-                 </p>
-              </div>
-           </div>
-        </div>
+        {/* Ejercicio Práctico */}
+        <div className="interactive-card hover-scale" style={{ background: 'white', borderRadius: '30px', padding: '3rem', border: '2px solid #e2e8f0', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginBottom: '4rem' }}>
+          <h4 style={{ color: '#0f172a', fontSize: '1.6rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <AlertTriangle size={30} color="#eab308" /> Ejercicio Práctico: El Intransable
+          </h4>
+          <p style={{ fontSize: '1.15rem', color: '#475569', marginBottom: '2.5rem', lineHeight: 1.6 }}>
+            Estás diseñando una experiencia para el perfil de <strong>"Turista de Alto Lujo"</strong> (exigen privacidad absoluta, máximo confort y exclusividad). ¿Cuál de las siguientes condiciones de consumo arruinaría por completo su experiencia?
+          </p>
 
-        {/* Tip Box */}
-        <div style={{background: '#ecfdf5', padding: '1.5rem', borderRadius: '15px', border: '1px solid #10b981', display: 'flex', gap: '15px', alignItems: 'center', marginBottom: '3rem'}}>
-           <Info size={24} color="#059669" style={{flexShrink: 0}} />
-           <p style={{color: '#065f46', fontSize: '1rem', margin: 0}}>
-             <strong>Tip de Diseño:</strong> Crea un storyboard visual. Dibuja o busca fotos de las 4 escenas clave de tu experiencia. Si no puedes visualizarlo, el turista tampoco podrá.
-           </p>
-        </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            {options.map(opt => {
+              const isSelected = selectedOptionId === opt.id;
+              let status = 'idle';
+              if (selectedOptionId) {
+                if (isSelected) status = opt.correct ? 'correct' : 'wrong';
+                else if (opt.correct) status = 'correct'; // highlight the correct one if they guess wrong
+              }
 
-        {/* Ejercicio */}
-        <div className="glass-card" style={{padding: '3rem', background: '#032968', color: 'white'}}>
-           <h4 style={{color: '#fde047', fontSize: '1.5rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '12px'}}>
-             <ListChecks size={28} /> Ejercicio: Construcción de Experiencia Central
-           </h4>
-           <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
-              {[
-                "Asigna un nombre tentativo que inspire emoción.",
-                "Describe la memoria principal que quieres dejar (1 frase).",
-                "Lista las 3 emociones principales a generar.",
-                "Identifica 2 nuevos aprendizajes para el visitante.",
-                "Describe la experiencia para cada uno de los 5 sentidos.",
-                "Dibuja o describe 4 'Escenas' de la experiencia completa."
-              ].map((step, idx) => (
-                <div key={idx} style={{display: 'flex', gap: '15px', alignItems: 'flex-start'}}>
-                   <div style={{background: '#fde047', color: '#032968', width: '30px', height: '30px', borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800}}>{idx+1}</div>
-                   <p style={{margin: 0, fontSize: '1.1rem', opacity: 0.95}}>{step}</p>
+              return (
+                <div 
+                  key={opt.id}
+                  onClick={() => !selectedOptionId && setSelectedOptionId(opt.id)}
+                  style={{ 
+                    padding: '1.5rem', 
+                    borderRadius: '15px', 
+                    border: `2px solid ${status === 'idle' ? '#e2e8f0' : status === 'correct' ? '#22c55e' : status === 'wrong' ? '#ef4444' : '#e2e8f0'}`,
+                    background: status === 'idle' ? 'white' : status === 'correct' ? '#f0fdf4' : status === 'wrong' ? '#fef2f2' : 'white',
+                    cursor: selectedOptionId ? 'default' : 'pointer',
+                    transition: 'all 0.3s'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <div style={{ 
+                      width: '45px', height: '45px', borderRadius: '50%', 
+                      background: status === 'idle' ? '#f1f5f9' : status === 'correct' ? '#22c55e' : status === 'wrong' ? '#ef4444' : '#f1f5f9',
+                      color: status === 'idle' ? '#64748b' : 'white',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '1.2rem',
+                      flexShrink: 0
+                    }}>{opt.id}</div>
+                    <span style={{ fontSize: '1.1rem', color: '#1e293b', flex: 1, fontWeight: isSelected ? 700 : 500 }}>{opt.text}</span>
+                  </div>
+                  {isSelected && (
+                    <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'white', borderRadius: '10px', color: opt.correct ? '#15803d' : '#b91c1c', fontSize: '1rem', borderLeft: `4px solid ${opt.correct ? '#15803d' : '#b91c1c'}` }}>
+                      {opt.reason}
+                    </div>
+                  )}
                 </div>
-              ))}
-           </div>
+              );
+            })}
+          </div>
+          
+          {selectedOptionId && (
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <button 
+                onClick={() => setSelectedOptionId(null)}
+                style={{ background: '#f1f5f9', color: '#475569', border: 'none', padding: '10px 20px', borderRadius: '20px', cursor: 'pointer', fontWeight: 600 }}
+              >
+                Reintentar Ejercicio
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Check de Validación */}
+        <div style={{ background: '#f8fafc', border: '2px dashed #94a3b8', borderRadius: '25px', padding: '2rem', display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <div style={{ background: '#cbd5e1', color: 'white', borderRadius: '50%', padding: '10px' }}><CheckCircle2 size={40} color="#0f172a" /></div>
+          <div>
+            <h4 style={{ color: '#0f172a', fontWeight: 800, marginBottom: '0.5rem', fontSize: '1.2rem' }}>Hito de Diseño Superado</h4>
+            <p style={{ color: '#475569', fontSize: '1rem', margin: 0 }}>
+              Al diligenciar la <strong>Matriz 4</strong> con estos elementos, culmina formalmente la <b>Fase 1 (Diseño)</b>. Ya tienes el qué y el para quién. ¡Es hora de pasar a la Fase 2 (Planificación) para construirlo!
+            </p>
+          </div>
         </div>
 
       </div>

@@ -3,12 +3,12 @@ import { Camera, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Modules for Curso Fotografía
-import Modulo1 from './CursoIntegrado/Curso3/Modulo1';
-import Modulo2 from './CursoIntegrado/Curso3/Modulo2';
-import Modulo3 from './CursoIntegrado/Curso3/Modulo3';
-import Modulo4 from './CursoIntegrado/Curso3/Modulo4';
-import Modulo5 from './CursoIntegrado/Curso3/Modulo5';
-import Modulo6 from './CursoIntegrado/Curso3/Modulo6';
+import Modulo1 from './CursoIntegrado/Curso4/Modulo1';
+import Modulo2 from './CursoIntegrado/Curso4/Modulo2';
+import Modulo3 from './CursoIntegrado/Curso4/Modulo3';
+import Modulo4 from './CursoIntegrado/Curso4/Modulo4';
+import Modulo5 from './CursoIntegrado/Curso4/Modulo5';
+import Modulo6 from './CursoIntegrado/Curso4/Modulo6';
 
 export default function Curso4() {
   const navigate = useNavigate();

@@ -1,158 +1,176 @@
 import React from 'react';
-import { Layers, AlertCircle, CheckCircle2, XCircle, ArrowRight, ListChecks, Info, Settings } from 'lucide-react';
+import { FileText, Megaphone, Users, UserCheck, Smile, Frown, CheckCircle, ClipboardList } from 'lucide-react';
+import FlipPillarCard from '../../../components/FlipPillarCard';
+import afroAvatar from '../../../assets/avatars/afro.svg';
+import hipsterAvatar from '../../../assets/avatars/hipster.svg';
+import oldmanAvatar from '../../../assets/avatars/oldman.svg';
+import tryoutAvatar from '../../../assets/avatars/tryout.svg';
 
-export default function Modulo6() {
+export default function Modulo6({ headerColor, headerGradient }) {
   return (
-    <div className="fade-in">
-      {/* Hero Header */}
+    <div className="fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      
+      {/* Header */}
       <div style={{
-        background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
+        background: headerGradient || 'linear-gradient(135deg, #c026d3 0%, #701a75 100%)',
         padding: '4rem 2rem',
         borderRadius: '0 0 40px 40px',
         color: 'white',
         textAlign: 'center',
         marginBottom: '3rem'
       }}>
-        <h3 style={{fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white'}}>
-          "Cada eslabón cuenta: La Cadena de Valor"
+        <h3 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white' }}>
+          Ficha de Producto y Validación
         </h3>
-        <p style={{fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto'}}>
-          Un producto turístico es tan fuerte como su eslabón más débil. Aprende a identificar y cerrar las brechas de tu destino.
+        <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto' }}>
+          Empaqueta tu experiencia y ponla a prueba antes de gastar un solo peso en publicidad.
         </p>
       </div>
 
-      <div style={{padding: '0 2rem 4rem 2rem'}}>
+      <div style={{ padding: '0 2rem 4rem 2rem' }}>
         
-        {/* Qué es la Cadena de Valor */}
-        <div className="glass-card mb-10" style={{padding: '2.5rem', borderLeft: '8px solid #64748b'}}>
-          <h4 style={{color: '#1e293b', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px'}}>
-            <Layers size={24} /> La Red de Vínculos
-          </h4>
-          <p style={{fontSize: '1.1rem', color: '#334155'}}>
-            La cadena de valor no es lineal; es una <strong>red de servicios</strong> (transporte, alojamiento, guiado) que el visitante experimenta. Si uno falla, la experiencia completa se ve comprometida.
+        {/* Ilustración Vectorial Profesional (Estilo Lápiz/Hand-drawn) */}
+        <div style={{ marginTop: '-1.5rem', marginBottom: '4rem', display: 'flex', justifyContent: 'center' }}>
+          <img 
+            src="https://illustrations.popsy.co/purple/product-launch.svg" 
+            alt="Lanzamiento de producto y validación" 
+            style={{ width: '100%', maxWidth: '500px', height: 'auto', dropShadow: '0 20px 40px rgba(0,0,0,0.1)' }} 
+          />
+        </div>
+
+        {/* Analogía */}
+        <div className="theory-block" style={{ borderLeftColor: headerColor || '#c026d3', marginBottom: '4rem', marginTop: '2rem' }}>
+          <h4><Users size={28} /> La Analogía del Ensayo General</h4>
+          <p style={{ marginBottom: '1.5rem', lineHeight: '1.8' }}>
+            Imagina que un teatro (tu destino turístico) abre sus puertas el día del estreno sin haber hecho un ensayo general con vestuario. Lo más probable es que los actores olviden sus líneas y los reflectores fallen.
+          </p>
+          <p style={{ lineHeight: '1.8' }}>
+            En turismo, la <strong>Validación en el mercado</strong> es tu ensayo general. No se trata de "vender", sino de invitar a tu público objetivo (o a operadores turísticos) a vivir la experiencia gratis para que critiquen duramente y puedas corregir errores antes del lanzamiento oficial.
           </p>
         </div>
 
-        {/* Eslabones Típicos Grid */}
-        <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '3rem'}}>
-          {[
-            "Transporte Local", "Alojamiento", "Alimentación", "Atractivos", 
-            "Actividades", "Guiado", "Comercialización", "Seguros"
-          ].map((item, i) => (
-            <div key={i} style={{background: 'white', padding: '1rem', borderRadius: '12px', border: '1px solid #e2e8f0', textAlign: 'center', fontWeight: 600, color: '#475569'}}>
-               {item}
-            </div>
-          ))}
-        </div>
-
-        {/* Case Study: Ruta de las Mariposas */}
-        <div style={{background: '#f8fafc', padding: '3rem', borderRadius: '30px', border: '2px solid #64748b', marginBottom: '3rem'}}>
-           <h4 style={{color: '#1e293b', fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px'}}>
-             <Settings size={28} /> Caso: Ruta de las Mariposas - Meta
-           </h4>
-           
-           <div className="grid-2" style={{gap: '2rem'}}>
-              <div>
-                 <h5 style={{color: '#475569', marginBottom: '1rem', fontWeight: 800}}>Cadena de Valor Ideal</h5>
-                 <ul style={{listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.95rem'}}>
-                    <li>🚌 Transporte: Bogotá → Villavicencio → Comunidad</li>
-                    <li>🏠 Alojamiento: Eco-lodge comunitario</li>
-                    <li>🍽️ Alimentación: Comidas típicas locales</li>
-                    <li>🦋 Atractivos: Santuario de mariposas</li>
-                    <li>👨‍🏫 Guiado: 2 guías certificados</li>
-                 </ul>
-              </div>
-              <div>
-                 <h5 style={{color: '#e11d48', marginBottom: '1rem', fontWeight: 800}}>Brechas Identificadas (Puntos Críticos)</h5>
-                 <ul style={{listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.95rem'}}>
-                    <li style={{color: '#e11d48'}}><XCircle size={14} inline style={{marginRight: '6px'}}/> Solo 1 guía certificado (necesitan 3).</li>
-                    <li style={{color: '#e11d48'}}><XCircle size={14} inline style={{marginRight: '6px'}}/> Website no funcional.</li>
-                    <li style={{color: '#e11d48'}}><XCircle size={14} inline style={{marginRight: '6px'}}/> Baños del eco-lodge requieren renovación.</li>
-                    <li style={{color: '#e11d48'}}><XCircle size={14} inline style={{marginRight: '6px'}}/> Falta señalización en senderos.</li>
-                 </ul>
-              </div>
-           </div>
-        </div>
-
-        {/* Análisis de Brechas Table */}
-        <h3 className="mb-6 text-center" style={{color: '#032968'}}>Matriz de Análisis de Brechas</h3>
-        <div className="glass-card mb-10" style={{padding: 0, overflow: 'hidden'}}>
-          <table style={{width: '100%', borderCollapse: 'collapse'}}>
-            <thead style={{background: '#f8fafc'}}>
-              <tr>
-                <th style={{padding: '1.2rem', textAlign: 'left', color: '#032968'}}>Eslabón</th>
-                <th style={{padding: '1.2rem', textAlign: 'left', color: '#032968'}}>Oferta Necesaria</th>
-                <th style={{padding: '1.2rem', textAlign: 'left', color: '#032968'}}>Brecha</th>
-                <th style={{padding: '1.2rem', textAlign: 'left', color: '#032968'}}>Prioridad</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style={{borderBottom: '1px solid #e2e8f0'}}>
-                <td style={{padding: '1.2rem', fontWeight: 800}}>Alojamiento</td>
-                <td style={{padding: '1.2rem'}}>10 habs con baño privado</td>
-                <td style={{padding: '1.2rem'}}>Faltan 5 habitaciones + baños</td>
-                <td style={{padding: '1.2rem'}}><span style={{background: '#fee2e2', color: '#ef4444', padding: '4px 12px', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 800}}>ALTA</span></td>
-              </tr>
-              <tr style={{borderBottom: '1px solid #e2e8f0'}}>
-                <td style={{padding: '1.2rem', fontWeight: 800}}>Guiado</td>
-                <td style={{padding: '1.2rem'}}>3 guías bilingües</td>
-                <td style={{padding: '1.2rem'}}>Faltan 2 guías + certificación</td>
-                <td style={{padding: '1.2rem'}}><span style={{background: '#fee2e2', color: '#ef4444', padding: '4px 12px', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 800}}>ALTA</span></td>
-              </tr>
-              <tr>
-                <td style={{padding: '1.2rem', fontWeight: 800}}>Señalización</td>
-                <td style={{padding: '1.2rem'}}>15 puntos marcados</td>
-                <td style={{padding: '1.2rem'}}>Diseño e instalación</td>
-                <td style={{padding: '1.2rem'}}><span style={{background: '#fef3c7', color: '#d97706', padding: '4px 12px', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 800}}>MEDIA</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        {/* Tipos de Brechas Cards */}
-        <div className="grid-3 mb-10" style={{gap: '1.5rem'}}>
-          <div style={{padding: '1.5rem', background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0'}}>
-             <h5 style={{color: '#032968', marginBottom: '0.5rem'}}>Infraestructura</h5>
-             <p style={{fontSize: '0.85rem', color: '#64748b'}}>Faltan instalaciones, servicios públicos o conectividad física.</p>
-          </div>
-          <div style={{padding: '1.5rem', background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0'}}>
-             <h5 style={{color: '#032968', marginBottom: '0.5rem'}}>Capacidad</h5>
-             <p style={{fontSize: '0.85rem', color: '#64748b'}}>Falta de personal entrenado, bilingüe o certificado.</p>
-          </div>
-          <div style={{padding: '1.5rem', background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0'}}>
-             <h5 style={{color: '#032968', marginBottom: '0.5rem'}}>Calidad</h5>
-             <p style={{fontSize: '0.85rem', color: '#64748b'}}>Los servicios existen pero no cumplen con el estándar del flujo.</p>
-          </div>
-        </div>
-
-        {/* Tip Box */}
-        <div style={{background: '#fefce8', padding: '1.5rem', borderRadius: '15px', border: '1px solid #facc15', display: 'flex', gap: '15px', alignItems: 'center', marginBottom: '3rem'}}>
-           <Info size={24} color="#a16207" style={{flexShrink: 0}} />
-           <p style={{color: '#854d0e', fontSize: '1rem', margin: 0}}>
-             <strong>Criterio de Críticidad:</strong> Prioriza las brechas sin las cuales el producto NO puede operar. Lo "deseable" puede esperar a una segunda fase.
-           </p>
-        </div>
-
-        {/* Ejercicio */}
-        <div className="glass-card" style={{padding: '3rem', background: '#1e293b', color: 'white'}}>
-           <h4 style={{color: '#94a3b8', fontSize: '1.5rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '12px'}}>
-             <ListChecks size={28} /> Ejercicio: Mapeo de Tu Cadena de Valor
-           </h4>
-           <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
-              {[
-                "Dibuja el gráfico de tu cadena de valor ideal.",
-                "Identifica la oferta actual (qué existe hoy y quién lo ofrece).",
-                "Define la oferta necesaria para satisfacer a tu Buyer Persona.",
-                "Identifica las brechas (qué falta o qué está débil).",
-                "Prioriza las brechas (Alta, Media, Baja) según impacto y urgencia.",
-                "Convierte las brechas en acciones concretas para tu plan de trabajo."
-              ].map((step, idx) => (
-                <div key={idx} style={{display: 'flex', gap: '15px', alignItems: 'flex-start'}}>
-                   <div style={{background: '#94a3b8', color: '#1e293b', width: '30px', height: '30px', borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800}}>{idx+1}</div>
-                   <p style={{margin: 0, fontSize: '1.1rem', opacity: 0.95}}>{step}</p>
+        {/* Ficha de Producto - Caso Práctico */}
+        <div style={{ background: 'white', borderRadius: '30px', padding: '3rem', border: '2px solid #e9d5ff', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginBottom: '4rem' }}>
+          <h4 style={{ color: '#86198f', fontSize: '1.8rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <FileText size={32} /> La Ficha de Producto (Caso: Ruta del Cacao)
+          </h4>
+          <p style={{ color: '#701a75', fontSize: '1.15rem', marginBottom: '2.5rem', borderBottom: '2px solid #f3e8ff', paddingBottom: '2rem' }}>
+            En lugar de teoría, veamos cómo se ve una Ficha de Producto real. Este es el "Acta de Nacimiento" de tu experiencia, el documento maestro que usarás para salir a vender.
+          </p>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            {/* Columna Izquierda */}
+            <div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Nombre de la Experiencia:</strong>
+                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', fontWeight: 600, fontSize: '1.1rem', border: '1px solid #f3e8ff' }}>
+                  Ruta del Cacao Ancestral
                 </div>
-              ))}
-           </div>
+              </div>
+              
+              <div style={{ marginBottom: '1.5rem' }}>
+                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Promesa de Valor:</strong>
+                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', border: '1px solid #f3e8ff', lineHeight: 1.6 }}>
+                  Conviértete en cacaotero por un día, cosecha con campesinos locales y prepara tu propio chocolate desde la semilla.
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '1.5rem' }}>
+                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Perfil del Turista (Buyer Persona):</strong>
+                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', border: '1px solid #f3e8ff' }}>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.7 }}>
+                    <li>Familias urbanas con niños (8-15 años).</li>
+                    <li>Buscan actividades educativas y seguras en la naturaleza.</li>
+                    <li>Presupuesto medio-alto.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Columna Derecha */}
+            <div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Inventario de Brechas (Resueltas):</strong>
+                <div style={{ background: '#fff1f2', padding: '15px 20px', borderRadius: '15px', color: '#be123c', border: '1px solid #ffe4e6' }}>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.7 }}>
+                    <li>Falta baño cerca al cultivo → <strong>Se instaló baño ecológico.</strong></li>
+                    <li>Mosquitos molestos → <strong>Se incluye repelente orgánico en el kit.</strong></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '1.5rem' }}>
+                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Mapeo de Actores Clave:</strong>
+                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', border: '1px solid #f3e8ff', lineHeight: 1.6 }}>
+                  Don José (Guía Finca), Doña Marta (Almuerzo típico), Transportes El Rápido (Logística).
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '1.5rem' }}>
+                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Canales de Comercialización:</strong>
+                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', border: '1px solid #f3e8ff', lineHeight: 1.6 }}>
+                  Instagram Ads (enfocado a madres), Agencias especializadas en turismo familiar.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Protocolo de Validación */}
+        <div style={{ background: '#fdf4ff', border: '2px solid #fbcfe8', borderRadius: '30px', padding: '3rem', marginBottom: '4rem' }}>
+          <h4 style={{ color: '#be185d', fontSize: '1.5rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <ClipboardList size={28} /> Protocolo de Validación: Paso a Paso
+          </h4>
+          <p style={{ color: '#9d174d', fontSize: '1.1rem', marginBottom: '1.5rem' }}>
+            Sigue este protocolo estándar para que tus sesiones de validación (ya sea Focus Group o Try-Out) arrojen datos útiles y no solo cumplidos de amigos.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
+            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '5px solid #ec4899', boxShadow: '0 5px 15px rgba(0,0,0,0.03)' }}>
+              <h5 style={{ color: '#db2777', fontSize: '1.2rem', marginBottom: '0.5rem' }}>1. Selección Honesta del Perfil</h5>
+              <p style={{ color: '#831843', margin: 0 }}>Invita únicamente a personas que coincidan con tu Buyer Persona. Evita familiares o amigos cercanos que sesguen las respuestas.</p>
+            </div>
+            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '5px solid #d946ef', boxShadow: '0 5px 15px rgba(0,0,0,0.03)' }}>
+              <h5 style={{ color: '#c026d3', fontSize: '1.2rem', marginBottom: '0.5rem' }}>2. Exposición Neutra</h5>
+              <p style={{ color: '#4a044e', margin: 0 }}>Muestra el Storyboard o realiza el recorrido sin "vender" la idea ni justificar los errores. Deja que ellos experimenten el producto tal cual es.</p>
+            </div>
+            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '5px solid #a855f7', boxShadow: '0 5px 15px rgba(0,0,0,0.03)' }}>
+              <h5 style={{ color: '#9333ea', fontSize: '1.2rem', marginBottom: '0.5rem' }}>3. Recolección Estructurada de Feedback</h5>
+              <p style={{ color: '#4c1d95', margin: 0 }}>Usa preguntas abiertas pero específicas: "¿Qué fue lo más frustrante?", "¿En qué momento te sentiste inseguro?", "¿Qué le falta a esta experiencia para que pagues por ella?".</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Instrumentos de Validación */}
+        <h3 className="mb-8 text-center" style={{ color: headerColor || '#c026d3', fontSize: '2rem' }}>Técnicas de Validación (Ensayo General)</h3>
+        
+        <div className="grid-2 mb-10" style={{ gap: '3rem', marginBottom: '5rem' }}>
+          {/* Tarjeta Try-Out (Avatar de Dicebear) */}
+          <div style={{ background: '#fce7f3', border: '3px solid #fbcfe8', borderRadius: '30px', padding: '3rem 2rem', textAlign: 'center', transition: 'transform 0.3s' }} className="hover-scale">
+            <img src={tryoutAvatar} alt="Try Out" style={{ width: '100px', height: '100px', borderRadius: '50%', margin: '0 auto 1.5rem auto', boxShadow: '0 10px 20px rgba(219,39,119,0.3)', border: '4px solid white' }} />
+            <h4 style={{ color: '#9d174d', fontSize: '1.6rem', marginBottom: '1rem' }}>Try-Out (Visita Física)</h4>
+            <p style={{ color: '#be185d', fontWeight: 'bold', marginBottom: '1.5rem' }}>La prueba de fuego en campo</p>
+            <ul style={{ textAlign: 'left', color: '#831843', fontSize: '1.05rem', lineHeight: 1.8, background: 'white', padding: '1.5rem', borderRadius: '15px' }}>
+              <li style={{ marginBottom: '10px' }}>Se invita a clientes reales a hacer el recorrido físicamente.</li>
+              <li style={{ marginBottom: '10px' }}>Evalúan el estado de vías, atención y narrativa.</li>
+              <li>Llenan una encuesta de calidad al final de la experiencia.</li>
+            </ul>
+          </div>
+
+          {/* Tarjeta Focus Group (Caritas grupales - 3 personas diversas) */}
+          <div style={{ background: '#f3e8ff', border: '3px solid #e9d5ff', borderRadius: '30px', padding: '3rem 2rem', textAlign: 'center', transition: 'transform 0.3s' }} className="hover-scale">
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+              <img src={oldmanAvatar} alt="Persona Mayor" style={{ width: '90px', height: '90px', borderRadius: '50%', border: '4px solid white', zIndex: 1, boxShadow: '-5px 10px 20px rgba(147,51,234,0.2)' }} />
+              <img src={afroAvatar} alt="Persona Afro" style={{ width: '90px', height: '90px', borderRadius: '50%', border: '4px solid white', marginLeft: '-25px', zIndex: 2, boxShadow: '0 10px 20px rgba(147,51,234,0.3)' }} />
+              <img src={hipsterAvatar} alt="Persona Hipster" style={{ width: '90px', height: '90px', borderRadius: '50%', border: '4px solid white', marginLeft: '-25px', zIndex: 3, boxShadow: '5px 10px 20px rgba(147,51,234,0.2)' }} />
+            </div>
+            <h4 style={{ color: '#581c87', fontSize: '1.6rem', marginBottom: '1rem' }}>Focus Group</h4>
+            <p style={{ color: '#7e22ce', fontWeight: 'bold', marginBottom: '1.5rem' }}>Validación grupal en sala</p>
+            <ul style={{ textAlign: 'left', color: '#4c1d95', fontSize: '1.05rem', lineHeight: 1.8, background: 'white', padding: '1.5rem', borderRadius: '15px' }}>
+              <li style={{ marginBottom: '10px' }}>Reunión presencial o virtual con varias personas del target.</li>
+              <li style={{ marginBottom: '10px' }}>Se expone la experiencia con fotos/videos y el Storyboard.</li>
+              <li>Se debate en grupo, se piden críticas y se proponen mejoras.</li>
+            </ul>
+          </div>
         </div>
 
       </div>

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import img_0 from '../../../assets/fotografia/sim_nature_bg.webp';
+import img_1 from '../../../assets/fotografia/sim_bird_transparent.webp';
+import img_2 from '../../../assets/fotografia/sim_leaves_transparent.webp';
 import { Camera, Settings, Aperture, Clock, Sun, Image as ImageIcon, Play } from 'lucide-react';
 
 export default function Modulo6() {
@@ -132,7 +135,7 @@ export default function Modulo6() {
 
               {/* Layer 1: Background (Nature/Forest) */}
               <img 
-                src="/images/sim_nature_bg.webp" 
+                src={img_0} 
                 alt="Fondo Selva" 
                 style={{
                   position: 'absolute', top: '-5%', left: '-5%', width: '110%', height: '110%', 
@@ -149,7 +152,7 @@ export default function Modulo6() {
                 transition: 'filter 0.3s ease'
               }}>
                 <img 
-                  src="/images/sim_bird_transparent.webp" 
+                  src={img_1} 
                   alt="Colibrí" 
                   style={{
                     width: '100%', height: '100%', display: 'block',
@@ -161,7 +164,7 @@ export default function Modulo6() {
 
               {/* Layer 3: Foreground (Leaves/Flower) */}
               <img 
-                src="/images/sim_leaves_transparent.webp" 
+                src={img_2} 
                 alt="Hojas Primer Plano" 
                 style={{
                   position: 'absolute', bottom: '-20%', right: '-10%', width: '70%', height: 'auto',

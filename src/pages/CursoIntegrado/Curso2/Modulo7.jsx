@@ -1,132 +1,139 @@
-import React from 'react';
-import { Leaf, Globe, Landmark, Users, DollarSign, RotateCcw, Award, ShieldCheck, ListChecks, Info } from 'lucide-react';
+import React, { useState } from 'react';
+import { Map, CalendarClock, TrendingUp, CheckCircle, LineChart, Target, Crosshair, Ruler, CheckSquare, Lightbulb, Clock } from 'lucide-react';
+import MatchPuzzle from '../../../components/MatchPuzzle';
+import PodcastPlayer from '../../../components/PodcastPlayer';
 
-export default function Modulo7() {
+export default function Modulo7({ headerColor, headerGradient }) {
+  const [activeStep, setActiveStep] = useState(0);
+
+  const smartSteps = [
+    { title: "Específica (S)", desc: "No digas 'mejorar baños'. Di 'instalar 2 baños con rampa en la finca X'.", icon: <Crosshair size={20} /> },
+    { title: "Medible (M)", desc: "¿Cómo sabes que se logró? Ejemplo: '100% de la obra terminada e inspeccionada'.", icon: <Ruler size={20} /> },
+    { title: "Alcanzable (A)", desc: "¿Tienes el dinero y el permiso para hacerlo? Si no, cambia la meta.", icon: <CheckSquare size={20} /> },
+    { title: "Relevante (R)", desc: "¿Realmente soluciona el problema de nuestro turista objetivo?", icon: <Lightbulb size={20} /> },
+    { title: "Tiempo (T)", desc: "Fecha límite exacta. Ej: 'Antes del 15 de Octubre, previo a temporada alta'.", icon: <Clock size={20} /> }
+  ];
+
+  const smartPuzzlePairs = [
+    { id: 's', term: 'S - Específica', definition: 'Instalar 3 señales bilingües en el sendero.', termBg: '#fee2e2', defBg: 'white' },
+    { id: 'm', term: 'M - Medible', definition: 'Llegar a 50 encuestas con 90% de aprobación.', termBg: '#fef3c7', defBg: 'white' },
+    { id: 'a', term: 'A - Alcanzable', definition: 'Tengo $1M ahorrado para comprar las carpas.', termBg: '#dcfce7', defBg: 'white' },
+    { id: 'r', term: 'R - Relevante', definition: 'Capacitar guías atrae más turistas extranjeros.', termBg: '#e0e7ff', defBg: 'white' },
+    { id: 't', term: 'T - Tiempo', definition: 'Implementar el menú antes del 15 de Noviembre.', termBg: '#f3e8ff', defBg: 'white' }
+  ];
+
   return (
-    <div className="fade-in">
-      {/* Hero Header */}
+    <div className="fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      
+      {/* Header */}
       <div style={{
-        background: 'linear-gradient(135deg, #065f46 0%, #064e3b 100%)',
+        background: headerGradient || 'linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%)',
         padding: '4rem 2rem',
         borderRadius: '0 0 40px 40px',
         color: 'white',
         textAlign: 'center',
         marginBottom: '3rem'
       }}>
-        <h3 style={{fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white'}}>
-          "Sostenibilidad: El Corazón del Producto"
+        <h3 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white' }}>
+          Plan de Trabajo y Seguimiento
         </h3>
-        <p style={{fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto'}}>
-          No es un "plus", es el estándar. Aprende a aplicar los criterios globales de sostenibilidad de la GSTC en tu territorio.
+        <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto' }}>
+          Garantiza que el proyecto no se quede en el papel. Acciones concretas y presupuestos.
         </p>
       </div>
 
-      <div style={{padding: '0 2rem 4rem 2rem'}}>
+      <div style={{ padding: '0 2rem 4rem 2rem' }}>
+
+        <PodcastPlayer
+          title="Por qué mueren los proyectos"
+          subtitle="Audio Instructor"
+          audioSrc="/audio/C2-M7.wav"
+          transcript={<p>Para cerrar, quiero hablarles de por qué la mayoría de los proyectos turísticos fracasan en la fase de implementación. No es por falta de pasión, ni siquiera por falta de dinero. Fracasan porque se quedan en "buenas intenciones".<br/><br/>Reunirse con la comunidad y decir "vamos a mejorar el servicio al cliente" es una buena intención, pero es gaseoso, nadie sabe qué hacer el lunes por la mañana. En cambio, decir "María capacitará a 5 guías en manejo de quejas este viernes a las 4 de la tarde en el salón comunal" es una acción. Eso es la metodología S.M.A.R.T: quitarle el romanticismo a los planes y ponerles responsables, fechas límite y números que se puedan medir. Las ideas maravillosas sin un cronograma exacto, son solo alucinaciones. A continuación, pondrás a prueba tu capacidad de convertir ideas abstractas en acciones reales.</p>}
+          color={headerColor || '#b91c1c'}
+        />
+
+        {/* Foto Real de Objetivo (Unsplash) */}
+        <div style={{ marginTop: '2rem', marginBottom: '4rem', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ width: '100%', maxWidth: '800px', height: '350px', borderRadius: '30px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.15)' }}>
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Darts_in_a_dartboard.jpg/1280px-Darts_in_a_dartboard.jpg" 
+              alt="Objetivo SMART" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+          </div>
+        </div>
         
-        {/* Definición Transversal */}
-        <div className="glass-card mb-10" style={{padding: '2.5rem', borderLeft: '8px solid #10b981', background: '#f0fdf4'}}>
-          <blockquote style={{fontSize: '1.2rem', color: '#065f46', margin: 0, fontWeight: 500}}>
-            "El turismo sostenible consiste en crear mejores lugares para visitar y mejores lugares para vivir."
-          </blockquote>
-          <p style={{marginTop: '1rem', fontSize: '1rem', color: '#166534'}}>
-            La sostenibilidad es un enfoque <strong>transversal</strong>: impacta la economía, la cultura y el medio ambiente de forma simultánea.
+        {/* Analogía */}
+        <div className="theory-block" style={{ borderLeftColor: headerColor || '#b91c1c' }}>
+          <h4><Map size={28} /> La Analogía del GPS</h4>
+          <p>
+            Imagina que estás en un viaje por carretera. El diseño del producto es saber a dónde vas (la playa). Las brechas son los obstáculos en el camino. <strong>El Plan de Trabajo es tu GPS</strong>: te dice exactamente qué ruta tomar, cuánto combustible (presupuesto) necesitas y a qué hora vas a llegar.
+          </p>
+          <p>
+            Sin el GPS (Matriz 7), el proyecto se perderá en promesas vacías y las brechas nunca se cerrarán.
           </p>
         </div>
 
-        {/* GSTC 4 Pillars */}
-        <h3 className="mb-6 text-center" style={{color: '#064e3b'}}>Los 4 Pilares GSTC para Destinos</h3>
-        <div className="grid-2 mb-10" style={{gap: '1.5rem'}}>
-          <div className="glass-card" style={{padding: '2rem'}}>
-            <div style={{display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem'}}>
-              <Landmark size={24} color="#059669" />
-              <h4 style={{color: '#064e3b', margin: 0}}>Gestión Sostenible</h4>
-            </div>
-            <p style={{fontSize: '0.9rem', color: '#475569'}}>Gobernanza, planificación y monitoreo. ¿Cómo se organiza el destino para durar en el tiempo?</p>
-          </div>
-          <div className="glass-card" style={{padding: '2rem'}}>
-            <div style={{display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem'}}>
-              <DollarSign size={24} color="#059669" />
-              <h4 style={{color: '#064e3b', margin: 0}}>Beneficios Económicos</h4>
-            </div>
-            <p style={{fontSize: '0.9rem', color: '#475569'}}>Impacto directo en la comunidad local: empleo digno, compras locales y reparto equitativo.</p>
-          </div>
-          <div className="glass-card" style={{padding: '2rem'}}>
-            <div style={{display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem'}}>
-              <Users size={24} color="#059669" />
-              <h4 style={{color: '#064e3b', margin: 0}}>Sentido de Lugar</h4>
-            </div>
-            <p style={{fontSize: '0.9rem', color: '#475569'}}>Protección del patrimonio cultural y autenticidad. Respeto por las tradiciones y la identidad.</p>
-          </div>
-          <div className="glass-card" style={{padding: '2rem'}}>
-            <div style={{display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem'}}>
-              <Leaf size={24} color="#059669" />
-              <h4 style={{color: '#064e3b', margin: 0}}>Sostenibilidad Ambiental</h4>
-            </div>
-            <p style={{fontSize: '0.9rem', color: '#475569'}}>Gestión de residuos, conservación de biodiversidad y eficiencia en el uso de agua y energía.</p>
-          </div>
-        </div>
-
-        {/* Case Study: Amazonas */}
-        <div style={{background: '#f8fafc', padding: '3rem', borderRadius: '30px', border: '1px solid #059669', marginBottom: '3rem'}}>
-           <h4 style={{color: '#064e3b', fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px'}}>
-             <Award size={28} /> Caso: Comunidad El Paraíso - Amazonas
-           </h4>
-           <div className="grid-2" style={{gap: '2rem'}}>
-              <ul style={{listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.95rem'}}>
-                 <li>✅ <strong>Económico:</strong> 80% de ingresos quedan en la comunidad.</li>
-                 <li>✅ <strong>Cultural:</strong> Historias contadas por mayores (Sabedores).</li>
-                 <li>✅ <strong>Ambiental:</strong> Carga máxima de 20 visitantes/día. Sin plásticos.</li>
-              </ul>
-              <div className="glass-card" style={{background: '#065f46', color: 'white', padding: '2rem', textAlign: 'center'}}>
-                 <ShieldCheck size={40} style={{margin: '0 auto 1rem auto'}} />
-                 <p style={{fontWeight: 700}}>Resultado Impactante</p>
-                 <p style={{fontSize: '0.85rem', opacity: 0.9}}>Certificación TourCert y aumento del 40% en visitantes de alto valor.</p>
+        {/* Metodología SMART Interactiva */}
+        <h3 className="mb-6 text-center" style={{ color: headerColor || '#b91c1c' }}>Acciones S.M.A.R.T.</h3>
+        
+        <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', marginBottom: '4rem' }}>
+           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {smartSteps.map((step, i) => (
+                <div 
+                  key={i} 
+                  onClick={() => setActiveStep(i)}
+                  style={{ 
+                    padding: '1rem 1.5rem', 
+                    background: activeStep === i ? (headerColor || '#b91c1c') : '#f8fafc', 
+                    color: activeStep === i ? 'white' : '#475569', 
+                    borderRadius: '15px', 
+                    cursor: 'pointer', 
+                    fontWeight: activeStep === i ? 800 : 500,
+                    transition: 'all 0.3s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '15px'
+                  }}
+                >
+                  {step.icon}
+                  <span>{step.title}</span>
+                </div>
+              ))}
+           </div>
+           <div style={{ flex: 1.5, background: '#fef2f2', border: '2px dashed #fca5a5', padding: '3rem', borderRadius: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div>
+                <h4 style={{ color: '#991b1b', fontSize: '1.8rem', fontWeight: 900, marginBottom: '1rem' }}>{smartSteps[activeStep].title}</h4>
+                <p style={{ color: '#7f1d1d', fontSize: '1.2rem', lineHeight: 1.6 }}>{smartSteps[activeStep].desc}</p>
               </div>
            </div>
         </div>
 
-        {/* Rueda de Impacto Section */}
-        <div className="glass-card mb-10" style={{padding: '3rem', textAlign: 'center'}}>
-           <h4 style={{color: '#064e3b', marginBottom: '1rem'}}>La Rueda de Impacto</h4>
-           <p style={{maxWidth: '600px', margin: '0 auto 2rem auto', color: '#475569'}}>Visualiza el equilibrio de tu producto analizando los impactos positivos y negativos en 3 dimensiones.</p>
-           <div style={{display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap'}}>
-              <div style={{width: '150px', height: '150px', border: '3px solid #16A34A', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, color: '#16A34A'}}>ECONÓMICO</div>
-              <div style={{width: '150px', height: '150px', border: '3px solid #3b82f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, color: '#3b82f6'}}>SOCIAL</div>
-              <div style={{width: '150px', height: '150px', border: '3px solid #f59e0b', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, color: '#f59e0b'}}>AMBIENTAL</div>
-           </div>
+        {/* Juego: Puzzle de Emparejamiento SMART */}
+        <div style={{ marginBottom: '5rem' }}>
+          <MatchPuzzle 
+            title="Reto: Empareja las Acciones SMART" 
+            description="Haz clic en la letra de la metodología SMART (izquierda) y luego haz clic en el ejemplo correcto que le corresponde (derecha)."
+            pairs={smartPuzzlePairs} 
+          />
         </div>
 
-        {/* Certificaciones List */}
-        <div style={{marginBottom: '3rem'}}>
-           <h4 style={{color: '#064e3b', marginBottom: '1.5rem'}}>Certificaciones en Colombia</h4>
-           <div className="grid-2" style={{gap: '1rem'}}>
-              {["TourCert", "Green Destinations", "Biosphere", "NTS 45001 (ICONTEC)"].map((cert, i) => (
-                <div key={i} style={{padding: '1rem', border: '1px solid #e2e8f0', borderRadius: '10px', background: 'white', display: 'flex', alignItems: 'center', gap: '10px'}}>
-                   <div style={{width: '10px', height: '10px', background: '#059669', borderRadius: '50%'}}></div>
-                   <span style={{fontWeight: 600, color: '#334155'}}>{cert}</span>
-                </div>
-              ))}
-           </div>
-        </div>
-
-        {/* Ejercicio */}
-        <div className="glass-card" style={{padding: '3rem', background: '#064e3b', color: 'white'}}>
-           <h4 style={{color: '#34d399', fontSize: '1.5rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '12px'}}>
-             <ListChecks size={28} /> Ejercicio: Evaluación GSTC
-           </h4>
-           <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
-              {[
-                "Evalúa tu destino usando el semáforo (Verde, Amarillo, Rojo) para los 4 pilares.",
-                "Identifica los 5 criterios más críticos con brechas (donde estás en Rojo).",
-                "Aplica la Rueda de Impacto a tu flujo priorizado.",
-                "Diseña 3 medidas de mitigación para impactos negativos.",
-                "Define una meta de certificación a mediano plazo."
-              ].map((step, idx) => (
-                <div key={idx} style={{display: 'flex', gap: '15px', alignItems: 'flex-start'}}>
-                   <div style={{background: '#34d399', color: '#064e3b', width: '30px', height: '30px', borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800}}>{idx+1}</div>
-                   <p style={{margin: 0, fontSize: '1.1rem', opacity: 0.95}}>{step}</p>
-                </div>
-              ))}
+        {/* Seguimiento */}
+        <div style={{ background: '#f8fafc', padding: '3rem', borderRadius: '30px', border: '2px solid #e2e8f0' }}>
+           <h4 style={{ color: '#0f172a', fontSize: '1.5rem', marginBottom: '2rem', textAlign: 'center' }}>Los 2 Tipos de Seguimiento</h4>
+           
+           <div className="grid-2" style={{ gap: '2rem' }}>
+              <div style={{ background: 'white', padding: '2rem', borderRadius: '20px', boxShadow: '0 5px 15px rgba(0,0,0,0.05)' }}>
+                 <CalendarClock size={40} color="#3b82f6" style={{ marginBottom: '1rem' }} />
+                 <h5 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#1e3a8a' }}>Seguimiento Técnico (Corto Plazo)</h5>
+                 <p style={{ color: '#475569', marginTop: '10px' }}>Reuniones quincenales para verificar que la alcaldía, el hotel o el ministerio estén cumpliendo con sus tareas del Plan de Trabajo. <i>¿Se instaló la señal o no?</i></p>
+              </div>
+              
+              <div style={{ background: 'white', padding: '2rem', borderRadius: '20px', boxShadow: '0 5px 15px rgba(0,0,0,0.05)' }}>
+                 <LineChart size={40} color="#10b981" style={{ marginBottom: '1rem' }} />
+                 <h5 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#065f46' }}>Seguimiento Estratégico (Mediano Plazo)</h5>
+                 <p style={{ color: '#475569', marginTop: '10px' }}>Después del lanzamiento (24 a 36 meses). Monitorea si el producto realmente atrae turistas y si está generando ingresos a la comunidad como se planeó.</p>
+              </div>
            </div>
         </div>
 
