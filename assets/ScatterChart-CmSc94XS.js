@@ -1,0 +1,1 @@
+import{a as e,c as t,i as n,n as r,r as i,t as a}from"./generateCategoricalChart-CpZPyg_t.js";var o=a({chartName:`ScatterChart`,GraphicalChild:n,defaultTooltipEventType:`item`,validateTooltipEventTypes:[`item`],axisComponents:[{axisType:`xAxis`,AxisComp:i},{axisType:`yAxis`,AxisComp:r},{axisType:`zAxis`,AxisComp:e}],formatAxisMap:t});export{o as t};

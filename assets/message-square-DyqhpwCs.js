@@ -1,0 +1,1 @@
+import{o as e}from"./index-BCRHsXzI.js";var t=e(`Clock`,[[`circle`,{cx:`12`,cy:`12`,r:`10`,key:`1mglay`}],[`polyline`,{points:`12 6 12 12 16 14`,key:`68esgv`}]]),n=e(`MessageSquare`,[[`path`,{d:`M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z`,key:`1lielz`}]]);export{t as n,n as t};
