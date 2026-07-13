@@ -17,7 +17,7 @@ const ThinkTank = lazy(() => import('./pages/ThinkTank'));
 const RutaFormulacionFontur = lazy(() => import('./pages/RutaFormulacionFontur'));
 const CreadorDeVideos = lazy(() => import('./pages/CreadorDeVideos'));
 const VideoSocios = lazy(() => import('./pages/VideoSocios'));
-const VideoNotion = lazy(() => import('./pages/VideoNotion'));
+const VideoIceberg = lazy(() => import('./pages/VideoIceberg'));
 const Verificar = lazy(() => import('./pages/Verificar'));
 const TestCert = lazy(() => import('./pages/TestCert'));
 
@@ -54,7 +54,7 @@ export default function App() {
             <Route path="/centro-pensamiento" element={<ThinkTank />} />
             <Route path="/creador-videos" element={<CreadorDeVideos />} />
             <Route path="/video-socios" element={<VideoSocios />} />
-            <Route path="/video-notion" element={<VideoNotion />} />
+            <Route path="/video-iceberg" element={<VideoIceberg />} />
             <Route path="/verificar" element={<Verificar />} />
             <Route path="/test-cert" element={<TestCert />} />
             <Route path="*" element={<Home />} />
