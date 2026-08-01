@@ -23,10 +23,16 @@ export function AuthProvider({ children }) {
   async function loginWithGoogle() {
     if (!auth) {
       console.warn("Firebase no está configurado. Revisa src/config/firebase.js");
+      alert("Error: Firebase no está configurado.");
       return;
     }
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
+    try {
+      return await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error al iniciar sesión con Google:", error);
+      alert(`Error al iniciar sesión: ${error.message}`);
+    }
   }
 
   // Registrar con Correo y Contraseña
