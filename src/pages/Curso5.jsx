@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Palette, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import useCourseProgress from '../utils/useCourseProgress';
 
 // Modules for Curso Branding
 import Modulo1 from './CursoIntegrado/Curso5/Modulo1';
@@ -12,7 +13,7 @@ import Modulo5 from './CursoIntegrado/Curso5/Modulo5';
 export default function Curso5() {
   const navigate = useNavigate();
 
-  const [step, setStep] = useState(1);
+  const { step, setStep } = useCourseProgress('curso5');
   const totalSteps = 5;
 
   const nextStep = () => { if (step < totalSteps) setStep(step + 1); window.scrollTo({top: 0, behavior: 'smooth'}); };

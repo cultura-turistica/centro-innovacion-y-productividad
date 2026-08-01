@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BookOpen, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CourseEvaluation from '../components/CourseEvaluation';
+import useCourseProgress from '../utils/useCourseProgress';
 
 // Modules for Curso 2
 import Modulo1 from './CursoIntegrado/Curso2/Modulo1';
@@ -15,8 +16,7 @@ import Modulo7 from './CursoIntegrado/Curso2/Modulo7';
 export default function Curso2() {
   const navigate = useNavigate();
 
-  const [step, setStep] = useState(1);
-  const [showEvaluation, setShowEvaluation] = useState(false);
+  const { step, setStep, showEvaluation, setShowEvaluation } = useCourseProgress('curso2');
   const totalSteps = 8; // 7 Módulos + 1 Evaluación
 
   const nextStep = () => { if (step < totalSteps) setStep(step + 1); window.scrollTo({top: 0, behavior: 'smooth'}); };

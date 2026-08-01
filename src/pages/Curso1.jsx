@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Lightbulb, ArrowLeft, ArrowRight, CheckCircle2, Award } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CourseEvaluation from '../components/CourseEvaluation';
+import useCourseProgress from '../utils/useCourseProgress';
 
 import Modulo1 from './CursoIntegrado/Curso1/Modulo1';
 import Modulo2 from './CursoIntegrado/Curso1/Modulo2';
@@ -12,9 +13,8 @@ import Modulo6 from './CursoIntegrado/Curso1/Modulo6';
 
 export default function Curso1() {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
+  const { step, setStep, showEvaluation, setShowEvaluation } = useCourseProgress('curso1');
   const totalSteps = 7;
-  const [showEvaluation, setShowEvaluation] = useState(false);
 
   const nextStep = () => { if (step < totalSteps) setStep(step + 1); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const prevStep = () => { 

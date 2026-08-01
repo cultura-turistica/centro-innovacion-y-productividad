@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Camera, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import useCourseProgress from '../utils/useCourseProgress';
 
 // Modules for Curso Fotografía
 import Modulo1 from './CursoIntegrado/Curso4/Modulo1';
@@ -13,7 +14,7 @@ import Modulo6 from './CursoIntegrado/Curso4/Modulo6';
 export default function Curso4() {
   const navigate = useNavigate();
 
-  const [step, setStep] = useState(1);
+  const { step, setStep } = useCourseProgress('curso4');
   const totalSteps = 6;
 
   const nextStep = () => { if (step < totalSteps) setStep(step + 1); window.scrollTo({top: 0, behavior: 'smooth'}); };

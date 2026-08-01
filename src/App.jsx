@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Breadcrumbs from './components/Breadcrumbs';
+import { AuthProvider } from './contexts/AuthContext';
 import './index.css';
 
 const Home = lazy(() => import('./pages/Home'));
@@ -31,7 +32,8 @@ export default function App() {
   const isTestCert = location.pathname === '/test-cert';
 
   return (
-    <div className={isTestCert ? "" : "layout"}>
+    <AuthProvider>
+      <div className={isTestCert ? "" : "layout"}>
       {!isTestCert && <Navigation />}
       <div className={isTestCert ? "" : "main-content-wrapper"} style={isTestCert ? {} : { paddingTop: '2rem' }}>
         {!isTestCert && <Breadcrumbs />}
@@ -61,6 +63,7 @@ export default function App() {
           </Routes>
         </Suspense>
       </div>
-    </div>
+      </div>
+    </AuthProvider>
   );
 }

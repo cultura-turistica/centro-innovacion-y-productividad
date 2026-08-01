@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogIn, LogOut } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logoUrl from '../assets/Logo_CulturaT_color.webp';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { currentUser, loginWithGoogle, logout } = useAuth() || {};
 
   const isActive = (path) => location.pathname === path ? 'active' : '';
 
@@ -51,6 +53,18 @@ export default function Navigation() {
               </a>
             )
           ))}
+          {currentUser ? (
+            <div style={{display: 'flex', alignItems: 'center', gap: '10px', marginLeft: '1rem'}}>
+              <img src={currentUser.photoURL} alt="User" style={{width: '32px', height: '32px', borderRadius: '50%'}} />
+              <button onClick={logout} style={{background: 'none', border: 'none', cursor: 'pointer', color: '#e5e7eb'}} title="Cerrar sesión">
+                <LogOut size={20} />
+              </button>
+            </div>
+          ) : (
+            <button onClick={loginWithGoogle} style={{marginLeft: '1rem', background: '#3b82f6', color: 'white', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 'bold'}}>
+              <LogIn size={18} /> Entrar
+            </button>
+          )}
         </nav>
 
         {/* Mobile Toggle */}
@@ -79,6 +93,19 @@ export default function Navigation() {
                   </a>
                 )
               ))}
+              {currentUser ? (
+                <div style={{display: 'flex', alignItems: 'center', gap: '10px', padding: '1rem 0'}}>
+                  <img src={currentUser.photoURL} alt="User" style={{width: '40px', height: '40px', borderRadius: '50%'}} />
+                  <span style={{color: 'white'}}>{currentUser.displayName}</span>
+                  <button onClick={() => { logout(); closeMenu(); }} style={{background: 'none', border: 'none', cursor: 'pointer', color: '#ef4444', marginLeft: 'auto'}}>
+                    <LogOut size={24} />
+                  </button>
+                </div>
+              ) : (
+                <button onClick={() => { loginWithGoogle(); closeMenu(); }} style={{marginTop: '1rem', background: '#3b82f6', color: 'white', border: 'none', padding: '0.75rem', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontWeight: 'bold', width: '100%'}}>
+                  <LogIn size={20} /> Iniciar Sesión
+                </button>
+              )}
            </nav>
         </div>
         {isMenuOpen && <div className="drawer-overlay" onClick={closeMenu}></div>}

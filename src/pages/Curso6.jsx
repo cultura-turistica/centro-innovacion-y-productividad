@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, ArrowRight, Briefcase, Award, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CourseEvaluation from '../components/CourseEvaluation';
+import useCourseProgress from '../utils/useCourseProgress';
 
 import Modulo1 from './CursoIntegrado/Curso6/Modulo1';
 import Modulo2 from './CursoIntegrado/Curso6/Modulo2';
@@ -73,9 +74,8 @@ const curso6QuizData = {
 
 export default function Curso6() {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
+  const { step, setStep, showEvaluation, setShowEvaluation } = useCourseProgress('curso6');
   const totalSteps = 13; // 12 + 1 para evaluación
-  const [showEvaluation, setShowEvaluation] = useState(false);
 
   const nextStep = () => { if (step < totalSteps) setStep(step + 1); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const prevStep = () => { 

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { ClipboardList, CheckCircle, AlertTriangle, ShieldCheck, Award, Lock, FileText } from 'lucide-react';
+import { ClipboardList, CheckCircle, AlertTriangle, ShieldCheck, Award, Lock, FileText, LogIn } from 'lucide-react';
 import { hashAnswer, generateCertificateSeal } from '../utils/security';
 import CertificateGenerator from './CertificateGenerator';
+import { useAuth } from '../contexts/AuthContext';
+import { db } from '../config/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 export default function CourseEvaluation({ onComplete, quizData }) {
   // Paso 1: Encuesta Anónima | Paso 2: Quiz | Paso 3: Formulario Legal (Nombres) | Paso 4: Diploma
   const [step, setStep] = useState(1);
+  const { currentUser, loginWithGoogle, loginWithEmail, registerWithEmail } = useAuth() || {};
   
   // Datos Anónimos
   const [surveyData, setSurveyData] = useState({ q1: '', q2: '', q3: '', q4: '', q5: '', q6: '' });
@@ -17,6 +21,13 @@ export default function CourseEvaluation({ onComplete, quizData }) {
   
   const [certificateData, setCertificateData] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Estados para Autenticación con Correo
+  const [emailAuth, setEmailAuth] = useState('');
+  const [passwordAuth, setPasswordAuth] = useState('');
+  const [authMode, setAuthMode] = useState('login'); // 'login' o 'register'
+  const [authError, setAuthError] = useState('');
+  const [isAuthLoading, setIsAuthLoading] = useState(false);
 
   // Sistema de Bloqueo por Fallos (Max 2 intentos)
   const LOCK_KEY = `quiz_lock_${quizData.courseId || "default"}`;
@@ -38,28 +49,26 @@ export default function CourseEvaluation({ onComplete, quizData }) {
       }
     }
   }, [LOCK_KEY, ATTEMPTS_KEY]);
-  // URLs configuradas en el entorno (o quemadas aquí temporalmente)
-  const GOOGLE_FORM_SURVEY_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeQAbPmUdKfUii5XmFmWcS7qvlteufLxhOQ2idQG8QPLomQsw/formResponse";
-  const GOOGLE_FORM_LEGAL_URL = "https://docs.google.com/forms/d/e/1FAIpQLScJJ7L1gR5ou-ZmwKD65tu71286J_CxvSsKAxrdfrNF8NIaow/formResponse";
+  // Constantes eliminadas (Google Forms ya no se usa)
 
   const handleSurveySubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Enviar ENCUESTA de Calidad al Form 1 silenciosamente
-    try {
-      const surveyForm = new FormData();
-      surveyForm.append("entry.1570207125", quizData.courseName); 
-      surveyForm.append("entry.388691744", surveyData.q1);
-      surveyForm.append("entry.360983945", surveyData.q2);
-      surveyForm.append("entry.658788181", surveyData.q3);
-      surveyForm.append("entry.302596635", surveyData.q4);
-      surveyForm.append("entry.1581710942", surveyData.q5);
-      surveyForm.append("entry.1452162704", surveyData.q6);
-
-      await fetch(GOOGLE_FORM_SURVEY_URL, { method: 'POST', mode: 'no-cors', body: surveyForm });
-    } catch (err) {
-      console.log("Error silencioso al enviar encuesta de calidad");
+    // Guardar ENCUESTA de Calidad en Firestore silenciosamente (si hay usuario)
+    if (currentUser && db) {
+      try {
+        const surveyId = `${currentUser.uid}_${quizData.courseId || "default"}_${new Date().getTime()}`;
+        await setDoc(doc(db, 'course_surveys', surveyId), {
+          userId: currentUser.uid,
+          courseId: quizData.courseId || "default",
+          courseName: quizData.courseName,
+          responses: surveyData,
+          submittedAt: new Date().toISOString()
+        });
+      } catch (err) {
+        console.error("Error guardando encuesta de calidad", err);
+      }
     }
 
     setIsSubmitting(false);
@@ -123,18 +132,24 @@ export default function CourseEvaluation({ onComplete, quizData }) {
     const seal = generateCertificateSeal(certData);
     setCertificateData({ ...certData, sello: seal });
 
-    // Enviar DATOS LEGALES al Form 2 silenciosamente
-    try {
-      const legalForm = new FormData();
-      legalForm.append("entry.651357907", quizData.courseName); 
-      legalForm.append("entry.1218529443", legalData.name);
-      legalForm.append("entry.1542994941", legalData.identification);
-      legalForm.append("entry.1172360679", seal);
-      legalForm.append("entry.18194693", date);
+    // (Código de Google Form eliminado)
 
-      await fetch(GOOGLE_FORM_LEGAL_URL, { method: 'POST', mode: 'no-cors', body: legalForm });
-    } catch (err) {
-      console.log("Error silencioso al guardar datos legales.");
+    // NUEVO: Guardar Certificado en Firestore si hay usuario (como lo exigimos, siempre lo habrá)
+    if (currentUser && db) {
+      try {
+        const certId = seal.substring(0, 15); // Usar inicio del sello como ID
+        await setDoc(doc(db, 'certificates', certId), {
+          userId: currentUser.uid,
+          courseId: quizData.courseId || "default",
+          courseName: quizData.courseName,
+          studentName: legalData.name,
+          identification: legalData.identification,
+          cryptographicSeal: seal,
+          issuedAt: new Date().toISOString()
+        });
+      } catch (error) {
+        console.error("Error guardando certificado en Firebase", error);
+      }
     }
 
     setIsSubmitting(false);
@@ -287,9 +302,65 @@ export default function CourseEvaluation({ onComplete, quizData }) {
             <input required type="text" value={legalData.identification} onChange={e => setLegalData({ ...legalData, identification: e.target.value })} placeholder="Ej. 1.020.304.050" style={{ width: '100%', padding: '1rem', borderRadius: '12px', border: '1px solid #cbd5e1', fontSize: '1.1rem' }} />
           </div>
 
-          <button type="submit" disabled={isSubmitting} style={{ background: '#032968', color: 'white', padding: '1rem', borderRadius: '12px', border: 'none', fontWeight: 700, fontSize: '1.2rem', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
-            {isSubmitting ? 'Registrando en Libro Oficial...' : 'Generar Certificado Oficial'} <Award size={20} />
-          </button>
+          {!currentUser ? (
+            <div style={{ background: '#eff6ff', padding: '1.5rem', borderRadius: '12px', border: '1px solid #bfdbfe', textAlign: 'center', marginTop: '1rem' }}>
+              <h3 style={{ color: '#1d4ed8', margin: '0 0 1rem 0' }}>Para generar el diploma oficial debes vincular tu cuenta</h3>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '400px', margin: '0 auto', textAlign: 'left' }}>
+                
+                <button type="button" onClick={loginWithGoogle} style={{ background: '#3b82f6', color: 'white', padding: '1rem', borderRadius: '12px', border: 'none', fontWeight: 700, fontSize: '1.1rem', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
+                  <LogIn size={20} /> Continuar con Google
+                </button>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#64748b' }}>
+                  <hr style={{ flex: 1, border: 'none', borderTop: '1px solid #cbd5e1' }} />
+                  <span style={{ fontSize: '0.9rem' }}>o ingresa con tu correo</span>
+                  <hr style={{ flex: 1, border: 'none', borderTop: '1px solid #cbd5e1' }} />
+                </div>
+
+                <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                  {authError && <div style={{ color: '#dc2626', background: '#fee2e2', padding: '0.8rem', borderRadius: '8px', marginBottom: '1rem', fontSize: '0.9rem', textAlign: 'center' }}>{authError}</div>}
+                  
+                  <div style={{ display: 'flex', gap: '10px', marginBottom: '1rem' }}>
+                    <button type="button" onClick={() => { setAuthMode('login'); setAuthError(''); }} style={{ flex: 1, padding: '0.8rem', background: authMode === 'login' ? '#e0f2fe' : 'transparent', color: authMode === 'login' ? '#0369a1' : '#64748b', border: 'none', borderRadius: '8px', fontWeight: 600, cursor: 'pointer' }}>Iniciar Sesión</button>
+                    <button type="button" onClick={() => { setAuthMode('register'); setAuthError(''); }} style={{ flex: 1, padding: '0.8rem', background: authMode === 'register' ? '#e0f2fe' : 'transparent', color: authMode === 'register' ? '#0369a1' : '#64748b', border: 'none', borderRadius: '8px', fontWeight: 600, cursor: 'pointer' }}>Registrarse</button>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <input type="email" placeholder="Correo electrónico" value={emailAuth} onChange={e => setEmailAuth(e.target.value)} style={{ width: '100%', padding: '1rem', borderRadius: '8px', border: '1px solid #cbd5e1' }} />
+                    <input type="password" placeholder="Contraseña" value={passwordAuth} onChange={e => setPasswordAuth(e.target.value)} style={{ width: '100%', padding: '1rem', borderRadius: '8px', border: '1px solid #cbd5e1' }} />
+                    
+                    <button 
+                      type="button" 
+                      disabled={isAuthLoading || !emailAuth || !passwordAuth}
+                      onClick={async () => {
+                        setIsAuthLoading(true);
+                        setAuthError('');
+                        try {
+                          if (authMode === 'login') {
+                            await loginWithEmail(emailAuth, passwordAuth);
+                          } else {
+                            await registerWithEmail(emailAuth, passwordAuth);
+                          }
+                        } catch (err) {
+                          setAuthError(err.message.includes('auth/invalid-credential') ? 'Correo o contraseña incorrectos.' : (err.message.includes('email-already') ? 'El correo ya está registrado.' : 'Error de autenticación. Verifica tus datos o habilita este método en Firebase.'));
+                        }
+                        setIsAuthLoading(false);
+                      }}
+                      style={{ background: '#0f172a', color: 'white', padding: '1rem', borderRadius: '8px', border: 'none', fontWeight: 700, cursor: (isAuthLoading || !emailAuth || !passwordAuth) ? 'not-allowed' : 'pointer', opacity: (isAuthLoading || !emailAuth || !passwordAuth) ? 0.7 : 1 }}
+                    >
+                      {isAuthLoading ? 'Procesando...' : (authMode === 'login' ? 'Entrar' : 'Crear Cuenta')}
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          ) : (
+            <button type="submit" disabled={isSubmitting} style={{ background: '#032968', color: 'white', padding: '1rem', borderRadius: '12px', border: 'none', fontWeight: 700, fontSize: '1.2rem', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginTop: '1rem' }}>
+              {isSubmitting ? 'Registrando en Libro Oficial...' : 'Generar Certificado Oficial'} <Award size={20} />
+            </button>
+          )}
         </form>
       )}
 
