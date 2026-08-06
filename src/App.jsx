@@ -27,6 +27,8 @@ const ProyectoSaeColombia = lazy(() => import('./pages/DataLab/ProyectoSaeColomb
 const ProyectoProsperidad = lazy(() => import('./pages/DataLab/ProyectoProsperidad'));
 const ProyectoCO2 = lazy(() => import('./pages/DataLab/ProyectoCO2'));
 
+const ProyectoPerfilVisitante = lazy(() => import('./pages/DataLab/ProyectoPerfilVisitante'));
+
 export default function App() {
   const location = useLocation();
   const isTestCert = location.pathname === '/test-cert';
@@ -49,9 +51,9 @@ export default function App() {
             <Route path="/micro-experiencias" element={<Curso6 />} />
             <Route path="/laboratorio-datos" element={<DataLab />} />
             <Route path="/laboratorio-datos/proyecto-sae" element={<ProyectoSaeColombia />} />
-            {/* <Route path="/laboratorio-datos/proyecto-fontur" element={<ProyectoFontur />} /> */}
             <Route path="/laboratorio-datos/proyecto-prosperidad" element={<ProyectoProsperidad />} />
             <Route path="/laboratorio-datos/proyecto-co2" element={<ProyectoCO2 />} />
+            <Route path="/laboratorio-datos/perfil-visitante" element={<ProyectoPerfilVisitante />} />
             <Route path="/ruta-formulacion-fontur" element={<RutaFormulacionFontur />} />
             <Route path="/centro-pensamiento" element={<ThinkTank />} />
             <Route path="/creador-videos" element={<CreadorDeVideos />} />

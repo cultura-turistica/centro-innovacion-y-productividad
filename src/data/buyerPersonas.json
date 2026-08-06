@@ -1,0 +1,50 @@
+[
+  {
+    "id": "premium",
+    "nombre": "El Turista Premium",
+    "nivelSocioeconomico": "Alto",
+    "descripcion": "Viajero que busca comodidad y experiencias exclusivas. Planifica con anticipación de forma digital.",
+    "atributos": {
+      "presupuesto": 90,
+      "planeacion": 85,
+      "frecuenciaViaje": 60
+    },
+    "edades": [ { "rango": "35-44 años", "porcentaje": 42 }, { "rango": "25-34 años", "porcentaje": 31 } ],
+    "alojamientoPreferido": "Hotel (64%)",
+    "transportePreferido": "Avión (32%) / Bus (39%)",
+    "diasViaje": "Entre 3 y 7 días (79%)",
+    "comoPlanifica": "Utiliza aplicaciones y plataformas en línea para reservar (36%) o por su cuenta (29%)"
+  },
+  {
+    "id": "confort",
+    "nombre": "El Turista Confort",
+    "nivelSocioeconomico": "Medio",
+    "descripcion": "Busca un equilibrio entre precio y calidad. Viaja frecuentemente en su propio vehículo.",
+    "atributos": {
+      "presupuesto": 60,
+      "planeacion": 70,
+      "frecuenciaViaje": 75
+    },
+    "edades": [ { "rango": "25-34 años", "porcentaje": 41 }, { "rango": "35-44 años", "porcentaje": 31 } ],
+    "alojamientoPreferido": "Hotel (56%) / Casa de Familiares (22%)",
+    "transportePreferido": "Vehículo Propio (32%) / Avión (31%)",
+    "diasViaje": "Entre 3 y 7 días (69%)",
+    "comoPlanifica": "Por su cuenta, investigando en línea (53%)"
+  },
+  {
+    "id": "economico",
+    "nombre": "El Turista Económico",
+    "nivelSocioeconomico": "Bajo",
+    "descripcion": "Privilegia el ahorro, viajando usualmente en transporte público y apoyándose en familiares.",
+    "atributos": {
+      "presupuesto": 30,
+      "planeacion": 50,
+      "frecuenciaViaje": 40
+    },
+    "edades": [ { "rango": "25-34 años", "porcentaje": 48 }, { "rango": "35-44 años", "porcentaje": 25 } ],
+    "alojamientoPreferido": "Hotel Económico (43%) / Casa de Familiares (36%)",
+    "transportePreferido": "Bus Intermunicipal (42%)",
+    "diasViaje": "Entre 3 y 7 días (52%) / Menos de 3 días (40%)",
+    "comoPlanifica": "Por su cuenta, de forma directa (66%)"
+  }
+]

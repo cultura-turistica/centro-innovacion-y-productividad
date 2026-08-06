@@ -1,0 +1,105 @@
+{
+  "nacional": {
+    "nombre": "Perfil Nacional",
+    "descripcion": "El turista colombiano viaja principalmente por vacaciones, buscando interactuar más con los destinos y combinar experiencias.",
+    "edades": [
+      { "rango": "25-34 años", "porcentaje": 37 },
+      { "rango": "35-44 años", "porcentaje": 26 }
+    ],
+    "genero": { "masculino": 50, "femenino": 50 },
+    "motivos": [
+      { "motivo": "Vacaciones/Ocio", "porcentaje": 60 },
+      { "motivo": "Visita Familiares", "porcentaje": 32 }
+    ],
+    "alojamiento": [
+      { "tipo": "Hotel", "porcentaje": 45 },
+      { "tipo": "Casa Familiares/Amigos", "porcentaje": 39 }
+    ],
+    "transporte": [
+      { "tipo": "Bus", "porcentaje": 36 },
+      { "tipo": "Vehículo Propio", "porcentaje": 27 },
+      { "tipo": "Avión", "porcentaje": 22 }
+    ],
+    "destinosTop": ["Cartagena", "Eje Cafetero", "Santa Marta", "Bogotá", "Barranquilla"]
+  },
+  "regiones": {
+    "amazonia": {
+      "nombre": "Región Amazonía",
+      "edades": [ { "rango": "25-34 años", "porcentaje": 34 }, { "rango": "35-44 años", "porcentaje": 28 } ],
+      "alojamiento": [ { "tipo": "Hotel", "porcentaje": 45 }, { "tipo": "Familiares/Amigos", "porcentaje": 44 } ],
+      "transporte": [ { "tipo": "Bus", "porcentaje": 38 }, { "tipo": "Carro", "porcentaje": 25 }, { "tipo": "Avión", "porcentaje": 20 } ],
+      "origen": [
+        { "departamento": "Putumayo", "porcentaje": 25 },
+        { "departamento": "Caquetá", "porcentaje": 21 },
+        { "departamento": "Huila", "porcentaje": 17 },
+        { "departamento": "Cundinamarca", "porcentaje": 10 },
+        { "departamento": "Antioquia", "porcentaje": 7 }
+      ]
+    },
+    "andina": {
+      "nombre": "Región Andina",
+      "edades": [ { "rango": "25-34 años", "porcentaje": 40 }, { "rango": "35-44 años", "porcentaje": 26 } ],
+      "alojamiento": [ { "tipo": "Hotel", "porcentaje": 46 }, { "tipo": "Familiares/Amigos", "porcentaje": 35 } ],
+      "transporte": [ { "tipo": "Bus", "porcentaje": 34 }, { "tipo": "Carro", "porcentaje": 29 }, { "tipo": "Avión", "porcentaje": 22 } ],
+      "origen": [
+        { "departamento": "Cundinamarca", "porcentaje": 34 },
+        { "departamento": "Antioquia", "porcentaje": 13 },
+        { "departamento": "Norte de Santander", "porcentaje": 8 },
+        { "departamento": "Valle del Cauca", "porcentaje": 7 },
+        { "departamento": "Boyacá", "porcentaje": 6 }
+      ]
+    },
+    "insular": {
+      "nombre": "Región Insular",
+      "edades": [ { "rango": "25-34 años", "porcentaje": 59 }, { "rango": "35-44 años", "porcentaje": 18 } ],
+      "alojamiento": [ { "tipo": "Hotel", "porcentaje": 76 }, { "tipo": "Familiares/Amigos", "porcentaje": 3 } ],
+      "transporte": [ { "tipo": "Avión", "porcentaje": 89 } ],
+      "origen": [
+        { "departamento": "Antioquia", "porcentaje": 20 },
+        { "departamento": "Santander", "porcentaje": 17 },
+        { "departamento": "Cundinamarca", "porcentaje": 13 },
+        { "departamento": "Bolívar", "porcentaje": 10 },
+        { "departamento": "Valle del Cauca", "porcentaje": 7 }
+      ]
+    },
+    "caribe": {
+      "nombre": "Región Caribe",
+      "edades": [ { "rango": "25-34 años", "porcentaje": 25 }, { "rango": "35-44 años", "porcentaje": 25 } ],
+      "alojamiento": [ { "tipo": "Familiares/Amigos", "porcentaje": 48 }, { "tipo": "Hotel", "porcentaje": 33 } ],
+      "transporte": [ { "tipo": "Bus", "porcentaje": 54 }, { "tipo": "Carro", "porcentaje": 22 }, { "tipo": "Avión", "porcentaje": 13 } ],
+      "origen": [
+        { "departamento": "Atlántico", "porcentaje": 20 },
+        { "departamento": "Bolívar", "porcentaje": 15 },
+        { "departamento": "Cesar", "porcentaje": 12 },
+        { "departamento": "Cundinamarca", "porcentaje": 9 },
+        { "departamento": "Sucre", "porcentaje": 9 }
+      ]
+    },
+    "pacifica": {
+      "nombre": "Región Pacífica",
+      "edades": [ { "rango": "25-34 años", "porcentaje": 42 }, { "rango": "35-44 años", "porcentaje": 25 } ],
+      "alojamiento": [ { "tipo": "Hotel", "porcentaje": 57 }, { "tipo": "Familiares/Amigos", "porcentaje": 34 } ],
+      "transporte": [ { "tipo": "Avión", "porcentaje": 36 }, { "tipo": "Bus", "porcentaje": 23 }, { "tipo": "Carro", "porcentaje": 23 } ],
+      "origen": [
+        { "departamento": "Cauca", "porcentaje": 52 },
+        { "departamento": "Antioquia", "porcentaje": 16 },
+        { "departamento": "Cundinamarca", "porcentaje": 10 },
+        { "departamento": "Valle del Cauca", "porcentaje": 5 },
+        { "departamento": "Chocó", "porcentaje": 3 }
+      ]
+    },
+    "orinoquia": {
+      "nombre": "Región Orinoquía",
+      "edades": [ { "rango": "25-34 años", "porcentaje": 39 }, { "rango": "35-44 años", "porcentaje": 26 } ],
+      "alojamiento": [ { "tipo": "Familiares/Amigos", "porcentaje": 44 }, { "tipo": "Hotel", "porcentaje": 43 } ],
+      "transporte": [ { "tipo": "Carro", "porcentaje": 36 }, { "tipo": "Bus", "porcentaje": 33 }, { "tipo": "Avión", "porcentaje": 18 } ],
+      "origen": [
+        { "departamento": "Cundinamarca", "porcentaje": 23 },
+        { "departamento": "Meta", "porcentaje": 19 },
+        { "departamento": "Casanare", "porcentaje": 13 },
+        { "departamento": "Arauca", "porcentaje": 9 },
+        { "departamento": "Boyacá", "porcentaje": 8 }
+      ]
+    }
+  }
+}

@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { BarChart3, Map as MapIcon, Database, BrainCircuit, LineChart, Leaf, ArrowRight, Globe2, Search, Filter } from 'lucide-react';
+import { BarChart3, Map as MapIcon, Database, BrainCircuit, LineChart, Leaf, ArrowRight, Globe2, Search, Filter, Users } from 'lucide-react';
 import './DataLab.css';
 
 export default function DataLab() {
   const navigate = useNavigate();
 
   const subprojects = [
+    {
+      id: "perfil-visitante",
+      title: "Perfil del Visitante",
+      subtitle: "Tendencias Nacionales 2024",
+      desc: "Análisis demográfico y de comportamiento del turista en Colombia, extraído del estudio oficial de Fontur y MinComercio.",
+      icon: <Users size={32} strokeWidth={1.5} />,
+      accent: "#10b981",
+      status: "active"
+    },
     {
       id: "sae-colombia",
       title: "Radiografía de lo Inobservado",
@@ -66,14 +75,14 @@ export default function DataLab() {
 
   const groupedProjects = [
     {
+      theme: "Desarrollo Social y Territorio",
+      description: "Modelos demográficos y estimación de pobreza para entender las vulnerabilidades y dinámicas sociales en Colombia.",
+      projects: subprojects.filter(p => ["perfil-visitante", "sae-colombia", "redatam-geo"].includes(p.id))
+    },
+    {
       theme: "Sostenibilidad y Medio Ambiente",
       description: "Análisis del impacto ecológico, huella de carbono y resiliencia de los ecosistemas territoriales.",
       projects: subprojects.filter(p => ["co2-live", "prosperidad"].includes(p.id))
-    },
-    {
-      theme: "Desarrollo Social y Territorio",
-      description: "Modelos demográficos y estimación de pobreza para entender las vulnerabilidades y dinámicas sociales en Colombia.",
-      projects: subprojects.filter(p => ["sae-colombia", "redatam-geo"].includes(p.id))
     },
     {
       theme: "Economía y Tecnología",
@@ -84,7 +93,7 @@ export default function DataLab() {
 
   const [activeCategory, setActiveCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
-  const categories = ["Todos", "Sostenibilidad y Medio Ambiente", "Desarrollo Social y Territorio", "Economía y Tecnología"];
+  const categories = ["Todos", "Desarrollo Social y Territorio", "Sostenibilidad y Medio Ambiente", "Economía y Tecnología"];
 
   const filteredGroups = groupedProjects.map(group => {
     if (activeCategory !== "Todos" && group.theme !== activeCategory) {
@@ -195,7 +204,8 @@ export default function DataLab() {
                   style={{ '--accent-color': proj.accent }}
                   onClick={() => {
                     if (proj.status === 'dev') return;
-                    if (proj.id === "sae-colombia") navigate("/laboratorio-datos/proyecto-sae");
+                    if (proj.id === "perfil-visitante") navigate("/laboratorio-datos/perfil-visitante");
+                    else if (proj.id === "sae-colombia") navigate("/laboratorio-datos/proyecto-sae");
                     else if (proj.id === "fontur-analysis") navigate("/laboratorio-datos/proyecto-fontur");
                     else if (proj.id === "prosperidad") navigate("/laboratorio-datos/proyecto-prosperidad");
                     else if (proj.id === "co2-live") navigate("/laboratorio-datos/proyecto-co2");
