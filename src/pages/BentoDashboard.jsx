@@ -113,10 +113,10 @@ export default function BentoDashboard() {
             }}
           >
             {/* Gradiente sutil interno al hacer hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#F06000]/0 to-[#F06000]/0 group-hover:to-[#F06000]/10 transition-colors duration-500"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-[#F06000]/0 to-[#F06000]/0 group-hover:to-[#F06000]/10 transition-colors duration-500"></div>
             
             <div className="relative z-10 flex justify-between items-start">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F06000] to-[#b34700] flex items-center justify-center shadow-lg shadow-[#F06000]/30 group-hover:scale-110 transition-transform duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-linear-to-br from-[#F06000] to-[#b34700] flex items-center justify-center shadow-lg shadow-[#F06000]/30 group-hover:scale-110 transition-transform duration-300">
                 <Clapperboard size={32} color="white" />
               </div>
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/5 group-hover:bg-white/20 transition-colors">

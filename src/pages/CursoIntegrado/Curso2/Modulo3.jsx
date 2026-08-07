@@ -52,15 +52,15 @@ const SceneFlipCard = ({ esc }) => {
   );
 };
 
-export default function Modulo3({ headerColor, headerGradient }) {
-  const [activeSense, setActiveSense] = useState(null);
+export default function Modulo3({ headerColor, headerGradient, data }) {
+  const [activeSense, setActiveSense] = useState('vista');
 
   const senses = {
-    vista: { icon: ImageIcon, title: 'Vista', text: 'Ver la magia de colores al amanecer en un bosque inundable. Colores cálidos, sonrisas, arquitectura limpia.', color: '#3b82f6' },
-    oido: { icon: Music, title: 'Oído', text: 'Escuchar leyendas narradas por locales, el sonido de aves endémicas o la cumbia tradicional.', color: '#8b5cf6' },
-    tacto: { icon: Hand, title: 'Tacto', text: 'Sentir la textura del barro en un taller de cerámica o el agua fría de la cascada.', color: '#ea580c' },
-    olfato: { icon: Wind, title: 'Olfato', text: 'Oler el café recién tostado en la mañana o la leña quemada del fogón.', color: '#16a34a' },
-    gusto: { icon: Coffee, title: 'Gusto', text: 'Saborear la semilla de cacao fresca o un plato típico recién preparado.', color: '#eab308' }
+    vista: { icon: ImageIcon, title: data.sentidos.items.vista.title, text: data.sentidos.items.vista.text, color: '#3b82f6' },
+    oido: { icon: Music, title: data.sentidos.items.oido.title, text: data.sentidos.items.oido.text, color: '#8b5cf6' },
+    tacto: { icon: Hand, title: data.sentidos.items.tacto.title, text: data.sentidos.items.tacto.text, color: '#ea580c' },
+    olfato: { icon: Wind, title: data.sentidos.items.olfato.title, text: data.sentidos.items.olfato.text, color: '#16a34a' },
+    gusto: { icon: Coffee, title: data.sentidos.items.gusto.title, text: data.sentidos.items.gusto.text, color: '#eab308' }
   };
 
   return (
@@ -76,10 +76,10 @@ export default function Modulo3({ headerColor, headerGradient }) {
         marginBottom: '3rem'
       }}>
         <h3 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white' }}>
-          Conceptualizar la Experiencia (Matriz 2)
+          {data.header.title}
         </h3>
         <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto' }}>
-          Diseña las emociones, la memoria y los 5 sentidos que atraparán al visitante.
+          {data.header.description}
         </p>
       </div>
 
@@ -87,18 +87,14 @@ export default function Modulo3({ headerColor, headerGradient }) {
         
         {/* Analogía */}
         <div className="theory-block" style={{ borderLeftColor: headerColor || '#ea580c' }}>
-          <h4><Film size={28} /> La Analogía del Guion de Cine</h4>
-          <p>
-            Imagina que eres el director de una película. No le dices al actor simplemente "camina por el bosque". Le dices: <i>"Camina lentamente, siente la humedad del suelo, respira profundo y mira con asombro la luz que entra por las ramas"</i>.
-          </p>
-          <p>
-            En turismo, la <strong>experiencia es el guion</strong> y el turista es tu actor principal. Tienes que definir exactamente qué va a sentir, qué va a aprender y qué recordará cuando regrese a casa.
-          </p>
+          <h4><Film size={28} /> {data.cine.title}</h4>
+          <p dangerouslySetInnerHTML={{ __html: data.cine.p1 }}></p>
+          <p dangerouslySetInnerHTML={{ __html: data.cine.p2 }}></p>
         </div>
 
         {/* Los 5 Sentidos Interactivos */}
-        <h3 className="mb-4 text-center" style={{ color: headerColor || '#ea580c' }}>El Diseño de los 5 Sentidos</h3>
-        <p className="text-center mb-8" style={{ color: '#475569' }}>Pasa el cursor (o toca) cada sentido para ver cómo se diseña una experiencia inmersiva.</p>
+        <h3 className="mb-4 text-center" style={{ color: headerColor || '#ea580c' }}>{data.sentidos.title}</h3>
+        <p className="text-center mb-8" style={{ color: '#475569' }}>{data.sentidos.description}</p>
 
         <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '4rem' }}>
           {Object.keys(senses).map((key) => {
@@ -146,16 +142,16 @@ export default function Modulo3({ headerColor, headerGradient }) {
         {/* Ejercicio: Storyboard */}
         <div style={{ background: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', padding: '3rem', borderRadius: '30px', border: '2px solid #fed7aa', boxShadow: '0 20px 40px rgba(234,88,12,0.1)' }}>
            <h4 style={{ color: '#9a3412', fontSize: '1.6rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-             <Film size={28} color="#ea580c" /> El Mapa Visual de la Experiencia (Storyboard)
+             <Film size={28} color="#ea580c" /> {data.storyboard.title}
            </h4>
            
            {/* Ejemplo Primero (Tarjetas Giratorias) */}
            <div className="grid-4" style={{ gap: '20px', marginBottom: '3rem' }}>
              {[
-               { s: "Escena 1", t: "Llegada Inmersiva", d: "El turista llega a la finca, se le recibe con un jugo de gulupa (Gusto) y se le cuenta la historia de la familia con música suave de fondo (Oído).", c: "#3b82f6", bg: "#eff6ff", icon: Sun },
-               { s: "Escena 2", t: "Conexión Física", d: "Recorrido por el sendero. El guía invita al turista a tocar la textura del musgo y la tierra húmeda (Tacto).", c: "#10b981", bg: "#ecfdf5", icon: Leaf },
-               { s: "Escena 3", t: "El Clímax Visual", d: "Llegada al mirador justo al atardecer (Vista). Un momento diseñado exclusivamente para el asombro y el silencio.", c: "#8b5cf6", bg: "#f5f3ff", icon: Camera },
-               { s: "Escena 4", t: "Anclaje de Memoria", d: "Cena tradicional en fogón de leña (Olfato) y entrega de un pequeño recuerdo artesanal para llevar a casa.", c: "#ea580c", bg: "#fff7ed", icon: Utensils }
+               { s: data.storyboard.cards[0].s, t: data.storyboard.cards[0].t, d: data.storyboard.cards[0].d, c: "#3b82f6", bg: "#eff6ff", icon: Sun },
+               { s: data.storyboard.cards[1].s, t: data.storyboard.cards[1].t, d: data.storyboard.cards[1].d, c: "#10b981", bg: "#ecfdf5", icon: Leaf },
+               { s: data.storyboard.cards[2].s, t: data.storyboard.cards[2].t, d: data.storyboard.cards[2].d, c: "#8b5cf6", bg: "#f5f3ff", icon: Camera },
+               { s: data.storyboard.cards[3].s, t: data.storyboard.cards[3].t, d: data.storyboard.cards[3].d, c: "#ea580c", bg: "#fff7ed", icon: Utensils }
              ].map((esc, i) => (
                <SceneFlipCard key={i} esc={esc} />
              ))}
@@ -167,14 +163,8 @@ export default function Modulo3({ headerColor, headerGradient }) {
                <Target size={35} />
              </div>
              <div>
-               <h5 style={{ fontSize: '1.4rem', color: '#9a3412', margin: '0 0 15px 0', fontWeight: 800 }}>¿Por qué mapeamos visualmente la experiencia?</h5>
-               <p style={{ margin: 0, color: '#475569', lineHeight: 1.7, fontSize: '1.1rem' }}>
-                 Al desglosar tu producto en "escenas" secuenciales (como un director de cine) logras tres cosas críticas antes de operar:
-                 <br/><br/>
-                 1. <strong>Identificas vacíos:</strong> Te das cuenta si hay baches de aburrimiento (ej. 2 horas en un bus donde no ocurre nada) y los llenas de contenido. <br/>
-                 2. <strong>Distribuyes los sentidos:</strong> Garantizas que no todo sea 100% visual. Aseguras que huelan, escuchen y toquen en momentos específicos de la ruta. <br/>
-                 3. <strong>Diseñas el Clímax:</strong> Controlas en qué momento exacto de la curva de tiempo el turista sentirá la máxima emoción, asegurando que esa sea la memoria principal que se lleve a casa.
-               </p>
+               <h5 style={{ fontSize: '1.4rem', color: '#9a3412', margin: '0 0 15px 0', fontWeight: 800 }}>{data.storyboard.explicacion.title}</h5>
+               <p style={{ margin: 0, color: '#475569', lineHeight: 1.7, fontSize: '1.1rem' }} dangerouslySetInnerHTML={{ __html: data.storyboard.explicacion.text }}></p>
              </div>
            </div>
         </div>

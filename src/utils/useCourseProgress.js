@@ -74,5 +74,12 @@ export default function useCourseProgress(courseId) {
     }
   }, [step, showEvaluation, courseId, currentUser, isCloudLoaded]);
 
-  return { step, setStep, showEvaluation, setShowEvaluation };
+  const resetProgress = () => {
+    setStep(1);
+    setShowEvaluation(false);
+    localStorage.setItem(`${courseId}_step`, 1);
+    localStorage.setItem(`${courseId}_showEvaluation`, false);
+  };
+
+  return { step, setStep, showEvaluation, setShowEvaluation, resetProgress };
 }

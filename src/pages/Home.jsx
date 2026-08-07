@@ -3,56 +3,45 @@ import { Helmet } from 'react-helmet-async';
 import { PenTool, LineChart, Library, ArrowRight, Info, Target, Network } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import tallerImg from '../assets/taller.webp';
+import { homeData } from '../data/homeData'; // <--- Lógica Zod integrada
+import * as LucideIcons from "lucide-react";
 
-const OrgNode = ({ title, bg, color, items, children, subtitle }) => (
-  <div style={{ background: bg || 'white', border: `1px solid ${color || '#e2e8f0'}`, borderRadius: '15px', padding: '1.5rem', flex: 1, boxShadow: '0 10px 20px rgba(0,0,0,0.02)' }}>
-    <h4 style={{ color: color || '#032968', margin: 0, fontSize: '1.1rem', fontWeight: 800 }}>{title}</h4>
-    {subtitle && <p style={{ fontSize: '0.85rem', color: '#64748b', margin: '5px 0 0 0', textTransform: 'uppercase', fontWeight: 700 }}>{subtitle}</p>}
-    
-    {items && items.length > 0 && (
-      <ul style={{ listStyle: 'none', padding: 0, margin: '1rem 0 0 0', borderTop: '1px solid #f1f5f9', paddingTop: '1rem' }}>
-        {items.map((item, idx) => (
-          <li key={idx} style={{ padding: '0.5rem 0', color: '#475569', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <div style={{width: '6px', height: '6px', borderRadius: '50%', background: color || '#e2e8f0', flexShrink: 0}} />
-            {item}
-          </li>
-        ))}
-      </ul>
-    )}
-    {children && (
-      <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        {children}
-      </div>
-    )}
-  </div>
-);
+import { OrgNode } from '../components/ui/OrgNode';
+import { PilarCard } from '../components/ui/PilarCard';
 
 export default function Home() {
   const navigate = useNavigate();
+  const { hero, pilares, about, organigrama, seo } = homeData; // Datos extraídos y validados
 
   const navigateTo = (e, path) => {
     e.preventDefault();
     navigate(path);
   };
 
+  const colorMap = {
+    'bg-orange-600': '#F06000',
+    'bg-emerald-800': '#055C38',
+    'bg-blue-900': '#032968'
+  };
+
   return (
     <div className="main-container text-center">
       <Helmet>
-        <title>Centro de Innovación y Productividad Cultura T | Investigación y Desarrollo</title>
-        <meta name="description" content="Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo empresarial mediante ciencia de datos e innovación continua." />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
         <link rel="canonical" href="https://cip.cultura-t.com/" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Centro de Innovación y Productividad Cultura T | Investigación y Desarrollo" />
-        <meta property="og:description" content="Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo empresarial mediante ciencia de datos e innovación continua." />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
         <meta property="og:url" content="https://cip.cultura-t.com/" />
         <meta property="og:image" content="https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.webp" />
         
         {/* Twitter */}
-        <meta name="twitter:title" content="Centro de Innovación y Productividad Cultura T | Investigación y Desarrollo" />
-        <meta name="twitter:description" content="Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo empresarial mediante ciencia de datos e innovación continua." />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
 
-        {/* JSON-LD STRUCTURED DATA (Rank Math Inspired) */}
+        {/* JSON-LD STRUCTURED DATA */}
         <script type="application/ld+json">
           {`
             {
@@ -62,7 +51,7 @@ export default function Home() {
               "alternateName": "CIP Cultura T",
               "url": "https://cip.cultura-t.com",
               "logo": "https://cultura-t.com/wp-content/uploads/2025/08/cropped-Logo_CulturaT_color-scaled-1.webp",
-              "description": "Impulsamos la competitividad y productividad territorial en turismo, cultura y desarrollo, mediante ciencia de datos, innovación e investigación académica.",
+              "description": "${seo.description}",
               "parentOrganization": {
                 "@type": "Organization",
                 "name": "Cultura T S.A.S.",
@@ -83,11 +72,11 @@ export default function Home() {
         Centro de Innovación y Productividad Cultura T
       </h1>
 
-      <div className="title-pill mb-6">Apropiación Social del Conocimiento</div>
+      <div className="title-pill mb-6">{hero.pillText}</div>
       
-      <h2 style={{fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: '1.1'}}>Transformamos Territorios <br/><span style={{color: '#F06000'}}>con Conocimiento</span></h2>
+      <h2 style={{fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: '1.1'}}>{hero.titlePrefix} <br/><span style={{color: '#F06000'}}>{hero.titleHighlight}</span></h2>
       <p style={{fontSize: '1.25rem', color: '#475569', maxWidth: '700px', margin: '0 auto 3rem', fontFamily: 'Poppins'}}>
-        Centro de innovación y productividad enfocado en investigación territorial, IA y ecosistemas.
+        {hero.subtitle}
       </p>
 
       {/* Imagen Real Orgánica */}
@@ -103,33 +92,25 @@ export default function Home() {
         <img src={tallerImg} alt="Taller Comunitario" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
       </div>
 
-      {/* 3 PILARES - MOVIDOS ARRIBA */}
+      {/* 3 PILARES */}
       <h3 className="mb-8" style={{fontSize: '2.5rem'}}>Nuestros 3 Pilares</h3>
 
       <div className="grid-3" style={{marginBottom: '6rem'}}>
-        {/* Pilar 1 */}
-        <div className="glass-card" style={{padding: '2.5rem', textAlign: 'left'}}>
-          <div className="icon-wrapper" style={{background: '#F06000'}}><PenTool size={28}/></div>
-          <h4 style={{fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', color: '#032968'}}>Cursos y Herramientas</h4>
-          <p style={{color: '#475569', marginBottom: '2rem', lineHeight: '1.6'}}>Capacitación transformadora. Rutas de aprendizaje interactivas y material práctico para el desarrollo territorial.</p>
-          <a href="#cursos" onClick={(e) => navigateTo(e, '/cursos')} className="btn-primary">Ver Academia <ArrowRight size={18}/></a>
-        </div>
-
-        {/* Pilar 2 */}
-        <div className="glass-card" style={{padding: '2.5rem', textAlign: 'left'}}>
-          <div className="icon-wrapper" style={{background: '#055C38'}}><LineChart size={28}/></div>
-          <h4 style={{fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', color: '#032968'}}>Laboratorio de Datos y Tecnología</h4>
-          <p style={{color: '#475569', marginBottom: '2rem', lineHeight: '1.6'}}>El territorio en cifras. Visualización analítica interactiva y estadística de nuestros proyectos en campo.</p>
-          <a href="#laboratorio" onClick={(e) => navigateTo(e, '/laboratorio-datos')} className="btn-primary" style={{background: '#055C38'}}>Entrar al Lab <ArrowRight size={18}/></a>
-        </div>
-
-        {/* Pilar 3 */}
-        <div className="glass-card" style={{padding: '2.5rem', textAlign: 'left'}}>
-          <div className="icon-wrapper" style={{background: '#032968'}}><Library size={28}/></div>
-          <h4 style={{fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', color: '#032968'}}>Centro de Pensamiento</h4>
-          <p style={{color: '#475569', marginBottom: '2rem', lineHeight: '1.6'}}>Nuestra producción bibliográfica. Documentos de investigación formal, artículos y modelos de gestión publicable.</p>
-          <a href="#pensamiento" onClick={(e) => navigateTo(e, '/centro-pensamiento')} className="btn-primary" style={{background: '#032968'}}>Visitar Biblioteca <ArrowRight size={18}/></a>
-        </div>
+        {pilares.map((pilar) => {
+          const IconComponent = LucideIcons[pilar.icon] || LucideIcons.HelpCircle;
+          const hexColor = colorMap[pilar.color] || '#032968';
+          
+          return (
+            <div key={pilar.id} className="glass-card" style={{padding: '2.5rem', textAlign: 'left'}}>
+              <div className="icon-wrapper" style={{background: hexColor}}><IconComponent size={28}/></div>
+              <h4 style={{fontSize: '1.5rem', fontWeight: '800', marginBottom: '1rem', color: '#032968'}}>{pilar.title}</h4>
+              <p style={{color: '#475569', marginBottom: '2rem', lineHeight: '1.6'}}>{pilar.description}</p>
+              <a href={pilar.link} onClick={(e) => navigateTo(e, pilar.link)} className="btn-primary" style={pilar.color !== 'bg-orange-600' ? {background: hexColor} : {}}>
+                {pilar.buttonText} <ArrowRight size={18}/>
+              </a>
+            </div>
+          );
+        })}
       </div>
 
       {/* SECCIÓN CULTURA T Y CIP - MOVIDA ABAJO */}
@@ -138,17 +119,18 @@ export default function Home() {
           <div className="icon-wrapper" style={{background: '#055C38', marginBottom: '1.5rem'}}>
             <Info size={32}/>
           </div>
-          <h3 style={{fontSize: '2rem', marginBottom: '1.5rem', color: '#055C38'}}>Cultura T S.A.S.</h3>
-          <p style={{color: '#475569', lineHeight: '1.8', marginBottom: '1.5rem', fontSize: '1.05rem'}}>
-            Constituida legalmente en 2018 en Bogotá, somos una firma consultora y ejecutora de proyectos con consolidada trayectoria en el desarrollo, asesoría e implementación de estrategias para el turismo sustentable.
-          </p>
-          <p style={{color: '#475569', lineHeight: '1.8', marginBottom: '1.5rem', fontSize: '1.05rem'}}>
-            Nuestro objetivo abarca la promoción de la sostenibilidad, el fortalecimiento comunitario y la planificación territorial. Implementamos soluciones de ecosistemas web, analítica de datos, innovación y economía popular.
-          </p>
+          <h3 style={{fontSize: '2rem', marginBottom: '1.5rem', color: '#055C38'}}>{about.empresa.title}</h3>
+          
+          {about.empresa.paragraphs.map((p, idx) => (
+            <p key={idx} style={{color: '#475569', lineHeight: '1.8', marginBottom: '1.5rem', fontSize: '1.05rem'}}>
+              {p}
+            </p>
+          ))}
+          
           <div style={{marginTop: 'auto', background: 'rgba(5, 92, 56, 0.05)', padding: '1.5rem', borderRadius: '15px', border: '1px solid rgba(5, 92, 56, 0.2)'}}>
-            <strong style={{color: '#055C38', display: 'block', marginBottom: '0.5rem', fontSize: '1.1rem'}}>Propósito:</strong>
+            <strong style={{color: '#055C38', display: 'block', marginBottom: '0.5rem', fontSize: '1.1rem'}}>{about.empresa.propositoTitle}</strong>
             <p style={{color: '#475569', lineHeight: '1.6', margin: 0}}>
-              Fortalecer el desarrollo sostenible de las comunidades locales y los territorios, generando bienestar mediante proyectos de impacto ambiental, social, cultural y turístico.
+              {about.empresa.proposito}
             </p>
           </div>
         </div>
@@ -157,15 +139,19 @@ export default function Home() {
           <div className="icon-wrapper" style={{background: '#F06000', marginBottom: '1.5rem'}}>
             <Target size={32}/>
           </div>
-          <h3 style={{fontSize: '2rem', marginBottom: '0.5rem', color: '#032968'}}>El CIP</h3>
-          <h4 style={{fontSize: '1.1rem', color: '#F06000', marginBottom: '1.5rem', fontWeight: '800'}}>Centro de Innovación y Productividad</h4>
-          <p style={{color: '#475569', lineHeight: '1.8', marginBottom: '1.5rem', fontSize: '1.05rem'}}>
-            A través del CIP articulamos a los actores de la cadena de valor del turismo, estableciendo alianzas estratégicas con entidades públicas, privadas y fondos de cooperación para la transformación social y económica.
-          </p>
+          <h3 style={{fontSize: '2rem', marginBottom: '0.5rem', color: '#032968'}}>{about.cip.title}</h3>
+          <h4 style={{fontSize: '1.1rem', color: '#F06000', marginBottom: '1.5rem', fontWeight: '800'}}>{about.cip.subtitle}</h4>
+          
+          {about.cip.paragraphs.map((p, idx) => (
+            <p key={idx} style={{color: '#475569', lineHeight: '1.8', marginBottom: '1.5rem', fontSize: '1.05rem'}}>
+              {p}
+            </p>
+          ))}
+          
           <div style={{marginTop: 'auto', background: 'rgba(240, 96, 0, 0.05)', padding: '1.5rem', borderRadius: '15px', border: '1px solid rgba(240, 96, 0, 0.2)'}}>
-            <strong style={{color: '#F06000', display: 'block', marginBottom: '0.5rem', fontSize: '1.1rem'}}>Misión Fundamental:</strong>
+            <strong style={{color: '#F06000', display: 'block', marginBottom: '0.5rem', fontSize: '1.1rem'}}>{about.cip.misionTitle}</strong>
             <p style={{color: '#475569', lineHeight: '1.6', margin: 0}}>
-              Impulsar la competitividad y productividad territorial en los sectores del turismo, la cultura y el desarrollo empresarial. Mediante la prestación de servicios especializados, investigamos y transferimos conocimiento para inducir la innovación continua en las regiones.
+              {about.cip.mision}
             </p>
           </div>
         </div>
@@ -175,13 +161,13 @@ export default function Home() {
       <div style={{ marginTop: '3rem', padding: '4rem 2rem', background: 'rgba(255,255,255,0.6)', borderRadius: '40px', border: '1px solid rgba(5,92,56,0.1)' }}>
         <div style={{display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#032968', color: 'white', padding: '10px 25px', borderRadius: '50px', marginBottom: '3rem'}}>
            <Network size={20} />
-           <h3 style={{ margin: 0, fontSize: '1.5rem', color: 'white', fontFamily: 'Poppins' }}>Estructura Organizacional</h3>
+           <h3 style={{ margin: 0, fontSize: '1.5rem', color: 'white', fontFamily: 'Poppins' }}>{organigrama.title}</h3>
         </div>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
           {/* RAÍZ */}
           <div style={{ width: '100%', maxWidth: '400px' }}>
-            <OrgNode title="CULTURA T S.A.S." subtitle="Dirección General" color="#032968" bg="#f8fafc" />
+            <OrgNode node={organigrama.root} />
           </div>
 
           {/* DIVISIÓN MISIONAL Y APOYO */}
@@ -189,26 +175,17 @@ export default function Home() {
             
             {/* ÁREA MISIONAL */}
             <div style={{ background: '#fff', borderRadius: '25px', padding: '2rem', border: '2px solid rgba(240, 96, 0, 0.2)', boxShadow: '0 10px 30px rgba(240, 96, 0, 0.05)' }}>
-              <h3 style={{ color: '#F06000', marginBottom: '2rem', textAlign: 'center', fontSize: '1.5rem' }}>ÁREA MISIONAL</h3>
+              <h3 style={{ color: '#F06000', marginBottom: '2rem', textAlign: 'center', fontSize: '1.5rem' }}>{organigrama.misional.title}</h3>
               
-              <OrgNode title="Dirección de Operaciones e Innovación" color="#F06000">
-                 
+              <OrgNode node={organigrama.misional.node}>
                  <div style={{ background: 'rgba(240,96,0,0.03)', border: '2px dashed rgba(240,96,0,0.3)', borderRadius: '15px', padding: '1.5rem' }}>
                    <p style={{ fontSize: '0.85rem', color: '#F06000', fontWeight: 'bold', textAlign: 'center', margin: '0 0 1.5rem 0', textTransform: 'uppercase' }}>
                      Núcleo Integrado: Sinergia Proyectos e Innovación
                    </p>
-                   {/* En móviles esto se apilará feo si usamos Flex horizontal, mejor flex column con gap */}
                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                      <OrgNode 
-                        title="Gerencia de Proyectos" 
-                        color="#032968" 
-                        items={['Subproceso Estructuración', 'Subproceso Implementación']} 
-                      />
-                      <OrgNode 
-                        title="CIP Cultura T" 
-                        color="#055C38" 
-                        items={['Línea Desarrollo Empresarial', 'Línea Transferencia Conocimiento']} 
-                      />
+                      {organigrama.misional.subNodes && organigrama.misional.subNodes.map((child, idx) => (
+                        <OrgNode key={idx} node={child} />
+                      ))}
                    </div>
                  </div>
               </OrgNode>
@@ -216,24 +193,12 @@ export default function Home() {
 
             {/* ÁREA DE APOYO */}
             <div style={{ background: '#fff', borderRadius: '25px', padding: '2rem', border: '2px solid rgba(5, 92, 56, 0.2)', boxShadow: '0 10px 30px rgba(5, 92, 56, 0.05)' }}>
-              <h3 style={{ color: '#055C38', marginBottom: '2rem', textAlign: 'center', fontSize: '1.5rem' }}>ÁREA DE APOYO</h3>
+              <h3 style={{ color: '#055C38', marginBottom: '2rem', textAlign: 'center', fontSize: '1.5rem' }}>{organigrama.apoyo.title}</h3>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <OrgNode 
-                  title="Financiera y Contable" 
-                  color="#475569" 
-                  items={['Nómina, Fiscalización, Facturación']} 
-                />
-                <OrgNode 
-                  title="Tecnologías - TICs" 
-                  color="#475569" 
-                  items={['Soporte Administrativo', 'Entornos Analítica de Datos', 'Ecosistema Web E-learning']} 
-                />
-                <OrgNode 
-                  title="Jurídica y Contratación" 
-                  color="#475569" 
-                  items={['Asesoría y Contratación']} 
-                />
+                {organigrama.apoyo.nodes.map((child, idx) => (
+                  <OrgNode key={idx} node={child} />
+                ))}
               </div>
             </div>
 

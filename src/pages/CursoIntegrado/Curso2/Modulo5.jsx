@@ -2,14 +2,8 @@ import React, { useState } from 'react';
 import { Settings, Route, Home, Camera, ArrowRight, Wrench, AlertTriangle } from 'lucide-react';
 import PodcastPlayer from '../../../components/PodcastPlayer';
 
-export default function Modulo5({ headerColor, headerGradient }) {
+export default function Modulo5({ headerColor, headerGradient, data }) {
   const [selectedGapId, setSelectedGapId] = useState(null);
-
-  const gapOptions = [
-    { id: 'A', text: 'El albergue no ofrece shows nocturnos ni tiene piscina climatizada.', correct: false, reason: '¡Cascarita! Un turista especializado en aves se levanta a las 4:00 AM para ir a la selva; no busca vida nocturna ni lujos genéricos. Evaluar esto como brecha es diseñar para el perfil equivocado.' },
-    { id: 'B', text: 'El menú de la cena típica solo tiene 2 opciones en lugar de 5.', correct: false, reason: '¡Cascarita! Aunque la variedad es deseable, para un "pajarero" duro, la comida es un elemento funcional. Una pequeña limitación en el menú no arruina la experiencia si el avistamiento es estelar.' },
-    { id: 'C', text: 'Los senderos del parque abren a las 8:00 AM porque a esa hora llega el personal.', correct: true, reason: '¡Exacto! Esta es una brecha estructural crítica. El 90% de la actividad de las aves ocurre al amanecer (5:30 AM). Si la operación (facilidades) no está alineada con la necesidad biológica del atractivo, toda la cadena colapsa.' }
-  ];
 
   return (
     <div className="fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -24,21 +18,21 @@ export default function Modulo5({ headerColor, headerGradient }) {
         marginBottom: '3rem'
       }}>
         <h3 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white' }}>
-          FASE 2: Cadena de Valor y Brechas
+          {data.header.title}
         </h3>
         <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto' }}>
-          De la imaginación a la realidad. Identifica qué te falta para ofrecer la experiencia perfecta.
+          {data.header.description}
         </p>
       </div>
 
       <div style={{ padding: '0 2rem 4rem 2rem' }}>
 
         <PodcastPlayer
-          title="El Eslabón Roto"
-          subtitle="Audio Instructora"
-          audioSrc="/audio/C2-M5.wav"
-          transcript={<p>El turismo es, quizás, la industria más interconectada que existe. Piensa en esto como una obra de teatro: tú puedes tener el mejor hotel del mundo (el actor principal), y el mejor restaurante de la región (el actor secundario). Pero, ¿qué pasa si la vía para llegar al pueblo está destruida, o si el transportador local cobra precios injustos? La obra de teatro se arruina antes de empezar.<br/><br/>A esto le llamamos la Cadena de Valor. La experiencia del turista no empieza cuando entra a tu hotel, empieza desde que se sube al bus en su ciudad de origen. Si hay un solo eslabón roto, una sola "brecha" —como la falta de señalización, mala conexión a internet o basura en las calles—, el turista calificará mal toda la experiencia, por más que tu hotel haya sido perfecto. Por eso, en el turismo territorial no competimos entre vecinos; dependemos de que todo el ecosistema funcione impecablemente. Abajo verás cómo identificar esos eslabones rotos.</p>}
-          color={headerColor || '#4f46e5'}
+          title={data.podcast.title}
+          subtitle={data.podcast.subtitle}
+          audioSrc={data.podcast.audioSrc}
+          transcript={<div dangerouslySetInnerHTML={{ __html: data.podcast.transcript }} />}
+          color={headerColor || '#d946ef'}
         />
 
         {/* Ilustración Vectorial (Engranajes/Cadena) */}
@@ -98,83 +92,72 @@ export default function Modulo5({ headerColor, headerGradient }) {
         </div>
         
         {/* Analogía */}
-        <div className="theory-block" style={{ borderLeftColor: headerColor || '#4f46e5' }}>
-          <h4><Settings size={28} /> La Analogía del Engranaje</h4>
-          <p>
-            Imagina un reloj suizo hermosísimo. Todos los engranajes funcionan perfecto... excepto uno que está roto. ¿Qué le pasa al reloj? <strong>Se detiene por completo.</strong>
-          </p>
-          <p>
-            En turismo pasa lo mismo: tienes un atractivo increíble, un hotel lujoso y comida deliciosa. Pero si el <strong>transporte</strong> (el taxista o el bus) es grosero, inseguro o impuntual, toda la experiencia del turista se arruina. La <b>Cadena de Valor</b> sirve para encontrar ese engranaje roto.
-          </p>
+        <div className="theory-block" style={{ borderLeftColor: headerColor || '#d946ef' }}>
+          <h4><Settings size={28} /> {data.engranaje.title}</h4>
+          <p dangerouslySetInnerHTML={{ __html: data.engranaje.p1 }}></p>
+          <p dangerouslySetInnerHTML={{ __html: data.engranaje.p2 }}></p>
         </div>
 
         {/* Gráfico de Cadena de Valor Interactivo Visual */}
-        <h3 className="mb-6 text-center" style={{ color: headerColor || '#4f46e5' }}>El Gráfico de la Cadena (Matriz 5)</h3>
-        <p className="text-center mb-8" style={{ color: '#475569', maxWidth: '600px', margin: '0 auto 2rem auto' }}>
-          Reconstruye paso a paso el viaje del turista. Lo que <b>necesita</b> vs lo que <b>existe hoy</b>. La diferencia entre ambos se llama <strong>BRECHA</strong>.
-        </p>
+        <h3 className="mb-4 text-center mt-12" style={{ color: headerColor || '#d946ef' }}>{data.grafico.title}</h3>
+        <p className="text-center mb-10" style={{ color: '#475569' }} dangerouslySetInnerHTML={{ __html: data.grafico.description }}></p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
+        <div style={{ position: 'relative', marginBottom: '4rem' }}>
           
-          {/* Eslabón 1 */}
-          <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '20px', border: '1px solid #e2e8f0', position: 'relative' }}>
-            <div style={{ background: '#3b82f6', color: 'white', padding: '15px', borderRadius: '15px' }}><Route size={24} /></div>
-            <div style={{ flex: 1 }}>
-              <h5 style={{ margin: '0 0 5px 0', fontSize: '1.2rem', color: '#1e293b' }}>1. Transporte y Llegada</h5>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748b' }}><strong>Necesidad:</strong> Vía pavimentada y buses cómodos.</p>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748b' }}><strong>Realidad:</strong> Buses sin aire acondicionado.</p>
-            </div>
-            <div style={{ background: '#fee2e2', color: '#b91c1c', padding: '10px 15px', borderRadius: '10px', fontSize: '0.9rem', fontWeight: 800 }}>Brecha: Capacitar transportadores</div>
-            <ArrowRight size={24} color="#94a3b8" style={{ position: 'absolute', bottom: '-20px', left: '35px', transform: 'rotate(90deg)' }} />
-          </div>
+          <div className="grid-3" style={{ gap: '20px' }}>
+            {[
+              { idx: 0, bg: '#fdf4ff', border: '#fbcfe8', color: '#c026d3', icon: Route },
+              { idx: 1, bg: '#f5f3ff', border: '#ddd6fe', color: '#7c3aed', icon: MapPin },
+              { idx: 2, bg: '#ecfdf5', border: '#a7f3d0', color: '#059669', icon: Activity }
+            ].map((col) => {
+              const eslabon = data.grafico.eslabones[col.idx];
+              const Icon = col.icon;
+              return (
+                <div key={col.idx} style={{ background: col.bg, border: `2px solid ${col.border}`, borderRadius: '25px', padding: '2rem', position: 'relative' }}>
+                  <div style={{ background: col.color, color: 'white', width: '50px', height: '50px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                    <Icon size={24} />
+                  </div>
+                  <h4 style={{ color: col.color, fontSize: '1.2rem', fontWeight: 800, marginBottom: '1.5rem' }}>{eslabon.title}</h4>
+                  
+                  <div style={{ background: 'white', padding: '1rem', borderRadius: '15px', marginBottom: '10px', boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
+                    <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 700, marginBottom: '5px' }}>NECESIDAD (Ideal)</div>
+                    <div style={{ color: '#334155', fontSize: '0.95rem' }}>{eslabon.necesidad}</div>
+                  </div>
 
-          {/* Eslabón 2 */}
-          <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '20px', border: '1px solid #e2e8f0', position: 'relative' }}>
-            <div style={{ background: '#8b5cf6', color: 'white', padding: '15px', borderRadius: '15px' }}><Home size={24} /></div>
-            <div style={{ flex: 1 }}>
-              <h5 style={{ margin: '0 0 5px 0', fontSize: '1.2rem', color: '#1e293b' }}>2. Alojamiento</h5>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748b' }}><strong>Necesidad:</strong> Espacio seguro para bicicletas.</p>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748b' }}><strong>Realidad:</strong> Hoteles prohíben meter bicis.</p>
-            </div>
-            <div style={{ background: '#fee2e2', color: '#b91c1c', padding: '10px 15px', borderRadius: '10px', fontSize: '0.9rem', fontWeight: 800 }}>Brecha: Crear bici-parqueaderos</div>
-            <ArrowRight size={24} color="#94a3b8" style={{ position: 'absolute', bottom: '-20px', left: '35px', transform: 'rotate(90deg)' }} />
-          </div>
+                  <div style={{ textAlign: 'center', margin: '5px 0' }}><ArrowRight size={20} color="#94a3b8" style={{ transform: 'rotate(90deg)' }}/></div>
 
-          {/* Eslabón 3 */}
-          <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '20px', display: 'flex', alignItems: 'center', gap: '20px', border: '1px solid #e2e8f0' }}>
-            <div style={{ background: '#10b981', color: 'white', padding: '15px', borderRadius: '15px' }}><Camera size={24} /></div>
-            <div style={{ flex: 1 }}>
-              <h5 style={{ margin: '0 0 5px 0', fontSize: '1.2rem', color: '#1e293b' }}>3. Atractivo (La Finca)</h5>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748b' }}><strong>Necesidad:</strong> Señalización en inglés y español.</p>
-              <p style={{ margin: 0, fontSize: '0.9rem', color: '#64748b' }}><strong>Realidad:</strong> Cero señalización.</p>
-            </div>
-            <div style={{ background: '#fee2e2', color: '#b91c1c', padding: '10px 15px', borderRadius: '10px', fontSize: '0.9rem', fontWeight: 800 }}>Brecha: Instalar señales</div>
+                  <div style={{ background: 'white', padding: '1rem', borderRadius: '15px', marginBottom: '10px', boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
+                    <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 700, marginBottom: '5px' }}>REALIDAD (Hoy)</div>
+                    <div style={{ color: '#ef4444', fontSize: '0.95rem' }}>{eslabon.realidad}</div>
+                  </div>
+
+                  <div style={{ background: col.color, color: 'white', padding: '1rem', borderRadius: '15px', marginTop: '1.5rem', fontWeight: 700, textAlign: 'center' }}>
+                    {eslabon.brecha}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
         </div>
 
         {/* Cierre */}
-        <div style={{ background: '#eff6ff', border: '2px solid #93c5fd', borderRadius: '25px', padding: '2rem', display: 'flex', gap: '20px', alignItems: 'center' }}>
-          <div style={{ color: '#2563eb' }}><Wrench size={40} /></div>
+        <div style={{ background: '#f8fafc', padding: '2rem', borderRadius: '20px', borderLeft: '5px solid #d946ef', display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '4rem' }}>
           <div>
-            <h4 style={{ color: '#1e40af', fontWeight: 800, marginBottom: '0.5rem', fontSize: '1.2rem' }}>El valor de la matriz</h4>
-            <p style={{ color: '#1e3a8a', fontSize: '1rem', margin: 0 }}>
-              Esta herramienta es valiosa porque evita que hagamos "listas de deseos" al azar. Cada brecha identificada responde <b>estrictamente</b> a una necesidad del turista que nos falta por cubrir.
-            </p>
+            <h4 style={{ color: '#86198f', margin: '0 0 5px 0', fontSize: '1.2rem' }}>{data.cierre.title}</h4>
+            <p style={{ color: '#a21caf', margin: 0 }} dangerouslySetInnerHTML={{ __html: data.cierre.text }}></p>
           </div>
         </div>
 
         {/* Ejercicio Práctico - Juego Trampa */}
         <div className="interactive-card hover-scale" style={{ background: 'white', borderRadius: '30px', padding: '3rem', border: '2px solid #e2e8f0', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginTop: '4rem', marginBottom: '4rem' }}>
           <h4 style={{ color: '#0f172a', fontSize: '1.6rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <AlertTriangle size={30} color="#eab308" /> Juego Trampa: Detecta la Brecha
+            <AlertTriangle size={30} color="#eab308" /> {data.ejercicio.title}
           </h4>
-          <p style={{ fontSize: '1.15rem', color: '#475569', marginBottom: '2.5rem', lineHeight: 1.6 }}>
-            Imagina un destino de <strong>avistamiento de aves de clase mundial</strong> en la selva. Cuentan con los biólogos más expertos del país, binoculares de última tecnología, un albergue ecológico impecable, transporte VIP y comida típica deliciosa. Sin embargo, los turistas más especializados se van profundamente frustrados y dejan reseñas de 1 estrella. ¿Dónde crees que está realmente el engranaje roto en la Cadena de Valor metodológica?
-          </p>
+          <p style={{ fontSize: '1.15rem', color: '#475569', marginBottom: '2.5rem', lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: data.ejercicio.description }}></p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            {gapOptions.map(opt => {
+            {data.ejercicio.options.map(opt => {
               const isSelected = selectedGapId === opt.id;
               let status = 'idle';
               if (selectedGapId) {

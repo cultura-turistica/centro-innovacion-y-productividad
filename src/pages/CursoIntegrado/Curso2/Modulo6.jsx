@@ -6,7 +6,7 @@ import hipsterAvatar from '../../../assets/avatars/hipster.svg';
 import oldmanAvatar from '../../../assets/avatars/oldman.svg';
 import tryoutAvatar from '../../../assets/avatars/tryout.svg';
 
-export default function Modulo6({ headerColor, headerGradient }) {
+export default function Modulo6({ headerColor, headerGradient, data }) {
   return (
     <div className="fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
       
@@ -20,10 +20,10 @@ export default function Modulo6({ headerColor, headerGradient }) {
         marginBottom: '3rem'
       }}>
         <h3 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white' }}>
-          Ficha de Producto y Validación
+          {data.header.title}
         </h3>
         <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto' }}>
-          Empaqueta tu experiencia y ponla a prueba antes de gastar un solo peso en publicidad.
+          {data.header.description}
         </p>
       </div>
 
@@ -39,138 +39,112 @@ export default function Modulo6({ headerColor, headerGradient }) {
         </div>
 
         {/* Analogía */}
-        <div className="theory-block" style={{ borderLeftColor: headerColor || '#c026d3', marginBottom: '4rem', marginTop: '2rem' }}>
-          <h4><Users size={28} /> La Analogía del Ensayo General</h4>
-          <p style={{ marginBottom: '1.5rem', lineHeight: '1.8' }}>
-            Imagina que un teatro (tu destino turístico) abre sus puertas el día del estreno sin haber hecho un ensayo general con vestuario. Lo más probable es que los actores olviden sus líneas y los reflectores fallen.
-          </p>
-          <p style={{ lineHeight: '1.8' }}>
-            En turismo, la <strong>Validación en el mercado</strong> es tu ensayo general. No se trata de "vender", sino de invitar a tu público objetivo (o a operadores turísticos) a vivir la experiencia gratis para que critiquen duramente y puedas corregir errores antes del lanzamiento oficial.
-          </p>
+        <div className="theory-block" style={{ borderLeftColor: headerColor || '#06b6d4' }}>
+          <h4><Users size={28} /> {data.ensayo.title}</h4>
+          <p dangerouslySetInnerHTML={{ __html: data.ensayo.p1 }}></p>
+          <p dangerouslySetInnerHTML={{ __html: data.ensayo.p2 }}></p>
         </div>
 
         {/* Ficha de Producto - Caso Práctico */}
-        <div style={{ background: 'white', borderRadius: '30px', padding: '3rem', border: '2px solid #e9d5ff', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginBottom: '4rem' }}>
-          <h4 style={{ color: '#86198f', fontSize: '1.8rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <FileText size={32} /> La Ficha de Producto (Caso: Ruta del Cacao)
-          </h4>
-          <p style={{ color: '#701a75', fontSize: '1.15rem', marginBottom: '2.5rem', borderBottom: '2px solid #f3e8ff', paddingBottom: '2rem' }}>
-            En lugar de teoría, veamos cómo se ve una Ficha de Producto real. Este es el "Acta de Nacimiento" de tu experiencia, el documento maestro que usarás para salir a vender.
-          </p>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+        <h3 className="mb-4 text-center mt-12" style={{ color: headerColor || '#06b6d4' }}>{data.ficha.title}</h3>
+        <p className="text-center mb-10" style={{ color: '#475569' }}>
+          {data.ficha.description}
+        </p>
+        
+        <div style={{ background: '#f8fafc', padding: '3rem', borderRadius: '30px', border: '2px solid #e2e8f0', marginBottom: '4rem', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
+          <div className="grid-2" style={{ gap: '20px' }}>
+            
             {/* Columna Izquierda */}
-            <div>
-              <div style={{ marginBottom: '1.5rem' }}>
-                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Nombre de la Experiencia:</strong>
-                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', fontWeight: 600, fontSize: '1.1rem', border: '1px solid #f3e8ff' }}>
-                  Ruta del Cacao Ancestral
-                </div>
-              </div>
-              
-              <div style={{ marginBottom: '1.5rem' }}>
-                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Promesa de Valor:</strong>
-                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', border: '1px solid #f3e8ff', lineHeight: 1.6 }}>
-                  Conviértete en cacaotero por un día, cosecha con campesinos locales y prepara tu propio chocolate desde la semilla.
-                </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '4px solid #06b6d4' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 800, marginBottom: '5px' }}>{data.ficha.campos.nombre.label}</div>
+                <div style={{ color: '#1e293b', fontSize: '1.2rem', fontWeight: 700 }}>{data.ficha.campos.nombre.value}</div>
               </div>
 
-              <div style={{ marginBottom: '1.5rem' }}>
-                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Perfil del Turista (Buyer Persona):</strong>
-                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', border: '1px solid #f3e8ff' }}>
-                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.7 }}>
-                    <li>Familias urbanas con niños (8-15 años).</li>
-                    <li>Buscan actividades educativas y seguras en la naturaleza.</li>
-                    <li>Presupuesto medio-alto.</li>
-                  </ul>
-                </div>
+              <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '4px solid #0ea5e9' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 800, marginBottom: '5px' }}>{data.ficha.campos.promesa.label}</div>
+                <div style={{ color: '#334155', fontSize: '1rem', lineHeight: 1.5 }}>{data.ficha.campos.promesa.value}</div>
+              </div>
+
+              <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '4px solid #3b82f6' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 800, marginBottom: '5px' }}>{data.ficha.campos.perfil.label}</div>
+                <ul style={{ color: '#334155', fontSize: '0.95rem', margin: '0', paddingLeft: '20px', lineHeight: 1.6 }}>
+                  {data.ficha.campos.perfil.items.map((item, i) => <li key={i}>{item}</li>)}
+                </ul>
               </div>
             </div>
 
             {/* Columna Derecha */}
-            <div>
-              <div style={{ marginBottom: '1.5rem' }}>
-                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Inventario de Brechas (Resueltas):</strong>
-                <div style={{ background: '#fff1f2', padding: '15px 20px', borderRadius: '15px', color: '#be123c', border: '1px solid #ffe4e6' }}>
-                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.7 }}>
-                    <li>Falta baño cerca al cultivo → <strong>Se instaló baño ecológico.</strong></li>
-                    <li>Mosquitos molestos → <strong>Se incluye repelente orgánico en el kit.</strong></li>
-                  </ul>
-                </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '4px solid #f59e0b' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 800, marginBottom: '5px' }}>{data.ficha.campos.brechas.label}</div>
+                <ul style={{ color: '#334155', fontSize: '0.95rem', margin: '0', paddingLeft: '20px', lineHeight: 1.6 }}>
+                  {data.ficha.campos.brechas.items.map((item, i) => (
+                    <li key={i} dangerouslySetInnerHTML={{ __html: item }}></li>
+                  ))}
+                </ul>
               </div>
 
-              <div style={{ marginBottom: '1.5rem' }}>
-                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Mapeo de Actores Clave:</strong>
-                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', border: '1px solid #f3e8ff', lineHeight: 1.6 }}>
-                  Don José (Guía Finca), Doña Marta (Almuerzo típico), Transportes El Rápido (Logística).
-                </div>
+              <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '4px solid #10b981' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 800, marginBottom: '5px' }}>{data.ficha.campos.actores.label}</div>
+                <div style={{ color: '#334155', fontSize: '1rem', lineHeight: 1.5 }}>{data.ficha.campos.actores.value}</div>
               </div>
 
-              <div style={{ marginBottom: '1.5rem' }}>
-                <strong style={{ color: '#c026d3', display: 'block', marginBottom: '8px', fontSize: '1.1rem' }}>Canales de Comercialización:</strong>
-                <div style={{ background: '#faf5ff', padding: '15px 20px', borderRadius: '15px', color: '#4a044e', border: '1px solid #f3e8ff', lineHeight: 1.6 }}>
-                  Instagram Ads (enfocado a madres), Agencias especializadas en turismo familiar.
-                </div>
+              <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '4px solid #8b5cf6' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', fontWeight: 800, marginBottom: '5px' }}>{data.ficha.campos.canales.label}</div>
+                <div style={{ color: '#334155', fontSize: '1rem', lineHeight: 1.5 }}>{data.ficha.campos.canales.value}</div>
               </div>
             </div>
+
           </div>
         </div>
 
         {/* Protocolo de Validación */}
-        <div style={{ background: '#fdf4ff', border: '2px solid #fbcfe8', borderRadius: '30px', padding: '3rem', marginBottom: '4rem' }}>
-          <h4 style={{ color: '#be185d', fontSize: '1.5rem', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <ClipboardList size={28} /> Protocolo de Validación: Paso a Paso
-          </h4>
-          <p style={{ color: '#9d174d', fontSize: '1.1rem', marginBottom: '1.5rem' }}>
-            Sigue este protocolo estándar para que tus sesiones de validación (ya sea Focus Group o Try-Out) arrojen datos útiles y no solo cumplidos de amigos.
+        <div style={{ background: '#fffbeb', border: '2px solid #fde68a', borderRadius: '25px', padding: '3rem', marginBottom: '3rem' }}>
+          <h4 style={{ color: '#92400e', fontSize: '1.6rem', marginBottom: '1rem' }}>{data.protocolo.title}</h4>
+          <p style={{ color: '#b45309', marginBottom: '2rem', fontSize: '1.1rem' }}>
+            {data.protocolo.description}
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
-            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '5px solid #ec4899', boxShadow: '0 5px 15px rgba(0,0,0,0.03)' }}>
-              <h5 style={{ color: '#db2777', fontSize: '1.2rem', marginBottom: '0.5rem' }}>1. Selección Honesta del Perfil</h5>
-              <p style={{ color: '#831843', margin: 0 }}>Invita únicamente a personas que coincidan con tu Buyer Persona. Evita familiares o amigos cercanos que sesguen las respuestas.</p>
-            </div>
-            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '5px solid #d946ef', boxShadow: '0 5px 15px rgba(0,0,0,0.03)' }}>
-              <h5 style={{ color: '#c026d3', fontSize: '1.2rem', marginBottom: '0.5rem' }}>2. Exposición Neutra</h5>
-              <p style={{ color: '#4a044e', margin: 0 }}>Muestra el Storyboard o realiza el recorrido sin "vender" la idea ni justificar los errores. Deja que ellos experimenten el producto tal cual es.</p>
-            </div>
-            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', borderLeft: '5px solid #a855f7', boxShadow: '0 5px 15px rgba(0,0,0,0.03)' }}>
-              <h5 style={{ color: '#9333ea', fontSize: '1.2rem', marginBottom: '0.5rem' }}>3. Recolección Estructurada de Feedback</h5>
-              <p style={{ color: '#4c1d95', margin: 0 }}>Usa preguntas abiertas pero específicas: "¿Qué fue lo más frustrante?", "¿En qué momento te sentiste inseguro?", "¿Qué le falta a esta experiencia para que pagues por ella?".</p>
-            </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+            {data.protocolo.pasos.map((paso, i) => (
+              <div key={i} style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', display: 'flex', gap: '20px', alignItems: 'flex-start', boxShadow: '0 4px 6px rgba(0,0,0,0.02)' }}>
+                <div style={{ background: '#f59e0b', color: 'white', width: '35px', height: '35px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, flexShrink: 0 }}>
+                  {i+1}
+                </div>
+                <div>
+                  <h5 style={{ margin: '0 0 5px 0', fontSize: '1.1rem', color: '#92400e', fontWeight: 800 }}>{paso.title}</h5>
+                  <p style={{ margin: 0, color: '#475569', fontSize: '0.95rem' }}>{paso.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Instrumentos de Validación */}
-        <h3 className="mb-8 text-center" style={{ color: headerColor || '#c026d3', fontSize: '2rem' }}>Técnicas de Validación (Ensayo General)</h3>
-        
-        <div className="grid-2 mb-10" style={{ gap: '3rem', marginBottom: '5rem' }}>
-          {/* Tarjeta Try-Out (Avatar de Dicebear) */}
-          <div style={{ background: '#fce7f3', border: '3px solid #fbcfe8', borderRadius: '30px', padding: '3rem 2rem', textAlign: 'center', transition: 'transform 0.3s' }} className="hover-scale">
-            <img src={tryoutAvatar} alt="Try Out" style={{ width: '100px', height: '100px', borderRadius: '50%', margin: '0 auto 1.5rem auto', boxShadow: '0 10px 20px rgba(219,39,119,0.3)', border: '4px solid white' }} />
-            <h4 style={{ color: '#9d174d', fontSize: '1.6rem', marginBottom: '1rem' }}>Try-Out (Visita Física)</h4>
-            <p style={{ color: '#be185d', fontWeight: 'bold', marginBottom: '1.5rem' }}>La prueba de fuego en campo</p>
-            <ul style={{ textAlign: 'left', color: '#831843', fontSize: '1.05rem', lineHeight: 1.8, background: 'white', padding: '1.5rem', borderRadius: '15px' }}>
-              <li style={{ marginBottom: '10px' }}>Se invita a clientes reales a hacer el recorrido físicamente.</li>
-              <li style={{ marginBottom: '10px' }}>Evalúan el estado de vías, atención y narrativa.</li>
-              <li>Llenan una encuesta de calidad al final de la experiencia.</li>
+        <h3 className="mb-4 text-center mt-12" style={{ color: headerColor || '#06b6d4' }}>{data.tecnicas.title}</h3>
+        <div className="grid-2 mb-10" style={{ gap: '2rem' }}>
+          
+          <div style={{ background: '#ecfdf5', padding: '2rem', borderRadius: '20px', border: '1px solid #a7f3d0' }}>
+            <h4 style={{ color: '#047857', fontSize: '1.4rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <MapPin size={24} /> {data.tecnicas.tryout.title}
+            </h4>
+            <div style={{ color: '#059669', fontWeight: 700, marginBottom: '1rem' }}>{data.tecnicas.tryout.subtitle}</div>
+            <ul style={{ color: '#064e3b', margin: 0, paddingLeft: '20px', lineHeight: 1.6 }}>
+              {data.tecnicas.tryout.items.map((it, i) => <li key={i}>{it}</li>)}
             </ul>
           </div>
 
-          {/* Tarjeta Focus Group (Caritas grupales - 3 personas diversas) */}
-          <div style={{ background: '#f3e8ff', border: '3px solid #e9d5ff', borderRadius: '30px', padding: '3rem 2rem', textAlign: 'center', transition: 'transform 0.3s' }} className="hover-scale">
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
-              <img src={oldmanAvatar} alt="Persona Mayor" style={{ width: '90px', height: '90px', borderRadius: '50%', border: '4px solid white', zIndex: 1, boxShadow: '-5px 10px 20px rgba(147,51,234,0.2)' }} />
-              <img src={afroAvatar} alt="Persona Afro" style={{ width: '90px', height: '90px', borderRadius: '50%', border: '4px solid white', marginLeft: '-25px', zIndex: 2, boxShadow: '0 10px 20px rgba(147,51,234,0.3)' }} />
-              <img src={hipsterAvatar} alt="Persona Hipster" style={{ width: '90px', height: '90px', borderRadius: '50%', border: '4px solid white', marginLeft: '-25px', zIndex: 3, boxShadow: '5px 10px 20px rgba(147,51,234,0.2)' }} />
-            </div>
-            <h4 style={{ color: '#581c87', fontSize: '1.6rem', marginBottom: '1rem' }}>Focus Group</h4>
-            <p style={{ color: '#7e22ce', fontWeight: 'bold', marginBottom: '1.5rem' }}>Validación grupal en sala</p>
-            <ul style={{ textAlign: 'left', color: '#4c1d95', fontSize: '1.05rem', lineHeight: 1.8, background: 'white', padding: '1.5rem', borderRadius: '15px' }}>
-              <li style={{ marginBottom: '10px' }}>Reunión presencial o virtual con varias personas del target.</li>
-              <li style={{ marginBottom: '10px' }}>Se expone la experiencia con fotos/videos y el Storyboard.</li>
-              <li>Se debate en grupo, se piden críticas y se proponen mejoras.</li>
+          <div style={{ background: '#eff6ff', padding: '2rem', borderRadius: '20px', border: '1px solid #bfdbfe' }}>
+            <h4 style={{ color: '#1d4ed8', fontSize: '1.4rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <MessageSquare size={24} /> {data.tecnicas.focusgroup.title}
+            </h4>
+            <div style={{ color: '#2563eb', fontWeight: 700, marginBottom: '1rem' }}>{data.tecnicas.focusgroup.subtitle}</div>
+            <ul style={{ color: '#1e3a8a', margin: 0, paddingLeft: '20px', lineHeight: 1.6 }}>
+              {data.tecnicas.focusgroup.items.map((it, i) => <li key={i}>{it}</li>)}
             </ul>
           </div>
+
         </div>
 
       </div>

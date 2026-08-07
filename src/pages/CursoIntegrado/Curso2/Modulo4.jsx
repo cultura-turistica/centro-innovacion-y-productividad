@@ -1,14 +1,8 @@
 import React from 'react';
-import { Home, Coffee, AlertTriangle, Route, Settings, CheckCircle2 } from 'lucide-react';
+import { Home, Coffee, AlertTriangle, Route, Settings, CheckCircle2, Camera, BedDouble, Compass, Signal, CheckCircle } from 'lucide-react';
 
-export default function Modulo4({ headerColor, headerGradient }) {
-  const [selectedOptionId, setSelectedOptionId] = React.useState(null);
-
-  const options = [
-    { id: 'A', text: 'Transporte en vehículo SUV privado con aire acondicionado y conductor bilingüe.', correct: false, reason: 'Esto es un requerimiento estándar para el turismo de lujo. No arruinará la experiencia.' },
-    { id: 'B', text: 'Alojamiento en una suite boutique ecológica con sábanas de 400 hilos.', correct: false, reason: 'Excelente elección. Es un requerimiento alineado perfectamente a su perfil.' },
-    { id: 'C', text: 'Alimentación tradicional en un mercado público sin facilidades de baños limpios.', correct: true, reason: '¡Exacto! El turista de lujo valora la gastronomía auténtica, pero NUNCA transará con la falta de higiene o incomodidad sanitaria. Es su "intransable".' }
-  ];
+export default function Modulo4({ headerColor, headerGradient, data }) {
+  const [selectedOption, setSelectedOption] = React.useState(null);
 
   return (
     <div className="fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -23,10 +17,10 @@ export default function Modulo4({ headerColor, headerGradient }) {
         marginBottom: '3rem'
       }}>
         <h3 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem', color: 'white' }}>
-          Establecer Condiciones de Consumo
+          {data.header.title}
         </h3>
         <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '800px', margin: '0 auto' }}>
-          La "Escenografía y Utilería". Convierte tu diseño en un producto viable y seguro.
+          {data.header.description}
         </p>
       </div>
 
@@ -77,134 +71,93 @@ export default function Modulo4({ headerColor, headerGradient }) {
         </div>
         
         {/* Analogía */}
-        <div className="theory-block" style={{ borderLeftColor: headerColor || '#0f766e', marginBottom: '4rem' }}>
-          <h4><Settings size={28} /> La Analogía de la Escenografía</h4>
-          <p>
-            Imagina una obra de teatro. Tienes a los mejores actores (los guías) y un guion digno de un Óscar (la experiencia). Pero si el día de la obra, los asientos del público están rotos, la comida de la cafetería está rancia y no hay baños limpios... <strong>la obra será un fracaso.</strong>
-          </p>
-          <p>
-            En turismo, las Condiciones de Consumo (Matriz 4) son esa escenografía. Son los requerimientos <strong>intransables</strong> de alojamiento, comida, transporte y logística que exige tu turista para no quejarse.
-          </p>
+        <div className="theory-block" style={{ borderLeftColor: headerColor || '#8b5cf6' }}>
+          <h4><Camera size={28} /> {data.escenografia.title}</h4>
+          <p dangerouslySetInnerHTML={{ __html: data.escenografia.p1 }}></p>
+          <p dangerouslySetInnerHTML={{ __html: data.escenografia.p2 }}></p>
         </div>
 
-        {/* Las 4 Dimensiones */}
-        <h3 className="mb-6 text-center" style={{ color: headerColor || '#0f766e' }}>Las 4 Dimensiones Clave</h3>
+        <h3 className="mb-6 text-center mt-12" style={{ color: headerColor || '#8b5cf6' }}>{data.dimensiones.title}</h3>
         
-        <div className="grid-2 mb-10" style={{ gap: '2rem' }}>
+        <div className="grid-2 mb-10" style={{ gap: '20px' }}>
           
-          <div style={{ background: '#f0fdf4', padding: '2rem', borderRadius: '25px', border: '2px solid #bbf7d0' }}>
-            <div style={{ background: '#22c55e', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Home size={24} />
-            </div>
-            <h4 style={{ color: '#166534', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>1. Alojamiento</h4>
-            <p style={{ color: '#15803d', fontSize: '1rem', lineHeight: 1.6 }}>
-              ¿El turista acepta dormir en hamaca o exige habitación privada con agua caliente? Define los "intransables" (Ej. limpieza impecable, mosquiteros).
-            </p>
+          <div style={{ background: '#f5f3ff', padding: '2rem', borderRadius: '20px', border: '1px solid #ddd6fe' }}>
+            <h4 style={{ color: '#6d28d9', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '10px' }}><BedDouble size={24} /> {data.dimensiones.alojamiento.title}</h4>
+            <p style={{ color: '#4c1d95', margin: 0 }}>{data.dimensiones.alojamiento.text}</p>
           </div>
 
-          <div style={{ background: '#fffbeb', padding: '2rem', borderRadius: '25px', border: '2px solid #fde68a' }}>
-            <div style={{ background: '#f59e0b', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Coffee size={24} />
-            </div>
-            <h4 style={{ color: '#92400e', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>2. Alimentación</h4>
-            <p style={{ color: '#b45309', fontSize: '1rem', lineHeight: 1.6 }}>
-              ¿Son exploradores gastronómicos o prefieren menús internacionales seguros? Considera restricciones dietéticas (vegetarianos, alergias).
-            </p>
+          <div style={{ background: '#fef2f2', padding: '2rem', borderRadius: '20px', border: '1px solid #fecaca' }}>
+            <h4 style={{ color: '#b91c1c', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '10px' }}><Coffee size={24} /> {data.dimensiones.alimentacion.title}</h4>
+            <p style={{ color: '#7f1d1d', margin: 0 }}>{data.dimensiones.alimentacion.text}</p>
           </div>
 
-          <div style={{ background: '#eff6ff', padding: '2rem', borderRadius: '25px', border: '2px solid #bfdbfe' }}>
-            <div style={{ background: '#3b82f6', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Route size={24} />
-            </div>
-            <h4 style={{ color: '#1e40af', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>3. Actividades</h4>
-            <p style={{ color: '#1d4ed8', fontSize: '1rem', lineHeight: 1.6 }}>
-              ¿Qué nivel de intensidad física soportan? ¿Es una caminata de 1 hora plana o un ascenso de 4 horas? No puedes obligar a la tercera edad a trepar rocas.
-            </p>
+          <div style={{ background: '#ecfdf5', padding: '2rem', borderRadius: '20px', border: '1px solid #a7f3d0' }}>
+            <h4 style={{ color: '#047857', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '10px' }}><Compass size={24} /> {data.dimensiones.actividades.title}</h4>
+            <p style={{ color: '#064e3b', margin: 0 }}>{data.dimensiones.actividades.text}</p>
           </div>
 
-          <div style={{ background: '#f5f3ff', padding: '2rem', borderRadius: '25px', border: '2px solid #ddd6fe' }}>
-            <div style={{ background: '#8b5cf6', color: 'white', width: '50px', height: '50px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-              <Settings size={24} />
-            </div>
-            <h4 style={{ color: '#4c1d95', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px' }}>4. Infraestructura</h4>
-            <p style={{ color: '#6d28d9', fontSize: '1rem', lineHeight: 1.6 }}>
-              Vías de acceso, señalización, cobertura móvil, baños públicos y protocolos médicos. ¿Hay señal de celular en caso de emergencia?
-            </p>
+          <div style={{ background: '#eff6ff', padding: '2rem', borderRadius: '20px', border: '1px solid #bfdbfe' }}>
+            <h4 style={{ color: '#1d4ed8', fontSize: '1.3rem', display: 'flex', alignItems: 'center', gap: '10px' }}><Signal size={24} /> {data.dimensiones.infraestructura.title}</h4>
+            <p style={{ color: '#1e3a8a', margin: 0 }}>{data.dimensiones.infraestructura.text}</p>
           </div>
 
         </div>
 
         {/* Ejercicio Práctico */}
-        <div className="interactive-card hover-scale" style={{ background: 'white', borderRadius: '30px', padding: '3rem', border: '2px solid #e2e8f0', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', marginBottom: '4rem' }}>
-          <h4 style={{ color: '#0f172a', fontSize: '1.6rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <AlertTriangle size={30} color="#eab308" /> Ejercicio Práctico: El Intransable
-          </h4>
-          <p style={{ fontSize: '1.15rem', color: '#475569', marginBottom: '2.5rem', lineHeight: 1.6 }}>
-            Estás diseñando una experiencia para el perfil de <strong>"Turista de Alto Lujo"</strong> (exigen privacidad absoluta, máximo confort y exclusividad). ¿Cuál de las siguientes condiciones de consumo arruinaría por completo su experiencia?
-          </p>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            {options.map(opt => {
-              const isSelected = selectedOptionId === opt.id;
-              let status = 'idle';
-              if (selectedOptionId) {
-                if (isSelected) status = opt.correct ? 'correct' : 'wrong';
-                else if (opt.correct) status = 'correct'; // highlight the correct one if they guess wrong
-              }
-
-              return (
-                <div 
-                  key={opt.id}
-                  onClick={() => !selectedOptionId && setSelectedOptionId(opt.id)}
-                  style={{ 
-                    padding: '1.5rem', 
-                    borderRadius: '15px', 
-                    border: `2px solid ${status === 'idle' ? '#e2e8f0' : status === 'correct' ? '#22c55e' : status === 'wrong' ? '#ef4444' : '#e2e8f0'}`,
-                    background: status === 'idle' ? 'white' : status === 'correct' ? '#f0fdf4' : status === 'wrong' ? '#fef2f2' : 'white',
-                    cursor: selectedOptionId ? 'default' : 'pointer',
-                    transition: 'all 0.3s'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                    <div style={{ 
-                      width: '45px', height: '45px', borderRadius: '50%', 
-                      background: status === 'idle' ? '#f1f5f9' : status === 'correct' ? '#22c55e' : status === 'wrong' ? '#ef4444' : '#f1f5f9',
-                      color: status === 'idle' ? '#64748b' : 'white',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '1.2rem',
-                      flexShrink: 0
-                    }}>{opt.id}</div>
-                    <span style={{ fontSize: '1.1rem', color: '#1e293b', flex: 1, fontWeight: isSelected ? 700 : 500 }}>{opt.text}</span>
-                  </div>
-                  {isSelected && (
-                    <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'white', borderRadius: '10px', color: opt.correct ? '#15803d' : '#b91c1c', fontSize: '1rem', borderLeft: `4px solid ${opt.correct ? '#15803d' : '#b91c1c'}` }}>
-                      {opt.reason}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+        <div style={{ background: '#f8fafc', padding: '3rem', borderRadius: '30px', border: '1px solid #e2e8f0', marginBottom: '3rem' }}>
+          <h4 style={{ color: '#334155', fontSize: '1.5rem', marginBottom: '1.5rem' }}>{data.ejercicio.title}</h4>
+          <p style={{ color: '#475569', fontSize: '1.1rem', marginBottom: '2rem' }} dangerouslySetInnerHTML={{ __html: data.ejercicio.description }}></p>
           
-          {selectedOptionId && (
-            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-              <button 
-                onClick={() => setSelectedOptionId(null)}
-                style={{ background: '#f1f5f9', color: '#475569', border: 'none', padding: '10px 20px', borderRadius: '20px', cursor: 'pointer', fontWeight: 600 }}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {data.ejercicio.options.map((opt) => (
+              <button
+                key={opt.id}
+                onClick={() => setSelectedOption(opt.id)}
+                style={{
+                  background: selectedOption === opt.id ? (opt.correct ? '#ecfdf5' : '#fef2f2') : 'white',
+                  border: `2px solid ${selectedOption === opt.id ? (opt.correct ? '#10b981' : '#ef4444') : '#e2e8f0'}`,
+                  padding: '1.5rem',
+                  borderRadius: '15px',
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                  fontSize: '1rem',
+                  color: '#334155',
+                  transition: 'all 0.2s',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}
               >
-                Reintentar Ejercicio
+                <span>{opt.text}</span>
+                {selectedOption === opt.id && (
+                  opt.correct ? <CheckCircle color="#10b981" /> : <AlertTriangle color="#ef4444" />
+                )}
               </button>
+            ))}
+          </div>
+
+          {selectedOption && (
+            <div style={{ 
+              marginTop: '2rem', 
+              padding: '1.5rem', 
+              background: data.ejercicio.options.find(o => o.id === selectedOption)?.correct ? '#dcfce7' : '#fee2e2',
+              borderRadius: '15px',
+              color: data.ejercicio.options.find(o => o.id === selectedOption)?.correct ? '#166534' : '#991b1b',
+              animation: 'fadeIn 0.5s'
+            }}>
+              <strong>{data.ejercicio.options.find(o => o.id === selectedOption)?.correct ? '¡Correcto!' : 'Incorrecto.'}</strong> {data.ejercicio.options.find(o => o.id === selectedOption)?.reason}
             </div>
           )}
         </div>
 
         {/* Check de Validación */}
-        <div style={{ background: '#f8fafc', border: '2px dashed #94a3b8', borderRadius: '25px', padding: '2rem', display: 'flex', gap: '20px', alignItems: 'center' }}>
-          <div style={{ background: '#cbd5e1', color: 'white', borderRadius: '50%', padding: '10px' }}><CheckCircle2 size={40} color="#0f172a" /></div>
+        <div style={{ background: '#f5f3ff', padding: '2rem', borderRadius: '20px', borderLeft: '5px solid #8b5cf6', display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <div style={{ background: 'white', padding: '15px', borderRadius: '50%', boxShadow: '0 4px 10px rgba(139,92,246,0.2)' }}>
+            <CheckCircle size={35} color="#8b5cf6" />
+          </div>
           <div>
-            <h4 style={{ color: '#0f172a', fontWeight: 800, marginBottom: '0.5rem', fontSize: '1.2rem' }}>Hito de Diseño Superado</h4>
-            <p style={{ color: '#475569', fontSize: '1rem', margin: 0 }}>
-              Al diligenciar la <strong>Matriz 4</strong> con estos elementos, culmina formalmente la <b>Fase 1 (Diseño)</b>. Ya tienes el qué y el para quién. ¡Es hora de pasar a la Fase 2 (Planificación) para construirlo!
-            </p>
+            <h4 style={{ color: '#5b21b6', margin: '0 0 5px 0', fontSize: '1.3rem' }}>{data.check.title}</h4>
+            <p style={{ color: '#4c1d95', margin: 0 }} dangerouslySetInnerHTML={{ __html: data.check.text }}></p>
           </div>
         </div>
 

@@ -12,6 +12,7 @@ import Modulo4 from './CursoIntegrado/Curso2/Modulo4';
 import Modulo5 from './CursoIntegrado/Curso2/Modulo5';
 import Modulo6 from './CursoIntegrado/Curso2/Modulo6';
 import Modulo7 from './CursoIntegrado/Curso2/Modulo7';
+import { curso2Data } from '../data/curso2Data';
 
 export default function Curso2() {
   const navigate = useNavigate();
@@ -36,64 +37,6 @@ export default function Curso2() {
     "Evaluación Final"
   ];
 
-  const curso2QuizData = {
-    courseName: "Diseño de Producto Turístico Territorial",
-    courseId: "C2-Producto",
-    horas: "5",
-    questions: [
-      {
-        id: "q1",
-        text: "En el Módulo 2 vimos el concepto de 'Buyer Persona'. ¿Qué significa esto?",
-        options: [
-          { id: "a", text: "Una lista de agencias de viaje con las que hay que firmar contratos." },
-          { id: "b", text: "Un perfil semi-ficticio de tu cliente ideal, incluyendo sus dolores, deseos y comportamientos." },
-          { id: "c", text: "La persona encargada de cobrar a los turistas cuando llegan al territorio." }
-        ],
-        correctHash: "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d" // hash of "b"
-      },
-      {
-        id: "q2",
-        text: "¿Por qué NO se recomiendan los planes abstractos como 'hacer un folleto', sino acciones S.M.A.R.T?",
-        options: [
-          { id: "a", text: "Porque la metodología S.M.A.R.T exige que sean medibles, con un responsable y un límite de tiempo claro." },
-          { id: "b", text: "Porque hacer un folleto es muy costoso para la comunidad." },
-          { id: "c", text: "Porque el turismo no necesita publicidad." }
-        ],
-        correctHash: "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb" // hash of "a"
-      },
-      {
-        id: "q3",
-        text: "¿Qué elemento es fundamental dentro de la 'Ficha de Producto' vista en el Módulo 6?",
-        options: [
-          { id: "a", text: "La lista detallada de los ingredientes de cada comida." },
-          { id: "b", text: "Los nombres de todos los habitantes del municipio." },
-          { id: "c", text: "El itinerario por horas, los costos asociados y el precio final de venta." }
-        ],
-        correctHash: "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6" // hash of "c"
-      },
-      {
-        id: "q4",
-        text: "En el análisis de la 'Cadena de Valor' (Módulo 5), ¿qué se considera una 'brecha'?",
-        options: [
-          { id: "a", text: "Un espacio físico o distancia muy larga entre dos atractivos turísticos." },
-          { id: "b", text: "Un eslabón faltante o deficiente que rompe la continuidad y calidad de la experiencia del turista." },
-          { id: "c", text: "La diferencia de precios entre dos hoteles de la misma categoría." }
-        ],
-        correctHash: "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d" // hash of "b"
-      },
-      {
-        id: "q5",
-        text: "Según el Módulo 3, ¿cuál es el enfoque principal al redactar la 'Promesa de Valor' de una experiencia?",
-        options: [
-          { id: "a", text: "Hacer un cronograma exhaustivo de todos los lugares que se visitarán." },
-          { id: "b", text: "Enfocarse exclusivamente en ofrecer los precios más bajos del mercado." },
-          { id: "c", text: "Transmitir la transformación emocional, el mensaje o el aprendizaje clave que se llevará el turista." }
-        ],
-        correctHash: "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6" // hash of "c"
-      }
-    ]
-  };
-
   return (
     <div className="main-container">
       <div className="title-pill mb-4" style={{background: '#dcfce7', color: '#16A34A', boxShadow: '0 4px 10px rgba(0,0,0,0.05)'}}>
@@ -114,19 +57,19 @@ export default function Curso2() {
 
       <div className="glass-card" style={{padding: '0', position: 'relative', overflow: 'hidden', minHeight: '500px'}}>
         {step === 1 ? (
-          <Modulo1 headerColor={headerColor} headerGradient={headerGradient} />
+          <Modulo1 headerColor={headerColor} headerGradient={headerGradient} data={curso2Data.modulo1} />
         ) : step === 2 ? (
-          <Modulo2 headerColor={headerColor} headerGradient={headerGradient} />
+          <Modulo2 headerColor={headerColor} headerGradient={headerGradient} data={curso2Data.modulo2} />
         ) : step === 3 ? (
-          <Modulo3 headerColor={headerColor} headerGradient={headerGradient} />
+          <Modulo3 headerColor={headerColor} headerGradient={headerGradient} data={curso2Data.modulo3} />
         ) : step === 4 ? (
-          <Modulo4 headerColor={headerColor} headerGradient={headerGradient} />
+          <Modulo4 headerColor={headerColor} headerGradient={headerGradient} data={curso2Data.modulo4} />
         ) : step === 5 ? (
-          <Modulo5 headerColor={headerColor} headerGradient={headerGradient} />
+          <Modulo5 headerColor={headerColor} headerGradient={headerGradient} data={curso2Data.modulo5} />
         ) : step === 6 ? (
-          <Modulo6 headerColor={headerColor} headerGradient={headerGradient} />
+          <Modulo6 headerColor={headerColor} headerGradient={headerGradient} data={curso2Data.modulo6} />
         ) : step === 7 ? (
-          <Modulo7 headerColor={headerColor} headerGradient={headerGradient} />
+          <Modulo7 headerColor={headerColor} headerGradient={headerGradient} data={curso2Data.modulo7} />
         ) : step === 8 ? (
           <div style={{ padding: '2rem', height: '100%', minHeight: '600px', display: 'flex', flexDirection: 'column' }}>
             {!showEvaluation ? (
@@ -146,7 +89,7 @@ export default function Curso2() {
                 </div>
               </div>
             ) : (
-              <CourseEvaluation quizData={curso2QuizData} />
+              <CourseEvaluation quizData={curso2Data.quiz} />
             )}
           </div>
         ) : null}

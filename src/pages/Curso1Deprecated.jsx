@@ -10,10 +10,11 @@ import Modulo3 from './CursoIntegrado/Curso1/Modulo3';
 import Modulo4 from './CursoIntegrado/Curso1/Modulo4';
 import Modulo5 from './CursoIntegrado/Curso1/Modulo5';
 import Modulo6 from './CursoIntegrado/Curso1/Modulo6';
+import { curso1Data } from '../data/curso1Data';
 
-export default function Curso1() {
+export default function Curso1Deprecated() {
   const navigate = useNavigate();
-  const { step, setStep, showEvaluation, setShowEvaluation } = useCourseProgress('curso1');
+  const { step, setStep, showEvaluation, setShowEvaluation, resetProgress } = useCourseProgress('curso1');
   const totalSteps = 7;
 
   const nextStep = () => { if (step < totalSteps) setStep(step + 1); window.scrollTo({ top: 0, behavior: 'smooth' }); };
@@ -26,63 +27,7 @@ export default function Curso1() {
     window.scrollTo({ top: 0, behavior: 'smooth' }); 
   };
 
-  const curso1QuizData = {
-    courseName: "Ruta de Formación Turismo Comunitario",
-    courseId: "C1-Gobernanza",
-    horas: "2",
-    questions: [
-      {
-        id: "q1",
-        text: "¿Cuál es el núcleo de la Gobernanza en el turismo comunitario?",
-        options: [
-          { id: "a", text: "Dejar las decisiones en manos de un operador turístico externo." },
-          { id: "b", text: "Que la asamblea o comunidad organice, decida y distribuya equitativamente." },
-          { id: "c", text: "Que el líder con más recursos asuma toda la responsabilidad financiera." }
-        ],
-        correctHash: "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"
-      },
-      {
-        id: "q2",
-        text: "Según el curso, ¿qué es la 'Fatiga Comunitaria'?",
-        options: [
-          { id: "a", text: "El cansancio físico de los guías al terminar los recorridos turísticos." },
-          { id: "b", text: "El desgaste del tejido social por la desconfianza, la falta de equidad y los liderazgos impositivos." },
-          { id: "c", text: "La disminución de turistas en temporada baja." }
-        ],
-        correctHash: "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"
-      },
-      {
-        id: "q3",
-        text: "En la sostenibilidad rural, ¿cuáles son los tres ejes fundamentales que deben mantenerse en equilibrio indisoluble?",
-        options: [
-          { id: "a", text: "Ambiental, Social y Económico." },
-          { id: "b", text: "Mercadeo, Ventas y Publicidad." },
-          { id: "c", text: "Nacional, Departamental y Municipal." }
-        ],
-        correctHash: "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"
-      },
-      {
-        id: "q4",
-        text: "Para aprovechar el Patrimonio como producto turístico sin degradar la cultura local, ¿qué práctica se debe evitar?",
-        options: [
-          { id: "a", text: "Capacitar a los jóvenes de la vereda como guías." },
-          { id: "b", text: "La folclorización (actuar tradiciones falsas o disfrazarse solo para agradar al turista)." },
-          { id: "c", text: "Restringir el paso a ecosistemas extremadamente frágiles." }
-        ],
-        correctHash: "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"
-      },
-      {
-        id: "q5",
-        text: "¿Por qué es fundamental establecer una 'Red Asociativa' con roles claros (Vocero, Financiero, Guía, etc.)?",
-        options: [
-          { id: "a", text: "Para delegar toda la responsabilidad en una sola persona." },
-          { id: "b", text: "Para lograr complementariedad operativa confiando en las habilidades naturales de cada vecino." },
-          { id: "c", text: "Para dividir la tierra de la vereda en parcelas más pequeñas." }
-        ],
-        correctHash: "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"
-      }
-    ]
-  };
+  const curso1QuizData = curso1Data.quiz;
 
   let headerColor = '#032968';
   let headerGradient = 'linear-gradient(135deg, #1e3a8a 0%, #032968 100%)';
@@ -174,12 +119,12 @@ export default function Curso1() {
 
       <div className="glass-card" style={{ padding: '0', position: 'relative', overflow: 'hidden', minHeight: '600px', display: 'flex', flexDirection: 'column' }}>
 
-        {step === 1 && <Modulo1 headerColor={headerColor} headerGradient={headerGradient} />}
-        {step === 2 && <Modulo2 headerColor={headerColor} headerGradient={headerGradient} />}
-        {step === 3 && <Modulo3 headerColor={headerColor} headerGradient={headerGradient} />}
-        {step === 4 && <Modulo4 headerColor={headerColor} headerGradient={headerGradient} />}
-        {step === 5 && <Modulo5 headerColor={headerColor} headerGradient={headerGradient} />}
-        {step === 6 && <Modulo6 headerColor={headerColor} headerGradient={headerGradient} />}
+        {step === 1 && <Modulo1 headerColor={headerColor} headerGradient={headerGradient} data={curso1Data.modulo1} />}
+        {step === 2 && <Modulo2 headerColor={headerColor} headerGradient={headerGradient} data={curso1Data.modulo2} />}
+        {step === 3 && <Modulo3 headerColor={headerColor} headerGradient={headerGradient} data={curso1Data.modulo3} />}
+        {step === 4 && <Modulo4 headerColor={headerColor} headerGradient={headerGradient} data={curso1Data.modulo4} />}
+        {step === 5 && <Modulo5 headerColor={headerColor} headerGradient={headerGradient} data={curso1Data.modulo5} />}
+        {step === 6 && <Modulo6 headerColor={headerColor} headerGradient={headerGradient} data={curso1Data.modulo6} />}
 
         {step === 7 && (
           <div className="fade-in" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -196,9 +141,9 @@ export default function Curso1() {
               </div>
               <div style={{ background: 'linear-gradient(135deg, #d97706 0%, #92400e 100%)', padding: '2rem 3rem', display: 'flex', alignItems: 'center', gap: '2rem', position: 'relative', zIndex: 2, marginTop: '-30px', borderTopLeftRadius: '25px', borderTopRightRadius: '25px', boxShadow: '0 -15px 30px rgba(0,0,0,0.2)' }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ background: 'rgba(255,255,255,0.2)', padding: '5px 15px', borderRadius: '20px', display: 'inline-block', color: 'white', fontWeight: 600, marginBottom: '1rem', fontSize: '0.9rem' }}>Cierre y Evaluación</div>
-                  <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 900, lineHeight: 1.1 }}>Certificación<br />Oficial</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem', fontWeight: 400, maxWidth: '600px', lineHeight: 1.5 }}>Demuestra lo aprendido en el curso y obtén tu sello verificable de Cultura T.</p>
+                  <div style={{ background: 'rgba(255,255,255,0.2)', padding: '5px 15px', borderRadius: '20px', display: 'inline-block', color: 'white', fontWeight: 600, marginBottom: '1rem', fontSize: '0.9rem' }}>{curso1Data.certificacion.badge}</div>
+                  <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 900, lineHeight: 1.1 }} dangerouslySetInnerHTML={{ __html: curso1Data.certificacion.title }}></h3>
+                  <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem', fontWeight: 400, maxWidth: '600px', lineHeight: 1.5 }}>{curso1Data.certificacion.description}</p>
                 </div>
                 <div className="hidden md:block">
                   <img src="https://api.dicebear.com/9.x/micah/svg?seed=Certificado&backgroundColor=fef08a" alt="Logro" style={{ width: '120px', height: '120px', background: 'white', borderRadius: '50%', padding: '10px', boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }} />
@@ -210,16 +155,19 @@ export default function Curso1() {
               {!showEvaluation ? (
                 <div style={{ textAlign: 'center', padding: '4rem 2rem', background: 'white', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', border: '1px solid #e2e8f0' }}>
                   <Award size={64} color="#eab308" style={{ margin: '0 auto 1rem auto' }} />
-                  <h2 style={{ color: '#0f172a', fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem' }}>¡Has completado el contenido!</h2>
+                  <h2 style={{ color: '#0f172a', fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem' }}>{curso1Data.certificacion.completionTitle}</h2>
                   <p style={{ color: '#475569', fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
-                    Felicidades por completar el estudio de los módulos de Gobernanza y Turismo Comunitario. Si lo deseas, puedes realizar la evaluación de conocimientos para obtener tu certificado oficial.
+                    {curso1Data.certificacion.completionDesc}
                   </p>
                   <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     <button onClick={() => navigate('/cursos')} style={{ padding: '1rem 2rem', borderRadius: '12px', background: '#f1f5f9', color: '#475569', border: 'none', fontWeight: 'bold', fontSize: '1.1rem', cursor: 'pointer' }}>
-                      Terminar y Salir
+                      {curso1Data.certificacion.exitBtn}
+                    </button>
+                    <button onClick={resetProgress} style={{ padding: '1rem 2rem', borderRadius: '12px', background: '#e0e7ff', color: '#3730a3', border: 'none', fontWeight: 'bold', fontSize: '1.1rem', cursor: 'pointer' }}>
+                      Reiniciar Curso
                     </button>
                     <button onClick={() => setShowEvaluation(true)} style={{ padding: '1rem 2rem', borderRadius: '12px', background: '#d97706', color: 'white', border: 'none', fontWeight: 'bold', fontSize: '1.1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px', boxShadow: '0 10px 20px rgba(217,119,6,0.2)' }}>
-                      Obtener Certificado (Opcional) <CheckCircle2 size={20} />
+                      {curso1Data.certificacion.certBtn} <CheckCircle2 size={20} />
                     </button>
                   </div>
                 </div>

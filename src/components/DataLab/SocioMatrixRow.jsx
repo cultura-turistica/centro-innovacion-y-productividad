@@ -29,7 +29,7 @@ const SocioMatrixRow = ({
        
        {/* Elegant Divider (Center) */}
        <div className="hidden md:flex w-[4%] items-center justify-center order-1 md:order-2">
-          <div className="w-px h-full min-h-[60px] bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
+          <div className="w-px h-full min-h-[60px] bg-linear-to-b from-transparent via-slate-300 to-transparent"></div>
        </div>
        
        {/* Bajo Side (Right) - Nivel Bajo: Orange 700 (Terracota) */}

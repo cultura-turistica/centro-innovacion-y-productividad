@@ -2,19 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, ZAxis, BarChart, Bar, Cell as RechartsCell } from 'recharts';
 import { Helmet } from 'react-helmet-async';
-import '../DataLab.css';
+// Eliminado el import '../DataLab.css' para cumplir con Tailwind Only
 
-// Importación Directa del JSON
 import colombiaData from '../../data/colombia_sae_dataset.json';
-// Importación del TopoJSON Departamental de Colombia
 import colombiaTopo from '../../assets/co-all.topo.json';
+import { SAE_NARRATIVA } from '../../data/saeData';
 
 export default function ProyectoSaeColombia() {
   const [step, setStep] = useState(1);
   const [hoveredDept, setHoveredDept] = useState(null);
   const [mapPosition, setMapPosition] = useState({ coordinates: [-74.0, 4.5], zoom: 1 });
   
-  // Element Refs para el IntersectionObserver
   const step1Ref = useRef(null);
   const step2Ref = useRef(null);
   const step3Ref = useRef(null);
@@ -23,7 +21,7 @@ export default function ProyectoSaeColombia() {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.3
+      threshold: 0.5
     };
 
     const observerCallback = (entries) => {
@@ -41,7 +39,9 @@ export default function ProyectoSaeColombia() {
     if (step2Ref.current) observer.observe(step2Ref.current);
     if (step3Ref.current) observer.observe(step3Ref.current);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   // Preparando datos para MCMC y Scatter
@@ -63,10 +63,10 @@ export default function ProyectoSaeColombia() {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="datalab-tooltip">
-          <p style={{fontWeight:'bold', color:'#0d1117', margin: 0, marginBottom:'5px'}}>{data.municipio}</p>
-          <p style={{color: '#555', margin: 0}}>Luz: <span style={{color:'#fca311'}}>{data.luz_satelital.toFixed(2)}</span></p>
-          <p style={{color: '#555', margin: 0}}>IPM: <span style={{color: '#ff5233'}}>{data.prediccion_mcmc.toFixed(1)}%</span></p>
+        <div className="bg-[#0d1117]/95 text-[#c9d1d9] p-3 rounded-lg font-sans text-sm border border-white/10 shadow-xl">
+          <p className="font-bold text-white m-0 mb-1">{data.municipio}</p>
+          <p className="m-0 text-[#8b949e]">Luz: <span className="text-[#fca311]">{data.luz_satelital.toFixed(2)}</span></p>
+          <p className="m-0 text-[#8b949e]">IPM: <span className="text-[#ff5233]">{data.prediccion_mcmc.toFixed(1)}%</span></p>
         </div>
       );
     }
@@ -77,10 +77,10 @@ export default function ProyectoSaeColombia() {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="datalab-tooltip">
-           <p style={{fontWeight:'bold', color:'#0d1117', margin: 0, marginBottom:'5px'}}>{data.municipio}</p>
-           <p style={{color: '#555', margin: 0}}>Luminosidad: <span style={{color: '#ff5233'}}>{data.luz_satelital.toFixed(2)} lx</span></p>
-           <p style={{color: '#555', margin: 0}}>Pobreza IPM: <span style={{color: '#3fb950'}}>{data.prediccion_mcmc.toFixed(1)}%</span></p>
+        <div className="bg-[#0d1117]/95 text-[#c9d1d9] p-3 rounded-lg font-sans text-sm border border-white/10 shadow-xl">
+           <p className="font-bold text-white m-0 mb-1">{data.municipio}</p>
+           <p className="m-0 text-[#8b949e]">Luminosidad: <span className="text-[#ff5233]">{data.luz_satelital.toFixed(2)} lx</span></p>
+           <p className="m-0 text-[#8b949e]">Pobreza IPM: <span className="text-[#3fb950]">{data.prediccion_mcmc.toFixed(1)}%</span></p>
         </div>
       );
     }
@@ -88,63 +88,42 @@ export default function ProyectoSaeColombia() {
   };
 
   return (
-    <div className="datalab-root">
+    <div className="min-h-screen bg-[#0d1117] text-[#c9d1d9] font-sans m-0 p-0">
       <Helmet>
         <title>Proyecto SAE: Inferencia de Pobreza | DataLab Cultura T</title>
         <meta name="description" content="Análisis bayesiano cruzando luminosidad satelital y microdatos del DANE para estimar la pobreza en municipios inobservados de Colombia." />
-        <link rel="canonical" href="https://cip.cultura-t.com/laboratorio-datos/proyecto-sae" />
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [{
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Inicio",
-                "item": "https://cip.cultura-t.com"
-              },{
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Laboratorio de Datos",
-                "item": "https://cip.cultura-t.com/laboratorio-datos"
-              },{
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Proyecto SAE",
-                "item": "https://cip.cultura-t.com/laboratorio-datos/proyecto-sae"
-              }]
-            }
-          `}
-        </script>
       </Helmet>
       
-      <header className="datalab-header">
-        <span className="datalab-pill">Inferencia Estadística Espacial (SAE)</span>
-        <h1 className="datalab-title">Inferencia de Pobreza Multidimensional.</h1>
-        <p className="datalab-subtitle">
-          Estimación en Áreas Pequeñas cruzando luminosidad satelital nocturna con encuestas DANE mediante inferencia bayesiana. 
+      <header className="py-16 px-6 max-w-4xl mx-auto text-center">
+        <span className="text-[#fca311] font-bold uppercase tracking-widest text-sm mb-6 inline-block border-b-2 border-[#fca311] pb-1">
+          {SAE_NARRATIVA.header.pill}
+        </span>
+        <h1 className="text-4xl md:text-[4.5rem] text-white font-black leading-tight mb-8 tracking-tight font-['Poppins']">
+          {SAE_NARRATIVA.header.title}
+        </h1>
+        <p className="font-['Merriweather'] text-lg md:text-2xl italic font-light text-[#8b949e] max-w-3xl mx-auto leading-relaxed">
+          {SAE_NARRATIVA.header.subtitle}
         </p>
       </header>
 
-      <div className="datalab-scrolly">
+      <div className="flex flex-col md:flex-row-reverse relative max-w-[1400px] mx-auto items-start">
         
         {/* PANEL GRÁFICO (LIENZOS INDIVIDUALES) */}
-        <div className="datalab-graphic">
-          <div className="datalab-graphic-inner">
+        <div className="w-full md:w-1/2 sticky top-[80px] md:top-[10vh] h-[50vh] md:h-[80vh] p-4 md:p-0 z-0">
+          <div className="relative w-full h-full max-w-[850px] mx-auto bg-[#0d1117] md:rounded-xl md:border md:border-white/5 md:shadow-2xl overflow-hidden">
             
-            <div className="datalab-metadata-panel">
-              📡 <strong>Fuente:</strong> DANE + NOAA Satellites <br/>
-              💾 <strong>Datos:</strong> 1,086 Puntos<br/>
-              ⚙️ <strong>Modelo:</strong> Regresión MCMC
+            <div className="absolute top-4 right-4 bg-[#0d1117]/85 backdrop-blur-md p-3 rounded-lg text-[0.7rem] md:text-xs leading-relaxed border border-white/10 z-50 shadow-lg text-[#c9d1d9]">
+              📡 <strong className="text-white">Fuente:</strong> {SAE_NARRATIVA.metadata.fuente} <br/>
+              💾 <strong className="text-white">Datos:</strong> {SAE_NARRATIVA.metadata.datos}<br/>
+              ⚙️ <strong className="text-white">Modelo:</strong> {SAE_NARRATIVA.metadata.modelo}
             </div>
 
             {/* GRÁFICA 1: MAPA PINTADO DE COLOMBIA (Coroplético por Regiones) */}
-            <div className={`datalab-graphic-layer ${step === 1 ? 'active' : ''}`} style={{ zIndex: step === 1 ? 10 : 0 }}>
+            <div className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${step === 1 ? 'opacity-100 pointer-events-auto z-10' : 'opacity-0 pointer-events-none z-0'}`}>
               
               {/* Custom Tooltip Flotante de Departamentos */}
               {hoveredDept && (
-                <div className="datalab-dept-tooltip">
+                <div className="absolute top-8 left-1/2 -translate-x-1/2 bg-[#fca311]/95 text-[#0d1117] font-bold py-1.5 px-4 rounded-full text-sm shadow-xl z-50 whitespace-nowrap">
                   {hoveredDept}
                 </div>
               )}
@@ -183,77 +162,84 @@ export default function ProyectoSaeColombia() {
             </div>
 
             {/* GRÁFICA 2: SCATTERPLOT REGRESIÓN */}
-            <div className={`datalab-graphic-layer datalab-scatter-layer ${step === 2 ? 'active' : ''}`} style={{ zIndex: step === 2 ? 10 : 0 }}>
-              <h3 className="datalab-chart-title">Regresión IA: Luz Satelital vs. Pobreza</h3>
-              <ResponsiveContainer width="100%" height="85%">
-                <ScatterChart margin={{ top: 20, right: 30, bottom: 20, left: 10 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#30363d" />
-                  <XAxis type="number" dataKey="luz_satelital" name="Luminosidad" stroke="#8b949e" label={{ value: 'Intensidad Lumínica Satelital', position: 'bottom', fill: '#8b949e' }} tick={{fontSize: 12}} />
-                  <YAxis type="number" dataKey="prediccion_mcmc" name="Pobreza" stroke="#8b949e" domain={['auto', 'auto']} tickFormatter={(tick) => `${tick}%`} tick={{fontSize: 12}} width={45} />
-                  <ZAxis type="number" range={[40, 40]} />
-                  <RechartsTooltip content={<ScatterTooltip />} cursor={{ strokeDasharray: '3 3' }} />
-                  <Scatter name="Oficial" data={datosCenso} fill="#3fb950" opacity={0.6} />
-                  <Scatter name="Bayesiano" data={datosPyMC} fill="#ff5233" opacity={0.9} />
-                </ScatterChart>
-              </ResponsiveContainer>
-              <div className="datalab-chart-legend">
-                <span className="legend-dane">● Censado DANE Oficial</span>
-                <span className="legend-ia">● Inobservado (Inferido IA)</span>
+            <div className={`absolute inset-0 transition-opacity duration-1000 ease-in-out p-4 md:p-12 box-border bg-[#0d1117] flex flex-col ${step === 2 ? 'opacity-100 pointer-events-auto z-10' : 'opacity-0 pointer-events-none z-0'}`}>
+              <h3 className="text-sm md:text-xl text-center text-[#c9d1d9] font-bold mt-0 mb-4 flex-none">{SAE_NARRATIVA.chartTitles.scatter}</h3>
+              <div className="flex-1 min-h-0 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <ScatterChart margin={{ top: 10, right: 10, bottom: 20, left: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#30363d" />
+                    <XAxis type="number" dataKey="luz_satelital" name="Luminosidad" stroke="#8b949e" label={{ value: 'Intensidad Lumínica', position: 'bottom', fill: '#8b949e', fontSize: 11 }} tick={{fontSize: 10}} />
+                    <YAxis type="number" dataKey="prediccion_mcmc" name="Pobreza" stroke="#8b949e" domain={['auto', 'auto']} tickFormatter={(tick) => `${tick}%`} tick={{fontSize: 10}} width={35} />
+                    <ZAxis type="number" range={[40, 40]} />
+                    <RechartsTooltip content={<ScatterTooltip />} cursor={{ strokeDasharray: '3 3' }} />
+                    <Scatter name="Oficial" data={datosCenso} fill="#3fb950" opacity={0.6} />
+                    <Scatter name="Bayesiano" data={datosPyMC} fill="#ff5233" opacity={0.9} />
+                  </ScatterChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="text-center mt-2 md:mt-4 text-[0.65rem] md:text-xs">
+                <span className="text-[#3fb950] mr-2 md:mr-4">{SAE_NARRATIVA.legends.dane}</span>
+                <span className="text-[#ff5233]">{SAE_NARRATIVA.legends.ia}</span>
               </div>
             </div>
 
             {/* GRÁFICA 3: TOP 10 RANKING (Barchart) */}
-            <div className={`datalab-graphic-layer datalab-scatter-layer ${step === 3 ? 'active' : ''}`} style={{ zIndex: step === 3 ? 10 : 0 }}>
-              <h3 className="datalab-chart-title">Top 10 Municipios de Oscuridad Extrema</h3>
-              <ResponsiveContainer width="100%" height="85%">
-                <BarChart data={top10Darkest} margin={{ top: 20, right: 30, left: 10, bottom: 60 }} layout="horizontal">
-                  <CartesianGrid strokeDasharray="3 3" stroke="#30363d" vertical={false} />
-                  <XAxis dataKey="label" stroke="#8b949e" angle={-45} textAnchor="end" interval={0} tick={{fontSize: 11}} />
-                  <YAxis stroke="#8b949e" tickFormatter={(v) => `${v} lx`} tick={{fontSize: 12}} domain={[0, 'auto']} />
-                  <RechartsTooltip content={<BarTooltip />} cursor={{fill: 'rgba(255,255,255,0.05)'}} />
-                  <Bar dataKey="luz_satelital" radius={[4, 4, 0, 0]}>
-                    {top10Darkest.map((entry, index) => (
-                      <RechartsCell key={`cell-${index}`} fill={'#ff5233'} opacity={1 - (index * 0.05)} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
+            <div className={`absolute inset-0 transition-opacity duration-1000 ease-in-out p-4 md:p-12 box-border bg-[#0d1117] flex flex-col ${step === 3 ? 'opacity-100 pointer-events-auto z-10' : 'opacity-0 pointer-events-none z-0'}`}>
+              <h3 className="text-sm md:text-xl text-center text-[#c9d1d9] font-bold mt-0 mb-4 flex-none">{SAE_NARRATIVA.chartTitles.bar}</h3>
+              <div className="flex-1 min-h-0 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={top10Darkest} margin={{ top: 10, right: 10, left: 0, bottom: 50 }} layout="horizontal">
+                    <CartesianGrid strokeDasharray="3 3" stroke="#30363d" vertical={false} />
+                    <XAxis dataKey="label" stroke="#8b949e" angle={-45} textAnchor="end" interval={0} tick={{fontSize: 9}} />
+                    <YAxis stroke="#8b949e" tickFormatter={(v) => `${v} lx`} tick={{fontSize: 10}} domain={[0, 'auto']} width={40} />
+                    <RechartsTooltip content={<BarTooltip />} cursor={{fill: 'rgba(255,255,255,0.05)'}} />
+                    <Bar dataKey="luz_satelital" radius={[4, 4, 0, 0]}>
+                      {top10Darkest.map((entry, index) => (
+                        <RechartsCell key={`cell-${index}`} fill={'#ff5233'} opacity={1 - (index * 0.05)} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
             </div>
 
           </div>
         </div>
 
         {/* PANEL NARRATIVO */}
-        <div className="datalab-text">
-          <div id="step-1" ref={step1Ref} className="datalab-step">
-            <h3>1. "Dime con quién andas..." (Fuerza Prestada)</h3>
-            <p>
-              Las encuestas no logran llegar a cada rincón del país. Para llenar estos vacíos, los estadísticos se basan en la correlación espacial: el fenómeno de la pobreza se aglomera en los territorios.
-            </p>
-            <p>
-              En el <strong>Mapa Coroplético</strong> a tu derecha, el modelo "toma fuerza prestada" de las zonas evaluadas. Utilizando un <i>efecto aleatorio</i> municipal, asume que si un área tiene características de pobreza, los municipios vecinos inobservados muy probablemente compartan esa realidad.
-            </p>
-          </div>
+        <div className="w-full md:w-1/2 max-w-full md:max-w-[450px] z-10 px-6 md:px-0 pt-[5vh] md:pt-0 pb-[20vh] md:pb-[80vh] md:mt-[20vh] relative">
           
-          <div id="step-2" ref={step2Ref} className="datalab-step">
-            <h3>2. Satélites como Ojos (Variable Auxiliar)</h3>
-            <p>
-              Ante la falta de encuestadores en terreno, la contaminación lumínica se usa como un poderoso <i>proxy</i> de actividad económica e infraestructura. Sin embargo, la luz espacial no reemplaza la encuesta: la complementa.
-            </p>
-            <p>
-              El gráfico a tu derecha demuestra cómo el modelo mezcla fuentes: toma encuestas reales (<strong style={{color:'#3fb950'}}>Puntos Verdes</strong>), suma variables continuas del Censo, y añade la intensidad de luz (Eje X) para calibrar la regresión de áreas inobservadas (<strong style={{color:'#ff5233'}}>Puntos Rojos</strong>).
-            </p>
-          </div>
+          {SAE_NARRATIVA.steps.map((stepData, index) => (
+            <div 
+              key={stepData.id}
+              id={stepData.id} 
+              ref={index === 0 ? step1Ref : index === 1 ? step2Ref : step3Ref} 
+              className="p-6 md:p-10 bg-[#0d1117]/95 md:bg-[#0d1117]/85 backdrop-blur-md mb-[50vh] md:mb-[80vh] border-l-4 border-[#fca311] rounded-r-xl shadow-2xl relative"
+            >
+              <h3 className="text-2xl md:text-3xl text-white font-bold mb-4 mt-0 font-['Poppins']">
+                {stepData.title}
+              </h3>
+              {stepData.paragraphs.map((text, pIndex) => {
+                // Pequeño regex para renderizar negritas e itálicas básicas marcadas en markdown
+                let formattedText = text;
+                const renderHTML = () => {
+                  let html = text
+                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
+                    .replace(/\*(.*?)\*/g, '<em>$1</em>');
+                  return { __html: html };
+                };
+                
+                return (
+                  <p 
+                    key={pIndex} 
+                    className="font-['Merriweather'] text-[1.05rem] md:text-[1.15rem] leading-[1.7] text-[#b1bac4] mb-4"
+                    dangerouslySetInnerHTML={renderHTML()}
+                  />
+                );
+              })}
+            </div>
+          ))}
 
-          <div id="step-3" ref={step3Ref} className="datalab-step">
-            <h3>3. Imputación Teórica (Top 10 Inobservados)</h3>
-            <p>
-              Al cruzar todo lo anterior, la matemática aprende una fórmula silenciosa (Ej: menos luz satelital + menor educación censal = mayor probabilidad de pobreza). Con esto, logra una asombrosa <strong>imputación teórica</strong> para los recovecos oscuros del país.
-            </p>
-            <p>
-              A tu derecha revelamos un ranking estadístico impecable: el Top 10 de municipios inobservados, descubiertos únicamente a través de inferencia bayesiana, que fungen como el objetivo primordial de política pública de choque para el Estado.
-            </p>
-          </div>
         </div>
 
       </div>

@@ -7,7 +7,7 @@ import './index.css';
 
 const Home = lazy(() => import('./pages/Home'));
 const CursosApp = lazy(() => import('./pages/CursosApp'));
-const Curso1 = lazy(() => import('./pages/Curso1'));
+const Curso1 = lazy(() => import('./pages/Curso1/Curso1'));
 const Curso2 = lazy(() => import('./pages/Curso2'));
 const Curso3 = lazy(() => import('./pages/Curso3'));
 const Curso4 = lazy(() => import('./pages/Curso4'));
@@ -23,10 +23,8 @@ const Verificar = lazy(() => import('./pages/Verificar'));
 const TestCert = lazy(() => import('./pages/TestCert'));
 
 const ProyectoSaeColombia = lazy(() => import('./pages/DataLab/ProyectoSaeColombia'));
-// const ProyectoFontur = lazy(() => import('./pages/DataLab/ProyectoFontur'));
 const ProyectoProsperidad = lazy(() => import('./pages/DataLab/ProyectoProsperidad'));
 const ProyectoCO2 = lazy(() => import('./pages/DataLab/ProyectoCO2'));
-
 const ProyectoPerfilVisitante = lazy(() => import('./pages/DataLab/ProyectoPerfilVisitante'));
 
 export default function App() {

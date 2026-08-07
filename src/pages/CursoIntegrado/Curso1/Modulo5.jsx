@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BookOpen, MessageCircle, Edit3 } from 'lucide-react';
 
-export default function Modulo5({ headerColor, headerGradient }) {
+export default function Modulo5({ headerColor, headerGradient, data }) {
   const [chatStep, setChatStep] = useState(0);
 
   return (
@@ -18,11 +18,11 @@ export default function Modulo5({ headerColor, headerGradient }) {
               </div>
               <div style={{ background: headerGradient, padding: '2rem 3rem', display: 'flex', alignItems: 'center', gap: '2rem', position: 'relative', zIndex: 2, marginTop: '-30px', borderTopLeftRadius: '25px', borderTopRightRadius: '25px', boxShadow: '0 -15px 30px rgba(0,0,0,0.2)' }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ background: 'rgba(255,255,255,0.2)', padding: '5px 15px', borderRadius: '20px', display: 'inline-block', color: 'white', fontWeight: 600, marginBottom: '1rem', fontSize: '0.9rem' }}>Módulo 5</div>
-                  <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 900, lineHeight: 1.1 }}>Mediación y Resolución<br />de Conflictos</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem', fontWeight: 400, maxWidth: '600px', lineHeight: 1.5 }}>Donde hay familias vecinas y dinero de por medio, habrá tensiones. Ignorar la fricción destruye el tejido; gestionarla madura la gobernanza.</p>
+                  <div style={{ background: 'rgba(255,255,255,0.2)', padding: '5px 15px', borderRadius: '20px', display: 'inline-block', color: 'white', fontWeight: 600, marginBottom: '1rem', fontSize: '0.9rem' }}>{data.header.label}</div>
+                  <h3 style={{ color: 'white', marginBottom: '1rem', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 900, lineHeight: 1.1 }} dangerouslySetInnerHTML={{ __html: data.header.title }}></h3>
+                  <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem', fontWeight: 400, maxWidth: '600px', lineHeight: 1.5 }}>{data.header.description}</p>
                 </div>
-                <div style={{ display: 'none', '@media (min-width: 768px)': { display: 'block' } }}>
+                <div className="hidden md:block">
                   <img src="https://api.dicebear.com/9.x/micah/svg?seed=Mediacion" alt="Mediación" style={{ width: '120px', height: '120px', background: 'white', borderRadius: '50%', padding: '10px', boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }} />
                 </div>
               </div>
@@ -30,62 +30,57 @@ export default function Modulo5({ headerColor, headerGradient }) {
 
             <div style={{ padding: '2rem clamp(1rem, 3vw, 3rem)' }}>
               <div className="interactive-card" style={{ background: 'linear-gradient(to right, #f8fafc, #f1f5f9)', border: `2px solid ${headerColor}30`, borderRadius: '20px', padding: '2.5rem', position: 'relative', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', marginBottom: '3rem' }}>
-                <h4 style={{ color: headerColor, fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}><BookOpen size={24} /> El Conflicto Rural es Natural</h4>
-                <p style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '1rem' }}>En los esquemas asociativos, <strong>el conflicto no es sinónimo de un proyecto fallido</strong>. Es el síntoma natural de la convivencia local. Suele originarse por una mala comunicación interna, rumores vecinales, o la competencia directa por los turistas (cuando alguien quiere acaparar ingresos).</p>
-                <p style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.7' }}>Las organizaciones campesinas más fuertes no son las que jamás pelean, sino las que institucionalizan la mediación a través de su asamblea y aplican los 3 pasos de oro:</p>
+                <h4 style={{ color: headerColor, fontSize: '1.5rem', fontWeight: 800, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}><BookOpen size={24} /> {data.interactiveCard.title}</h4>
+                {data.interactiveCard.paragraphs.map((p, i) => (
+                  <p key={i} style={{ color: '#475569', fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '1rem' }} dangerouslySetInnerHTML={{ __html: p }}></p>
+                ))}
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginTop: '2.5rem' }}>
-                  <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', border: '1px solid #e2e8f0', boxShadow: '0 5px 15px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <strong style={{ color: headerColor, fontSize: '1.1rem' }}>1. Escucha Activa</strong>
-                    <span style={{ color: '#64748b', fontSize: '0.95rem' }}>Permitir que las partes desahoguen la emoción sin interrumpir y sin prejuicios durante las reuniones de comité.</span>
-                  </div>
-                  <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', border: '1px solid #e2e8f0', boxShadow: '0 5px 15px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <strong style={{ color: headerColor, fontSize: '1.1rem' }}>2. Enfriamiento</strong>
-                    <span style={{ color: '#64748b', fontSize: '0.95rem' }}>Prohibición de tomar decisiones en caliente, especialmente aquellas relacionadas con castigos severos o distribución financiera.</span>
-                  </div>
-                  <div style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', border: '1px solid #e2e8f0', boxShadow: '0 5px 15px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <strong style={{ color: headerColor, fontSize: '1.1rem' }}>3. Acuerdo Justo</strong>
-                    <span style={{ color: '#64748b', fontSize: '0.95rem' }}>Llevar el consenso final a los estatutos por escrito, creando un precedente para evitar que la fricción se repita a futuro.</span>
-                  </div>
+                  {data.interactiveCard.steps.map((step, idx) => (
+                    <div key={idx} style={{ background: 'white', padding: '1.5rem', borderRadius: '15px', border: '1px solid #e2e8f0', boxShadow: '0 5px 15px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                      <strong style={{ color: headerColor, fontSize: '1.1rem' }}>{step.title}</strong>
+                      <span style={{ color: '#64748b', fontSize: '0.95rem' }}>{step.description}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
               <div style={{ background: '#f1f5f9', borderRadius: '25px', padding: '3rem 2rem', border: '2px dashed #cbd5e1', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fef3c7', color: '#d97706', padding: '8px 20px', borderRadius: '30px', fontWeight: 800, fontSize: '0.9rem', textTransform: 'uppercase', marginBottom: '1rem' }}><Edit3 size={16} /> Dinámica Práctica: El Chat Veredal</div>
-                <h3 style={{ color: '#0f172a', margin: '0 0 10px 0', fontSize: '1.8rem', fontWeight: 900 }}>Tensión en el Sendero</h3>
-                <p style={{ color: '#475569', fontSize: '1.1rem', marginBottom: '3rem', maxWidth: '700px', textAlign: 'center' }}><strong>Caso real:</strong> En plena temporada alta, la Finca "El Edén" está acaparando a todos los visitantes, rompiendo los acuerdos de rotación de la asociación. Las demás familias exigen su expulsión. Asume el rol de mediador de la asamblea.</p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fef3c7', color: '#d97706', padding: '8px 20px', borderRadius: '30px', fontWeight: 800, fontSize: '0.9rem', textTransform: 'uppercase', marginBottom: '1rem' }}><Edit3 size={16} /> {data.dinamica.label}</div>
+                <h3 style={{ color: '#0f172a', margin: '0 0 10px 0', fontSize: '1.8rem', fontWeight: 900 }}>{data.dinamica.title}</h3>
+                <p style={{ color: '#475569', fontSize: '1.1rem', marginBottom: '3rem', maxWidth: '700px', textAlign: 'center' }} dangerouslySetInnerHTML={{ __html: data.dinamica.description }}></p>
 
                 <div style={{ width: '100%', maxWidth: '600px', background: 'white', borderRadius: '25px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
                   <div style={{ background: headerColor, padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '15px' }}>
                     <div style={{ background: 'white', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><MessageCircle size={24} color={headerColor} /></div>
                     <div>
-                      <h3 style={{ color: 'white', margin: 0, fontSize: '1.1rem', fontWeight: 800 }}>Grupo: Asociación Campesina</h3>
-                      <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem' }}>Escribiendo...</span>
+                      <h3 style={{ color: 'white', margin: 0, fontSize: '1.1rem', fontWeight: 800 }}>{data.dinamica.chat.groupName}</h3>
+                      <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem' }}>{data.dinamica.chat.status}</span>
                     </div>
                   </div>
 
                   <div style={{ padding: '2rem', background: '#f1f5f9', minHeight: '400px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
                     <div className="chat-bubble-in" style={{ background: 'white', padding: '15px', borderRadius: '0 20px 20px 20px', maxWidth: '85%', alignSelf: 'flex-start', boxShadow: '0 2px 5px rgba(0,0,0,0.05)' }}>
-                      <strong style={{ color: '#ef4444', fontSize: '0.85rem', display: 'block', marginBottom: '5px' }}>Familia González (Guías)</strong>
-                      ¡Es un atropello! La Finca El Edén atendió a los 20 turistas y los retuvo toda la tarde. Nosotros nos quedamos con las viandas preparadas. ¡Exigimos que los saquen de la asociación ya mismo! 😡
+                      <strong style={{ color: '#ef4444', fontSize: '0.85rem', display: 'block', marginBottom: '5px' }}>{data.dinamica.chat.msg1.sender}</strong>
+                      {data.dinamica.chat.msg1.text}
                     </div>
                     <div className="chat-bubble-in" style={{ animationDelay: '0.5s', animationFillMode: 'both', background: 'white', padding: '15px', borderRadius: '0 20px 20px 20px', maxWidth: '85%', alignSelf: 'flex-start', boxShadow: '0 2px 5px rgba(0,0,0,0.05)' }}>
-                      <strong style={{ color: '#f59e0b', fontSize: '0.85rem', display: 'block', marginBottom: '5px' }}>Doña Carmen (Hospedaje)</strong>
-                      Si las cosas siguen así, yo también me salgo del proyecto. No trabajamos meses para que un solo vecino se lleve el dinero de toda la ruta.
+                      <strong style={{ color: '#f59e0b', fontSize: '0.85rem', display: 'block', marginBottom: '5px' }}>{data.dinamica.chat.msg2.sender}</strong>
+                      {data.dinamica.chat.msg2.text}
                     </div>
 
                     {chatStep === 0 && (
                       <div className="fade-in" style={{ marginTop: '20px' }}>
-                        <p style={{ textAlign: 'center', color: '#64748b', fontSize: '0.9rem', marginBottom: '15px' }}>Elige tu respuesta táctica basada en mediación comunitaria:</p>
+                        <p style={{ textAlign: 'center', color: '#64748b', fontSize: '0.9rem', marginBottom: '15px' }}>{data.dinamica.chat.instruction}</p>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                           <button onClick={() => setChatStep(2)} style={{ padding: '12px', background: headerColor, color: 'white', border: 'none', borderRadius: '20px 20px 0 20px', alignSelf: 'flex-end', cursor: 'pointer', maxWidth: '90%', textAlign: 'right', transition: 'background 0.2s', fontSize: '0.95rem' }}>
-                            (Opción A) Castigo Inmediato: Tiene toda la razón la familia González. Finca El Edén queda suspendida un mes por acaparamiento egoísta.
+                            {data.dinamica.chat.options[0]}
                           </button>
                           <button onClick={() => setChatStep(3)} style={{ padding: '12px', background: headerColor, color: 'white', border: 'none', borderRadius: '20px 20px 0 20px', alignSelf: 'flex-end', cursor: 'pointer', maxWidth: '90%', textAlign: 'right', transition: 'background 0.2s', fontSize: '0.95rem' }}>
-                            (Opción B) Enfriamiento e Institucionalidad: Les entiendo la molestia y el impacto. No decidamos enojados. Mañana en la noche citamos a asamblea extraordinaria para oír a El Edén y ajustar las multas del reglamento de rotación.
+                            {data.dinamica.chat.options[1]}
                           </button>
                           <button onClick={() => setChatStep(2)} style={{ padding: '12px', background: headerColor, color: 'white', border: 'none', borderRadius: '20px 20px 0 20px', alignSelf: 'flex-end', cursor: 'pointer', maxWidth: '90%', textAlign: 'right', transition: 'background 0.2s', fontSize: '0.95rem' }}>
-                            (Opción C) Libre Mercado: Compañeros, esto es libre competencia. Si los turistas prefirieron quedarse allá toda la tarde, es porque ofrecen un mejor servicio. ¡Mejoren sus fincas!
+                            {data.dinamica.chat.options[2]}
                           </button>
                         </div>
                       </div>
@@ -93,18 +88,18 @@ export default function Modulo5({ headerColor, headerGradient }) {
 
                     {chatStep === 2 && (
                       <div className="chat-bubble-in shake-animation" style={{ background: '#fef2f2', borderLeft: '4px solid #ef4444', padding: '15px', borderRadius: '0 20px 20px 20px', maxWidth: '90%', alignSelf: 'flex-start', boxShadow: '0 2px 5px rgba(0,0,0,0.05)', marginTop: '20px' }}>
-                        <strong style={{ color: '#b91c1c', fontSize: '0.85rem', display: 'block', marginBottom: '5px' }}>Finca El Edén</strong>
-                        ¡Qué autoritarismo! Nos retiramos del proyecto. Igual los turistas nos buscan a nosotros directamente. Adiós. 🚪💥<br /><br />
-                        <span style={{ fontSize: '0.85rem', color: '#7f1d1d', fontWeight: 'bold' }}>❌ FRACTURA COMUNITARIA. Ignoraste la mediación. Destruiste el tejido asociativo aplicando castigos impulsivos o la lógica del mercado voraz que desprotege al débil.</span>
-                        <button onClick={() => setChatStep(0)} style={{ display: 'block', marginTop: '10px', padding: '8px 20px', background: 'white', border: '2px solid #fca5a5', borderRadius: '10px', color: '#b91c1c', cursor: 'pointer', fontWeight: 'bold' }}>Replantear Estrategia</button>
+                        <strong style={{ color: '#b91c1c', fontSize: '0.85rem', display: 'block', marginBottom: '5px' }}>{data.dinamica.chat.feedbackError.sender}</strong>
+                        {data.dinamica.chat.feedbackError.text}<br /><br />
+                        <span style={{ fontSize: '0.85rem', color: '#7f1d1d', fontWeight: 'bold' }}>{data.dinamica.chat.feedbackError.explanation}</span>
+                        <button onClick={() => setChatStep(0)} style={{ display: 'block', marginTop: '10px', padding: '8px 20px', background: 'white', border: '2px solid #fca5a5', borderRadius: '10px', color: '#b91c1c', cursor: 'pointer', fontWeight: 'bold' }}>{data.dinamica.chat.feedbackError.retryBtn}</button>
                       </div>
                     )}
 
                     {chatStep === 3 && (
                       <div className="chat-bubble-in" style={{ background: '#f0fdf4', borderLeft: '4px solid #16a34a', padding: '15px', borderRadius: '0 20px 20px 20px', maxWidth: '90%', alignSelf: 'flex-start', boxShadow: '0 2px 5px rgba(0,0,0,0.05)', marginTop: '20px' }}>
-                        <strong style={{ color: '#15803d', fontSize: '0.85rem', display: 'block', marginBottom: '5px' }}>Junta Directiva</strong>
-                        Es lo correcto, líder. Calmemos los ánimos y nos vemos mañana en la caseta comunal. Llevaremos los estatutos impresos. 🙏📝<br /><br />
-                        <span style={{ fontSize: '0.85rem', color: '#166534', fontWeight: 'bold' }}>✅ GOBERNANZA RESILIENTE. Excelente mediación. Aplicaste el "enfriamiento" y derivaste el problema hacia el "acuerdo institucional" para fortalecer las reglas del juego.</span>
+                        <strong style={{ color: '#15803d', fontSize: '0.85rem', display: 'block', marginBottom: '5px' }}>{data.dinamica.chat.feedbackSuccess.sender}</strong>
+                        {data.dinamica.chat.feedbackSuccess.text}<br /><br />
+                        <span style={{ fontSize: '0.85rem', color: '#166534', fontWeight: 'bold' }}>{data.dinamica.chat.feedbackSuccess.explanation}</span>
                       </div>
                     )}
                   </div>
