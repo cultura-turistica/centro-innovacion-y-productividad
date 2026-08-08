@@ -32,7 +32,7 @@ export default function Navigation() {
     <header className="header" style={{zIndex: 1000}}>
       <div className="header-content">
         <a href="https://cultura-t.com/" className="logo-group" style={{cursor: 'pointer', border: 'none', background: 'transparent'}}>
-          <img src={logoUrl} alt="Cultura T Logo" style={{height: '50px', objectFit: 'contain'}} />
+          <img src={logoUrl} alt="Cultura T Logo" width="200" height="50" style={{height: '50px', objectFit: 'contain'}} />
         </a>
 
         {/* Desktop Nav */}
