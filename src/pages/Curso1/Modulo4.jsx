@@ -52,21 +52,7 @@ export default function Modulo4({ data, theme = 'indigo' }) {
   return (
     <div className="flex flex-col flex-1 pb-10">
       <div className="relative overflow-hidden rounded-t-[30px] rounded-b-[20px] flex flex-col bg-indigo-50 shadow-sm mb-10">
-        <div className="w-full h-[200px] relative overflow-hidden">
-          <svg viewBox="0 0 1200 300" preserveAspectRatio="none" className="w-full h-full">
-            <path fill="#c7d2fe" d="M0,300 L0,150 Q300,80 600,150 T1200,150 L1200,300 Z" />
-            <path fill="#a5b4fc" d="M0,300 L0,220 Q400,160 800,220 T1200,220 L1200,300 Z" />
-            <line x1="300" y1="200" x2="500" y2="150" stroke="#4f46e5" strokeWidth="4" />
-            <line x1="500" y1="150" x2="800" y2="220" stroke="#4f46e5" strokeWidth="4" />
-            <line x1="800" y1="220" x2="900" y2="150" stroke="#4f46e5" strokeWidth="4" />
-            <circle cx="300" cy="200" r="15" fill="#4338ca" />
-            <circle cx="500" cy="150" r="20" fill="#4338ca" />
-            <circle cx="800" cy="220" r="25" fill="#4338ca" />
-            <circle cx="900" cy="150" r="15" fill="#4338ca" />
-            <polygon points="900,250 930,200 960,250" fill="#312e81" />
-          </svg>
-        </div>
-        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 -mt-8 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
+        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
           <div className="flex-1">
             <div className="bg-white/20 px-4 py-1.5 rounded-full inline-block text-white font-semibold mb-4 text-sm backdrop-blur-sm">
               {data.header.label}
@@ -79,13 +65,7 @@ export default function Modulo4({ data, theme = 'indigo' }) {
               {data.header.description}
             </p>
           </div>
-          <div className="hidden md:block">
-            <img 
-              src="https://api.dicebear.com/9.x/micah/svg?seed=Equipo" 
-              alt="Equipo" 
-              className="w-32 h-32 bg-white rounded-full p-2 shadow-xl border-4 border-white/30" 
-            />
-          </div>
+          
         </div>
       </div>
 

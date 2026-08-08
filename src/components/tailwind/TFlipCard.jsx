@@ -5,14 +5,14 @@ export default function TFlipCard({ icon: Icon, title, subtitle, content, colorC
 
   return (
     <div
-      className="group [perspective:1000px] cursor-pointer h-full min-h-[380px]"
+      className="group [perspective:1000px] cursor-pointer h-full min-h-[450px]"
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <div
         className={`relative w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''}`}
       >
         {/* Lado Frontal */}
-        <div className="absolute w-full h-full [backface-visibility:hidden] bg-white p-8 rounded-[25px] shadow-xl flex flex-col items-center justify-center text-center border-2 border-slate-100 group-hover:border-slate-300 transition-colors">
+        <div className="absolute w-full h-full [backface-visibility:hidden] bg-white p-6 rounded-[25px] shadow-xl flex flex-col items-center justify-center text-center border-2 border-slate-100 group-hover:border-slate-300 transition-colors">
           <div className={`${bgClass} w-32 h-32 rounded-full flex items-center justify-center mb-6 shadow-xl ${shadowClass}`}>
             <Icon size={60} className={colorClass} />
           </div>

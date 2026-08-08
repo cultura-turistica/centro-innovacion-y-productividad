@@ -27,20 +27,7 @@ export default function Modulo1({ data, theme = 'blue' }) {
     <div className="flex flex-col flex-1 pb-10">
       {/* Header Rediseñado con Tailwind */}
       <div className="relative overflow-hidden rounded-t-[30px] rounded-b-[20px] flex flex-col bg-sky-100 shadow-sm mb-10">
-        <div className="w-full h-[200px] relative overflow-hidden">
-          <svg viewBox="0 0 1200 300" preserveAspectRatio="none" className="w-full h-full">
-            <path fill="#bae6fd" d="M0,300 L0,150 Q150,50 300,150 T600,150 T900,150 T1200,150 L1200,300 Z" />
-            <path fill="#7dd3fc" d="M0,300 L0,200 Q200,100 400,200 T800,200 T1200,200 L1200,300 Z" />
-            <path fill="#38bdf8" d="M0,300 L0,250 Q300,150 600,250 T1200,250 L1200,300 Z" />
-            <circle cx="950" cy="80" r="40" fill="#fef08a" />
-            <path fill="#22c55e" d="M200,230 L220,180 L240,230 Z M210,230 L210,250 L230,250 L230,230 Z" />
-            <path fill="#16a34a" d="M800,280 L830,200 L860,280 Z M820,280 L820,300 L840,300 L840,280 Z" />
-            <rect x="500" y="220" width="60" height="40" fill="#fde047" />
-            <polygon points="490,220 530,190 570,220" fill="#ef4444" />
-          </svg>
-        </div>
-        
-        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 -mt-8 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
+        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
           <div className="flex-1">
             <div className="bg-white/20 px-4 py-1.5 rounded-full inline-block text-white font-semibold mb-4 text-sm backdrop-blur-sm">
               {data.header.label}
@@ -53,13 +40,7 @@ export default function Modulo1({ data, theme = 'blue' }) {
               {data.header.description}
             </p>
           </div>
-          <div className="hidden md:block">
-            <img 
-              src="https://api.dicebear.com/9.x/micah/svg?seed=Comunidad" 
-              alt="Comunidad" 
-              className="w-32 h-32 bg-white rounded-full p-2 shadow-xl border-4 border-white/30" 
-            />
-          </div>
+          
         </div>
       </div>
 

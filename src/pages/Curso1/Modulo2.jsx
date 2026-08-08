@@ -25,21 +25,7 @@ export default function Modulo2({ data, theme = 'green' }) {
     <div className="flex flex-col flex-1 pb-10">
       {/* Header Rediseñado con Tailwind */}
       <div className="relative overflow-hidden rounded-t-[30px] rounded-b-[20px] flex flex-col bg-green-100 shadow-sm mb-10">
-        <div className="w-full h-[200px] relative overflow-hidden">
-          <svg viewBox="0 0 1200 300" preserveAspectRatio="none" className="w-full h-full">
-            <path fill="#bbf7d0" d="M0,300 L0,180 Q300,100 600,180 T1200,180 L1200,300 Z" />
-            <path fill="#86efac" d="M0,300 L0,220 Q400,150 800,220 T1200,220 L1200,300 Z" />
-            <path fill="#4ade80" d="M0,300 L0,260 Q600,180 1200,260 L1200,300 Z" />
-            <circle cx="200" cy="90" r="50" fill="#fef08a" />
-            {/* Patrón de hojitas / cascada SVG */}
-            <path fill="#3b82f6" d="M500,220 Q520,250 500,300 L550,300 Q540,250 560,220 Z" />
-            <circle cx="800" cy="200" r="15" fill="#16a34a" />
-            <circle cx="820" cy="220" r="25" fill="#15803d" />
-            <circle cx="770" cy="210" r="20" fill="#14532d" />
-          </svg>
-        </div>
-        
-        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 -mt-8 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
+        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
           <div className="flex-1">
             <div className="bg-white/20 px-4 py-1.5 rounded-full inline-block text-white font-semibold mb-4 text-sm backdrop-blur-sm">
               {data.header.label}
@@ -52,13 +38,7 @@ export default function Modulo2({ data, theme = 'green' }) {
               {data.header.description}
             </p>
           </div>
-          <div className="hidden md:block">
-            <img 
-              src="https://api.dicebear.com/9.x/micah/svg?seed=Naturaleza" 
-              alt="Naturaleza" 
-              className="w-32 h-32 bg-white rounded-full p-2 shadow-xl border-4 border-white/30" 
-            />
-          </div>
+          
         </div>
       </div>
 

@@ -23,20 +23,7 @@ export default function Modulo3({ data, theme = 'orange' }) {
     <div className="flex flex-col flex-1 pb-10">
       {/* Header Rediseñado con Tailwind */}
       <div className="relative overflow-hidden rounded-t-[30px] rounded-b-[20px] flex flex-col bg-orange-50 shadow-sm mb-10">
-        <div className="w-full h-[200px] relative overflow-hidden">
-          <svg viewBox="0 0 1200 300" preserveAspectRatio="none" className="w-full h-full">
-            <path fill="#fed7aa" d="M0,300 L0,200 Q150,150 300,200 T600,200 T900,200 T1200,200 L1200,300 Z" />
-            <path fill="#fdba74" d="M0,300 L0,240 Q300,180 600,240 T1200,240 L1200,300 Z" />
-            {/* Ilustración de ruinas / vasijas y notas musicales */}
-            <rect x="250" y="210" width="80" height="90" fill="#ea580c" />
-            <polygon points="240,210 290,160 340,210" fill="#9a3412" />
-            <path fill="#c2410c" d="M800,200 Q830,160 860,200 Q880,250 830,290 Q780,250 800,200 Z" />
-            <path fill="#9a3412" d="M700,100 Q720,50 740,100 T760,150" fill="none" stroke="#9a3412" strokeWidth="5" />
-            <circle cx="760" cy="150" r="10" fill="#9a3412" />
-          </svg>
-        </div>
-        
-        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 -mt-8 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
+        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
           <div className="flex-1">
             <div className="bg-white/20 px-4 py-1.5 rounded-full inline-block text-white font-semibold mb-4 text-sm backdrop-blur-sm">
               {data.header.label}
@@ -49,13 +36,7 @@ export default function Modulo3({ data, theme = 'orange' }) {
               {data.header.description}
             </p>
           </div>
-          <div className="hidden md:block">
-            <img 
-              src="https://api.dicebear.com/9.x/micah/svg?seed=Patrimonio" 
-              alt="Patrimonio" 
-              className="w-32 h-32 bg-white rounded-full p-2 shadow-xl border-4 border-white/30" 
-            />
-          </div>
+          
         </div>
       </div>
 

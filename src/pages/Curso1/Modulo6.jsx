@@ -55,18 +55,7 @@ export default function Modulo6({ data, theme = 'emerald' }) {
   return (
     <div className="flex flex-col flex-1 pb-10">
       <div className="relative overflow-hidden rounded-t-[30px] rounded-b-[20px] flex flex-col bg-green-100 shadow-sm mb-10">
-        <div className="w-full h-[200px] relative overflow-hidden">
-          <svg viewBox="0 0 1200 300" preserveAspectRatio="none" className="w-full h-full">
-            <path fill="#bbf7d0" d="M0,300 L0,150 Q300,80 600,150 T1200,150 L1200,300 Z" />
-            <path fill="#86efac" d="M0,300 L0,200 Q400,120 800,200 T1200,200 L1200,300 Z" />
-            <circle cx="600" cy="180" r="50" fill="#fde047" />
-            <path fill="#eab308" d="M570,160 L630,160 L610,230 L590,230 Z" />
-            <circle cx="500" cy="100" r="10" fill="#fef08a" />
-            <circle cx="700" cy="120" r="15" fill="#fef08a" />
-            <circle cx="850" cy="90" r="8" fill="#fef08a" />
-          </svg>
-        </div>
-        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 -mt-8 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
+        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
           <div className="flex-1">
             <div className="bg-white/20 px-4 py-1.5 rounded-full inline-block text-white font-semibold mb-4 text-sm backdrop-blur-sm">
               {data.header.label}
@@ -79,13 +68,7 @@ export default function Modulo6({ data, theme = 'emerald' }) {
               {data.header.description}
             </p>
           </div>
-          <div className="hidden md:block">
-            <img 
-              src="https://api.dicebear.com/9.x/micah/svg?seed=Graduado" 
-              alt="Éxito" 
-              className="w-32 h-32 bg-white rounded-full p-2 shadow-xl border-4 border-white/30" 
-            />
-          </div>
+          
         </div>
       </div>
 

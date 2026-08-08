@@ -24,15 +24,7 @@ export default function Modulo5({ data, theme = 'cyan' }) {
   return (
     <div className="flex flex-col flex-1 pb-10">
       <div className="relative overflow-hidden rounded-t-[30px] rounded-b-[20px] flex flex-col bg-sky-100 shadow-sm mb-10">
-        <div className="w-full h-[200px] relative overflow-hidden">
-          <svg viewBox="0 0 1200 300" preserveAspectRatio="none" className="w-full h-full">
-            <path fill="#bae6fd" d="M0,300 L0,150 Q150,50 300,150 T600,150 T900,150 T1200,150 L1200,300 Z" />
-            <path fill="#7dd3fc" d="M300,250 Q300,180 400,180 L450,180 Q450,250 300,250 Z" />
-            <path fill="#38bdf8" d="M900,250 Q900,180 800,180 L750,180 Q750,250 900,250 Z" />
-            <path fill="none" stroke="#0284c7" strokeWidth="4" strokeDasharray="10 10" d="M450,210 C550,150 650,150 750,210" />
-          </svg>
-        </div>
-        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 -mt-8 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
+        <div className={`${t.headerBg} px-8 py-10 flex items-center gap-8 relative z-10 rounded-t-[30px] rounded-b-[20px] shadow-lg`}>
           <div className="flex-1">
             <div className="bg-white/20 px-4 py-1.5 rounded-full inline-block text-white font-semibold mb-4 text-sm backdrop-blur-sm">
               {data.header.label}
@@ -45,13 +37,7 @@ export default function Modulo5({ data, theme = 'cyan' }) {
               {data.header.description}
             </p>
           </div>
-          <div className="hidden md:block">
-            <img 
-              src="https://api.dicebear.com/9.x/micah/svg?seed=Mediacion" 
-              alt="Mediación" 
-              className="w-32 h-32 bg-white rounded-full p-2 shadow-xl border-4 border-white/30" 
-            />
-          </div>
+          
         </div>
       </div>
 
