@@ -7,7 +7,7 @@ export const modulo3Data = {
   mentor: {
     name: "Sofía",
     role: "Directora de Arte",
-    avatar: "/assets/images/avatars/avatarDeleite.svg",
+    avatar: "/assets/images/avatars/avatar_sofia.png",
     intro: "El color es la forma más rápida de comunicar una emoción sin usar palabras. Prueba seleccionando diferentes emociones para ver cómo muta nuestra paleta de diseño."
   },
   emotions: [
