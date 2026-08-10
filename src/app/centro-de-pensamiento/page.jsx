@@ -27,10 +27,7 @@ const PUBLICATIONS = [
 export default function CentroPensamientoPage() {
   return (
     <div className="min-h-screen bg-[#faf9f6] text-slate-800 font-sans selection:bg-indigo-100 relative">
-      <div 
-        className="fixed inset-0 pointer-events-none opacity-30 z-0"
-        style={{ backgroundImage: "url('/assets/images/textura1.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-      ></div>
+      <div className="fixed inset-0 pointer-events-none opacity-30 z-0 bg-[url('/assets/images/textura1.webp')] bg-cover bg-center"></div>
       
       <div className="relative z-10">
         <Navbar />

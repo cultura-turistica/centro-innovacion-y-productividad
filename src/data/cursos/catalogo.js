@@ -29,6 +29,7 @@ export const catalogoData = {
     },
     {
       title: "Calculadora de Costeo Turístico",
+      slug: "calculadora-costeo",
       category: "Finanzas y Negocios",
       info: "Herramienta Interactiva",
       description: "Herramienta interactiva para calcular costos, gastos, utilidad, comisiones y precios finales de paquetes turísticos (Metodología PNUD).",
@@ -51,8 +52,9 @@ export const catalogoData = {
       action: "Iniciar"
     },
     {
-      title: "Diseño de Producto Turístico para Empresas",
-      category: "Innovación Turística",
+      title: "Arquitectura de Experiencias Privadas",
+      slug: "experiencias-privadas",
+      category: "Módulo Empresarial Avanzado",
       info: "5 Módulos",
       description: "Laboratorio de acción con 5 módulos prácticos para diseñar productos turísticos rentables usando Design Thinking, Jobs-to-be-Done y matrices de priorización.",
       action: "Iniciar"

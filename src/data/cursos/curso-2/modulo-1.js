@@ -6,7 +6,7 @@ export const modulo1Data = {
   "podcast": {
     "title": "Del Recurso al Producto",
     "subtitle": "Audio Instructor",
-    "audioSrc": "/audio/C2-M1.wav",
+    "audioSrc": "/assets/audios/C2-M1.wav",
     "transcript": "<p>Hola de nuevo. Empecemos este curso derribando un mito muy común en el turismo: “Tenemos una cascada hermosa, eso significa que ya tenemos turismo”. La realidad es que un paisaje bonito, una cascada o una montaña, es solo un recurso. Para que ese recurso se convierta en un producto turístico, necesita infraestructura: un sendero seguro para llegar, un baño limpio, un guía que cuente una historia interesante y un lugar donde almorzar.<br/><br/>El gran error de muchos destinos emergentes es promocionar sus recursos antes de tener los servicios listos. Eso solo atrae a visitantes que no dejan dinero en la comunidad y, peor aún, pueden terminar dañando el entorno natural. En este módulo, aprenderemos a dar ese salto: cómo tomar lo que la naturaleza o la cultura nos dio, y envolverlo en servicios de calidad para que realmente genere ingresos.</p>"
   },
   "restaurante": {

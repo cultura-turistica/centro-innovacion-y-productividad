@@ -1,12 +1,16 @@
 import React from 'react';
 import { ArrowRight, Clock, FlaskConical } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ResearchCard({ research }) {
   const isDev = research.status === 'En Desarrollo';
 
+  const CardWrapper = research.href && !isDev ? Link : 'div';
+  const wrapperProps = research.href && !isDev ? { href: research.href } : {};
+
   return (
-    <div className={`group relative p-8 rounded-[2rem] ${
-      isDev ? 'bg-slate-50/90 border-2 border-dashed border-slate-200' : 'bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1'
+    <CardWrapper {...wrapperProps} className={`group relative p-8 rounded-[2rem] ${
+      isDev ? 'bg-slate-50/90 border-2 border-dashed border-slate-200' : 'bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 block'
     } transition-all duration-300 ease-out flex flex-col h-full`}>
       
       <div className="flex flex-wrap items-start justify-between mb-6 gap-3">
@@ -53,6 +57,6 @@ export default function ResearchCard({ research }) {
           <ArrowRight className="w-4 h-4 text-emerald-500" />
         </button>
       )}
-    </div>
+    </CardWrapper>
   );
 }

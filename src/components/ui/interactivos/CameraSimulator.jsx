@@ -19,7 +19,7 @@ export default function CameraSimulator({ data, themeColor = "#4f46e5" }) {
 
   const [isPhotoTaken, setIsPhotoTaken] = useState(false);
   const [flash, setFlash] = useState(false);
-  const [whiteBalance, setWhiteBalance] = useState('Daylight');
+  const [whiteBalance, setWhiteBalance] = useState(sim.controls.whiteBalanceOptions[0].id);
 
   const aperture = apertures[apertureIdx];
   const shutter = shutters[shutterIdx];
@@ -52,13 +52,8 @@ export default function CameraSimulator({ data, themeColor = "#4f46e5" }) {
 
   // White Balance Filter Logic
   const getWBFilter = () => {
-    switch(whiteBalance) {
-      case 'Tungsten': return 'sepia(0.3) hue-rotate(180deg) saturate(1.2)';
-      case 'Shade': return 'sepia(0.5) hue-rotate(-10deg) saturate(1.4)';
-      case 'Cloudy': return 'sepia(0.3) hue-rotate(-5deg) saturate(1.2)';
-      case 'Fluorescent': return 'hue-rotate(90deg) saturate(1.1) brightness(1.1)';
-      default: return '';
-    }
+    const selectedOption = sim.controls.whiteBalanceOptions.find(opt => opt.id === whiteBalance);
+    return selectedOption ? selectedOption.filter : '';
   };
 
   const wbFilter = getWBFilter();
@@ -97,8 +92,8 @@ export default function CameraSimulator({ data, themeColor = "#4f46e5" }) {
             style={{ filter: `blur(${isPhotoTaken ? bgBlur : 0.01}px) brightness(${brightness}) ${wbFilter}` }}
           >
             <Image 
-              src="/assets/images/fotografia/sim_nature_bg.webp"
-              alt="Fondo Selva"
+              src={sim.images.bg}
+              alt={sim.labels.bgAlt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 65vw"
@@ -115,8 +110,8 @@ export default function CameraSimulator({ data, themeColor = "#4f46e5" }) {
               style={{ filter: motionBlur > 0 ? 'url(#directionalBlur)' : 'none' }}
             >
               <Image 
-                src="/assets/images/fotografia/sim_bird_transparent.webp"
-                alt="Colibrí"
+                src={sim.images.subject}
+                alt={sim.labels.subjectAlt}
                 fill
                 className="object-contain"
                 sizes="(max-width: 1024px) 60vw, 40vw"
@@ -131,8 +126,8 @@ export default function CameraSimulator({ data, themeColor = "#4f46e5" }) {
           >
             <div className="relative w-full aspect-square">
               <Image 
-                src="/assets/images/fotografia/sim_leaves_transparent.webp"
-                alt="Hojas Primer Plano"
+                src={sim.images.foreground}
+                alt={sim.labels.foregroundAlt}
                 fill
                 className="object-contain"
                 sizes="(max-width: 1024px) 70vw, 45vw"

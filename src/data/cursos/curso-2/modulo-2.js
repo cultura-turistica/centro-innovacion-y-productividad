@@ -6,7 +6,7 @@ export const modulo2Data = {
   "podcast": {
     "title": "El Enemigo es 'Para Todo el Mundo'",
     "subtitle": "Audio Instructora",
-    "audioSrc": "/audio/C2-M2.wav",
+    "audioSrc": "/assets/audios/C2-M2.wav",
     "transcript": "<p>Hablemos de a quién le vendemos. Cuando le preguntas a un emprendedor “Oye, ¿para quién es tu producto turístico?”, casi siempre responden: “¡Para todos! Familias, mochileros, extranjeros, abuelitos... para todo el mundo”.<br/><br/>En turismo, diseñar un producto “para todo el mundo” es la receta perfecta para no venderle a nadie. Un mochilero europeo que busca aventura extrema en la selva, no necesita los mismos servicios, ni el mismo menú, ni la misma publicidad que una familia con dos niños pequeños que busca descansar el fin de semana. Tratar de complacerlos a los dos al mismo tiempo hará que tu experiencia sea genérica y aburrida. Conocer a tu “Buyer Persona” significa tener la valentía de decir: “Mi producto es exclusivamente para este tipo de persona”, y enfocarse en hacerlos inmensamente felices.</p>"
   },
   "sastre": {

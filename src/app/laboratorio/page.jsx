@@ -11,7 +11,8 @@ const RESEARCHES = [
     subtitle: "Tendencias Nacionales 2024",
     category: "Desarrollo Social y Territorio",
     desc: "Análisis demográfico y de comportamiento del turista en Colombia, extraído del estudio oficial de Fontur y MinComercio.",
-    action: "Ver Investigación"
+    action: "Ver Investigación",
+    href: "/laboratorios/anatomia-del-turista"
   },
   {
     status: "Explorar",
@@ -19,7 +20,8 @@ const RESEARCHES = [
     subtitle: "IA para Estimación de Pobreza",
     category: "Desarrollo Social y Territorio",
     desc: "Cruzamos microdatos del DANE con pixeles satelitales empíricos para inferir bayesianamente las vulnerabilidades del territorio a nivel municipal.",
-    action: "Ver Investigación"
+    action: "Ver Investigación",
+    href: "/laboratorios/sae-colombia"
   },
   {
     status: "En Desarrollo",
@@ -35,7 +37,8 @@ const RESEARCHES = [
     subtitle: "La Prosperidad (Tolima)",
     category: "Sostenibilidad y Medio Ambiente",
     desc: "Monitoreo satelital mensual y preservación del Bosque Seco Tropical evaluando la resiliencia ante la ganadería adaptativa.",
-    action: "Ver Investigación"
+    action: "Ver Investigación",
+    href: "/laboratorios/tolima"
   },
   {
     status: "Explorar",
@@ -43,7 +46,8 @@ const RESEARCHES = [
     subtitle: "La Gran Asfixia",
     category: "Sostenibilidad y Medio Ambiente",
     desc: "Auditoría macroeconómica sobre la hegemonía global de emisiones. Una disección visual de la deuda climática, el calentamiento (CO2 vs CH4), y la brutal desigualdad estructural 'Per Cápita'.",
-    action: "Ver Investigación"
+    action: "Ver Investigación",
+    href: "/laboratorios/carbono"
   },
   {
     status: "En Desarrollo",
@@ -65,14 +69,13 @@ const RESEARCHES = [
 
 export default function LaboratorioPage() {
   return (
-    <div className="min-h-screen bg-[#faf9f6] text-slate-800 font-sans selection:bg-emerald-100 relative">
+    <div className="bg-[url('/assets/images/textura1.webp')] bg-cover bg-center min-h-screen relative font-sans text-slate-800 selection:bg-emerald-100">
       <div 
         className="fixed inset-0 pointer-events-none opacity-30 z-0"
-        style={{ backgroundImage: "url('/assets/images/textura1.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}
       ></div>
       
+      <Navbar />
       <div className="relative z-10">
-        <Navbar />
         
         <main className="max-w-7xl mx-auto px-6 pt-32 pb-24">
           

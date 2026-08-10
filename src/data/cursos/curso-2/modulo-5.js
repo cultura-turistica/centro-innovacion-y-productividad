@@ -6,7 +6,7 @@ export const modulo5Data = {
   "podcast": {
     "title": "El Eslabón Roto",
     "subtitle": "Audio Instructora",
-    "audioSrc": "/audio/C2-M5.wav",
+    "audioSrc": "/assets/audios/C2-M5.wav",
     "transcript": "<p>El turismo es, quizás, la industria más interconectada que existe. Piensa en esto como una obra de teatro: tú puedes tener el mejor hotel del mundo (el actor principal), y el mejor restaurante de la región (el actor secundario). Pero, ¿qué pasa si la vía para llegar al pueblo está destruida, o si el transportador local cobra precios injustos? La obra de teatro se arruina antes de empezar.<br/><br/>A esto le llamamos la Cadena de Valor. La experiencia del turista no empieza cuando entra a tu hotel, empieza desde que se sube al bus en su ciudad de origen. Si hay un solo eslabón roto, una sola “brecha” —como la falta de señalización, mala conexión a internet o basura en las calles—, el turista calificará mal toda la experiencia, por más que tu hotel haya sido perfecto. Por eso, en el turismo territorial no competimos entre vecinos; dependemos de que todo el ecosistema funcione impecablemente. Abajo verás cómo identificar esos eslabones rotos.</p>"
   },
   "engranaje": {

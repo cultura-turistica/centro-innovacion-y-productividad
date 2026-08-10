@@ -6,7 +6,7 @@ export const modulo7Data = {
   "podcast": {
     "title": "Por qué mueren los proyectos",
     "subtitle": "Audio Instructor",
-    "audioSrc": "/audio/C2-M7.wav",
+    "audioSrc": "/assets/audios/C2-M7.wav",
     "transcript": "<p>Para cerrar, quiero hablarles de por qué la mayoría de los proyectos turísticos fracasan en la fase de implementación. No es por falta de pasión, ni siquiera por falta de dinero. Fracasan porque se quedan en “buenas intenciones”.<br/><br/>Reunirse con la comunidad y decir “vamos a mejorar el servicio al cliente” es una buena intención, pero es gaseoso, nadie sabe qué hacer el lunes por la mañana. En cambio, decir “María capacitará a 5 guías en manejo de quejas este viernes a las 4 de la tarde en el salón comunal” es una acción. Eso es la metodología S.M.A.R.T: quitarle el romanticismo a los planes y ponerles responsables, fechas límite y números que se puedan medir. Las ideas maravillosas sin un cronograma exacto, son solo alucinaciones. A continuación, pondrás a prueba tu capacidad de convertir ideas abstractas en acciones reales.</p>"
   },
   "gps": {

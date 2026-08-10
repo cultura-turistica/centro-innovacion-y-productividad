@@ -51,3 +51,286 @@ El proyecto cuenta con dos ubicaciones permitidas dependiendo del caso de uso en
 ## 5. Catálogo de Componentes de UI
 **REGLA ESTRICTA:** Antes de diseñar, desarrollar o proponer nuevos componentes visuales o dinámicas de juego interactivo para módulos futuros, DEBES consultar el documento [COMPONENTS_CATALOG.md](file:///Users/cultur/.gemini/antigravity/scratch/cip-next/src/components/ui/interactivos/COMPONENTS_CATALOG.md). 
 Si un componente documentado en el catálogo cumple con el propósito de la dinámica requerida, SE DEBE REUTILIZAR pasándole los `data` correspondientes. Solo si la mecánica del curso es enteramente distinta y no cubierta por el catálogo, se autoriza crear uno nuevo y agregarlo al catálogo.
+
+## 6. Arquitectura Híbrida para Laboratorios de Datos (Data Labs)
+El desarrollo e integración de cualquier "Laboratorio de Datos" (Scrollytelling, Mapas Interactivos, Infografías Anatómicas) dentro de `cip-next` debe regirse OBLIGATORIAMENTE por los siguientes tres pilares de escalabilidad para garantizar el rendimiento masivo:
+
+1. **CACHÉ Y CDN (Orquestador Estático):** Todo archivo `page.jsx` de un laboratorio debe ser un React Server Component (RSC) puro y estático. No se permite el uso de funciones dinámicas sin caché. La carcasa semántica será servida desde el Edge Network.
+2. **OFFLOADING DE DATOS (Fetching en el Cliente):** Queda prohibido importar archivos JSON pesados directamente en los Server Components. Todo dataset denso debe alojarse en la carpeta estática `/public/data/...` y ser consumido asíncronamente (ej. `fetch`) directamente desde un componente de cliente (`"use client"`).
+3. **HIDRATACIÓN PROGRESIVA (Code Splitting):** Toda librería de visualización pesada (`Recharts`, SVGs interactivos, Framer Motion si es imprescindible) debe ser importada dinámicamente en el orquestador usando `next/dynamic` con `{ ssr: false }`.
+
+**Exigencias Visuales (SVGs e Infografías):**
+- **Gestión SVG (CERO CÓDIGO BASURA):** Queda estrictamente prohibido incrustar SVGs gigantes y monolíticos con miles de líneas de código dentro del componente de React. Si el gráfico es interactivo, debe modularizarlo limpiamente o cargarlo de forma eficiente (ej. como imagen `img` interactuando con overlays invisibles o importación SVG controlada).
+- **Interactividad Nativa:** Los hovers, clics y transiciones deben resolverse EXCLUSIVAMENTE con clases nativas de Tailwind CSS (`hover:`, `group-hover:`, `transition-all`, etc.). Cero librerías externas de animación cuando no sea estrictamente necesario para la visualización de datos.
+- **Data-Driven Puro:** Todos los textos descriptivos deben ser extraídos a un diccionario estático en `/src/data/laboratorios/...`. El componente visual solo recibe la información, no la almacena.
+
+## MAPA DE INFRAESTRUCTURA (ÁRBOL DE DIRECTORIOS)
+
+```bash
+/Users/cultur/.gemini/antigravity/scratch/repo-github/src
+├── app
+│   ├── academia
+│   │   ├── cursos
+│   │   │   ├── calculadora-costeo
+│   │   │   │   └── page.jsx
+│   │   │   ├── diseno-producto
+│   │   │   │   ├── certificacion
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-1
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-2
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-3
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-4
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-5
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-6
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-7
+│   │   │   │   │   └── page.jsx
+│   │   │   │   └── page.jsx
+│   │   │   ├── experiencias-privadas
+│   │   │   │   ├── certificacion
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-1
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-2
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-3
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-4
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-5
+│   │   │   │   │   └── page.jsx
+│   │   │   │   └── page.jsx
+│   │   │   ├── fotografia
+│   │   │   │   ├── certificacion
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-1
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-2
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-3
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-4
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-5
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-6
+│   │   │   │   │   └── page.jsx
+│   │   │   │   └── page.jsx
+│   │   │   ├── marca
+│   │   │   │   ├── certificacion
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-1
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-2
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-3
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-4
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── modulo-5
+│   │   │   │   │   └── page.jsx
+│   │   │   │   └── page.jsx
+│   │   │   └── turismo-comunitario
+│   │   │       ├── certificacion
+│   │   │       │   └── page.jsx
+│   │   │       ├── modulo-1
+│   │   │       │   └── page.jsx
+│   │   │       ├── modulo-2
+│   │   │       │   └── page.jsx
+│   │   │       ├── modulo-3
+│   │   │       │   └── page.jsx
+│   │   │       ├── modulo-4
+│   │   │       │   └── page.jsx
+│   │   │       ├── modulo-5
+│   │   │       │   └── page.jsx
+│   │   │       ├── modulo-6
+│   │   │       │   └── page.jsx
+│   │   │       └── page.jsx
+│   │   └── page.jsx
+│   ├── api
+│   │   └── certificates
+│   │       └── generate
+│   │           └── route.js
+│   ├── centro-de-pensamiento
+│   │   └── page.jsx
+│   ├── globals.css
+│   ├── laboratorio
+│   │   └── page.jsx
+│   ├── laboratorios
+│   │   ├── anatomia-del-turista
+│   │   │   └── page.jsx
+│   │   ├── carbono
+│   │   │   └── page.jsx
+│   │   ├── sae-colombia
+│   │   │   └── page.jsx
+│   │   └── tolima
+│   │       └── page.jsx
+│   ├── layout.jsx
+│   └── page.jsx
+├── components
+│   ├── academia
+│   │   ├── AudioPodcast.jsx
+│   │   ├── CourseCard.jsx
+│   │   ├── CourseCatalog.jsx
+│   │   ├── ModuleNavigation.jsx
+│   │   └── curso1
+│   │       ├── modulo1
+│   │       │   ├── InteractivePillars.jsx
+│   │       │   ├── ModuleHeader.jsx
+│   │       │   └── ReflectionTabs.jsx
+│   │       ├── modulo2
+│   │       ├── modulo3
+│   │       └── modulo4
+│   ├── home
+│   │   ├── AboutSection.jsx
+│   │   ├── HeroSection.jsx
+│   │   ├── OrgChartSection.jsx
+│   │   └── PillarsSection.jsx
+│   ├── laboratorio
+│   │   ├── LabCatalog.jsx
+│   │   └── ResearchCard.jsx
+│   ├── layout
+│   │   ├── CourseCertificationLayout.jsx
+│   │   ├── CourseModuleLayout.jsx
+│   │   ├── CourseSyllabusLayout.jsx
+│   │   └── Navbar.jsx
+│   ├── pensamiento
+│   │   └── PublicationCard.jsx
+│   └── ui
+│       ├── Academia
+│       │   └── CalculadoraCosteo
+│       │       └── CalculadoraCosteo.jsx
+│       ├── DataLab
+│       │   ├── Anatomia
+│       │   │   ├── AnatomiaInteractiveClient.jsx
+│       │   │   ├── AnatomiaNoSSRWrapper.jsx
+│       │   │   ├── AnatomyCard.jsx
+│       │   │   ├── AnatomyNode.jsx
+│       │   │   ├── RegionPillar.jsx
+│       │   │   └── SocioMatrixRow.jsx
+│       │   ├── Carbono
+│       │   │   ├── CarbonoNoSSRWrapper.jsx
+│       │   │   ├── CarbonoSandbox.jsx
+│       │   │   └── CarbonoScrollytelling.jsx
+│       │   ├── SaeColombia
+│       │   │   ├── SaeNoSSRWrapper.jsx
+│       │   │   └── SaeScrollytelling.jsx
+│       │   ├── Scrollyteller.jsx
+│       │   └── Tolima
+│       │       ├── TolimaMap.jsx
+│       │       ├── TolimaMapWrapper.jsx
+│       │       └── TolimaScrollytelling.jsx
+│       ├── EChartsCore.jsx
+│       └── interactivos
+│           ├── ActionAccordion.jsx
+│           ├── ArchetypeMatcher.jsx
+│           ├── ArtQuote.jsx
+│           ├── AudienceSelector.jsx
+│           ├── AudioPodcast.jsx
+│           ├── BeforeAfterSlider.jsx
+│           ├── BottleneckSimulator.jsx
+│           ├── COMPONENTS_CATALOG.md
+│           ├── CameraSimulator.jsx
+│           ├── CaseBlock.jsx
+│           ├── CaseStudyViewer.jsx
+│           ├── CertificateGenerator.jsx
+│           ├── ColorPsychologyLab.jsx
+│           ├── ComparisonBlock.jsx
+│           ├── ComparisonCards.jsx
+│           ├── CourseEvaluation.jsx
+│           ├── DecisionSimulator.jsx
+│           ├── EmpathyMap.jsx
+│           ├── FeatureImage.jsx
+│           ├── GapMatrix.jsx
+│           ├── GridBlock.jsx
+│           ├── InfoBlock.jsx
+│           ├── InteractiveCaseStudy.jsx
+│           ├── InteractivePillars.jsx
+│           ├── InteractiveVectorScene.jsx
+│           ├── InterviewSimulator.jsx
+│           ├── MatchGame.jsx
+│           ├── MatrizPriorizacion.jsx
+│           ├── MentorGuide.jsx
+│           ├── ModuleHero.jsx
+│           ├── ModuleNavigation.jsx
+│           ├── NodeChain.jsx
+│           ├── PairMatchGame.jsx
+│           ├── PhoneMockupBlock.jsx
+│           ├── PhotoGallery.jsx
+│           ├── PhotoHero.jsx
+│           ├── ProductSheet.jsx
+│           ├── QuizExercise.jsx
+│           ├── ReflectionTabs.jsx
+│           ├── StepList.jsx
+│           ├── StoryboardCards.jsx
+│           ├── TheoryIntro.jsx
+│           ├── ToneBuilder.jsx
+│           ├── TypographyTester.jsx
+│           └── ValueFormulaBuilder.jsx
+├── data
+│   ├── academia
+│   │   └── calculadoraData.js
+│   ├── cursos
+│   │   ├── catalogo.js
+│   │   ├── curso-1
+│   │   │   ├── certificacion.js
+│   │   │   ├── modulo-1.js
+│   │   │   ├── modulo-2.js
+│   │   │   ├── modulo-3.js
+│   │   │   ├── modulo-4.js
+│   │   │   ├── modulo-5.js
+│   │   │   ├── modulo-6.js
+│   │   │   └── syllabus.js
+│   │   ├── curso-2
+│   │   │   ├── certificacion.js
+│   │   │   ├── curso2Data.js
+│   │   │   ├── modulo-1.js
+│   │   │   ├── modulo-2.js
+│   │   │   ├── modulo-3.js
+│   │   │   ├── modulo-4.js
+│   │   │   ├── modulo-5.js
+│   │   │   ├── modulo-6.js
+│   │   │   ├── modulo-7.js
+│   │   │   └── syllabus.js
+│   │   ├── experiencias-privadas
+│   │   │   ├── certificacion.js
+│   │   │   ├── modulo-1.js
+│   │   │   ├── modulo-2.js
+│   │   │   ├── modulo-3.js
+│   │   │   ├── modulo-4.js
+│   │   │   ├── modulo-5.js
+│   │   │   └── syllabus.js
+│   │   ├── fotografia
+│   │   │   ├── certificacion.js
+│   │   │   ├── modulo-1.js
+│   │   │   ├── modulo-2.js
+│   │   │   ├── modulo-3.js
+│   │   │   ├── modulo-4.js
+│   │   │   ├── modulo-5.js
+│   │   │   ├── modulo-6.js
+│   │   │   └── syllabus.js
+│   │   └── marca
+│   │       ├── certificacion.js
+│   │       ├── modulo-1.js
+│   │       ├── modulo-2.js
+│   │       ├── modulo-3.js
+│   │       ├── modulo-4.js
+│   │       ├── modulo-5.js
+│   │       └── syllabus.js
+│   └── laboratorios
+│       ├── anatomia.js
+│       ├── carbono.js
+│       ├── sae.js
+│       └── tolimaData.js
+├── lib
+│   └── firebase.js
+└── utils
+    └── security.js
+
+85 directories, 179 files
+```

@@ -48,7 +48,7 @@ export default function ColorPsychologyLab({ data }) {
         <div className="lg:col-span-5 space-y-4">
           <h4 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
             <Palette className="w-4 h-4" />
-            ¿Qué deseas transmitir?
+            {data.labels?.prompt || "¿Qué deseas transmitir?"}
           </h4>
           
           <div className="flex flex-col gap-3">
@@ -94,7 +94,7 @@ export default function ColorPsychologyLab({ data }) {
               </p>
 
               <div>
-                <h5 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">Marcas que usan esta psicología:</h5>
+                <h5 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">{data.labels?.brands || "Marcas que usan esta psicología:"}</h5>
                 <div className="flex flex-wrap gap-2">
                   {selectedEmotion.exampleBrands.map(brand => (
                     <span key={brand} className="px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full text-sm font-bold text-slate-700 border border-white shadow-sm">

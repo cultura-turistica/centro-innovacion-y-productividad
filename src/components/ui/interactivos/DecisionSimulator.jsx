@@ -49,7 +49,7 @@ export default function DecisionSimulator({ data }) {
               </div>
               <div>
                 <h3 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-1">
-                  Escenario {currentScenarioIndex + 1} de {scenarios.length}
+                  {data.labels?.scenario || "Escenario"} {currentScenarioIndex + 1} {data.labels?.of || "de"} {scenarios.length}
                 </h3>
                 <p className="text-slate-800 text-lg leading-relaxed font-medium">
                   {currentScenario.context}

@@ -64,7 +64,7 @@ export default function ArchetypeMatcher({ data, themeColor }) {
         {!gameFinished ? (
           <div className="space-y-8">
             <div className="text-center">
-              <p className="text-sm text-slate-500 font-semibold uppercase tracking-widest mb-2">Marca a analizar ({currentMatchIndex + 1}/{gameData.matches.length})</p>
+              <p className="text-sm text-slate-500 font-semibold uppercase tracking-widest mb-2">{data.labels?.analyzeBrand || "Marca a analizar"} ({currentMatchIndex + 1}/{gameData.matches.length})</p>
               
               {currentMatch.logo ? (
                 <div className="flex justify-center h-20 md:h-24 my-4">

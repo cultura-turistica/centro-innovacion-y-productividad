@@ -7,7 +7,7 @@ export const curso2Data = {
     podcast: {
       title: "Del Recurso al Producto",
       subtitle: "Audio Instructor",
-      audioSrc: "/audio/C2-M1.wav",
+      audioSrc: "/assets/audios/C2-M1.wav",
       transcript: "<p>Hola de nuevo. Empecemos este curso derribando un mito muy común en el turismo: “Tenemos una cascada hermosa, eso significa que ya tenemos turismo”. La realidad es que un paisaje bonito, una cascada o una montaña, es solo un recurso. Para que ese recurso se convierta en un producto turístico, necesita infraestructura: un sendero seguro para llegar, un baño limpio, un guía que cuente una historia interesante y un lugar donde almorzar.<br/><br/>El gran error de muchos destinos emergentes es promocionar sus recursos antes de tener los servicios listos. Eso solo atrae a visitantes que no dejan dinero en la comunidad y, peor aún, pueden terminar dañando el entorno natural. En este módulo, aprenderemos a dar ese salto: cómo tomar lo que la naturaleza o la cultura nos dio, y envolverlo en servicios de calidad para que realmente genere ingresos.</p>"
     },
     restaurante: {
@@ -41,7 +41,7 @@ export const curso2Data = {
     podcast: {
       title: "El Enemigo es 'Para Todo el Mundo'",
       subtitle: "Audio Instructora",
-      audioSrc: "/audio/C2-M2.wav",
+      audioSrc: "/assets/audios/C2-M2.wav",
       transcript: "<p>Hablemos de a quién le vendemos. Cuando le preguntas a un emprendedor “Oye, ¿para quién es tu producto turístico?”, casi siempre responden: “¡Para todos! Familias, mochileros, extranjeros, abuelitos... para todo el mundo”.<br/><br/>En turismo, diseñar un producto “para todo el mundo” es la receta perfecta para no venderle a nadie. Un mochilero europeo que busca aventura extrema en la selva, no necesita los mismos servicios, ni el mismo menú, ni la misma publicidad que una familia con dos niños pequeños que busca descansar el fin de semana. Tratar de complacerlos a los dos al mismo tiempo hará que tu experiencia sea genérica y aburrida. Conocer a tu “Buyer Persona” significa tener la valentía de decir: “Mi producto es exclusivamente para este tipo de persona”, y enfocarse en hacerlos inmensamente felices.</p>"
     },
     sastre: {
@@ -184,7 +184,7 @@ export const curso2Data = {
     podcast: {
       title: "El Eslabón Roto",
       subtitle: "Audio Instructora",
-      audioSrc: "/audio/C2-M5.wav",
+      audioSrc: "/assets/audios/C2-M5.wav",
       transcript: "<p>El turismo es, quizás, la industria más interconectada que existe. Piensa en esto como una obra de teatro: tú puedes tener el mejor hotel del mundo (el actor principal), y el mejor restaurante de la región (el actor secundario). Pero, ¿qué pasa si la vía para llegar al pueblo está destruida, o si el transportador local cobra precios injustos? La obra de teatro se arruina antes de empezar.<br/><br/>A esto le llamamos la Cadena de Valor. La experiencia del turista no empieza cuando entra a tu hotel, empieza desde que se sube al bus en su ciudad de origen. Si hay un solo eslabón roto, una sola “brecha” —como la falta de señalización, mala conexión a internet o basura en las calles—, el turista calificará mal toda la experiencia, por más que tu hotel haya sido perfecto. Por eso, en el turismo territorial no competimos entre vecinos; dependemos de que todo el ecosistema funcione impecablemente. Abajo verás cómo identificar esos eslabones rotos.</p>"
     },
     engranaje: {
@@ -283,7 +283,7 @@ export const curso2Data = {
     podcast: {
       title: "Por qué mueren los proyectos",
       subtitle: "Audio Instructor",
-      audioSrc: "/audio/C2-M7.wav",
+      audioSrc: "/assets/audios/C2-M7.wav",
       transcript: "<p>Para cerrar, quiero hablarles de por qué la mayoría de los proyectos turísticos fracasan en la fase de implementación. No es por falta de pasión, ni siquiera por falta de dinero. Fracasan porque se quedan en “buenas intenciones”.<br/><br/>Reunirse con la comunidad y decir “vamos a mejorar el servicio al cliente” es una buena intención, pero es gaseoso, nadie sabe qué hacer el lunes por la mañana. En cambio, decir “María capacitará a 5 guías en manejo de quejas este viernes a las 4 de la tarde en el salón comunal” es una acción. Eso es la metodología S.M.A.R.T: quitarle el romanticismo a los planes y ponerles responsables, fechas límite y números que se puedan medir. Las ideas maravillosas sin un cronograma exacto, son solo alucinaciones. A continuación, pondrás a prueba tu capacidad de convertir ideas abstractas en acciones reales.</p>"
     },
     gps: {
