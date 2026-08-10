@@ -1,19 +1,19 @@
 {
   "metadata_proyecto": {
     "nombre": "La Prosperidad",
-    "narrativa": "Ganader\u00eda Sostenible y Resiliencia en Bosque Seco Tropical",
+    "narrativa": "Ganadería Sostenible y Resiliencia en Bosque Seco Tropical",
     "periodo_analisis": "2021 - 2026"
   },
   "estimacion_co2_teorica": {
-    "ecosistema": "Bosque Seco Tropical (Transici\u00f3n Semi\u00e1rida)",
+    "ecosistema": "Bosque Seco Tropical (Transición Semiárida)",
     "hectareas_bosque_protegido": 32.82,
     "factor_conservador_ton_C_ha": 50,
     "total_co2_equivalente_almacenado_ton": 6022.47,
-    "nota_metodologica": "Estimaci\u00f3n te\u00f3rica de Nivel 1 (Stock). No representa cr\u00e9ditos de carbono adicionales, sino la reserva de carbono existente protegida por el modelo silvopastoril."
+    "nota_metodologica": "Estimación teórica de Nivel 1 (Stock). No representa créditos de carbono adicionales, sino la reserva de carbono existente protegida por el modelo silvopastoril."
   },
   "transicion_uso_suelo": [
     {
-      "A\u00f1o": 2022,
+      "Año": 2022,
       "Agua": 17.42,
       "Bosque": 36.43,
       "Cultivos": 0.0,
@@ -21,10 +21,10 @@
       "Pastizal": 1.11,
       "Calculo_Stock_CO2e": 3342.45,
       "Calculo_Captura_Anual": 54.64,
-      "Contexto": "Periodo de baja intervenci\u00f3n / Finca sola."
+      "Contexto": "Periodo de baja intervención / Finca sola."
     },
     {
-      "A\u00f1o": 2023,
+      "Año": 2023,
       "Agua": 17.42,
       "Bosque": 35.87,
       "Cultivos": 0.0,
@@ -32,10 +32,10 @@
       "Pastizal": 0.63,
       "Calculo_Stock_CO2e": 3291.07,
       "Calculo_Captura_Anual": 53.8,
-      "Contexto": "Gesti\u00f3n Cultura T / Introducci\u00f3n ganader\u00eda controlada."
+      "Contexto": "Gestión Cultura T / Introducción ganadería controlada."
     },
     {
-      "A\u00f1o": 2024,
+      "Año": 2024,
       "Agua": 17.42,
       "Bosque": 32.87,
       "Cultivos": 0.0,
@@ -43,10 +43,10 @@
       "Pastizal": 1.73,
       "Calculo_Stock_CO2e": 3015.82,
       "Calculo_Captura_Anual": 49.3,
-      "Contexto": "Gesti\u00f3n Cultura T / Introducci\u00f3n ganader\u00eda controlada."
+      "Contexto": "Gestión Cultura T / Introducción ganadería controlada."
     },
     {
-      "A\u00f1o": 2025,
+      "Año": 2025,
       "Agua": 17.42,
       "Bosque": 33.83,
       "Cultivos": 0.0,
@@ -54,10 +54,10 @@
       "Pastizal": 0.8,
       "Calculo_Stock_CO2e": 3103.9,
       "Calculo_Captura_Anual": 50.74,
-      "Contexto": "Gesti\u00f3n Cultura T / Introducci\u00f3n ganader\u00eda controlada."
+      "Contexto": "Gestión Cultura T / Introducción ganadería controlada."
     },
     {
-      "A\u00f1o": 2026,
+      "Año": 2026,
       "Agua": 17.42,
       "Bosque": 32.82,
       "Cultivos": 0.06,
@@ -65,7 +65,7 @@
       "Pastizal": 1.97,
       "Calculo_Stock_CO2e": 3011.24,
       "Calculo_Captura_Anual": 49.23,
-      "Contexto": "Gesti\u00f3n Cultura T / Introducci\u00f3n ganader\u00eda controlada."
+      "Contexto": "Gestión Cultura T / Introducción ganadería controlada."
     }
   ],
   "monitoreo_salud_mensual": [
@@ -425,11 +425,11 @@
     }
   ],
   "analisis_interno_cultura_t": {
-    "tesis_central": "Gesti\u00f3n de un activo biol\u00f3gico modificado mediante adaptaci\u00f3n productiva.",
-    "metodologia_insitu": "Uso de factores de nivel 1 ajustados por proximidad a zona semi\u00e1rida.",
+    "tesis_central": "Gestión de un activo biológico modificado mediante adaptación productiva.",
+    "metodologia_insitu": "Uso de factores de nivel 1 ajustados por proximidad a zona semiárida.",
     "variables_monitoreo": [
       "NDVI (Vigor)",
-      "NDMI (Hestr\u00e9s H\u00eddrico)",
+      "NDMI (Hestrés Hídrico)",
       "LULC (Uso de Suelo)"
     ]
   }

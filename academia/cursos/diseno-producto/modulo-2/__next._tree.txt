@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/0fo1nzwi4b7b4.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"academia","param":null,"prefetchHints":4192,"slots":{"children":{"name":"cursos","param":null,"prefetchHints":4192,"slots":{"children":{"name":"diseno-producto","param":null,"prefetchHints":4192,"slots":{"children":{"name":"modulo-2","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}}}}}},"staleTime":300,"buildId":"EamNNl7DcfdR6MT5bo8As"}
