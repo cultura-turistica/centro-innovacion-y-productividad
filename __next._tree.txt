@@ -1,3 +1,3 @@
 :HL["/_next/static/chunks/0fo1nzwi4b7b4.css","style"]
 :HL["/assets/images/taller.webp","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"DmOvXybhTUo2UXXSTcJAj"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"9xt5rxRZIPh3BaC3zkGtf"}
