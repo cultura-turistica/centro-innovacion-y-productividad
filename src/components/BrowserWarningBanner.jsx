@@ -9,7 +9,13 @@ export default function BrowserWarningBanner() {
   useEffect(() => {
     // Solo mostramos el banner si el usuario está en Safari
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    const hasDismissed = localStorage.getItem('safari-warning-dismissed');
+    let hasDismissed = false;
+    
+    try {
+      hasDismissed = localStorage.getItem('safari-warning-dismissed') === 'true';
+    } catch (e) {
+      console.warn("localStorage not available, probably due to strict privacy settings in Safari.");
+    }
     
     if (isSafari && !hasDismissed) {
       setIsVisible(true);
@@ -18,7 +24,11 @@ export default function BrowserWarningBanner() {
 
   const dismiss = () => {
     setIsVisible(false);
-    localStorage.setItem('safari-warning-dismissed', 'true');
+    try {
+      localStorage.setItem('safari-warning-dismissed', 'true');
+    } catch (e) {
+      // Ignorar si está bloqueado
+    }
   };
 
   if (!isVisible) return null;
