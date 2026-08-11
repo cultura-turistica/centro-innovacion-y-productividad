@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Navbar from '../../components/layout/Navbar';
 import LabCatalog from '../../components/laboratorio/LabCatalog';
+import BrowserWarningBanner from '../../components/BrowserWarningBanner';
 import { ChevronRight } from 'lucide-react';
 
 const RESEARCHES = [
@@ -70,6 +71,7 @@ const RESEARCHES = [
 export default function LaboratorioPage() {
   return (
     <div className="bg-[url('/assets/images/textura1.webp')] bg-cover bg-center min-h-screen relative font-sans text-slate-800 selection:bg-emerald-100">
+      <BrowserWarningBanner />
       <div 
         className="fixed inset-0 pointer-events-none opacity-30 z-0"
       ></div>

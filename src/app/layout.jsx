@@ -1,5 +1,4 @@
 import './globals.css'
-import BrowserWarningBanner from '../components/BrowserWarningBanner'
 
 export const metadata = {
   title: 'Inicio CIP - Cultura T',
@@ -10,7 +9,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
-        <BrowserWarningBanner />
         {children}
       </body>
     </html>
