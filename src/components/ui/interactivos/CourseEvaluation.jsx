@@ -228,6 +228,12 @@ export default function CourseEvaluation({ data, onComplete }) {
             ))}
           </div>
 
+          {quizError && (
+            <div className="bg-red-50 text-red-700 p-4 rounded-xl font-medium text-center border border-red-100 animate-pulse mt-4">
+              {quizError}
+            </div>
+          )}
+
           <div className="flex justify-end pt-4">
             <button
               type="submit"
