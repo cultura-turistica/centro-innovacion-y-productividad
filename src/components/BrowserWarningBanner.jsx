@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { UI_MESSAGES } from '../data/uiData';
 
 export default function BrowserWarningBanner() {
   const [isVisible, setIsVisible] = useState(false);
+  const { browserWarning } = UI_MESSAGES;
 
   useEffect(() => {
     // Solo mostramos el banner si el usuario está en Safari
@@ -38,16 +40,14 @@ export default function BrowserWarningBanner() {
             </div>
           </div>
           <div className="flex-1">
-            <h3 className="text-sm font-bold text-slate-800 mb-1">Aviso de compatibilidad</h3>
-            <p className="text-xs text-slate-600 leading-relaxed mb-4">
-              Hemos detectado que usas Safari. Para una visualización óptima y sin interrupciones de nuestros <strong className="font-semibold text-slate-800">Laboratorios de Datos</strong> interactivos, recomendamos usar Chrome, Edge, Firefox o Brave.
-            </p>
+            <h3 className="text-sm font-bold text-slate-800 mb-1">{browserWarning.title}</h3>
+            <p className="text-xs text-slate-600 leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: browserWarning.description }} />
             <div className="flex gap-3">
               <button 
                 onClick={dismiss}
                 className="text-xs font-bold text-slate-900 bg-amber-400 hover:bg-amber-500 py-2 px-4 rounded-lg transition-colors"
               >
-                Entendido
+                {browserWarning.button}
               </button>
             </div>
           </div>
