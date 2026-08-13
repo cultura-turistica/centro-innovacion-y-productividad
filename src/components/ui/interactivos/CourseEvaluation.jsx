@@ -20,7 +20,7 @@ export default function CourseEvaluation({ data, onComplete }) {
   const [quizError, setQuizError] = useState('');
   
   // Datos Legales
-  const [legalData, setLegalData] = useState({ name: '', identification: '' });
+  const [legalData, setLegalData] = useState({ name: '', identification: '', email: '' });
   const [certificateData, setCertificateData] = useState(null);
 
   const handleSurveySubmit = async (e) => {
@@ -96,6 +96,7 @@ export default function CourseEvaluation({ data, onComplete }) {
           courseName: data.quiz.courseName,
           studentName: legalData.name,
           identification: legalData.identification,
+          email: legalData.email,
           cryptographicSeal: seal,
           issuedAt: new Date().toISOString()
         });
@@ -278,6 +279,18 @@ export default function CourseEvaluation({ data, onComplete }) {
                 value={legalData.identification}
                 onChange={(e) => setLegalData({ ...legalData, identification: e.target.value })}
                 placeholder={data.formularioLegal.idPlaceholder}
+                className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500"
+              />
+            </div>
+
+            <div>
+              <label className="block font-bold text-slate-800 mb-2">{data.formularioLegal.emailLabel || 'Correo Electrónico'}</label>
+              <input
+                type="email"
+                required
+                value={legalData.email}
+                onChange={(e) => setLegalData({ ...legalData, email: e.target.value })}
+                placeholder={data.formularioLegal.emailPlaceholder || 'Ej. usuario@correo.com'}
                 className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500"
               />
             </div>

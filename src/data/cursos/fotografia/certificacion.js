@@ -15,6 +15,8 @@ export const certificacionData = {
     namePlaceholder: "Ej. Juan Pérez López",
     idLabel: "Número de Identificación (C.C. o NIT)",
     idPlaceholder: "Ej. 1.020.304.050",
+    emailLabel: "Correo Electrónico",
+    emailPlaceholder: "Ej. usuario@correo.com",
     processingBtn: "Generando...",
     continueBtn: "Generar Certificado Oficial"
   },
