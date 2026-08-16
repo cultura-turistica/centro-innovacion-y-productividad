@@ -20,7 +20,7 @@ export default function Navbar() {
           <Link href="/" className="hover:text-indigo-600 transition-colors">Inicio CIP</Link>
           <Link href="/academia" className="hover:text-indigo-600 transition-colors">Mi Academia</Link>
           <Link href="/laboratorio" className="hover:text-indigo-600 transition-colors">Laboratorio de Datos</Link>
-          <Link href="/centro-de-pensamiento" className="hover:text-indigo-600 transition-colors">Centro de Pensamiento</Link>
+          <Link href="/centro-conocimiento" className="hover:text-indigo-600 transition-colors">Centro de Conocimiento</Link>
           <a href="https://cultura-t.com/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Sitio Corporativo</a>
         </div>
 
@@ -39,7 +39,7 @@ export default function Navbar() {
           <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Inicio CIP</Link>
           <Link href="/academia" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Mi Academia</Link>
           <Link href="/laboratorio" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Laboratorio de Datos</Link>
-          <Link href="/centro-de-pensamiento" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Centro de Pensamiento</Link>
+          <Link href="/centro-conocimiento" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Centro de Conocimiento</Link>
           <a href="https://cultura-t.com/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Sitio Corporativo</a>
         </div>
       </div>
