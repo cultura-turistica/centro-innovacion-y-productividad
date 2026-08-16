@@ -1,10 +1,10 @@
 export const modulo4Data = {
-  header: {
+  photoHeader: {
     title: "El Arte de Mirar",
     description: "Aprende a encontrar el “Punto de Vista” perfecto y descubre cómo cambiar la posición de la cámara cambia todo el significado.",
     bgImage: "/assets/images/fotografia/primer_plano_retrato_1777069904150.webp"
   },
-  vantagePoint: {
+  photoGallery1: {
     badge: "El Punto de Vista",
     title: "¿Dónde está la cámara?",
     description: "Como destacó John Szarkowski en el MoMA en 1964, el punto de vista es literalmente dónde colocas la cámara. ¿Arriba? ¿Abajo? ¿De lado?",
@@ -43,7 +43,7 @@ export const modulo4Data = {
       }
     ]
   },
-  framing: {
+  photoGallery2: {
     badge: "Escala",
     title: "Planos Fotográficos",
     description: "Qué tan cerca estás de tu sujeto.",

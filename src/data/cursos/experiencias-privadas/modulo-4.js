@@ -1,25 +1,33 @@
 export const modulo4Data = {
-  header: {
+  themeColor: "#ef4444",
+  photoHeader: {
     title: "Módulo 4: Estructuración del Negocio y MVP",
     description: "La experiencia validada se empaqueta para generar dinero. Pasamos de un experimento de laboratorio a una empresa real compitiendo en el mercado.",
     bgImage: "/assets/images/caso_virgin.webp"
   },
-  podcast: {
+  audioPodcast: {
     title: "La Funcionalidad Primero",
     audioSrc: "/assets/audios/C6-M4.wav",
     transcript: "Para diseñar una gran experiencia, primero debes cumplir lo básico. Piensa en Crepes & Waffles. Todo el mundo sabe que contratan a mujeres cabeza de familia, pero ese es un atributo social, no su promesa central. Su verdadera promesa de valor funcional es que la gente coma rico y a un precio justo. Si la comida fuera fea, por más labor social que hicieran, la gente no volvería. Lo funcional es tu Producto Mínimo Viable: si vas a ofrecer gastronomía local, asegúrate primero de que sepa delicioso y el lugar esté impecable. Una vez que cumples eso, le vas sumando la magia."
   },
-  intro: {
+  infoBlock1: {
     title: "El Motor (Business Model Canvas)",
     content: "No importa qué tan mágica o sensorial sea tu experiencia; si no es financieramente viable, es un hobby muy caro. A nivel técnico, debes definir tus Costos Críticos, tus Fuentes de Ingreso y, sobre todo, tus Aliados Clave."
   },
-  comparacion: {
-    leftTitle: "El Eslabón Débil",
-    leftContent: "Si tu proveedor de transporte falla (llega tarde, sucio), tu experiencia entera falla. Tu aliado clave tiene el poder de destruir tu propuesta de valor sin que tú tengas la culpa.",
-    rightTitle: "El Elevator Pitch",
-    rightContent: "Toma tu Value Proposition Statement de la Módulo 2 y conviértelo en tu arma de ventas. Habla siempre de los dolores emocionales que resuelves, no de tu infraestructura técnica."
+  comparisonBlock: {
+    title: "Análisis Crítico",
+    leftTheme: "rose",
+    rightTheme: "slate",
+    producto: {
+      title: "El Eslabón Débil",
+      content: "Si tu proveedor de transporte falla (llega tarde, sucio), tu experiencia entera falla. Tu aliado clave tiene el poder de destruir tu propuesta de valor sin que tú tengas la culpa."
+    },
+    experiencia: {
+      title: "El Elevator Pitch",
+      content: "Toma tu Value Proposition Statement de la Módulo 2 y conviértelo en tu arma de ventas. Habla siempre de los dolores emocionales que resuelves, no de tu infraestructura técnica."
+    }
   },
-  ejercicio: {
+  audienceSelector: {
     title: "Encuentra al Early Adopter para tu MVP",
     instructions: "Tienes recursos limitados para tu primera versión (MVP). No puedes complacer a todos. Selecciona al cliente que perdonará los errores con tal de tener tu solución, y descarta a los demás.",
     profiles: [

@@ -1,21 +1,29 @@
 export const modulo5Data = {
-  header: {
+  themeColor: "#10b981",
+  photoHeader: {
     title: "Módulo 5: Ciclo de Sense & Respond",
     description: "En innovación, el producto NUNCA está 'terminado'. Se convierte en una conversación constante de mejora infinita basada en datos.",
     bgImage: "/assets/images/caso_xcaret.webp"
   },
-  podcast: {
+  audioPodcast: {
     title: "El Producto Vivo",
     audioSrc: "/assets/audios/C6-M5.wav",
     transcript: "El trabajo no termina cuando lanzas tu experiencia; de hecho, ahí apenas empieza. Uno de los mayores errores es creer que tu servicio debe salir perfecto y con todos los detalles desde el primer día. Al igual que en la televisión donde puedes comprar un plan básico y luego sumarle canales, tus servicios también se pueden versionar. Aquí entra la palabra clave: 'Iterar'. Iterar es probar diferentes soluciones al menor costo posible y aprender a fallar rápido. Mantén firme el corazón de tu experiencia, y concéntrate en hacer mejoras rápidas y baratas sobre eso. Escucha, prueba y ajusta, pero sin perder tu esencia."
   },
-  comparacion: {
-    leftTitle: "Sentir (Sense)",
-    leftContent: "No escuches solo opiniones, escucha a los datos operacionales. Mide tasas de retención (¿vuelven?), el NPS y los puntos de congestión en tiempo real.",
-    rightTitle: "Responder (Respond)",
-    rightContent: "Si un servicio te cuesta una fortuna y el turista ni lo nota, elimínalo hoy. Si adoran un pequeño detalle barato, poténcialo y vuélvelo tu bandera comercial."
+  comparisonBlock: {
+    title: "Sense & Respond",
+    leftTheme: "slate",
+    rightTheme: "emerald",
+    producto: {
+      title: "Sentir (Sense)",
+      content: "No escuches solo opiniones, escucha a los datos operacionales. Mide tasas de retención (¿vuelven?), el NPS y los puntos de congestión en tiempo real."
+    },
+    experiencia: {
+      title: "Responder (Respond)",
+      content: "Si un servicio te cuesta una fortuna y el turista ni lo nota, elimínalo hoy. Si adoran un pequeño detalle barato, poténcialo y vuélvelo tu bandera comercial."
+    }
   },
-  casoReal: {
+  interactiveCaseStudy: {
     empresa: "Parque Xcaret (México)",
     titulo: "Iteración basada en datos de fricción operativa",
     contexto: "Durante una temporada alta, la administración notó mediante datos operativos que a las 4:00 PM el nivel de satisfacción general caía en un sector específico del parque. Hacía mucho calor, los niños lloraban y las familias estaban exhaustas, creando un cuello de botella.",
@@ -34,7 +42,7 @@ export const modulo5Data = {
     ],
     revelacion: "En solo 48 horas el equipo de operaciones tomó medidas ágiles: Instalaron carritos sorpresa con aguas frescas y desplegaron personajes lúdicos (como guacamayas) exactamente en esos cuellos de botella geográficos a las 3:45 PM. La crisis de satisfacción se evaporó inmediatamente y se convirtió en un momento de deleite para las familias cansadas."
   },
-  ejercicio: {
+  matrizPriorizacion: {
     title: "El Product Roadmap (Hoja de Ruta)",
     instructions: "Como tu producto ahora está vivo y recibe sugerencias de manera constante, no puedes ejecutar todas las ideas al tiempo o crearás caos. Arrastra estas iniciativas a la matriz de Impacto vs. Esfuerzo para priorizarlas:",
     items: [

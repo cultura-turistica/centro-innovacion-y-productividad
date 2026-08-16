@@ -1,10 +1,10 @@
 export const modulo3Data = {
-  header: {
+  photoHeader: {
     title: "Configuración y Flujo de Trabajo",
     description: "Antes de disparar, configura tu herramienta. Una vez tomada la foto, organiza y protege tu trabajo.",
     bgImage: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80"
   },
-  workflow: {
+  gridBlock1: {
     badge: "Metodología",
     title: "El Flujo de Trabajo Profesional",
     items: [
@@ -34,7 +34,7 @@ export const modulo3Data = {
       }
     ]
   },
-  rawVsJpeg: {
+  photoGallery: {
     badge: "CALIDAD DE IMAGEN",
     title: "¿Formato RAW o JPEG? 🍰",
     items: [
@@ -52,13 +52,13 @@ export const modulo3Data = {
       }
     ]
   },
-  metadata: {
+  infoBlock1: {
     title: "Los Metadatos: El “Sidecar” de tu Foto",
     paragraphs: [
       "Si la fotografía es una motocicleta, <strong>los metadatos son el sidecar</strong>. Viajan junto a la foto invisiblemente y contienen información vital: ¿Con qué cámara se tomó? ¿Qué ajustes de apertura y velocidad tenía? Y lo más importante: <strong>¿Quién es el autor?</strong>"
     ]
   },
-  burstMode: {
+  infoBlock2: {
     title: "El Disparo Continuo (Ráfaga)",
     paragraphs: [
       "Las cámaras capturan desde 3 hasta más de 12 fotogramas por segundo. Úsalo tanto en deportes como en <strong>retratos</strong> (para atrapar esa micro-expresión perfecta) o cuando fotografías con <strong>velocidades de obturación lentas sin trípode</strong>: la primera foto puede salir movida, pero la tercera estará nítida."

@@ -1,10 +1,10 @@
 export const modulo2Data = {
-  header: {
+  photoHeader: {
     title: "Tu Equipo: La Cámara en tu Bolsillo",
     description: "Desde la histórica Kodak Brownie hasta tu Smartphone moderno. Conoce tu herramienta y cómo tomar el control manual.",
     bgImage: "/assets/images/fotografia/macro_phone_lens_1777061014302.webp"
   },
-  anatomy: {
+  gridBlock1: {
     badge: "Anatomía de tu Smartphone 📱",
     title: "Los controles ocultos",
     description: "Conoce las zonas de tu celular que a menudo pasamos por alto al tomar fotos.",
@@ -29,7 +29,7 @@ export const modulo2Data = {
       }
     ]
   },
-  classicVsModern: {
+  photoGallery: {
     badge: "Evolución",
     title: "Cámaras Clásicas vs Modernas",
     items: [
@@ -47,7 +47,7 @@ export const modulo2Data = {
       }
     ]
   },
-  accessories: {
+  phoneMockupBlock: {
     badge: "Accesorios",
     title: "Esenciales para tu Celular 🎒",
     items: [
@@ -65,7 +65,7 @@ export const modulo2Data = {
       }
     ]
   },
-  proTip: {
+  infoBlock1: {
     title: "Tip Profesional",
     paragraphs: [
       "Si dejas el dedo presionado en la pantalla (iPhone/Galaxy), se activará el bloqueo AE/AF (Bloqueo de Exposición y Enfoque). Esto te permite reencuadrar sin que la cámara intente re-enfocar automáticamente."

@@ -1,25 +1,33 @@
 export const modulo1Data = {
-  header: {
+  themeColor: "#2563eb",
+  photoHeader: {
     title: "Módulo 1: Descubrimiento y Empatía",
     description: "La empatía empresarial no es ser amable; es comprender profundamente el dolor de tu cliente. Aprende a observar en lugar de solo encuestar.",
     bgImage: "/assets/images/caso_awasi.webp"
   },
-  podcast: {
+  audioPodcast: {
     title: "Empatía pura en terreno",
     audioSrc: "/assets/audios/C6-M1.wav",
     transcript: "La verdadera empatía no se logra enviando un formulario de Google de 20 preguntas por WhatsApp. Se logra observando a tu cliente en su hábitat natural, cuando está frustrado y tratando de resolver un problema real. Observar el lenguaje no verbal te dará hallazgos (insights) que ninguna encuesta cuantitativa te revelará. Sal de la oficina y habla con ellos."
   },
-  intro: {
+  infoBlock1: {
     title: "La Regla de Oro Empresarial",
     content: "\"No puedes conocer realmente a tu cliente si nunca has hablado con él u observado cómo hace algo. Lo que la gente dice en encuestas es distinto a lo que hace.\""
   },
-  comparacion: {
-    leftTitle: "Investigación de Mercado",
-    leftContent: "Sondear la opinión superficial de 100 personas mediante encuestas para ver tendencias estadísticas. Sirve para hacer publicidad, pero NO para diseñar el núcleo del producto.",
-    rightTitle: "Investigación de Usuarios",
-    rightContent: "Observar profundamente el comportamiento de un grupo pequeño (8-15 personas) en contextos reales. Escuchar su historia e interactuar para encontrar hallazgos auténticos (Empatía pura)."
+  comparisonBlock: {
+    title: "Paradigma de Investigación",
+    leftTheme: "rose",
+    rightTheme: "emerald",
+    producto: {
+      title: "Investigación de Mercado",
+      content: "Sondear la opinión superficial de 100 personas mediante encuestas para ver tendencias estadísticas. Sirve para hacer publicidad, pero NO para diseñar el núcleo del producto."
+    },
+    experiencia: {
+      title: "Investigación de Usuarios",
+      content: "Observar profundamente el comportamiento de un grupo pequeño (8-15 personas) en contextos reales. Escuchar su historia e interactuar para encontrar hallazgos auténticos (Empatía pura)."
+    }
   },
-  casoReal: {
+  interactiveCaseStudy: {
     empresa: "Plataformas de Alojamiento",
     titulo: "El poder de la observación cualitativa",
     contexto: "Durante los primeros años, el equipo fundador notó que las personas reservaban habitaciones pero la retención era baja. Parecía un problema de precios. El equipo estaba a punto de gastar todo su capital en una campaña de descuentos masivos para atraer usuarios.",
@@ -38,7 +46,7 @@ export const modulo1Data = {
     ],
     revelacion: "Se comprendió que el usuario no buscaba únicamente 'una habitación económica', sino que tenía una motivación social: 'Quiero sentir que pertenezco a la cultura local'.<br/><br/>Al viajar y sentarse a tomar café en las salas de sus primeros usuarios, entendieron que el verdadero valor era la 'conexión humana'. Modificaron las interfaces para destacar historias reales de anfitriones y la retención se disparó sin gastar un dólar en descuentos."
   },
-  ejercicio: {
+  interviewSimulator: {
     touristName: "Carlos (Turista de negocios frecuente)",
     context: "Estás en el lobby de un hotel. Carlos está visiblemente frustrado esperando su taxi.",
     nodes: {

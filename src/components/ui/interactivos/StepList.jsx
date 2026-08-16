@@ -1,7 +1,10 @@
 import React from 'react';
 
-export default function StepList({ data, themeColor = "#0f766e", themeBg = "bg-slate-800", themeText = "text-white" }) {
+export default function StepList({ data, themeColor = "#0f766e", themeBg: propThemeBg = "bg-slate-800", themeText: propThemeText = "text-white" }) {
   if (!data || (!data.pasos && !data.steps)) return null;
+
+  const themeBg = data.themeBg || propThemeBg;
+  const themeText = data.themeText || propThemeText;
 
   const steps = data.pasos || data.steps;
 

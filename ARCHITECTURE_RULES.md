@@ -41,7 +41,12 @@ El proyecto cuenta con dos ubicaciones permitidas dependiendo del caso de uso en
 
 *(Este archivo se irá actualizando y extendiendo conforme el proyecto escale).*
 
-## 4. Arquitectura Data-Driven (Separación Estricta de Datos y UI)
+## 4. Primacía Pedagógica (Pedagogía > Código)
+**REGLA DE ORO (INAMOVIBLE):** La plataforma es una experiencia de aprendizaje interactiva, no un gestor de textos plano. 
+- Queda ESTRICTAMENTE PROHIBIDO simplificar, aplanar o mutilar el JSON de componentes interactivos (juegos, simuladores, matrices, toma de decisiones) para "limpiar" el código o hacerlo más fácil de parsear.
+- El enrutador dinámico y la capa de datos DEBEN adaptarse para inyectar y soportar la complejidad lógica y de retroalimentación de las herramientas pedagógicas originales.
+
+## 5. Arquitectura Data-Driven (Separación Estricta de Datos y UI)
 **REGLA DE ORO (INAMOVIBLE):** Para garantizar la escalabilidad a múltiples cursos y evitar el código espagueti, queda terminantemente prohibido quemar datos (textos de módulos, opciones, preguntas, configuraciones de color específicas) dentro de los componentes de UI.
 
 1. **Capa de Datos (Data Layer):** Toda la información y configuración de los cursos debe residir en archivos estáticos `.js` dentro de `src/data/cursos/[curso-slug]/[modulo-slug].js`.

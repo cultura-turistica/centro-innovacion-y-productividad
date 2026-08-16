@@ -1,7 +1,9 @@
 import React from 'react';
 
-export default function InfoBlock({ data, themeColor = "#2563eb", variant = "default" }) {
+export default function InfoBlock({ data, themeColor = "#2563eb", variant: propVariant = "default" }) {
   if (!data) return null;
+
+  const variant = data.variant || propVariant;
 
   // Extract paragraphs (handling both array of paragraphs or p1, p2, p3... pattern)
   const paragraphs = [];
@@ -13,6 +15,12 @@ export default function InfoBlock({ data, themeColor = "#2563eb", variant = "def
         paragraphs.push(data[key]);
       }
     });
+  }
+
+  // Fallback if no paragraphs were found
+  if (paragraphs.length === 0) {
+    if (data.description) paragraphs.push(data.description);
+    if (data.text) paragraphs.push(data.text);
   }
 
   // Variant styles

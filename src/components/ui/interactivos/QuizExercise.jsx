@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
-export default function QuizExercise({ data, themeColor = "#0f766e", themeBg = "bg-teal-900" }) {
+export default function QuizExercise({ data, themeColor = "#0f766e", themeBg: propThemeBg = "bg-teal-900" }) {
   const [selectedOption, setSelectedOption] = useState(null);
 
   if (!data) return null;
+
+  const themeBg = data.themeBg || propThemeBg;
 
   return (
     <div className={`${themeBg} text-white p-8 md:p-12 rounded-3xl shadow-xl`}>

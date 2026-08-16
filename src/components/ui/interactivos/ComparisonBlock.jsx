@@ -1,7 +1,10 @@
 import React from 'react';
 
-export default function ComparisonBlock({ data, leftTheme = "slate", rightTheme = "emerald" }) {
+export default function ComparisonBlock({ data, leftTheme: propLeftTheme = "slate", rightTheme: propRightTheme = "emerald" }) {
   if (!data) return null;
+
+  const leftTheme = data.leftTheme || propLeftTheme;
+  const rightTheme = data.rightTheme || propRightTheme;
 
   // Expects { left: {title, subtitle, content}, right: {title, subtitle, content} }
   // OR the format from modulo-1: { producto, experiencia }

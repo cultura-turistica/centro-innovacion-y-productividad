@@ -3,7 +3,7 @@ export const modulo6Data = {
     title: "Simulador Manual (M)",
     description: "Ajusta los controles de la zona creativa para fotografiar a este colibrí en pleno vuelo. Observa cómo el fondo (selva) y el primer plano (flores) cambian con la Apertura, y cómo las alas y el cuerpo del ave reaccionan a la Velocidad de Obturación."
   },
-  simulator: {
+  cameraSimulator: {
     images: {
       bg: "/assets/images/fotografia/sim_nature_bg.webp",
       subject: "/assets/images/fotografia/sim_bird_transparent.webp",

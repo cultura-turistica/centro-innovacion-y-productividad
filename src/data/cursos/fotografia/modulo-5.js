@@ -1,16 +1,16 @@
 export const modulo5Data = {
-  header: {
+  photoHeader: {
     title: "Encuadre y Composición",
     description: "Decide qué incluir y qué excluir. El marco es el límite de tu mundo fotográfico.",
     bgImage: "/assets/images/fotografia/rule_of_thirds_landscape_1777058892934.webp"
   },
-  theFrame: {
+  infoBlock1: {
     title: "El Encuadre es un Límite",
     paragraphs: [
       "La idea del encuadre es dictaminar que tu fotografía tiene un marco particular, un borde. Al ponerle un límite al mundo, estás tomando una decisión editorial profunda: <strong>lo que está dentro importa, lo que dejas fuera no existe para el espectador.</strong>"
     ]
   },
-  orientation: {
+  gridBlock1: {
     badge: "Orientación Visual",
     title: "Vertical vs Horizontal",
     items: [
@@ -28,7 +28,7 @@ export const modulo5Data = {
       }
     ]
   },
-  compositionRules: {
+  photoGallery: {
     badge: "Guiar el Ojo",
     title: "Reglas de Composición Clave",
     items: [
@@ -52,7 +52,7 @@ export const modulo5Data = {
       }
     ]
   },
-  proTip: {
+  infoBlock2: {
     title: "Responder a las Fotografías",
     paragraphs: [
       "La actividad final de un fotógrafo es escuchar lo que los demás ven en su obra. ¿Qué dicen, significan o revelan tus fotos? Presta atención al <strong>Tono</strong> (luz, oscuridad, calidez) y a cómo esa fotografía hace pensar a tu espectador."

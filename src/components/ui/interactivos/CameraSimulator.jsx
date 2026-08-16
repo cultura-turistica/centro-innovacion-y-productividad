@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { Camera, Settings, Sun, Image as ImageIcon, RotateCcw } from 'lucide-react';
 
 export default function CameraSimulator({ data, themeColor = "#4f46e5" }) {
-  if (!data || !data.simulator) return null;
-  const sim = data.simulator;
+  if (!data) return null;
+  const sim = data;
 
   // Exposure arrays
   const apertures = [2.8, 4, 5.6, 8, 11, 16, 22];

@@ -1,7 +1,10 @@
 import React from 'react';
 
-export default function CaseBlock({ data, themeColor = "#2563eb", themeBg = "bg-blue-50", themeBorder = "border-blue-200" }) {
+export default function CaseBlock({ data, themeColor = "#2563eb", themeBg: propThemeBg = "bg-blue-50", themeBorder: propThemeBorder = "border-blue-200" }) {
   if (!data) return null;
+
+  const themeBg = data.themeBg || propThemeBg;
+  const themeBorder = data.themeBorder || propThemeBorder;
 
   return (
     <div className={`${themeBg} p-8 rounded-3xl border-2 ${themeBorder} relative mt-8`}>

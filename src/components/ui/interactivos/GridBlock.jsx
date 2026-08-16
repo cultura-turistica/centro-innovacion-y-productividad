@@ -1,7 +1,11 @@
 import React from 'react';
 
-export default function GridBlock({ data, themeColor = "#f97316", themeBg = "bg-orange-50", themeBorder = "border-orange-200", columns }) {
+export default function GridBlock({ data, themeColor = "#f97316", themeBg: propThemeBg = "bg-orange-50", themeBorder: propThemeBorder = "border-orange-200", columns: propColumns }) {
   if (!data || !data.items) return null;
+
+  const themeBg = data.themeBg || propThemeBg;
+  const themeBorder = data.themeBorder || propThemeBorder;
+  const columns = data.columns || propColumns;
 
   const items = Array.isArray(data.items) ? data.items : Object.values(data.items);
   

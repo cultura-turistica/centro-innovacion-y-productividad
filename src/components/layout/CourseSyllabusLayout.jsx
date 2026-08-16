@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import { PlayCircle, Clock, BookOpen, CheckCircle, ChevronRight, User } from 'lucide-react';
 import Link from 'next/link';
+import CourseSidebarVideo from '../ui/interactivos/CourseSidebarVideo';
 
 export default function CourseSyllabusLayout({ data, themeColor = "#10b981", themeBg = "bg-[#faf9f6]", selectionColor = "selection:bg-emerald-100", baseUrl }) {
   if (!data) return null;
@@ -103,13 +104,23 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                                 {modulo.time || modulo.duration}
                               </div>
                               
-                              {modulo.status !== 'locked' && (
+                              {modulo.status !== 'locked' && !modulo.isConcept && (
                                 <Link 
                                   href={modulo.url || (baseUrl ? `${baseUrl}/${modulo.path}` : `/academia/cursos/turismo-comunitario/${modulo.path}`)}
                                   className="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-sm hover:shadow-md transition-all hover:scale-105"
                                   style={{ backgroundColor: themeColor }}
                                 >
                                   <PlayCircle size={20} />
+                                </Link>
+                              )}
+                              
+                              {modulo.status !== 'locked' && modulo.isConcept && modulo.path && (
+                                <Link 
+                                  href={modulo.url || (baseUrl ? `${baseUrl}/${modulo.path}` : `/academia/cursos/turismo-comunitario/${modulo.path}`)}
+                                  className="px-4 py-2 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-sm hover:shadow-md transition-all hover:scale-105"
+                                  style={{ backgroundColor: themeColor }}
+                                >
+                                  Abrir Herramienta
                                 </Link>
                               )}
                             </div>
@@ -130,12 +141,20 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                     <User size={128} />
                   </div>
                   
-                  <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
-                    <User className="w-5 h-5" style={{ color: themeColor }} />
-                    {sidebar.title || "Tu Instructor"}
-                  </h3>
+                  {(sidebar.title || sidebar.instructorName) && (
+                    <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2 relative z-10">
+                      <User className="w-5 h-5" style={{ color: themeColor }} />
+                      {sidebar.title || "Tu Instructor"}
+                    </h3>
+                  )}
                   
-                  <div className="flex items-center gap-4 mb-6">
+                  {sidebar.video && (
+                    <div className="relative z-10">
+                      <CourseSidebarVideo video={sidebar.video} themeColor={themeColor} />
+                    </div>
+                  )}
+                  
+                  <div className="flex items-center gap-4 mb-6 relative z-10">
                     {sidebar.instructorImg && (
                       <div className="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-200 overflow-hidden flex-shrink-0 shadow-sm">
                         <img src={sidebar.instructorImg} alt="Instructor" className="w-full h-full object-cover" />

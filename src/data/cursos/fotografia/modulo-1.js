@@ -1,17 +1,17 @@
 export const modulo1Data = {
-  header: {
+  photoHeader: {
     title: "Escribir con Luz",
     description: "Domina \"El Triángulo de Oro\" y descubre cómo transformar cualquier destello de luz en una obra maestra visual.",
     bgImage: "/assets/images/fotografia/rule_of_thirds_landscape_1777058892934.webp"
   },
-  intro: {
+  infoBlock1: {
     title: "¿Qué es la fotografía?",
     paragraphs: [
       "La palabra fotografía literalmente significa <strong>escritura de luz</strong>. Cuando tomas una foto, no estás capturando un objeto; estás capturando la luz rebotando en ese objeto."
     ],
     quote: "Tu cámara es un lienzo estéril. La luz es la pintura. El lente es el pincel."
   },
-  hardware: {
+  gridBlock: {
     badge: "Anatomía Básica",
     title: "Las dos piezas fundamentales",
     items: [
@@ -29,7 +29,7 @@ export const modulo1Data = {
       }
     ]
   },
-  exposureTriangle: {
+  photoGallery: {
     badge: "Triángulo de Exposición 🔺",
     title: "Las Tres Variables Maestras",
     description: "Imagina que tomar una foto es llenar un vaso con agua (la luz). Así es como controlas el flujo:",
@@ -60,7 +60,7 @@ export const modulo1Data = {
       }
     ]
   },
-  sliders: [
+  beforeAfterSliders: [
     {
       id: "slider-iso",
       title: "Impacto del ISO: Ruido vs Nitidez",
@@ -72,9 +72,11 @@ export const modulo1Data = {
       effectBefore: "noise"
     }
   ],
-  proTip: {
+  infoBlock2: {
     title: "El gran secreto de los profesionales",
-    description: "No existe una \"exposición perfecta\" universal. Exponer es decidir. A veces quieres una foto subexpuesta (oscura) para dar drama, o un tiempo de exposición largo para que el agua de un río parezca seda. <strong>La técnica sirve a tu imaginación, no al revés.</strong>",
+    paragraphs: [
+      "No existe una \"exposición perfecta\" universal. Exponer es decidir. A veces quieres una foto subexpuesta (oscura) para dar drama, o un tiempo de exposición largo para que el agua de un río parezca seda. <strong>La técnica sirve a tu imaginación, no al revés.</strong>"
+    ],
     icon: "Lightbulb"
   }
 };
