@@ -84,3 +84,7 @@ parse.cjs
 *.mp4
 hyperframes/
 iceberg-video/
+
+# AI Internal Files
+ARCHITECTURE_RULES.md
+rewrite_experiencias.js
