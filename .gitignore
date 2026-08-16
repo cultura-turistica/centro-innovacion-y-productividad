@@ -88,3 +88,9 @@ iceberg-video/
 # AI Internal Files
 ARCHITECTURE_RULES.md
 rewrite_experiencias.js
+
+# Internal AI and Draft Documentation (DO NOT COMMIT)
+AGENTS.md
+CLAUDE.md
+src/components/ui/interactivos/COMPONENTS_CATALOG.md
+scripts/
