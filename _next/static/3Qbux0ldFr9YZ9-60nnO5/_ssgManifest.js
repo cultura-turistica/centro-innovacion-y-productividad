@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002Facademia\u002Fcursos\u002F[curso]","\u002Facademia\u002Fcursos\u002F[curso]\u002F[modulo]","\u002Facademia\u002Fcursos\u002F[curso]\u002Fcertificacion"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
