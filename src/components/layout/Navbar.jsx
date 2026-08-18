@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Navbar() {
@@ -16,12 +16,28 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Enlaces Desktop (Visible en pantallas grandes, sin botón) */}
         <div className="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
           <Link href="/" className="hover:text-indigo-600 transition-colors">Inicio CIP</Link>
           <Link href="/academia" className="hover:text-indigo-600 transition-colors">Mi Academia</Link>
           <Link href="/laboratorio" className="hover:text-indigo-600 transition-colors">Laboratorio de Datos</Link>
-          <Link href="/centro-conocimiento" className="hover:text-indigo-600 transition-colors">Centro de Conocimiento</Link>
+          <div className="relative group py-4">
+            <button className="flex items-center gap-1 hover:text-indigo-600 transition-colors focus:outline-none">
+              Centro de Pensamiento <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform" />
+            </button>
+            <div className="absolute left-0 top-full -mt-2 w-56 bg-white border border-slate-100 shadow-xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
+              <div className="flex flex-col py-2">
+                <Link href="/centro-conocimiento" className="px-5 py-3 hover:bg-slate-50 text-slate-600 hover:text-indigo-600 transition-colors text-sm font-medium border-b border-slate-50">
+                  Inicio del Centro
+                </Link>
+                <Link href="/centro-conocimiento/proyectos" className="px-5 py-3 hover:bg-slate-50 text-slate-600 hover:text-indigo-600 transition-colors text-sm font-medium border-b border-slate-50">
+                  Proyectos de Innovación
+                </Link>
+                <Link href="/centro-conocimiento/publicaciones" className="px-5 py-3 hover:bg-slate-50 text-slate-600 hover:text-indigo-600 transition-colors text-sm font-medium">
+                  Publicaciones
+                </Link>
+              </div>
+            </div>
+          </div>
           <a href="https://cultura-t.com/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Sitio Corporativo</a>
         </div>
 
@@ -40,7 +56,14 @@ export default function Navbar() {
           <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Inicio CIP</Link>
           <Link href="/academia" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Mi Academia</Link>
           <Link href="/laboratorio" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Laboratorio de Datos</Link>
-          <Link href="/centro-conocimiento" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Centro de Conocimiento</Link>
+          <div className="flex flex-col gap-3 mt-2">
+            <span className="text-slate-400 font-bold uppercase tracking-wider text-[11px]">Centro de Pensamiento</span>
+            <div className="pl-4 flex flex-col gap-4 border-l-2 border-slate-100 ml-1">
+              <Link href="/centro-conocimiento" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Inicio del Centro</Link>
+              <Link href="/centro-conocimiento/proyectos" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Proyectos de Innovación</Link>
+              <Link href="/centro-conocimiento/publicaciones" onClick={() => setIsOpen(false)} className="hover:text-indigo-600 transition-colors">Publicaciones</Link>
+            </div>
+          </div>
           <a href="https://cultura-t.com/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 transition-colors">Sitio Corporativo</a>
         </div>
       </div>
