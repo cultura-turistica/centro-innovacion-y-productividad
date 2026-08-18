@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function AboutSection() {
   return (
@@ -25,11 +26,9 @@ export default function AboutSection() {
 
       {/* Imagen de contexto visual (taller.webp) */}
       <div className="mt-20 relative rounded-[2rem] overflow-hidden shadow-xl border border-white aspect-video md:aspect-[21/9] group">
-        <img 
-          src="/assets/images/taller.webp" 
+        <Image src="/assets/images/taller.webp" 
           alt="Trabajo de campo y talleres del CIP" 
-          className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out"
-        />
+          className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out" width={1000} height={1000} unoptimized={true} />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-80 flex items-end p-6 md:p-10 pointer-events-none">
            <div className="text-white">
              <div className="text-xs font-bold uppercase tracking-widest text-white/80 mb-2">Acción en el Territorio</div>

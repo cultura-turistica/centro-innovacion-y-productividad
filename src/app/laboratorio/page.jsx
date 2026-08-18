@@ -8,19 +8,19 @@ import { LAB_CATALOG_DATA } from '../../data/laboratorios/catalogoData';
 
 export default function LaboratorioPage() {
   const { header, researches } = LAB_CATALOG_DATA;
-  
+
   return (
     <div className="bg-[url('/assets/images/textura1.webp')] bg-cover bg-center min-h-screen relative font-sans text-slate-800 selection:bg-emerald-100">
       <BrowserWarningBanner />
-      <div 
+      <div
         className="fixed inset-0 pointer-events-none opacity-30 z-0"
       ></div>
-      
+
       <Navbar />
       <div className="relative z-10">
-        
+
         <main className="max-w-7xl mx-auto px-6 pt-32 pb-24">
-          
+
           {/* Header & Breadcrumb */}
           <div className="mb-16">
             <nav className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">
@@ -28,7 +28,7 @@ export default function LaboratorioPage() {
               <ChevronRight className="w-3 h-3" />
               <span className="text-emerald-500">{header.badge}</span>
             </nav>
-            
+
             <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
               <span className="text-[#0a275a]">{header.titlePart1}</span> <span className="text-[#f37321]">{header.titlePart2}</span>
             </h1>
@@ -39,7 +39,7 @@ export default function LaboratorioPage() {
 
           {/* Client Component: Catálogo */}
           <LabCatalog researches={researches} />
-          
+
         </main>
       </div>
     </div>

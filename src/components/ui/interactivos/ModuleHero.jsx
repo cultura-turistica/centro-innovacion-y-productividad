@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function ModuleHero({ data, themeColor }) {
   const { label, title, titlePart1, titlePart2, description, image, theme: dataTheme } = data;
@@ -51,11 +52,9 @@ export default function ModuleHero({ data, themeColor }) {
         {image && (
           <div className="hidden md:block flex-shrink-0 relative">
             <div className="absolute inset-0 bg-white rounded-full blur-2xl opacity-60"></div>
-            <img 
-              src={image} 
+            <Image src={image} 
               alt={title || "Imagen del Módulo"} 
-              className={`relative z-10 w-full h-full max-w-[250px] max-h-[250px] object-cover ${data.imageContainerClass || 'drop-shadow-xl rounded-2xl'}`}
-            />
+              className={`relative z-10 w-full h-full max-w-[250px] max-h-[250px] object-cover ${data.imageContainerClass || 'drop-shadow-xl rounded-2xl'}`} width={1000} height={1000} unoptimized={true} />
           </div>
         )}
       </div>

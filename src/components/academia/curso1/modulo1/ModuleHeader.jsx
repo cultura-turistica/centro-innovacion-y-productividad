@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function ModuleHeader() {
   return (
@@ -27,11 +28,9 @@ export default function ModuleHeader() {
 
         <div className="hidden md:block flex-shrink-0 relative">
           <div className="absolute inset-0 bg-white rounded-full blur-2xl opacity-60"></div>
-          <img 
-            src="/assets/images/curso_ilustracion_trabajo_equipo.webp" 
+          <Image src="/assets/images/curso_ilustracion_trabajo_equipo.webp" 
             alt="Comunidad trabajando en red" 
-            className="relative z-10 w-64 h-64 object-contain drop-shadow-xl"
-          />
+            className="relative z-10 w-64 h-64 object-contain drop-shadow-xl" width={1000} height={1000} unoptimized={true} />
         </div>
       </div>
     </div>

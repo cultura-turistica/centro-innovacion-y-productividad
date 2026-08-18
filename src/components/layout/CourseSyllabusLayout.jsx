@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from './Navbar';
 import { PlayCircle, Clock, BookOpen, CheckCircle, ChevronRight, User } from 'lucide-react';
 import Link from 'next/link';
-import CourseSidebarVideo from '../ui/interactivos/CourseSidebarVideo';
 
 export default function CourseSyllabusLayout({ data, themeColor = "#10b981", themeBg = "bg-[#faf9f6]", selectionColor = "selection:bg-emerald-100", baseUrl }) {
   if (!data) return null;
@@ -10,13 +9,13 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
 
   return (
     <div className={`min-h-screen ${themeBg} text-slate-800 font-sans ${selectionColor} relative`}>
-      <div 
+      <div
         className="fixed inset-0 pointer-events-none opacity-30 z-0 bg-[url('/assets/images/textura1.webp')] bg-cover bg-center"
       ></div>
-      
+
       <div className="relative z-10">
         <Navbar />
-        
+
         <main className="max-w-7xl mx-auto px-6 pt-32 pb-24">
           {/* Header & Breadcrumb */}
           <div className="mb-12">
@@ -34,11 +33,11 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                 </React.Fragment>
               ))}
             </nav>
-            
+
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div className="max-w-3xl">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider mb-4"
-                     style={{ backgroundColor: `${themeColor}20`, color: themeColor }}>
+                  style={{ backgroundColor: `${themeColor}20`, color: themeColor }}>
                   <PlayCircle className="w-4 h-4" />
                   <span>{header.badge}</span>
                 </div>
@@ -61,20 +60,20 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                   {data.modulesTitle || "Temario del Curso"}
                 </h2>
                 <div className="w-16 h-1 rounded-full mb-8" style={{ backgroundColor: themeColor }}></div>
-                
+
                 <div className="space-y-6">
                   {(syllabus || data.modules || []).map((modulo, index) => (
                     <div key={index} className="group flex gap-4 md:gap-6 relative">
                       <div className="flex flex-col items-center">
                         <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white shadow-md z-10"
-                             style={{ backgroundColor: modulo.status === 'locked' ? '#94a3b8' : themeColor }}>
+                          style={{ backgroundColor: modulo.status === 'locked' ? '#94a3b8' : themeColor }}>
                           {index + 1}
                         </div>
                         {index < (syllabus || data.modules || []).length - 1 && (
                           <div className="w-0.5 h-full bg-slate-200 mt-2 group-hover:bg-slate-300 transition-colors"></div>
                         )}
                       </div>
-                      
+
                       <div className="flex-1 pb-8">
                         <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 group-hover:shadow-md transition-shadow relative overflow-hidden">
                           {modulo.status === 'locked' && (
@@ -84,7 +83,7 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                               </div>
                             </div>
                           )}
-                          
+
                           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                             <div>
                               <span className="text-xs font-bold uppercase tracking-wider mb-1 block" style={{ color: themeColor }}>
@@ -97,30 +96,20 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                                 {modulo.description}
                               </p>
                             </div>
-                            
+
                             <div className="flex items-center gap-4">
                               <div className="flex items-center gap-1.5 text-sm font-semibold text-slate-400 bg-slate-50 px-3 py-1.5 rounded-full">
                                 <Clock size={14} />
                                 {modulo.time || modulo.duration}
                               </div>
-                              
-                              {modulo.status !== 'locked' && !modulo.isConcept && (
-                                <Link 
+
+                              {modulo.status !== 'locked' && (
+                                <Link
                                   href={modulo.url || (baseUrl ? `${baseUrl}/${modulo.path}` : `/academia/cursos/turismo-comunitario/${modulo.path}`)}
                                   className="w-10 h-10 rounded-full flex items-center justify-center text-white shadow-sm hover:shadow-md transition-all hover:scale-105"
                                   style={{ backgroundColor: themeColor }}
                                 >
                                   <PlayCircle size={20} />
-                                </Link>
-                              )}
-                              
-                              {modulo.status !== 'locked' && modulo.isConcept && modulo.path && (
-                                <Link 
-                                  href={modulo.url || (baseUrl ? `${baseUrl}/${modulo.path}` : `/academia/cursos/turismo-comunitario/${modulo.path}`)}
-                                  className="px-4 py-2 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-sm hover:shadow-md transition-all hover:scale-105"
-                                  style={{ backgroundColor: themeColor }}
-                                >
-                                  Abrir Herramienta
                                 </Link>
                               )}
                             </div>
@@ -140,21 +129,13 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                   <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none -mr-10 -mt-10" style={{ color: themeColor }}>
                     <User size={128} />
                   </div>
-                  
-                  {(sidebar.title || sidebar.instructorName) && (
-                    <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2 relative z-10">
-                      <User className="w-5 h-5" style={{ color: themeColor }} />
-                      {sidebar.title || "Tu Instructor"}
-                    </h3>
-                  )}
-                  
-                  {sidebar.video && (
-                    <div className="relative z-10">
-                      <CourseSidebarVideo video={sidebar.video} themeColor={themeColor} />
-                    </div>
-                  )}
-                  
-                  <div className="flex items-center gap-4 mb-6 relative z-10">
+
+                  <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                    <User className="w-5 h-5" style={{ color: themeColor }} />
+                    {sidebar.title || "Tu Instructor"}
+                  </h3>
+
+                  <div className="flex items-center gap-4 mb-6">
                     {sidebar.instructorImg && (
                       <div className="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-200 overflow-hidden flex-shrink-0 shadow-sm">
                         <img src={sidebar.instructorImg} alt="Instructor" className="w-full h-full object-cover" />
@@ -165,7 +146,7 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                       <p className="text-slate-500 text-sm font-medium">{sidebar.instructorRole || sidebar.instructor?.role}</p>
                     </div>
                   </div>
-                  
+
                   {(sidebar.instructorQuote || sidebar.instructor?.bio) && (
                     <p className="text-slate-600 text-sm leading-relaxed mb-6 italic">
                       "{sidebar.instructorQuote || sidebar.instructor?.bio}"

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Users, CheckCircle2, AlertCircle } from 'lucide-react';
+import Image from 'next/image';
 
 export default function MatchGame({ data }) {
   const { badge, title, description, rolesTitle, zonesTitle, roles, zones, success } = data;
@@ -79,7 +80,7 @@ export default function MatchGame({ data }) {
                 >
                   <div className="text-4xl mb-3">
                   {role.icon.startsWith('http') || role.icon.startsWith('/') ? (
-                    <img src={role.icon} alt={role.name} className="w-16 h-16 rounded-full mx-auto shadow-md bg-white p-1" />
+                    <Image src={role.icon} alt={role.name} className="w-16 h-16 rounded-full mx-auto shadow-md bg-white p-1" width={1000} height={1000} unoptimized={true} />
                   ) : (
                     role.icon
                   )}
@@ -131,7 +132,7 @@ export default function MatchGame({ data }) {
                       <div className="flex items-center gap-2 px-3 py-1 bg-white rounded-full shadow-sm text-green-700 font-bold text-sm">
                         <span>
                           {matchedRole.icon.startsWith('http') || matchedRole.icon.startsWith('/') ? (
-                            <img src={matchedRole.icon} alt={matchedRole.name} className="w-6 h-6 rounded-full" />
+                            <Image src={matchedRole.icon} alt={matchedRole.name} className="w-6 h-6 rounded-full" width={1000} height={1000} unoptimized={true} />
                           ) : (
                             matchedRole.icon
                           )}

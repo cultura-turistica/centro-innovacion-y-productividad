@@ -2,14 +2,15 @@
 import React, { useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import * as echarts from 'echarts/core';
 import { ScatterChart, LineChart, CustomChart, MapChart, BarChart } from 'echarts/charts';
-import { 
-  GridComponent, 
-  TooltipComponent, 
+import {
+  GridComponent,
+  TooltipComponent,
   LegendComponent,
   VisualMapComponent,
   DatasetComponent,
   TitleComponent,
-  DataZoomComponent
+  DataZoomComponent,
+  GeoComponent
 } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 
@@ -27,6 +28,7 @@ echarts.use([
   DatasetComponent,
   TitleComponent,
   DataZoomComponent,
+  GeoComponent,
   CanvasRenderer
 ]);
 
@@ -37,9 +39,9 @@ echarts.use([
  * Expone la instancia pura mediante 'ref' para manipular opciones (morphing)
  * imperativamente sin forzar re-renders de React.
  */
-const EChartsCore = forwardRef(({ 
-  className = "", 
-  style = { width: '100%', height: '100%' }, 
+const EChartsCore = forwardRef(({
+  className = "",
+  style = { width: '100%', height: '100%' },
   initialOption = {},
   onInit = null,
   ariaLabel = "Gráfica interactiva de datos"
@@ -102,11 +104,11 @@ const EChartsCore = forwardRef(({
   }));
 
   return (
-    <div 
-      ref={chartRef} 
-      className={className} 
-      style={style} 
-      role="img" 
+    <div
+      ref={chartRef}
+      className={className}
+      style={style}
+      role="img"
       aria-label={ariaLabel}
     />
   );

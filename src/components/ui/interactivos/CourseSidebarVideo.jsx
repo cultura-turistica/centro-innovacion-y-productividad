@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
+import Image from 'next/image';
 
 export default function CourseSidebarVideo({ video, themeColor }) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -19,11 +20,9 @@ export default function CourseSidebarVideo({ video, themeColor }) {
           onClick={() => setIsPlaying(true)}
           className="w-full h-full relative block cursor-pointer"
         >
-          <img 
-            src={coverUrl} 
+          <Image src={coverUrl} 
             alt="Video de presentación" 
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300"
-          />
+            className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300" width={1000} height={1000} unoptimized={true} />
           <div className="absolute inset-0 flex items-center justify-center">
             {/* Outer pulsating ring */}
             <div className="absolute w-20 h-20 bg-red-600 rounded-full animate-ping opacity-75"></div>

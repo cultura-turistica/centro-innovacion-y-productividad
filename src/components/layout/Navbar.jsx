@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <img src="/assets/images/logo-cultura-t.webp" alt="Logo Cultura T" className="h-8 w-auto" />
+            <Image src="/assets/images/logo-cultura-t.webp" alt="Logo Cultura T" className="h-8 w-auto" width={200} height={32} unoptimized={true} />
           </Link>
         </div>
 
@@ -25,7 +26,7 @@ export default function Navbar() {
         </div>
 
         {/* Botón menú visible SOLO en móvil */}
-        <button 
+        <button
           onClick={() => setIsOpen(!isOpen)}
           className="lg:hidden p-2 text-slate-600 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition-colors"
         >

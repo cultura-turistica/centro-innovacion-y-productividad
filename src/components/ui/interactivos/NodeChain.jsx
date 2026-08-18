@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { MapPin, Check, Zap, Map, Truck, Home, UtensilsCrossed, Compass } from 'lucide-react';
+import Image from 'next/image';
 
 const iconMap = {
   Compass,
@@ -74,7 +75,7 @@ export default function NodeChain({ data }) {
                     {iconMap[node.icon] ? (
                       React.createElement(iconMap[node.icon], { className: "w-8 h-8 md:w-10 md:h-10 text-indigo-600" })
                     ) : node.icon.startsWith('http') || node.icon.startsWith('/') ? (
-                      <img src={node.icon} alt={node.label} className="w-12 h-12 object-contain" />
+                      <Image src={node.icon} alt={node.label} className="w-12 h-12 object-contain" width={1000} height={1000} unoptimized={true} />
                     ) : (
                       node.icon
                     )}

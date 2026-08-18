@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Type, Check } from 'lucide-react';
+import Image from 'next/image';
 
 export default function TypographyTester({ data }) {
   const { fonts, mentor, placeholderText } = data;
@@ -16,7 +17,7 @@ export default function TypographyTester({ data }) {
       {/* Header Instructor */}
       <div className="bg-slate-50 p-6 md:p-8 flex items-center gap-6 border-b border-slate-100">
         <div className="w-24 h-24 rounded-full bg-indigo-100 border-4 border-white shadow-md flex items-center justify-center overflow-hidden flex-shrink-0">
-          <img src={mentor.avatar} alt={mentor.name} className="w-20 h-20 object-contain mt-4" />
+          <Image src={mentor.avatar} alt={mentor.name} className="w-20 h-20 object-contain mt-4" width={1000} height={1000} unoptimized={true} />
         </div>
         <div>
           <h3 className="font-bold text-slate-800 text-xl">{mentor.name}</h3>

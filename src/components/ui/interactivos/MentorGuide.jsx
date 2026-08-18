@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function MentorGuide({ data, themeColor = "#e11d48" }) {
   if (!data) return null;
@@ -15,7 +16,7 @@ export default function MentorGuide({ data, themeColor = "#e11d48" }) {
             className="w-32 h-32 rounded-full border-4 border-white shadow-lg mx-auto flex items-center justify-center overflow-hidden bg-slate-50 relative z-10"
             style={{ boxShadow: `0 10px 25px -5px ${themeColor}40` }}
           >
-            <img src={data.avatar} alt={data.name} className="w-28 h-28 object-contain mt-4" />
+            <Image src={data.avatar} alt={data.name} className="w-28 h-28 object-contain mt-4" width={1000} height={1000} unoptimized={true} />
           </div>
           <h3 className="font-bold text-slate-800 text-xl mt-4">{data.name}</h3>
           <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: themeColor }}>{data.role}</p>

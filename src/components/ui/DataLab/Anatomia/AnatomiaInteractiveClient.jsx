@@ -6,6 +6,7 @@ import AnatomyNode from './AnatomyNode';
 import AnatomyCard from './AnatomyCard';
 import RegionPillar from './RegionPillar';
 import SocioMatrixRow from './SocioMatrixRow';
+import Image from 'next/image';
 
 // Icon Map for dynamic rendering
 const ICON_MAP = {
@@ -50,11 +51,9 @@ export default function AnatomiaInteractiveClient() {
             <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-50 to-white"></div>
 
           <div className="relative inline-block w-full max-w-sm md:max-w-md z-10">
-            <img 
-              src="/assets/images/colombian_tourist.png"
+            <Image src="/assets/images/colombian_tourist.png"
               alt="Anatomía del Turista"
-              className="w-full h-auto drop-shadow-md mix-blend-multiply"
-            />
+              className="w-full h-auto drop-shadow-md mix-blend-multiply" width={1000} height={1000} unoptimized={true} />
             
             {/* INTERACTIVE NODES (Hotspots) */}
             {Object.values(ANATOMY_DATA).map((node) => (

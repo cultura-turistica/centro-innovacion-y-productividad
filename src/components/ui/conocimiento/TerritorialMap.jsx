@@ -1,117 +1,237 @@
 "use client";
-import React, { useState } from 'react';
-import { MapPin } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import * as echarts from 'echarts/core';
+import { MapChart } from 'echarts/charts';
+import { TooltipComponent, GeoComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+import * as topojson from 'topojson-client';
 
-export default function TerritorialMap({ mapaImpacto, themeColor = "emerald" }) {
-  const [activePopup, setActivePopup] = useState(null);
+echarts.use([MapChart, TooltipComponent, GeoComponent, CanvasRenderer]);
 
-  if (!mapaImpacto || !mapaImpacto.activo) return null;
+export default function TerritorialMap({ proyectos, onProjectClick }) {
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+  const [mapError, setMapError] = useState(false);
+  const mapContainerRef = useRef(null);
+  const chartInstance = useRef(null);
 
-  const { zonasActivas = [], datosZonas = {} } = mapaImpacto;
+  const idToNameRef = useRef({});
 
-  // Mapa base del Meta/Tolima/Colombia en SVG (Ejemplo conceptual con 3 paths)
-  // En producción, este SVG tendría los paths reales de los municipios.
-  const regionesSVG = [
-    { id: "uribe", path: "M 10 10 L 50 10 L 50 50 L 10 50 Z", cx: 30, cy: 30 },
-    { id: "mesetas", path: "M 55 10 L 95 10 L 95 50 L 55 50 Z", cx: 75, cy: 30 },
-    { id: "macarena", path: "M 30 60 L 70 60 L 70 95 L 30 95 Z", cx: 50, cy: 75 }
-  ];
+  useEffect(() => {
+    fetch('/data/conocimiento/colombia-municipios.topo.json')
+      .then(res => {
+        if (!res.ok) throw new Error("Mapa municipal no encontrado");
+        return res.json();
+      })
+      .then(topoJsonData => {
+        const objectKey = Object.keys(topoJsonData.objects)[0];
+        const geoJsonData = topojson.feature(topoJsonData, topoJsonData.objects[objectKey]);
 
-  // Helper para clases dinámicas Tailwind basado en themeColor
-  const getThemeClasses = () => {
-    const themes = {
-      emerald: "fill-emerald-500 hover:fill-emerald-400 stroke-emerald-700",
-      indigo: "fill-indigo-500 hover:fill-indigo-400 stroke-indigo-700",
-      blue: "fill-blue-500 hover:fill-blue-400 stroke-blue-700"
+        if (geoJsonData.features) {
+          geoJsonData.features.forEach(f => {
+            const divipola = String(f.id);
+            const rawName = f.properties.MPIO_CNMBR || f.properties.name || divipola;
+            // ECharts uses feature.properties.name as default identifier.
+            // If it's missing, let's ensure it has it so it matches
+            if (!f.properties.name) {
+              f.properties.name = rawName;
+            }
+            idToNameRef.current[divipola] = f.properties.name;
+          });
+        }
+
+        echarts.registerMap('colombia_municipios', geoJsonData);
+        setIsMapLoaded(true);
+      })
+      .catch(err => {
+        console.warn("Falla al cargar colombia-municipios.topo.json, intentando fallback departamental...", err);
+        fetch('/data/sae/co-all.topo.json')
+          .then(res => res.json())
+          .then(topoJsonData => {
+            const objectKey = Object.keys(topoJsonData.objects)[0];
+            const geoJsonData = topojson.feature(topoJsonData, topoJsonData.objects[objectKey]);
+            if (geoJsonData.features) {
+              geoJsonData.features.forEach(f => {
+                const divipola = String(f.id);
+                const rawName = f.properties.name || divipola;
+                if (!f.properties.name) f.properties.name = rawName;
+                idToNameRef.current[divipola] = f.properties.name;
+              });
+            }
+            echarts.registerMap('colombia_municipios', geoJsonData);
+            setIsMapLoaded(true);
+          })
+          .catch(() => setMapError(true));
+      });
+
+    return () => {
+      if (chartInstance.current) {
+        chartInstance.current.dispose();
+      }
     };
-    return themes[themeColor] || themes.emerald;
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!isMapLoaded || !mapContainerRef.current || !proyectos) return;
+
+    if (!chartInstance.current) {
+      chartInstance.current = echarts.init(mapContainerRef.current, null, {
+        renderer: 'canvas',
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2)
+      });
+    }
+
+    const chart = chartInstance.current;
+    const idToName = idToNameRef.current;
+
+    const munToProjects = {};
+    const mapData = [];
+    const paintedMuns = new Set();
+
+    proyectos.forEach(proyecto => {
+      const { mapaImpacto } = proyecto;
+      if (!mapaImpacto || !mapaImpacto.activo) return;
+
+      const { municipiosEjecutados = [], municipiosEnDesarrollo = [] } = mapaImpacto;
+      
+      const colorEjecutado = '#10b981'; // bg-emerald-500
+      const colorDesarrollo = '#fbbf24'; // bg-amber-400
+
+      municipiosEjecutados.forEach(id => {
+        if (!munToProjects[id]) munToProjects[id] = [];
+        munToProjects[id].push(proyecto);
+
+        if (!paintedMuns.has(id)) {
+          const echartsName = idToName[id] || id;
+          mapData.push({
+            name: echartsName,
+            divipola: id,
+            value: 1,
+            itemStyle: { areaColor: colorEjecutado, borderColor: '#ffffff', borderWidth: 1 }
+          });
+          paintedMuns.add(id);
+        }
+      });
+
+      municipiosEnDesarrollo.forEach(id => {
+        if (!munToProjects[id]) munToProjects[id] = [];
+        munToProjects[id].push(proyecto);
+
+        if (!paintedMuns.has(id)) {
+          const echartsName = idToName[id] || id;
+          mapData.push({
+            name: echartsName,
+            divipola: id,
+            value: 2,
+            itemStyle: { areaColor: colorDesarrollo, borderColor: '#ffffff', borderWidth: 0.5 }
+          });
+          paintedMuns.add(id);
+        }
+      });
+    });
+
+    const option = {
+      backgroundColor: 'transparent',
+      tooltip: {
+        trigger: 'item',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        borderColor: '#e2e8f0',
+        extraCssText: 'width: 280px; white-space: normal; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); border-radius: 12px;',
+        textStyle: { color: '#334155' },
+        formatter: (params) => {
+          const divipola = params.data?.divipola;
+          if (!divipola || !munToProjects[divipola]) return null;
+          const projs = munToProjects[divipola];
+
+          let zonaTitulo = params.name;
+          for (let p of projs) {
+            if (p.mapaImpacto?.datosZonas?.[divipola]?.titulo) {
+              zonaTitulo = p.mapaImpacto.datosZonas[divipola].titulo;
+              break;
+            }
+          }
+
+          const maxProjectsToShow = 3;
+          const displayedProjs = projs.slice(0, maxProjectsToShow);
+          const remainingProjs = projs.length - maxProjectsToShow;
+
+          const projectListHTML = displayedProjs.map(p =>
+            `<li style="margin-bottom: 6px; white-space: normal; line-height: 1.4;"><span style="color: #64748b; font-size: 12px;">• “${p.hero?.title || 'Proyecto'}”</span></li>`
+          ).join('');
+
+          const remainingHTML = remainingProjs > 0
+            ? `<li style="margin-top: 6px;"><span style="color: #10b981; font-size: 11px; font-weight: bold;">+ ${remainingProjs} proyecto${remainingProjs > 1 ? 's' : ''} más...</span></li>`
+            : '';
+
+          return `
+            <div style="padding: 4px; width: 250px; white-space: normal; word-wrap: break-word;">
+              <strong style="color: #0f172a; font-size: 14px; line-height: 1.2; display: block; margin-bottom: 4px;">${zonaTitulo}</strong>
+              <span style="color: #10b981; font-size: 11px; font-weight: bold; display: block; margin-bottom: 8px;">${projs.length} Proyecto${projs.length > 1 ? 's' : ''}</span>
+              <ul style="margin: 0; padding-left: 0; list-style: none;">
+                ${projectListHTML}
+                ${remainingHTML}
+              </ul>
+              <span style="color: #0f172a; font-size: 11px; margin-top: 10px; display: block; border-top: 1px solid #e2e8f0; padding-top: 6px;">Click para filtrar catálogo</span>
+            </div>
+          `;
+        }
+      },
+      series: [
+        {
+          name: 'Municipios',
+          type: 'map',
+          map: 'colombia_municipios',
+          roam: true,
+          zoom: 1.2,
+          itemStyle: {
+            areaColor: '#f1f5f9',
+            borderColor: '#e2e8f0',
+            borderWidth: 0.5
+          },
+          emphasis: {
+            itemStyle: { areaColor: '#e2e8f0' },
+            label: { show: false }
+          },
+          data: mapData
+        }
+      ]
+    };
+
+    chart.setOption(option, true);
+
+    chart.off('click');
+    chart.on('click', function (params) {
+      const divipola = params.data?.divipola;
+      if (divipola && munToProjects[divipola] && onProjectClick) {
+        onProjectClick(divipola); 
+      }
+    });
+
+    const handleResize = () => {
+      chart.resize();
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMapLoaded, proyectos, onProjectClick]);
 
   return (
-    <div className="bg-slate-900 rounded-3xl p-8 mb-12 relative overflow-hidden flex flex-col md:flex-row gap-8">
-      
-      {/* Contenedor del Mapa SVG Puro */}
-      <div className="w-full md:w-2/3 relative aspect-square md:aspect-auto min-h-[400px]">
-        <svg 
-          viewBox="0 0 100 100" 
-          className="w-full h-full drop-shadow-xl"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          {/* Renderizado Condicionado de Polígonos */}
-          {regionesSVG.map((region) => {
-            const isActive = zonasActivas.includes(region.id);
-            
-            return (
-              <path
-                key={region.id}
-                d={region.path}
-                className={`
-                  transition-all duration-300 ease-in-out
-                  ${isActive 
-                    ? `cursor-pointer ${getThemeClasses()} drop-shadow-md z-10` 
-                    : "fill-slate-800 stroke-slate-700 pointer-events-none"
-                  }
-                `}
-                strokeWidth="0.5"
-                onMouseEnter={() => isActive && setActivePopup(region.id)}
-                onMouseLeave={() => setActivePopup(null)}
-                onClick={() => isActive && setActivePopup(region.id)}
-              />
-            );
-          })}
-          
-          {/* Marcadores Estéticos sobre Zonas Activas */}
-          {regionesSVG.map((region) => {
-            if (!zonasActivas.includes(region.id)) return null;
-            return (
-              <circle 
-                key={`marker-${region.id}`} 
-                cx={region.cx} 
-                cy={region.cy} 
-                r="1.5" 
-                className="fill-white animate-pulse pointer-events-none" 
-              />
-            );
-          })}
-        </svg>
-      </div>
-
-      {/* Panel de Información Lateral (Popup Dinámico) */}
-      <div className="w-full md:w-1/3 flex flex-col justify-center">
-        <h3 className="text-2xl font-bold text-white mb-6">
-          {mapaImpacto.titulo || "Impacto Territorial"}
-        </h3>
-        
-        {activePopup && datosZonas[activePopup] ? (
-          <div className="bg-slate-800/80 backdrop-blur border border-slate-700 rounded-2xl p-6 shadow-2xl animate-in fade-in slide-in-from-right-4 duration-300">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`p-2 rounded-lg bg-${themeColor}-500/20 text-${themeColor}-400`}>
-                <MapPin className="w-5 h-5" />
-              </div>
-              <h4 className="text-lg font-bold text-white">
-                {datosZonas[activePopup].titulo}
-              </h4>
-            </div>
-            
-            <p className="text-slate-300 text-sm mb-6 leading-relaxed">
-              {datosZonas[activePopup].descripcion}
-            </p>
-            
-            <div className="space-y-3">
-              {datosZonas[activePopup].metricas?.map((metrica, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <div className={`w-1.5 h-1.5 rounded-full bg-${themeColor}-400`} />
-                  <span className="text-sm font-medium text-slate-200">{metrica}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="text-slate-500 italic text-sm border border-slate-800 border-dashed rounded-xl p-6 text-center">
-            Pasa el cursor sobre las zonas resaltadas en el mapa para descubrir el impacto.
-          </div>
-        )}
-      </div>
+    <div className="w-full relative aspect-square md:aspect-auto min-h-[550px] rounded-2xl overflow-hidden bg-transparent">
+      {!isMapLoaded && !mapError && (
+        <div className="absolute inset-0 flex items-center justify-center text-slate-500 animate-pulse bg-slate-50">
+          Inicializando Mapa Nacional...
+        </div>
+      )}
+      {mapError && (
+        <div className="absolute inset-0 flex items-center justify-center text-red-500 bg-red-50">
+          Error cargando la topología.
+        </div>
+      )}
+      <div 
+        ref={mapContainerRef} 
+        style={{ width: '100%', height: '100%', minHeight: '550px', visibility: isMapLoaded ? 'visible' : 'hidden' }} 
+      />
     </div>
   );
 }

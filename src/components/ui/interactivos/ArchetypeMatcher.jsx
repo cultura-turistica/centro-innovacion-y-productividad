@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Check, X, RefreshCw } from 'lucide-react';
+import Image from 'next/image';
 
 export default function ArchetypeMatcher({ data, themeColor }) {
   const { archetypes, gameData } = data;
@@ -49,7 +50,7 @@ export default function ArchetypeMatcher({ data, themeColor }) {
       {/* Header Instructor */}
       <div className="bg-slate-50 p-6 md:p-8 flex items-center gap-6 border-b border-slate-100">
         <div className="w-24 h-24 rounded-full bg-indigo-100 border-4 border-white shadow-md flex items-center justify-center overflow-hidden flex-shrink-0">
-          <img src={data.mentor.avatar} alt={data.mentor.name} className="w-20 h-20 object-contain mt-4" />
+          <Image src={data.mentor.avatar} alt={data.mentor.name} className="w-20 h-20 object-contain mt-4" width={1000} height={1000} unoptimized={true} />
         </div>
         <div>
           <h3 className="font-bold text-slate-800 text-xl">{data.mentor.name}</h3>
@@ -68,7 +69,7 @@ export default function ArchetypeMatcher({ data, themeColor }) {
               
               {currentMatch.logo ? (
                 <div className="flex justify-center h-20 md:h-24 my-4">
-                  <img src={currentMatch.logo} alt={currentMatch.brand} className="h-full w-auto object-contain drop-shadow-sm" />
+                  <Image src={currentMatch.logo} alt={currentMatch.brand} className="h-full w-auto object-contain drop-shadow-sm" width={1000} height={1000} unoptimized={true} />
                 </div>
               ) : (
                 <h2 className="text-4xl md:text-6xl font-black text-slate-800">{currentMatch.brand}</h2>
