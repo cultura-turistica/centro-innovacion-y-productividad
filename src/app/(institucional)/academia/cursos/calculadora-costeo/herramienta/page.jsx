@@ -1,5 +1,4 @@
 import CalculadoraCosteo from '@/components/ui/Academia/CalculadoraCosteo/CalculadoraCosteo';
-import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
   title: 'Calculadora de Costeo Turístico | CIP',
@@ -9,7 +8,6 @@ export const metadata = {
 export default function CalculadoraCosteoPage() {
   return (
     <div className="min-h-screen bg-slate-50">
-      <Navbar />
       <CalculadoraCosteo />
     </div>
   );
