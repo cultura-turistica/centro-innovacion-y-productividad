@@ -21,7 +21,8 @@ export const syllabusData = {
       description: "Identificación de los costos directamente atribuibles al servicio turístico prestado (alimentación, transporte, entradas, seguros). Estos varían según la cantidad de pasajeros.",
       isConcept: true,
       time: "Metodología PNUD",
-      status: "unlocked"
+      status: "unlocked",
+      url: "/academia/cursos/calculadora-costeo/herramienta"
     },
     {
       id: "2",
@@ -30,7 +31,8 @@ export const syllabusData = {
       description: "Asignación prorrateada de los gastos de funcionamiento del negocio (arriendos, nómina administrativa, servicios públicos) sobre la capacidad operativa mensual.",
       isConcept: true,
       time: "Metodología PNUD",
-      status: "unlocked"
+      status: "unlocked",
+      url: "/academia/cursos/calculadora-costeo/herramienta"
     },
     {
       id: "3",
@@ -39,7 +41,8 @@ export const syllabusData = {
       description: "Cálculo automatizado de la cantidad mínima de pasajeros requeridos para cubrir exactamente la totalidad de costos y gastos sin generar pérdidas.",
       isConcept: true,
       time: "Análisis Financiero",
-      status: "unlocked"
+      status: "unlocked",
+      url: "/academia/cursos/calculadora-costeo/herramienta"
     },
     {
       id: "4",
@@ -48,7 +51,8 @@ export const syllabusData = {
       description: "Proyección del precio de venta al público (PVP) integrando el margen de ganancia deseado y calculando las comisiones para agencias e intermediarios (B2B).",
       isConcept: true,
       time: "Estrategia de Precios",
-      status: "unlocked"
+      status: "unlocked",
+      url: "/academia/cursos/calculadora-costeo/herramienta"
     },
     {
       id: "5",
@@ -58,7 +62,8 @@ export const syllabusData = {
       isConcept: true,
       path: "herramienta",
       time: "Herramienta Interactiva",
-      status: "unlocked"
+      status: "unlocked",
+      url: "/academia/cursos/calculadora-costeo/herramienta"
     }
   ],
   sidebar: {
