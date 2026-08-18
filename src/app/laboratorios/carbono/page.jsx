@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../../../components/layout/Navbar';
 import { ChevronDown, Beaker } from 'lucide-react';
 import { CARBONO_HERO_DATA, CARBONO_TRANSPARENCIA_DATA, CARBONO_SANDBOX_DATA } from '../../../data/laboratorios/carbono';
 import CarbonoNoSSRWrapper from '../../../components/ui/DataLab/Carbono/CarbonoNoSSRWrapper';
@@ -23,20 +22,7 @@ const renderMarkdownBold = (text, highlightClass = "font-bold text-slate-900") =
 export default function CarbonoPage() {
   return (
     <main className="w-full min-h-screen text-slate-900 font-sans relative pb-20 bg-[#f8fafc]">
-      {/* Dynamic Background */}
-      <div 
-        className="fixed inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at top right, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
-            url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='2' fill='%236b7280' fill-opacity='0.4'/%3E%3C/svg%3E")
-          `,
-          backgroundAttachment: 'fixed'
-        }}
-      ></div>
 
-      <Navbar />
 
       <div className="relative z-10 pt-24">
         {/* HERO SECTION (SEO Friendly SSR) */}

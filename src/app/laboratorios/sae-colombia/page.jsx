@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../../../components/layout/Navbar';
 import SaeNoSSRWrapper from '../../../components/ui/DataLab/SaeColombia/SaeNoSSRWrapper';
 
 export const metadata = {
@@ -17,7 +16,6 @@ export default function SaeColombiaPage() {
         La hidratación dinámica ('ssr: false') y ECharts se delega a SaeNoSSRWrapper
         evitando el bloqueo del SSR y los problemas de CLS.
       */}
-      <Navbar />
       
       <div className="pt-24 relative z-10 w-full">
         <SaeNoSSRWrapper />

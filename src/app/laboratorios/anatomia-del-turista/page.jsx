@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../../../components/layout/Navbar';
 import AnatomiaNoSSRWrapper from '../../../components/ui/DataLab/Anatomia/AnatomiaNoSSRWrapper';
 
 export const metadata = {
@@ -17,7 +16,6 @@ export default function AnatomiaTuristaPage() {
         La hidratación dinámica ('ssr: false') se delega al componente de cliente 'AnatomiaNoSSRWrapper'
         para cumplir con las reglas estrictas de Next.js 14.
       */}
-      <Navbar />
       <div className="pt-24 relative z-10">
         <AnatomiaNoSSRWrapper />
       </div>

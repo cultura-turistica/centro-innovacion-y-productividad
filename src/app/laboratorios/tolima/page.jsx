@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '@/components/layout/Navbar';
 import { NARRATIVA } from '@/data/laboratorios/tolimaData';
 import TolimaScrollytelling from '@/components/ui/DataLab/Tolima/TolimaScrollytelling';
 
@@ -11,14 +10,9 @@ export const metadata = {
 export default function TolimaLabPage() {
   return (
     <div className="min-h-screen bg-stone-900 text-stone-100 font-sans selection:bg-lime-900 selection:text-lime-100 relative">
-      {/* Fondo inmersivo Bosque Seco Tropical (Verdes profundos y ocres) */}
-      <div className="fixed inset-0 pointer-events-none opacity-40 z-0 bg-gradient-to-br from-green-950 via-stone-900 to-amber-950"></div>
-      
-      {/* Textura sutil */}
-      <div className="fixed inset-0 pointer-events-none opacity-10 z-0 mix-blend-overlay bg-[url('/assets/images/textura1.webp')] bg-cover bg-center"></div>
+
 
       <div className="relative z-10">
-        <Navbar />
 
         <main className="flex flex-col pt-32 pb-24">
           {/* Hero Section del Laboratorio */}
