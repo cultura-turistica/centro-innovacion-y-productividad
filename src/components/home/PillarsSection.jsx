@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen, Database, Lightbulb } from 'lucide-react';
+import Link from 'next/link';
 
 export default function PillarsSection() {
   const pillars = [
@@ -9,6 +10,7 @@ export default function PillarsSection() {
       description: "Capacitación transformadora. Rutas de aprendizaje interactivas y material práctico diseñado para potenciar el desarrollo territorial.",
       icon: BookOpen,
       action: "Ver Academia",
+      url: "/academia",
       color: "text-blue-500",
       bg: "bg-blue-50"
     },
@@ -18,6 +20,7 @@ export default function PillarsSection() {
       description: "El territorio en cifras. Visualización analítica interactiva y despliegue estadístico de nuestros proyectos en campo.",
       icon: Database,
       action: "Entrar al Lab",
+      url: "/laboratorio",
       color: "text-emerald-500",
       bg: "bg-emerald-50"
     },
@@ -27,6 +30,7 @@ export default function PillarsSection() {
       description: "Producción bibliográfica de alto nivel. Acceso a investigaciones formales, artículos especializados y modelos de gestión publicables.",
       icon: Lightbulb,
       action: "Visitar Biblioteca",
+      url: "/centro-conocimiento",
       color: "text-amber-500",
       bg: "bg-amber-50"
     }
@@ -48,10 +52,10 @@ export default function PillarsSection() {
             <p className="text-slate-600 text-sm leading-relaxed mb-8">
               {pillar.description}
             </p>
-            <button className={`text-sm font-semibold flex items-center gap-2 ${pillar.color} group-hover:gap-3 transition-all`}>
+            <Link href={pillar.url} className={`inline-flex text-sm font-semibold items-center gap-2 ${pillar.color} group-hover:gap-3 transition-all`}>
               {pillar.action}
               <span className="text-lg leading-none">&rarr;</span>
-            </button>
+            </Link>
           </div>
         ))}
       </div>

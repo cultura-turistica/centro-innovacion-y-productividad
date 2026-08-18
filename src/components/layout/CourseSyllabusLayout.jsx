@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import { PlayCircle, Clock, BookOpen, CheckCircle, ChevronRight, User } from 'lucide-react';
 import Link from 'next/link';
+import VerticalVideoCard from '../ui/VerticalVideoCard';
 
 export default function CourseSyllabusLayout({ data, themeColor = "#10b981", themeBg = "bg-[#faf9f6]", selectionColor = "selection:bg-emerald-100", baseUrl }) {
   if (!data) return null;
@@ -125,10 +126,13 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
             {/* Sidebar Instructor */}
             {sidebar && (
               <div className="w-full lg:w-1/3 space-y-6">
-                <div className="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden relative">
-                  <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none -mr-10 -mt-10" style={{ color: themeColor }}>
-                    <User size={128} />
-                  </div>
+                {sidebar.video ? (
+                  <VerticalVideoCard video={sidebar.video} />
+                ) : (
+                  <div className="bg-white rounded-3xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden relative">
+                    <div className="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none -mr-10 -mt-10" style={{ color: themeColor }}>
+                      <User size={128} />
+                    </div>
 
                   <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
                     <User className="w-5 h-5" style={{ color: themeColor }} />
@@ -174,6 +178,7 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                     </div>
                   )}
                 </div>
+                )}
               </div>
             )}
           </div>

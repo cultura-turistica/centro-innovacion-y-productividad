@@ -69,7 +69,7 @@ export const syllabusData = {
   sidebar: {
     video: {
       youtubeId: "LWCyv7y7ylA",
-      coverImage: "/assets/images/portada-calculadora.webp"
+      coverImage: "/assets/images/portada_costeo.webp"
     }
   }
 };
