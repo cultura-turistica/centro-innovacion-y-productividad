@@ -48,7 +48,7 @@ export default function CertificateGenerator({ data, hideControls = false }) {
             className="inline-flex items-center gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Download className="w-5 h-5" />
-            {isGenerating ? (data.generatingText || "Generando PDF...") : (data.downloadText || "Descargar Certificado")}
+            {isGenerating ? (data.generatingText || "Generando PDF...") : (data.downloadText || "Volver a Descargar Certificado")}
           </button>
         )}
       </div>

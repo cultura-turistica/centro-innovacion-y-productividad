@@ -104,11 +104,42 @@ export default function CourseEvaluation({ data, onComplete }) {
       horas: data.quiz.horas || "40" 
     };
     const seal = generateCertificateSeal(certData);
-    setCertificateData({ ...certData, sello: seal });
+    const finalCertData = { ...certData, sello: seal };
+    setCertificateData(finalCertData);
 
-    setIsSubmitting(false);
-    setStep(4);
-    if (onComplete) onComplete();
+    try {
+      // 1. Enviar datos al backend (Cloud Function)
+      const response = await fetch(process.env.NEXT_PUBLIC_CERTIFICATE_FUNCTION_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(finalCertData)
+      });
+
+      if (!response.ok) {
+        throw new Error('El servidor no pudo registrar el certificado.');
+      }
+
+      // 2. Si el servidor lo guardó y generó el PDF, lo descargamos
+      const blob = await response.blob();
+      const objectUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = `Certificado_${finalCertData.nombre.replace(/\s+/g, '_')}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(objectUrl);
+      document.body.removeChild(a);
+
+      // 3. Todo fue exitoso (Guardado y Descargado), pasamos al paso 4
+      setIsSubmitting(false);
+      setStep(4);
+      if (onComplete) onComplete();
+      
+    } catch (error) {
+      console.error("Error en servidor:", error);
+      setLegalError("Hubo un error de conexión con el servidor. Tus datos no pudieron ser registrados. Por favor, intenta de nuevo.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -333,7 +364,7 @@ export default function CourseEvaluation({ data, onComplete }) {
         <div className="space-y-8 animate-in fade-in zoom-in-95 duration-700">
           <div className="text-center">
             <h3 className="text-3xl font-black text-slate-900 mb-4">¡Felicidades, {certificateData.nombre.split(' ')[0]}!</h3>
-            <p className="text-slate-600 max-w-xl mx-auto">Tu certificado ha sido generado y registrado exitosamente en el libro oficial.</p>
+            <p className="text-slate-600 max-w-xl mx-auto">Tu certificado ha sido generado, registrado exitosamente en nuestra base de datos oficial, y descargado automáticamente en tu dispositivo.</p>
           </div>
           
           <CertificateGenerator data={certificateData} />
