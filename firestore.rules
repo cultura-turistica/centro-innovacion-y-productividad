@@ -9,5 +9,10 @@ service cloud.firestore {
     match /course_surveys/{surveyId} {
       allow create: if true;
     }
+    
+    // Permitir leer un certificado SOLO si se conoce su ID exacto
+    match /certificados/{certificadoId} {
+      allow get: if true;
+    }
   }
 }
