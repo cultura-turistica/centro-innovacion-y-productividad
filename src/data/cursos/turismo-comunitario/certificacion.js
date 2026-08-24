@@ -58,7 +58,7 @@ export const certificacionData = {
     title: "Paso 2: Evaluación de Conocimientos",
     courseName: "Ruta de Formación Turismo Comunitario",
     courseId: "C1-Gobernanza",
-    horas: "40",
+    horas: "3",
     questions: [
       {
         id: "q1",

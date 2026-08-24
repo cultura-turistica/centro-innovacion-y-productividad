@@ -58,7 +58,7 @@ export const certificacionData = {
     title: "Paso 2: Evaluación de Conocimientos",
     courseName: "Arquitectura de Experiencias Privadas",
     courseId: "C6-EXP",
-    horas: "25",
+    horas: "2",
     questions: [
       {
         id: "q1",

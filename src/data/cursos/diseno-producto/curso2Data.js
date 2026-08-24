@@ -327,7 +327,7 @@ export const curso2Data = {
   quiz: {
     courseName: "Diseño de Producto Turístico Territorial",
     courseId: "C2-Producto",
-    horas: "5",
+    horas: "3",
     questions: [
       {
         id: "q1",

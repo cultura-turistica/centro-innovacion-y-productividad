@@ -48,7 +48,7 @@ export const certificacionData = {
     title: "Paso 2: Evaluación de Conocimientos",
     courseName: "Curso Práctico de Diseño de Marca e Identidad Visual",
     courseId: "MARCA-1",
-    horas: "25",
+    horas: "2",
     questions: [
       {
         id: "q1",

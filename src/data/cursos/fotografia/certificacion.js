@@ -58,7 +58,7 @@ export const certificacionData = {
     title: "Paso 2: Evaluación de Conocimientos",
     courseName: "Curso Práctico de Fundamentos y Composición Fotográfica",
     courseId: "FOTO-1",
-    horas: "20",
+    horas: "2",
     questions: [
       {
         id: "q1",
