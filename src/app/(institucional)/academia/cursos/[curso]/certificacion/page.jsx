@@ -16,7 +16,10 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   const { catalogoData } = await import('@/data/cursos/catalogo');
-  return catalogoData.courses.map(course => ({ curso: course.slug }));
+  // Filtramos herramientas interactivas que no tienen página de certificación
+  return catalogoData.courses
+    .filter(course => course.info !== "Herramienta Interactiva")
+    .map(course => ({ curso: course.slug }));
 }
 
 export default async function DynamicCertificationPage({ params }) {
