@@ -15,17 +15,20 @@ export default function CourseEvaluation({ data, onComplete }) {
   // Datos Anónimos Encuesta
   const [surveyData, setSurveyData] = useState({ q1: '', q2: '', q3: '', q4: '', q5: '', comments: '' });
   
+  const [surveyError, setSurveyError] = useState('');
   // Datos Quiz
   const [quizAnswers, setQuizAnswers] = useState({});
   const [quizError, setQuizError] = useState('');
   
   // Datos Legales
   const [legalData, setLegalData] = useState({ name: '', identification: '', email: '' });
+  const [legalError, setLegalError] = useState('');
   const [certificateData, setCertificateData] = useState(null);
 
   const handleSurveySubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSurveyError('');
     
     // Guardar encuesta de calidad
     if (db) {
@@ -37,13 +40,18 @@ export default function CourseEvaluation({ data, onComplete }) {
           responses: surveyData,
           submittedAt: new Date().toISOString()
         });
+        
+        setIsSubmitting(false);
+        setStep(2); // Pasar al Quiz
       } catch (err) {
         console.error("Error guardando encuesta de calidad", err);
+        setSurveyError("Hubo un error al guardar la encuesta. Verifica tu conexión e intenta de nuevo.");
+        setIsSubmitting(false);
       }
+    } else {
+      setSurveyError("No hay conexión con la base de datos.");
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
-    setStep(2); // Pasar al Quiz
   };
 
   const handleQuizSubmit = async (e) => {
@@ -75,6 +83,16 @@ export default function CourseEvaluation({ data, onComplete }) {
 
   const handleLegalSubmit = async (e) => {
     e.preventDefault();
+    setLegalError('');
+
+    const blockedDomains = ['yopmail.com', 'tempmail.com', 'temp-mail.org', '10minutemail.com', 'guerrillamail.com', 'mailinator.com', 'correo-temporal.org', 'dropmail.me'];
+    const emailDomain = legalData.email.split('@')[1]?.toLowerCase();
+    
+    if (blockedDomains.includes(emailDomain) || !emailDomain) {
+      setLegalError("Por favor, utiliza un correo válido (Gmail, Hotmail, Institucional). No se permiten correos temporales.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     const date = new Date().toLocaleDateString('es-CO');
@@ -87,23 +105,6 @@ export default function CourseEvaluation({ data, onComplete }) {
     };
     const seal = generateCertificateSeal(certData);
     setCertificateData({ ...certData, sello: seal });
-
-    if (db) {
-      try {
-        const certId = seal.substring(0, 15);
-        await setDoc(doc(db, 'certificates', certId), {
-          courseId: data.quiz.courseId,
-          courseName: data.quiz.courseName,
-          studentName: legalData.name,
-          identification: legalData.identification,
-          email: legalData.email,
-          cryptographicSeal: seal,
-          issuedAt: new Date().toISOString()
-        });
-      } catch (error) {
-        console.error("Error guardando certificado en Firebase", error);
-      }
-    }
 
     setIsSubmitting(false);
     setStep(4);
@@ -143,6 +144,12 @@ export default function CourseEvaluation({ data, onComplete }) {
             <h3 className="text-2xl font-black text-slate-900 mb-2">{data.encuesta.title}</h3>
             <p className="text-slate-600">{data.encuesta.description} <span className="text-emerald-600 font-semibold">{data.encuesta.anonymousNotice}</span></p>
           </div>
+
+          {surveyError && (
+            <div className="bg-red-50 text-red-700 p-4 rounded-xl font-medium text-center border border-red-100 animate-pulse mb-6">
+              {surveyError}
+            </div>
+          )}
 
           <div className="space-y-8">
             {data.encuesta.questions.map((q) => (
@@ -257,6 +264,12 @@ export default function CourseEvaluation({ data, onComplete }) {
             <h3 className="text-2xl font-black text-slate-900 mb-2">¡Evaluación Aprobada!</h3>
             <p className="text-slate-600 max-w-lg mx-auto">{data.formularioLegal.description}</p>
           </div>
+
+          {legalError && (
+            <div className="bg-red-50 text-red-700 p-4 rounded-xl font-medium text-center border border-red-100 animate-pulse mb-6">
+              {legalError}
+            </div>
+          )}
 
           <div className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 space-y-6">
             <div>
