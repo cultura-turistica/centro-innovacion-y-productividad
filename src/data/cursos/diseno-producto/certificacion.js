@@ -8,11 +8,11 @@ export const certificacionData = {
   exitBtn: "Volver a la Academia",
   encuesta: {
     title: "Antes de empezar...",
-    description: "Ayúdanos a mejorar contándonos tu experiencia con este curso.",
+    description: "Ayúdanos a mejorar contándonos tu experiencia con esta cápsula metodológica.",
     questions: [
       {
         id: "q1",
-        question: "¿Qué tan útil encontraste el contenido del curso?",
+        question: "¿Qué tan útil encontraste el contenido de la cápsula?",
         options: ["Muy útil", "Útil", "Poco útil", "Nada útil"]
       },
       {

@@ -7,7 +7,7 @@ export const syllabusData = {
     ],
     category: "Branding Estratégico",
     badge: "Programa 100% Autoguiado",
-    titlePart1: "Curso Práctico de",
+    titlePart1: "Cápsula Práctica de",
     titlePart1Color: "text-rose-500",
     titlePart2: "Diseño de Marca e Identidad Visual",
     titlePart2Color: "text-rose-800",
@@ -17,7 +17,7 @@ export const syllabusData = {
       url: "/academia/cursos/marca/modulo-1"
     }
   },
-  modulesTitle: "Temario del Curso",
+  modulesTitle: "Ruta de la Cápsula",
   modules: [
     { id: 1, title: 'Identidad vs Imagen', description: 'Comprende la diferencia entre lo que eres y lo que perciben de ti.', duration: '15 min', path: 'modulo-1' },
     { id: 2, title: 'Arquetipos de Marca', description: 'Descubre los 12 arquetipos de personalidad y encuentra el tuyo.', duration: '25 min', path: 'modulo-2' },

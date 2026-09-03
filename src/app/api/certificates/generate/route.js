@@ -110,7 +110,7 @@ export async function POST(request) {
     drawTextInSvgCoords(`Código de Verificación: ${data.sello || 'N/A'}`, 292.63, 1635, true, 9);
 
     // 6. LINK DE VALIDACIÓN
-    drawTextInSvgCoords(`Validar en: cip.cultura-t.com/#/verificar`, 292.63, 1696, false, 10);
+    drawTextInSvgCoords(`Validar en: cip.cultura-t.com/verificar`, 292.63, 1696, false, 10);
 
     // 7. FECHA DE EXPEDICIÓN
     drawTextInSvgCoords(`Fecha de Expedición: ${data.fecha || new Date().toLocaleDateString()}`, 2200, 1521, true, 16, 'right');

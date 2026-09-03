@@ -4,11 +4,11 @@ export const catalogoData = {
       { label: "Inicio", url: "/" },
       { label: "Academia", url: null }
     ],
-    titlePart1: "Cursos y",
+    titlePart1: "Cápsulas de Conocimiento y",
     titlePart1Color: "text-purple-900",
     titlePart2: "Herramientas",
     titlePart2Color: "text-fuchsia-600",
-    description: "Programa 100% Autoguiado. Cursos diseñados metodológicamente para que el empresario turístico aprenda y aplique directo en su territorio."
+    description: "Programa 100% Autoguiado. Cápsulas de conocimiento y herramientas metodológicas diseñadas para que el empresario y gestor turístico aprenda y aplique directo en su territorio."
   },
   courses: [
     {

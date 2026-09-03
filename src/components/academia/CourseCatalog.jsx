@@ -55,7 +55,7 @@ export default function CourseCatalog({ courses }) {
         <div className="relative w-full md:w-72 flex-shrink-0">
           <input 
             type="text"
-            placeholder="Buscar cursos, herramientas..."
+            placeholder="Buscar cápsulas, herramientas..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-white border border-slate-200 text-slate-800 text-sm rounded-2xl pl-10 pr-4 py-3 outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300 transition-all shadow-sm"

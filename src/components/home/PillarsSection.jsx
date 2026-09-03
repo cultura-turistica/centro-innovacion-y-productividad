@@ -6,8 +6,8 @@ export default function PillarsSection() {
   const pillars = [
     {
       id: 1,
-      title: "Cursos y Herramientas",
-      description: "Capacitación transformadora. Rutas de aprendizaje interactivas y material práctico diseñado para potenciar el desarrollo territorial.",
+      title: "Cápsulas y Herramientas",
+      description: "Conocimiento y herramientas aplicadas. Micro-cápsulas interactivas y metodologías prácticas diseñadas para potenciar el desarrollo territorial.",
       icon: BookOpen,
       action: "Ver Academia",
       url: "/academia",

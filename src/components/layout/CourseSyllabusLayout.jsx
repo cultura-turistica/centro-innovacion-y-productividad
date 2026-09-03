@@ -58,7 +58,7 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
             <div className={`w-full ${sidebar ? 'lg:w-2/3' : 'lg:w-3/4 mx-auto'} space-y-10`}>
               <div>
                 <h2 className="text-2xl font-black mb-2" style={{ color: themeColor }}>
-                  {data.modulesTitle || "Temario del Curso"}
+                  {data.modulesTitle || "Ruta de la Cápsula"}
                 </h2>
                 <div className="w-16 h-1 rounded-full mb-8" style={{ backgroundColor: themeColor }}></div>
 

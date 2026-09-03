@@ -43,6 +43,9 @@ const EChartsCore = forwardRef(({
   className = "",
   style = { width: '100%', height: '100%' },
   initialOption = {},
+  options = null,
+  notMerge = false,
+  lazyUpdate = true,
   onInit = null,
   ariaLabel = "Gráfica interactiva de datos"
 }, ref) => {
@@ -61,8 +64,9 @@ const EChartsCore = forwardRef(({
       });
 
       // 2. Establecer opciones iniciales
-      if (!isCancelled && Object.keys(initialOption).length > 0) {
-        echartInstance.current.setOption(initialOption, {
+      const startingOptions = options || initialOption;
+      if (!isCancelled && startingOptions && Object.keys(startingOptions).length > 0) {
+        echartInstance.current.setOption(startingOptions, {
           notMerge: true,
           lazyUpdate: true
         });
@@ -93,12 +97,19 @@ const EChartsCore = forwardRef(({
     };
   }, []); // Solo se ejecuta al montar
 
-  // 4. Exponer instancia de ECharts al componente padre para setOption manual
+  // 4. Actualización declarativa de opciones
+  useEffect(() => {
+    if (echartInstance.current && options) {
+      echartInstance.current.setOption(options, { notMerge, lazyUpdate });
+    }
+  }, [options, notMerge, lazyUpdate]);
+
+  // 5. Exponer instancia de ECharts al componente padre para setOption manual
   useImperativeHandle(ref, () => ({
     getEchartsInstance: () => echartInstance.current,
-    setOption: (option, opts = { notMerge: false, lazyUpdate: true }) => {
+    setOption: (opt, opts = { notMerge: false, lazyUpdate: true }) => {
       if (echartInstance.current) {
-        echartInstance.current.setOption(option, opts);
+        echartInstance.current.setOption(opt, opts);
       }
     }
   }));

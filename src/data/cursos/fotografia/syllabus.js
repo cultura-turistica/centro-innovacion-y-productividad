@@ -7,7 +7,7 @@ export const syllabusData = {
     ],
     category: "Creación de Contenido",
     badge: "Programa 100% Autoguiado",
-    titlePart1: "Curso Práctico de",
+    titlePart1: "Cápsula Práctica de",
     titlePart1Color: "text-indigo-500",
     titlePart2: "Fundamentos y Composición Fotográfica",
     titlePart2Color: "text-indigo-800",
@@ -17,7 +17,7 @@ export const syllabusData = {
       url: "/academia/cursos/fotografia/modulo-1"
     }
   },
-  modulesTitle: "Temario del Curso",
+  modulesTitle: "Ruta de la Cápsula",
   modules: [
     { id: 1, title: 'Escribir con Luz', description: 'El Triángulo de Exposición y la anatomía de tu cámara.', duration: '15 min', path: 'modulo-1' },
     { id: 2, title: 'La Cámara en tu Bolsillo', description: 'Conoce tu smartphone, lentes y modos de disparo manual.', duration: '20 min', path: 'modulo-2' },

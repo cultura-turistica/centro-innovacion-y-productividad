@@ -17,7 +17,7 @@ export const syllabusData = {
       url: "/academia/cursos/experiencias-privadas/modulo-1"
     }
   },
-  modulesTitle: "Temario del Curso",
+  modulesTitle: "Ruta de la Cápsula",
   modules: [
     {
       id: 1,

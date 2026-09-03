@@ -1,7 +1,7 @@
 export const certificacionData = {
   badge: "Cierre y Evaluación",
   title: "Certificación<br />Oficial",
-  description: "Demuestra lo aprendido en el curso y obtén tu sello verificable de Cultura T.",
+  description: "Demuestra lo aprendido en la cápsula y obtén tu sello verificable de Cultura T.",
   completionTitle: "¡Has completado el contenido!",
   completionDesc: "Felicidades por completar el estudio de los módulos de Fotografía y Composición. Si lo deseas, puedes realizar la evaluación de conocimientos para obtener tu certificado oficial.",
   exitBtn: "Volver a Inicio",
@@ -27,7 +27,7 @@ export const certificacionData = {
     questions: [
       {
         id: "q1",
-        label: "1. ¿Consideras que este curso te ha permitido adquirir nuevos conocimientos que antes no tenías?",
+        label: "1. ¿Consideras que esta cápsula te ha permitido adquirir nuevos conocimientos que antes no tenías?",
         options: ["Mucho", "Algo", "Poco"]
       },
       {
@@ -42,7 +42,7 @@ export const certificacionData = {
       },
       {
         id: "q4",
-        label: "4. ¿El formato y contenido del curso facilitaron tu proceso de aprendizaje?",
+        label: "4. ¿El formato y contenido de la cápsula facilitaron tu proceso de aprendizaje?",
         options: ["Sí, muy claro", "Regular", "No fue claro"]
       },
       {
@@ -51,12 +51,12 @@ export const certificacionData = {
         options: ["Definitivamente", "Tal vez", "No"]
       }
     ],
-    commentsLabel: "6. (Opcional) Déjanos tus comentarios o sugerencias sobre la calidad del curso.",
+    commentsLabel: "6. (Opcional) Déjanos tus comentarios o sugerencias sobre la calidad de la cápsula.",
     submitBtn: "Enviar y Pasar a la Evaluación"
   },
   quiz: {
     title: "Paso 2: Evaluación de Conocimientos",
-    courseName: "Curso Práctico de Fundamentos y Composición Fotográfica",
+    courseName: "Cápsula Práctica de Fundamentos y Composición Fotográfica",
     courseId: "FOTO-1",
     horas: "2",
     questions: [

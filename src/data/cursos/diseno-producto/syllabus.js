@@ -3,7 +3,7 @@ export const syllabusData = {
     breadcrumb: [
       { label: "Inicio", url: "/" },
       { label: "Academia", url: "/academia" },
-      { label: "Curso Diseño de Producto", url: null }
+      { label: "Cápsula: Diseño de Producto", url: null }
     ],
     titlePart1: "Diseño de Producto",
     titlePart1Color: "text-[#16a34a]", // Verde esmeralda (Curso 2 theme)
