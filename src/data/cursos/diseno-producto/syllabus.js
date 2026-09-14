@@ -69,5 +69,12 @@ export const syllabusData = {
       status: "ready",
       url: "/academia/cursos/diseno-producto/modulo-7"
     }
-  ]
+  ],
+  sidebar: {
+    video: {
+      youtubeId: "-h7XRblQX0c",
+      coverImage: "/assets/images/portada_diseno_producto.webp"
+    }
+  }
 };
+

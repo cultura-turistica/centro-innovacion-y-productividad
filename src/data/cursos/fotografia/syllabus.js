@@ -25,5 +25,12 @@ export const syllabusData = {
     { id: 4, title: 'El Arte de Mirar', description: 'Planos y Ángulos (Picado, Contrapicado, Cenital).', duration: '25 min', path: 'modulo-4' },
     { id: 5, title: 'Encuadre y Composición', description: 'Regla de los Tercios, Líneas Guía y Perspectiva.', duration: '25 min', path: 'modulo-5' },
     { id: 6, title: 'Práctica (Simulador)', description: 'Simulador Manual de Cámara Fotográfica interactivo.', duration: '15 min', path: 'modulo-6' }
-  ]
+  ],
+  sidebar: {
+    video: {
+      youtubeId: "g2Mn3Nu4HSo",
+      coverImage: "/assets/images/portada_fotografia.webp"
+    }
+  }
 };
+
