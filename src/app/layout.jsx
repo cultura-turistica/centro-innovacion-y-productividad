@@ -22,9 +22,6 @@ export const metadata = {
   authors: [{ name: 'Cultura T S.A.S.', url: 'https://cip.cultura-t.com' }],
   creator: 'Cultura T S.A.S.',
   publisher: 'Centro de Innovación y Productividad Cultura T',
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     title: 'Centro de Innovación y Productividad Cultura T | CIP',
     description: 'Investigación territorial, inteligencia de datos y herramientas abiertas para la innovación turística y la productividad en Colombia.',
@@ -51,9 +48,28 @@ export const metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'Centro de Innovación y Productividad Cultura T',
+  alternateName: 'CIP',
+  url: 'https://cip.cultura-t.com',
+  logo: 'https://cip.cultura-t.com/icon.png',
+  description: 'Investigación territorial, inteligencia de datos, metodologías aplicadas y herramientas abiertas para el turismo sostenible y la productividad regional en Colombia.',
+  sameAs: [
+    'https://cultura-t.com'
+  ]
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased">
         <Navbar />
         {children}
@@ -61,3 +77,4 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
+
