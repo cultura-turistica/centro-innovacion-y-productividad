@@ -24,5 +24,11 @@ export const syllabusData = {
     { id: 3, title: 'Psicología del Color', description: 'Aprende a comunicar emociones a través de tu paleta visual.', duration: '20 min', path: 'modulo-3' },
     { id: 4, title: 'Personalidad Tipográfica', description: 'Entiende cómo las fuentes cambian radicalmente tu mensaje.', duration: '20 min', path: 'modulo-4' },
     { id: 5, title: 'Voz y Tono', description: 'Construye la manera de hablar de tu marca para cada canal.', duration: '25 min', path: 'modulo-5' }
-  ]
+  ],
+  sidebar: {
+    video: {
+      youtubeId: "oVrqPz-IUec",
+      coverImage: "/assets/images/portada_marca.webp"
+    }
+  }
 };
