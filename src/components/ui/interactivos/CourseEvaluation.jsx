@@ -1,6 +1,4 @@
 "use client";
-
-"use client";
 import React, { useState } from 'react';
 import { ClipboardList, CheckCircle, Award, FileText, ChevronRight } from 'lucide-react';
 import { hashAnswer, generateCertificateSeal } from '../../../utils/security';
@@ -8,7 +6,7 @@ import CertificateGenerator from './CertificateGenerator';
 import { db } from '../../../lib/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
-export default function CourseEvaluation({ data, onComplete }) {
+export default function CourseEvaluation({ data, onComplete, themeColor }) {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -33,10 +31,10 @@ export default function CourseEvaluation({ data, onComplete }) {
     // Guardar encuesta de calidad
     if (db) {
       try {
-        const surveyId = `survey_${data.quiz.courseId}_${new Date().getTime()}`;
+        const surveyId = `survey_${data.quiz?.courseId || 'general'}_${new Date().getTime()}`;
         await setDoc(doc(db, 'course_surveys', surveyId), {
-          courseId: data.quiz.courseId,
-          courseName: data.quiz.courseName,
+          courseId: data.quiz?.courseId || 'unknown',
+          courseName: data.quiz?.courseName || 'Curso',
           responses: surveyData,
           submittedAt: new Date().toISOString()
         });
@@ -58,26 +56,28 @@ export default function CourseEvaluation({ data, onComplete }) {
     e.preventDefault();
     setQuizError('');
 
-    if (Object.keys(quizAnswers).length < data.quiz.questions.length) {
+    const questions = data.quiz?.questions || [];
+
+    if (Object.keys(quizAnswers).length < questions.length) {
       setQuizError('Por favor responde todas las preguntas de la evaluación.');
       return;
     }
 
     // Calcular puntaje
     let correctCount = 0;
-    data.quiz.questions.forEach((q) => {
+    questions.forEach((q) => {
       const userAnswerHash = hashAnswer(quizAnswers[q.id] || '');
       if (userAnswerHash === q.correctHash) {
         correctCount++;
       }
     });
 
-    const percentage = (correctCount / data.quiz.questions.length) * 100;
+    const percentage = questions.length > 0 ? (correctCount / questions.length) * 100 : 100;
 
     if (percentage >= 80) {
       setStep(3); // Pasar a recolección PII
     } else {
-      setQuizError(`Has obtenido ${correctCount} de ${data.quiz.questions.length} respuestas correctas (${Math.round(percentage)}%). Necesitas al menos 80% para aprobar. Intenta de nuevo.`);
+      setQuizError(`Has obtenido ${correctCount} de ${questions.length} respuestas correctas (${Math.round(percentage)}%). Necesitas al menos 80% para aprobar. Intenta de nuevo.`);
     }
   };
 
@@ -99,9 +99,9 @@ export default function CourseEvaluation({ data, onComplete }) {
     const certData = { 
       nombre: legalData.name, 
       identificacion: legalData.identification,
-      curso: data.quiz.courseName, 
+      curso: data.quiz?.courseName || 'Curso de Innovación Turística', 
       fecha: date, 
-      horas: data.quiz.horas || "40" 
+      horas: data.quiz?.horas || "40" 
     };
     const seal = generateCertificateSeal(certData);
     const finalCertData = { ...certData, sello: seal };
@@ -172,8 +172,8 @@ export default function CourseEvaluation({ data, onComplete }) {
       {step === 1 && (
         <form onSubmit={handleSurveySubmit} className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-black text-slate-900 mb-2">{data.encuesta.title}</h3>
-            <p className="text-slate-600">{data.encuesta.description} <span className="text-emerald-600 font-semibold">{data.encuesta.anonymousNotice}</span></p>
+            <h3 className="text-2xl font-black text-slate-900 mb-2">{data.encuesta?.title || "Encuesta de Satisfacción"}</h3>
+            <p className="text-slate-600">{data.encuesta?.description || "Ayúdanos a mejorar contándonos tu experiencia."} <span className="text-emerald-600 font-semibold">{data.encuesta?.anonymousNotice || "(Tus respuestas son 100% anónimas)"}</span></p>
           </div>
 
           {surveyError && (
@@ -183,9 +183,9 @@ export default function CourseEvaluation({ data, onComplete }) {
           )}
 
           <div className="space-y-8">
-            {data.encuesta.questions.map((q) => (
+            {(data.encuesta?.questions || []).map((q) => (
               <div key={q.id} className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                <p className="font-bold text-slate-800 mb-4">{q.label}</p>
+                <p className="font-bold text-slate-800 mb-4">{q.label || q.question || q.text}</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {q.options.map((opt, i) => (
                     <label key={i} className={`flex items-center gap-3 p-4 rounded-xl border cursor-pointer transition-all ${surveyData[q.id] === opt ? 'bg-white border-emerald-500 shadow-md ring-2 ring-emerald-500/20' : 'bg-white border-slate-200 hover:border-emerald-300'}`}>
@@ -206,7 +206,7 @@ export default function CourseEvaluation({ data, onComplete }) {
             ))}
             
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-              <p className="font-bold text-slate-800 mb-4">{data.encuesta.commentsLabel}</p>
+              <p className="font-bold text-slate-800 mb-4">{data.encuesta?.commentsLabel || "Comentarios o sugerencias (Opcional)"}</p>
               <textarea
                 value={surveyData.comments}
                 onChange={(e) => setSurveyData({ ...surveyData, comments: e.target.value })}
@@ -223,7 +223,7 @@ export default function CourseEvaluation({ data, onComplete }) {
               disabled={isSubmitting}
               className="px-8 py-4 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-colors flex items-center gap-2"
             >
-              {isSubmitting ? 'Procesando...' : data.encuesta.submitBtn}
+              {isSubmitting ? 'Procesando...' : (data.encuesta?.submitBtn || "Enviar y Pasar a la Evaluación")}
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
@@ -234,7 +234,7 @@ export default function CourseEvaluation({ data, onComplete }) {
       {step === 2 && (
         <form onSubmit={handleQuizSubmit} className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-black text-slate-900 mb-2">{data.quiz.title}</h3>
+            <h3 className="text-2xl font-black text-slate-900 mb-2">{data.quiz?.title || "Evaluación de Conocimientos"}</h3>
             <p className="text-slate-600">Para aprobar necesitas obtener un 80% o más de aciertos.</p>
           </div>
 
@@ -245,7 +245,7 @@ export default function CourseEvaluation({ data, onComplete }) {
           )}
 
           <div className="space-y-6">
-            {data.quiz.questions.map((q, idx) => (
+            {(data.quiz?.questions || []).map((q, idx) => (
               <div key={q.id} className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                 <p className="font-bold text-slate-800 mb-4">{idx + 1}. {q.text}</p>
                 <div className="flex flex-col gap-3">
@@ -293,7 +293,7 @@ export default function CourseEvaluation({ data, onComplete }) {
               <CheckCircle className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-black text-slate-900 mb-2">¡Evaluación Aprobada!</h3>
-            <p className="text-slate-600 max-w-lg mx-auto">{data.formularioLegal.description}</p>
+            <p className="text-slate-600 max-w-lg mx-auto">{data.formularioLegal?.description || "Por favor, ingresa tus datos legales tal como deseas que aparezcan en tu certificado oficial."}</p>
           </div>
 
           {legalError && (
@@ -304,44 +304,44 @@ export default function CourseEvaluation({ data, onComplete }) {
 
           <div className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 space-y-6">
             <div>
-              <label className="block font-bold text-slate-800 mb-2">{data.formularioLegal.nameLabel}</label>
+              <label className="block font-bold text-slate-800 mb-2">{data.formularioLegal?.nameLabel || "Nombres y Apellidos Completos"}</label>
               <input
                 type="text"
                 required
                 value={legalData.name}
                 onChange={(e) => setLegalData({ ...legalData, name: e.target.value.toUpperCase() })}
-                placeholder={data.formularioLegal.namePlaceholder}
+                placeholder={data.formularioLegal?.namePlaceholder || "Ej. Juan Pérez López"}
                 className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500 uppercase"
               />
             </div>
             
             <div>
-              <label className="block font-bold text-slate-800 mb-2">{data.formularioLegal.idLabel}</label>
+              <label className="block font-bold text-slate-800 mb-2">{data.formularioLegal?.idLabel || "Número de Identificación (C.C. o NIT)"}</label>
               <input
                 type="text"
                 required
                 value={legalData.identification}
                 onChange={(e) => setLegalData({ ...legalData, identification: e.target.value })}
-                placeholder={data.formularioLegal.idPlaceholder}
+                placeholder={data.formularioLegal?.idPlaceholder || "Ej. 1.020.304.050"}
                 className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500"
               />
             </div>
 
             <div>
-              <label className="block font-bold text-slate-800 mb-2">{data.formularioLegal.emailLabel || 'Correo Electrónico'}</label>
+              <label className="block font-bold text-slate-800 mb-2">{data.formularioLegal?.emailLabel || 'Correo Electrónico'}</label>
               <input
                 type="email"
                 required
                 value={legalData.email}
                 onChange={(e) => setLegalData({ ...legalData, email: e.target.value })}
-                placeholder={data.formularioLegal.emailPlaceholder || 'Ej. usuario@correo.com'}
+                placeholder={data.formularioLegal?.emailPlaceholder || 'Ej. usuario@correo.com'}
                 className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-emerald-500"
               />
             </div>
 
             <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
               <p className="text-sm text-slate-600">
-                <span className="font-bold text-slate-800">{data.formularioLegal.privacyNoticeTitle}</span> {data.formularioLegal.privacyNotice}
+                <span className="font-bold text-slate-800">{data.formularioLegal?.privacyNoticeTitle || "Aviso de Privacidad:"}</span> {data.formularioLegal?.privacyNotice || "Tus datos serán vinculados al Sello Matemático criptográfico y registrados en el libro oficial de egresados de Cultura T para efectos de verificación pública de tus competencias."}
               </p>
             </div>
           </div>
@@ -353,7 +353,7 @@ export default function CourseEvaluation({ data, onComplete }) {
               className="px-8 py-4 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-colors flex items-center gap-2 disabled:opacity-50"
             >
               <Award className="w-5 h-5" />
-              {isSubmitting ? data.formularioLegal.processingBtn : data.formularioLegal.continueBtn}
+              {isSubmitting ? (data.formularioLegal?.processingBtn || "Generando...") : (data.formularioLegal?.continueBtn || "Generar Certificado Oficial")}
             </button>
           </div>
         </form>
