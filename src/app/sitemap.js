@@ -22,6 +22,7 @@ export default function sitemap() {
   // 2. Laboratorios de Datos
   const labRoutes = [
     { url: `${baseUrl}/laboratorios/anatomia-del-turista`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/laboratorios/atractivos-turisticos`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/laboratorios/carbono`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/laboratorios/sae-colombia`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/laboratorios/tolima`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.8 },

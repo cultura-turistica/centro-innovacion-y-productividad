@@ -25,6 +25,15 @@ export const LAB_CATALOG_DATA = {
       href: "/laboratorios/sae-colombia"
     },
     {
+      status: "Explorar",
+      title: "Inventario Turístico",
+      subtitle: "Caso de Estudio MinCIT 2020",
+      category: "Desarrollo Social y Territorio",
+      desc: "Caso de estudio y evaluación analítica sobre 8,345 registros del Inventario Turístico de Colombia bajo la metodología oficial MinCIT 2020.",
+      action: "Ver Investigación",
+      href: "/laboratorios/atractivos-turisticos"
+    },
+    {
       status: "En Desarrollo",
       title: "Migración REDATAM",
       subtitle: "Cartografía Social",
