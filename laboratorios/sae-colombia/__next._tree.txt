@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/09-tt3sndjcnr.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"laboratorios","param":null,"prefetchHints":4192,"slots":{"children":{"name":"sae-colombia","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"L2Z6cQzT2rCUa_WzLyVg_"}
+:HL["/_next/static/chunks/038tz85unlmxm.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"laboratorios","param":null,"prefetchHints":4192,"slots":{"children":{"name":"sae-colombia","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"GgP9CxvhCSF_mRIkO7DrE"}
