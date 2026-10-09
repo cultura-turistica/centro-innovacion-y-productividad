@@ -108,8 +108,9 @@ export default function CourseEvaluation({ data, onComplete, themeColor }) {
     setCertificateData(finalCertData);
 
     try {
-      // 1. Enviar datos al backend (Cloud Function)
-      const response = await fetch(process.env.NEXT_PUBLIC_CERTIFICATE_FUNCTION_URL, {
+      // 1. Enviar datos al backend (Cloud Function o endpoint interno)
+      const certEndpoint = process.env.NEXT_PUBLIC_CERTIFICATE_FUNCTION_URL || '/api/certificates/generate';
+      const response = await fetch(certEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(finalCertData)
@@ -247,7 +248,7 @@ export default function CourseEvaluation({ data, onComplete, themeColor }) {
           <div className="space-y-6">
             {(data.quiz?.questions || []).map((q, idx) => (
               <div key={q.id} className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                <p className="font-bold text-slate-800 mb-4">{idx + 1}. {q.text}</p>
+                <p className="font-bold text-slate-800 mb-4 whitespace-pre-line">{idx + 1}. {q.text}</p>
                 <div className="flex flex-col gap-3">
                   {q.options.map((opt) => (
                     <label key={opt.id} className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all ${quizAnswers[q.id] === opt.id ? 'bg-white border-emerald-500 shadow-md ring-2 ring-emerald-500/20' : 'bg-white border-slate-200 hover:border-emerald-300'}`}>

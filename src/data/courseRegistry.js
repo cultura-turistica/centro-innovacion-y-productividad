@@ -69,6 +69,26 @@ export const courseRegistry = {
     themeBg: 'bg-emerald-50',
     themeBorder: 'border-emerald-200'
   },
+  'propuesta-valor': {
+    title: "Diseño de la Propuesta de Valor",
+    themeColor: '#4f46e5', // Indigo 600
+    themeBg: 'bg-indigo-50',
+    themeBorder: 'border-indigo-200',
+    certTheme: {
+      selection: "selection:bg-indigo-100",
+      hoverText: "hover:text-indigo-500",
+      textHighlight: "text-indigo-500",
+      primaryBg: "bg-indigo-900",
+      blurPrimary: "bg-indigo-500/20",
+      blurSecondary: "bg-violet-500/20",
+      badgeBg: "bg-indigo-800/50",
+      badgeText: "text-indigo-300",
+      badgeBorder: "border-indigo-700",
+      textLight: "text-indigo-100",
+      btnText: "text-indigo-950",
+      themeColorHex: "#4f46e5"
+    }
+  },
   'turismo-comunitario': {
     themeColor: '#10b981', // Emerald 500
     themeBg: 'bg-emerald-50',

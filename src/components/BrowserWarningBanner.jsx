@@ -34,7 +34,7 @@ export default function BrowserWarningBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:bottom-6 md:left-auto md:right-6 md:max-w-md z-[100]">
+    <div className="fixed bottom-4 left-4 right-4 md:bottom-6 md:left-auto md:right-6 md:max-w-md z-[999]">
       <div className="bg-white/95 backdrop-blur-xl border border-amber-200 shadow-2xl rounded-2xl p-5 relative overflow-hidden">
         {/* Decorative background */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>

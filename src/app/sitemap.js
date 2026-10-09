@@ -45,6 +45,19 @@ export default function sitemap() {
         changeFrequency: 'monthly',
         priority: 0.8
       });
+    } else if (course.slug === 'propuesta-valor') {
+      courseRoutes.push({
+        url: `${baseUrl}/academia/cursos/propuesta-valor/juego`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly',
+        priority: 0.85
+      });
+      courseRoutes.push({
+        url: `${baseUrl}/academia/cursos/propuesta-valor/certificacion`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly',
+        priority: 0.75
+      });
     } else {
       courseRoutes.push({
         url: `${baseUrl}/academia/cursos/${course.slug}/certificacion`,

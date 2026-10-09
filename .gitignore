@@ -68,6 +68,7 @@ src/pages/CreadorDeVideos.css
 # Agent/Workspace Ignore
 .gemini/
 .specify/
+.agents/
 GEMINI.md
 parse_svg.js
 pnpm-workspace.yaml

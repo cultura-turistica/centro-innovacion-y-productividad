@@ -16,9 +16,9 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   const { catalogoData } = await import('@/data/cursos/catalogo');
-  // Filtramos herramientas interactivas que no tienen página de certificación
+  // Filtramos herramientas interactivas sin certificación (propuesta-valor sí cuenta con certificación oficial)
   return catalogoData.courses
-    .filter(course => course.info !== "Herramienta Interactiva")
+    .filter(course => !course.info.toLowerCase().includes("herramienta") && (!course.info.toLowerCase().includes("juego") || course.slug === "propuesta-valor"))
     .map(course => ({ curso: course.slug }));
 }
 

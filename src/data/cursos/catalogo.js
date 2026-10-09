@@ -36,6 +36,14 @@ export const catalogoData = {
       action: "Abrir Herramienta"
     },
     {
+      title: "Propuesta de Valor",
+      slug: "propuesta-valor",
+      category: "Innovación y Estrategia",
+      info: "Juego Interactivo",
+      description: "Aprende jugando con la metodología de Alexander Osterwalder (Strategyzer) para crear experiencias de turismo y cultura que la gente realmente quiera y pague.",
+      action: "Iniciar Juego"
+    },
+    {
       title: "Fundamentos y Composición Fotográfica",
       slug: "fotografia",
       category: "Creación de Contenido",

@@ -44,10 +44,27 @@ export default function VerificadorPage() {
   const formatDate = (dateString) => {
     if (!dateString) return 'Fecha no disponible';
     
-    // Si ya viene en formato que no se puede parsear directamente por Date (como DD/MM/YYYY que tira Invalid Date en algunos navegadores)
+    // Si viene en formato con barras "D/M/YYYY" o "DD/MM/YYYY" (ej: "8/10/2026")
+    if (typeof dateString === 'string' && dateString.includes('/')) {
+      const parts = dateString.split('/');
+      if (parts.length === 3) {
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        const parsed = new Date(year, month, day);
+        if (!isNaN(parsed.getTime())) {
+          return parsed.toLocaleDateString('es-CO', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+        }
+      }
+    }
+    
     const date = new Date(dateString);
     if (date.toString() === 'Invalid Date') {
-      return dateString; // Devolvemos el string tal cual fue guardado ("23/8/2026")
+      return dateString;
     }
     
     return date.toLocaleDateString('es-CO', {

@@ -9,7 +9,8 @@ export default function CertificateGenerator({ data, hideControls = false }) {
   const generatePDF = async () => {
     setIsGenerating(true);
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_CERTIFICATE_FUNCTION_URL, {
+      const certEndpoint = process.env.NEXT_PUBLIC_CERTIFICATE_FUNCTION_URL || '/api/certificates/generate';
+      const response = await fetch(certEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

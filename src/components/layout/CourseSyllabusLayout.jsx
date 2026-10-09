@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import { PlayCircle, Clock, BookOpen, CheckCircle, ChevronRight, User } from 'lucide-react';
+import { PlayCircle, Clock, BookOpen, CheckCircle, ChevronRight, User, Lock } from 'lucide-react';
 import Link from 'next/link';
 import VerticalVideoCard from '../ui/VerticalVideoCard';
 
@@ -50,6 +50,19 @@ export default function CourseSyllabusLayout({ data, themeColor = "#10b981", the
                   {header.description}
                 </p>
               </div>
+
+              {header.startBtn && (
+                <div className="shrink-0 mb-2">
+                  <Link
+                    href={header.startBtn.url}
+                    className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-white font-black text-base shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all"
+                    style={{ backgroundColor: themeColor }}
+                  >
+                    <PlayCircle className="w-5 h-5" />
+                    <span>{header.startBtn.label}</span>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
 
