@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NickyCharacter from './NickyCharacter';
 import { ArrowLeft, Filter, Play, X } from 'lucide-react';
 
@@ -7,10 +7,23 @@ export default function Acto5Pivote({ archetype, profileData, onComplete, onBack
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [currentDilemmaIdx, setCurrentDilemmaIdx] = useState(0);
   const [selectedOptId, setSelectedOptId] = useState(null);
+  const [shuffledOptions, setShuffledOptions] = useState([]);
 
   // Múltiples dilemas de clientes (buenos, malos y sugerencias para rechazar)
   const dilemmas = profileData.pivotDilemmas || [profileData.pivotScenario];
   const currentDilemma = dilemmas[currentDilemmaIdx] || dilemmas[0];
+
+  useEffect(() => {
+    if (currentDilemma?.options) {
+      const opts = [...currentDilemma.options];
+      for (let i = opts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [opts[i], opts[j]] = [opts[j], opts[i]];
+      }
+      setShuffledOptions(opts);
+    }
+  }, [currentDilemmaIdx, currentDilemma?.id]);
+
   const activeOption = currentDilemma.options.find(o => o.id === selectedOptId);
   const isCorrect = activeOption?.isCorrect;
   const isLastDilemma = currentDilemmaIdx + 1 >= dilemmas.length;
@@ -68,28 +81,19 @@ export default function Acto5Pivote({ archetype, profileData, onComplete, onBack
               </span>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="flex gap-1.5">
-                {dilemmas.map((_, idx) => (
-                  <span
-                    key={idx}
-                    className={`w-3 h-3 rounded-full border border-slate-900 ${
-                      idx < currentDilemmaIdx
-                        ? 'bg-emerald-500'
-                        : idx === currentDilemmaIdx
-                        ? 'bg-purple-500 animate-pulse'
-                        : 'bg-slate-200'
-                    }`}
-                  />
-                ))}
-              </div>
-              <button
-                onClick={() => setIsTheoryModalOpen(true)}
-                className="py-1.5 px-3.5 rounded-full border border-slate-900 bg-amber-100 hover:bg-amber-200 text-slate-900 font-black text-[10px] uppercase tracking-wider transition-all cursor-pointer shadow-[1.5px_1.5px_0px_0px_#0f172a] flex items-center gap-1.5"
-              >
-                <Play className="w-3 h-3 text-rose-600 fill-rose-600" />
-                <span>Video Pilar 4</span>
-              </button>
+            <div className="flex items-center gap-2">
+              {dilemmas.map((_, idx) => (
+                <span
+                  key={idx}
+                  className={`w-3 h-3 rounded-full border border-slate-900 ${
+                    idx < currentDilemmaIdx
+                      ? 'bg-emerald-500'
+                      : idx === currentDilemmaIdx
+                      ? 'bg-purple-500 animate-pulse'
+                      : 'bg-slate-200'
+                  }`}
+                />
+              ))}
             </div>
           </div>
 
@@ -128,42 +132,57 @@ export default function Acto5Pivote({ archetype, profileData, onComplete, onBack
             </p>
           </div>
 
-          {/* PARTE 3: LAS 3 OPCIONES INTERACTIVAS */}
+          {/* PARTE 3: LAS OPCIONES INTERACTIVAS (SIN SPOILERS PREVIOS) */}
           <div className="space-y-3 text-left">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500 block">
               ¿Cómo respondes a esta opinión?
             </span>
 
             <div className="grid grid-cols-1 gap-3">
-              {currentDilemma.options.map((opt) => {
+              {(shuffledOptions.length > 0 ? shuffledOptions : currentDilemma.options).map((opt, idx) => {
                 const isSelected = selectedOptId === opt.id;
+                const isRevealed = selectedOptId !== null;
 
                 return (
                   <button
                     key={opt.id}
                     onClick={() => handleSelectOption(opt.id)}
-                    className={`p-4 rounded-[22px] border-[2.5px] transition-all text-left flex flex-col space-y-1.5 cursor-pointer ${
+                    className={`p-4 rounded-[22px] border-[2.5px] transition-all text-left flex flex-col space-y-2 cursor-pointer ${
                       isSelected
                         ? opt.isCorrect
                           ? 'bg-emerald-50 border-emerald-600 shadow-[3px_3px_0px_0px_#059669]'
                           : 'bg-rose-50 border-rose-600 shadow-[3px_3px_0px_0px_#e11d48]'
+                        : isRevealed
+                        ? 'bg-white border-slate-300 opacity-60'
                         : 'bg-white hover:bg-slate-50 border-slate-900 shadow-[2px_2px_0px_0px_#0f172a]'
                     }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className={`text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full border border-slate-900 ${
-                        opt.archetypeChoice === 'Acierto'
-                          ? 'bg-emerald-100 text-emerald-900'
-                          : opt.archetypeChoice === 'Exceso'
-                          ? 'bg-amber-100 text-amber-900'
-                          : 'bg-rose-100 text-rose-900'
-                      }`}>
-                        {opt.choiceType}
-                      </span>
-                      <span className="text-xs font-mono font-bold text-slate-600">
-                        Satisfacción: {opt.satisfaction}%
-                      </span>
-                    </div>
+                    {/* ENCABEZADO: OCULTA RESPUESTA Y PORCENTAJE HASTA QUE SE RESPONDA */}
+                    {isRevealed ? (
+                      <div className="flex items-center justify-between">
+                        <span className={`text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full border border-slate-900 ${
+                          opt.archetypeChoice === 'Acierto'
+                            ? 'bg-emerald-100 text-emerald-900'
+                            : opt.archetypeChoice === 'Exceso'
+                            ? 'bg-amber-100 text-amber-900'
+                            : 'bg-rose-100 text-rose-900'
+                        }`}>
+                          {opt.choiceType}
+                        </span>
+                        <span className="text-xs font-mono font-bold text-slate-700">
+                          Satisfacción: {opt.satisfaction}%
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full border border-slate-300 bg-slate-100 text-slate-700">
+                          Opción {String.fromCharCode(65 + idx)}
+                        </span>
+                        <span className="text-[11px] font-semibold text-slate-400">
+                          Toca para responder
+                        </span>
+                      </div>
+                    )}
 
                     <h4 className="text-xs md:text-sm font-black text-slate-900 leading-snug">
                       {opt.text}
@@ -201,13 +220,16 @@ export default function Acto5Pivote({ archetype, profileData, onComplete, onBack
                       ? 'Finalizar y Ver Conclusión'
                       : `Siguiente Caso (${currentDilemmaIdx + 2} de ${dilemmas.length})`}
                   </button>
-                  <button
-                    onClick={() => setIsTheoryModalOpen(true)}
-                    className="w-full sm:w-auto py-3 px-6 rounded-full border-[2px] border-slate-900 bg-amber-100 hover:bg-amber-200 text-slate-900 font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-[2px_2px_0px_0px_#0f172a] flex items-center justify-center gap-2"
-                  >
-                    <Play className="w-4 h-4 text-rose-600 fill-rose-600" />
-                    <span>Ver Video: Metodología Oficial del Pilar 4</span>
-                  </button>
+                  {/* Video solo disponible al haber completado todos los dilemas */}
+                  {isLastDilemma && (
+                    <button
+                      onClick={() => setIsTheoryModalOpen(true)}
+                      className="w-full sm:w-auto py-3 px-6 rounded-full border-[2px] border-slate-900 bg-amber-100 hover:bg-amber-200 text-slate-900 font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-[2px_2px_0px_0px_#0f172a] flex items-center justify-center gap-2 animate-in fade-in"
+                    >
+                      <Play className="w-4 h-4 text-rose-600 fill-rose-600" />
+                      <span>Ver Video: Metodología Oficial del Pilar 4</span>
+                    </button>
+                  )}
                 </div>
               )}
             </div>

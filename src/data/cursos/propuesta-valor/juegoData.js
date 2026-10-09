@@ -211,6 +211,14 @@ export const JUEGO_DATA = {
             correctFor: "elena",
             matchesWith: "Temor a la explotación de intermediarios",
             feedback: "❌ ¡Desconexión! Aunque es admirable, Martín es un ejecutivo buscando descansar en silencio, no una investigadora cultural."
+          },
+          {
+            id: "m-fit-wrong-3",
+            name: "Caminata Extrema Nocturna de 18 km con Escalada en Roca",
+            category: "Servicio Clave",
+            correctFor: "aventura",
+            matchesWith: "Desafío físico extenuante",
+            feedback: "❌ ¡Desconexión! Martín busca descansar y desestresarse del trabajo urbano, no someterse a una prueba física extenuante."
           }
         ],
         stages: [
@@ -653,6 +661,14 @@ export const JUEGO_DATA = {
             correctFor: "martin",
             matchesWith: "Lujo y silencio ejecutivo",
             feedback: "❌ ¡Desconexión! Elena busca autenticidad comunitaria y hospedaje tradicional, no lujos impersonales de hotel 5 estrellas."
+          },
+          {
+            id: "e-fit-wrong-3",
+            name: "Show Folclórico con Disfraces Sintéticos y Animador con Micrófono",
+            category: "Servicio Clave",
+            correctFor: "turismo_masas",
+            matchesWith: "Espectáculo comercial de masa",
+            feedback: "❌ ¡Desconexión! Elena detesta el folclor plástico y las representaciones artificiales que no respetan la autenticidad comunitaria."
           }
         ],
         stages: [
@@ -1095,6 +1111,14 @@ export const JUEGO_DATA = {
             correctFor: "elena",
             matchesWith: "Retiro etnográfico",
             feedback: "❌ ¡Desconexión! Someter a niños pequeños a un ayuno de silencio en la selva es impracticable y angustiante."
+          },
+          {
+            id: "f-fit-wrong-3",
+            name: "Retiro Vipassana de Silencio Absoluto Exclusivo para Mayores de 18 Años",
+            category: "Aliviador de Dolor",
+            correctFor: "retiro_adultos",
+            matchesWith: "Aislamiento individual de adultos",
+            feedback: "❌ ¡Desconexión! Este plan prohíbe niños y los padres buscan un viaje seguro y divertido para compartir en familia."
           }
         ],
         stages: [

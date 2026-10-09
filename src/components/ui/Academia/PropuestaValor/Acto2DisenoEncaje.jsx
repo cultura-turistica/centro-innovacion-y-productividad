@@ -84,6 +84,18 @@ export default function Acto2DisenoEncaje({ archetype, profileData, onComplete, 
   const correctCards = availableCards.filter(c => c.correctFor === archetype.id);
   const [selectedPuzzlePieces, setSelectedPuzzlePieces] = useState({});
   const [puzzleFeedback, setPuzzleFeedback] = useState(null);
+  const [shuffledCards, setShuffledCards] = useState([]);
+
+  useEffect(() => {
+    if (availableCards && availableCards.length > 0) {
+      const shuffled = [...availableCards];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      setShuffledCards(shuffled);
+    }
+  }, [archetype?.id, profileData]);
 
   const selectedCorrectCount = Object.keys(selectedPuzzlePieces).filter(id => {
     const card = availableCards.find(c => c.id === id);
@@ -316,7 +328,7 @@ export default function Acto2DisenoEncaje({ archetype, profileData, onComplete, 
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
-                {availableCards.map((card) => {
+                {(shuffledCards.length > 0 ? shuffledCards : availableCards).map((card) => {
                   const isSelected = selectedPuzzlePieces[card.id];
                   const isCorrectPiece = card.correctFor === archetype.id;
 
@@ -431,13 +443,15 @@ export default function Acto2DisenoEncaje({ archetype, profileData, onComplete, 
               >
                 {isBusinessFitSolved ? "Avanzar al Pilar 3: Probar sin Quebrar" : "Encuentra el precio de valor para avanzar 🔒"}
               </button>
-              <button
-                onClick={() => setIsTheoryModalOpen(true)}
-                className="w-full sm:w-auto py-3.5 px-6 rounded-full border-[2.5px] border-slate-900 bg-amber-100 hover:bg-amber-200 text-slate-900 font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-[3px_3px_0px_0px_#0f172a] flex items-center justify-center gap-2"
-              >
-                <Play className="w-4 h-4 text-rose-600 fill-rose-600" />
-                <span>Ver Video: Metodología Oficial del Pilar 2</span>
-              </button>
+              {isBusinessFitSolved && (
+                <button
+                  onClick={() => setIsTheoryModalOpen(true)}
+                  className="w-full sm:w-auto py-3.5 px-6 rounded-full border-[2.5px] border-slate-900 bg-amber-100 hover:bg-amber-200 text-slate-900 font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-[3px_3px_0px_0px_#0f172a] flex items-center justify-center gap-2 animate-in fade-in"
+                >
+                  <Play className="w-4 h-4 text-rose-600 fill-rose-600" />
+                  <span>Ver Video: Metodología Oficial del Pilar 2</span>
+                </button>
+              )}
             </div>
           </div>
         )}
