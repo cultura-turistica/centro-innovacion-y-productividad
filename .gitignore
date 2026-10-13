@@ -53,6 +53,7 @@ inspect_fontur_data.py
 *.xlsx
 *.xls
 *.pdf
+!public/assets/docs/*.pdf
 *.parquet
 *.sqlite
 *.db

@@ -88,16 +88,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/centro-conocimiento/proyectos" className="text-slate-600 hover:text-indigo-600 transition-colors">
-                  Proyectos Territoriales
-                </Link>
-              </li>
-              <li>
-                <Link href="/centro-conocimiento/publicaciones" className="text-slate-600 hover:text-indigo-600 transition-colors">
-                  Publicaciones I+D+i
-                </Link>
-              </li>
-              <li>
                 <a
                   href="https://cultura-t.com/"
                   target="_blank"
