@@ -1,5 +1,6 @@
 import './globals.css'
 import Navbar from '@/components/layout/Navbar';
+import Script from 'next/script';
 
 export const metadata = {
   metadataBase: new URL('https://cip.cultura-t.com'),
@@ -34,6 +35,9 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Centro de Innovación y Productividad Cultura T | CIP',
     description: 'Investigación territorial, inteligencia de datos y herramientas abiertas para la innovación turística.',
+  },
+  verification: {
+    google: '_62XIYoLxCe5lyCXjV9asAOGkQbOqPCDKbCApIPfssI',
   },
   robots: {
     index: true,
@@ -71,6 +75,18 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="antialiased">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Y8X8GF1R5B"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Y8X8GF1R5B');
+          `}
+        </Script>
         <Navbar />
         {children}
       </body>
