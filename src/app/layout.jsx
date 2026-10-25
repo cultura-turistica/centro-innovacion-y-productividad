@@ -69,25 +69,28 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <head>
+        {/* Google tag (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-LZGFJVB57Z"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-LZGFJVB57Z');
+              gtag('config', 'G-Y8X8GF1R5B');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="antialiased">
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-LZGFJVB57Z"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-LZGFJVB57Z');
-            gtag('config', 'G-Y8X8GF1R5B');
-          `}
-        </Script>
         <Navbar />
         {children}
       </body>
