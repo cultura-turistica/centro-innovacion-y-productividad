@@ -126,9 +126,21 @@ export default function Footer() {
 
         {/* Separador y Línea de Créditos */}
         <div className="pt-6 border-t border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>
-            © {new Date().getFullYear()} CULTURA T S.A.S. Todos los derechos reservados.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p>
+              © {new Date().getFullYear()} CULTURA T S.A.S. Todos los derechos reservados.
+            </p>
+            <div className="flex items-center gap-3 text-slate-500">
+              <span className="hidden sm:inline text-slate-300">•</span>
+              <Link href="/privacidad" className="hover:text-indigo-600 transition-colors">
+                Privacidad (Habeas Data)
+              </Link>
+              <span className="text-slate-300">•</span>
+              <Link href="/terminos" className="hover:text-indigo-600 transition-colors">
+                Términos y Condiciones
+              </Link>
+            </div>
+          </div>
           <p className="flex items-center gap-1">
             <span>Investigación, Tecnología y Territorio</span>
             <span className="text-slate-300">•</span>

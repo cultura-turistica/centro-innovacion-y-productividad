@@ -20,6 +20,7 @@ export default function CourseEvaluation({ data, onComplete, themeColor }) {
   
   // Datos Legales
   const [legalData, setLegalData] = useState({ name: '', identification: '', email: '' });
+  const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [legalError, setLegalError] = useState('');
   const [certificateData, setCertificateData] = useState(null);
 
@@ -85,6 +86,11 @@ export default function CourseEvaluation({ data, onComplete, themeColor }) {
     e.preventDefault();
     setLegalError('');
 
+    if (!acceptedPrivacy) {
+      setLegalError("Debes leer y aceptar la Política de Privacidad y Tratamiento de Datos Personales para continuar.");
+      return;
+    }
+
     const blockedDomains = ['yopmail.com', 'tempmail.com', 'temp-mail.org', '10minutemail.com', 'guerrillamail.com', 'mailinator.com', 'correo-temporal.org', 'dropmail.me'];
     const emailDomain = legalData.email.split('@')[1]?.toLowerCase();
     
@@ -99,16 +105,42 @@ export default function CourseEvaluation({ data, onComplete, themeColor }) {
     const certData = { 
       nombre: legalData.name, 
       identificacion: legalData.identification,
+      correo: legalData.email,
       curso: data.quiz?.courseName || 'Curso de Innovación Turística', 
       fecha: date, 
-      horas: data.quiz?.horas || "40" 
+      horas: data.quiz?.horas || "40",
+      aceptoPoliticaPrivacidad: true,
+      fechaAceptacionPolitica: new Date().toISOString(),
+      versionPolitica: 'Ley 1581 / 2026-11'
     };
     const seal = generateCertificateSeal(certData);
     const finalCertData = { ...certData, sello: seal };
     setCertificateData(finalCertData);
 
     try {
-      // 1. Enviar datos al backend (Cloud Function o endpoint interno)
+      // 1. Guardar registro con prueba de autorización en Firestore
+      if (db) {
+        try {
+          await setDoc(doc(db, 'certificados', seal), {
+            ...finalCertData,
+            nombre: legalData.name,
+            identificacion: legalData.identification,
+            correo: legalData.email,
+            curso: certData.curso,
+            fecha: date,
+            horas: certData.horas,
+            sello: seal,
+            aceptoPoliticaPrivacidad: true,
+            fechaAceptacionPolitica: new Date().toISOString(),
+            versionPolitica: 'Ley 1581 / 2026-11',
+            creadoEl: new Date().toISOString()
+          }, { merge: true });
+        } catch (dbErr) {
+          console.warn("Registro complementario en Firestore:", dbErr);
+        }
+      }
+
+      // 2. Enviar datos al backend (Cloud Function o endpoint interno)
       const certEndpoint = process.env.NEXT_PUBLIC_CERTIFICATE_FUNCTION_URL || '/api/certificates/generate';
       const response = await fetch(certEndpoint, {
         method: 'POST',
@@ -120,7 +152,7 @@ export default function CourseEvaluation({ data, onComplete, themeColor }) {
         throw new Error('El servidor no pudo registrar el certificado.');
       }
 
-      // 2. Si el servidor lo guardó y generó el PDF, lo descargamos
+      // 3. Si el servidor lo guardó y generó el PDF, lo descargamos
       const blob = await response.blob();
       const objectUrl = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -131,7 +163,7 @@ export default function CourseEvaluation({ data, onComplete, themeColor }) {
       window.URL.revokeObjectURL(objectUrl);
       document.body.removeChild(a);
 
-      // 3. Todo fue exitoso (Guardado y Descargado), pasamos al paso 4
+      // 4. Todo fue exitoso (Guardado y Descargado), pasamos al paso 4
       setIsSubmitting(false);
       setStep(4);
       if (onComplete) onComplete();
@@ -340,18 +372,47 @@ export default function CourseEvaluation({ data, onComplete, themeColor }) {
               />
             </div>
 
-            <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
-              <p className="text-sm text-slate-600">
-                <span className="font-bold text-slate-800">{data.formularioLegal?.privacyNoticeTitle || "Aviso de Privacidad:"}</span> {data.formularioLegal?.privacyNotice || "Tus datos serán vinculados al Sello Matemático criptográfico y registrados en el libro oficial de egresados de Cultura T para efectos de verificación pública de tus competencias."}
-              </p>
+            {/* Casilla Obligatoria y Expresa de Habeas Data */}
+            <div className={`p-5 rounded-2xl border transition-all ${
+              acceptedPrivacy 
+                ? 'bg-emerald-50/70 border-emerald-300' 
+                : 'bg-white border-slate-200 hover:border-slate-300 shadow-sm'
+            }`}>
+              <label className="flex items-start gap-3.5 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  id="acceptedPrivacyCheckbox"
+                  name="acceptedPrivacyCheckbox"
+                  checked={acceptedPrivacy}
+                  onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+                  className="mt-1 w-5 h-5 rounded border-slate-300 text-emerald-600 focus:ring-2 focus:ring-emerald-500 cursor-pointer accent-emerald-600 shrink-0"
+                />
+                <span className="text-sm text-slate-700 leading-relaxed">
+                  {data.formularioLegal?.privacyCheckboxPrefix || "He leído y acepto la"}{' '}
+                  <a
+                    href={data.formularioLegal?.privacyPolicyUrl || "/privacidad"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold text-emerald-700 hover:text-emerald-900 underline decoration-emerald-500 underline-offset-2"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {data.formularioLegal?.privacyPolicyLinkText || "Política de Privacidad y Tratamiento de Datos Personales"}
+                  </a>{' '}
+                  {data.formularioLegal?.privacyCheckboxSuffix || "y autorizo el tratamiento de mis datos personales para la emisión de mi certificado oficial y el registro en el libro de egresados de CULTURA T S.A.S. conforme a la Ley 1581 de 2012."}
+                </span>
+              </label>
             </div>
           </div>
 
           <div className="flex justify-end pt-4">
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="px-8 py-4 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition-colors flex items-center gap-2 disabled:opacity-50"
+              disabled={isSubmitting || !acceptedPrivacy}
+              className={`px-8 py-4 font-bold rounded-xl transition-all flex items-center gap-2 ${
+                !acceptedPrivacy || isSubmitting
+                  ? 'bg-slate-200 text-slate-400 cursor-not-allowed opacity-60 shadow-none'
+                  : 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-md hover:shadow-lg shadow-emerald-600/20 active:scale-[0.99] cursor-pointer'
+              }`}
             >
               <Award className="w-5 h-5" />
               {isSubmitting ? (data.formularioLegal?.processingBtn || "Generando...") : (data.formularioLegal?.continueBtn || "Generar Certificado Oficial")}
