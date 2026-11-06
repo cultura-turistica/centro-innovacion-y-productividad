@@ -4,6 +4,10 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Términos y Condiciones de Uso | CIP Cultura T',
   description: 'Términos y condiciones de uso de la plataforma del Centro de Innovación y Productividad (CIP) de CULTURA T S.A.S. en Colombia.',
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: 'https://cip.cultura-t.com/terminos',
   },

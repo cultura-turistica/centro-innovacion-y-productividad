@@ -16,8 +16,6 @@ export default function sitemap() {
     { url: `${baseUrl}/centro-conocimiento/proyectos`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/centro-conocimiento/publicaciones`, lastModified: currentDate, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/verificar`, lastModified: currentDate, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/privacidad`, lastModified: currentDate, changeFrequency: 'yearly', priority: 0.4 },
-    { url: `${baseUrl}/terminos`, lastModified: currentDate, changeFrequency: 'yearly', priority: 0.4 },
   ];
 
   // 2. Laboratorios de Datos

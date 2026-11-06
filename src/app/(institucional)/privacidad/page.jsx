@@ -4,6 +4,10 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Política de Privacidad y Tratamiento de Datos Personales | CULTURA T & CIP',
   description: 'Política Integral de Tratamiento de Datos Personales de CULTURA T S.A.S. y su Centro de Innovación y Productividad (CIP), conforme a la Ley 1581 de 2012 y Decreto 1377 de 2013 de la República de Colombia.',
+  robots: {
+    index: false,
+    follow: true,
+  },
   alternates: {
     canonical: 'https://cip.cultura-t.com/privacidad',
   },
