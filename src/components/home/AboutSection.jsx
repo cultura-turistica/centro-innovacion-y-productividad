@@ -19,7 +19,7 @@ export default function AboutSection() {
           <div className="absolute -left-[66px] top-4 w-3 h-3 bg-white border-2 border-rose-500 rounded-full hidden md:block z-10"></div>
           <h2 className="text-xl font-bold uppercase tracking-widest text-rose-500 mb-6">El CIP</h2>
           <p className="text-slate-600 text-sm leading-relaxed">
-            A través del Centro de Innovación y Productividad, articulamos a los actores clave de la cadena de valor turística, forjando alianzas estratégicas con entidades públicas, privadas y fondos de cooperación. Nuestra misión es impulsar la competitividad territorial: prestamos servicios especializados, investigamos y transferimos tecnología para detonar la innovación constante en las regiones.
+            Impulsar la competitividad y la productividad territorial en los sectores del turismo, la cultura y el desarrollo empresarial. Mediante la prestación de servicios especializados de asesoría, consultoría, asistencia técnica y capacitación, investigamos, validamos y transferimos conocimiento, tecnologías y metodologías ágiles. Nuestro propósito es inducir la innovación continua para optimizar la gestión de nuestros aliados y generar un desarrollo socioeconómico sostenible en las regiones.
           </p>
         </div>
       </div>
