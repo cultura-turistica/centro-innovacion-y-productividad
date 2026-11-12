@@ -1,0 +1,37 @@
+name: CI / Quality & Unit Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  test-and-build:
+    name: Pruebas Unitarias y Build Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar Repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.6.1
+
+      - name: Configurar Node.js (v22)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Instalar Dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Ejecutar Pruebas Unitarias (node --test)
+        run: pnpm test
+
+      - name: Validar Compilación Estática (Next.js Build)
+        run: ./node_modules/.bin/next build --webpack
